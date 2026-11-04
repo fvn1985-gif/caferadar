@@ -9,7 +9,7 @@
       "freshness_limit_calendar_days": 5,
       "last_close": {
         "date": "2026-11-04",
-        "value": 167155.73
+        "value": 167392.88
       },
       "last_close_age_calendar_days": 0,
       "sma200": {
@@ -31,7 +31,7 @@
       "filter_active": false,
       "last_sale": {
         "date": "2026-11-04",
-        "value": 5.4809
+        "value": 5.4977
       },
       "sma200": {
         "value": 5.1325,
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -27.17,
       "last_close": {
         "date": "2026-11-04",
-        "value": 78239.09
+        "value": 80127.76
       },
       "positive_trend_confirmed": true,
       "valid": true

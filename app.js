@@ -27,6 +27,7 @@
    */
   async function inicializar() {
     configurarNavegacaoAbas();
+    inicializarCalculadoraRendaFixa();
     renderizarLegendaEstados();
 
     // Carregamento paralelo das 3 fontes de dados
@@ -87,7 +88,9 @@
 
   function aplicarHashUrl() {
     const hash = window.location.hash.replace('#', '');
-    if (hash === 'swingtrade' || hash === 'swing' || hash === 'trade') {
+    if (hash === 'simulador' || hash === 'calculadora' || hash === 'renda') {
+      window.trocarTab('tab-simulador');
+    } else if (hash === 'swingtrade' || hash === 'swing' || hash === 'trade') {
       window.trocarTab('tab-swingtrade');
     } else if (hash === 'alocacao' || hash === 'longoprazo' || hash === 'radar') {
       window.trocarTab('tab-alocacao');
@@ -914,3 +917,96 @@
   }
 
 })();
+
+  // =========================================================================
+  // CALCULADORA DE RENDA FIXA INTERATIVA (TRÁFEGO ETERNO & BACKLINKS)
+  // =========================================================================
+
+  function inicializarCalculadoraRendaFixa() {
+    const inputValor = document.getElementById('calc-valor');
+    if (!inputValor) return;
+
+    let mesesSelecionados = 12;
+
+    function calcular() {
+      const valor = parseFloat(inputValor.value) || 0;
+      if (valor <= 0) return;
+
+      // Taxas atuais de mercado
+      const selicAnual = 0.1125; // 11,25% a.a.
+      const cdiAnual = 0.1115;   // 11,15% a.a.
+      const poupancaAnual = 0.0617; // 6,17% a.a. (0,5% a.m. + TR)
+
+      const dias = mesesSelecionados * 30;
+      let aliquotaIR = 0.225; // até 180 dias
+      if (dias > 180 && dias <= 360) aliquotaIR = 0.20;
+      else if (dias > 360 && dias <= 720) aliquotaIR = 0.175;
+      else if (dias > 720) aliquotaIR = 0.15;
+
+      const anos = mesesSelecionados / 12.0;
+
+      // 1. Poupança (Isenta de IR)
+      const totalPoupanca = valor * Math.pow(1 + poupancaAnual, anos);
+      const lucroPoupanca = totalPoupanca - valor;
+
+      // 2. CDB 100% do CDI (com desconto de IR)
+      const brutoCDI = valor * Math.pow(1 + cdiAnual, anos);
+      const lucroBrutoCDI = brutoCDI - valor;
+      const irCDI = lucroBrutoCDI * aliquotaIR;
+      const lucroLiqCDI = lucroBrutoCDI - irCDI;
+      const totalCDI = valor + lucroLiqCDI;
+
+      // 3. Tesouro Selic (Selic + 0,05% a.a., com IR)
+      const taxaSelicEfetiva = selicAnual + 0.0005;
+      const brutoSelic = valor * Math.pow(1 + taxaSelicEfetiva, anos);
+      const lucroBrutoSelic = brutoSelic - valor;
+      const irSelic = lucroBrutoSelic * aliquotaIR;
+      const lucroLiqSelic = lucroBrutoSelic - irSelic;
+      const totalSelic = valor + lucroLiqSelic;
+
+      function fmt(val) {
+        return 'R$ ' + val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      document.getElementById('res-total-poupanca').textContent = fmt(totalPoupanca);
+      document.getElementById('res-lucro-poupanca').textContent = '+' + fmt(lucroPoupanca);
+
+      document.getElementById('res-total-cdi').textContent = fmt(totalCDI);
+      document.getElementById('res-lucro-cdi').textContent = '+' + fmt(lucroLiqCDI);
+
+      document.getElementById('res-total-selic').textContent = fmt(totalSelic);
+      document.getElementById('res-lucro-selic').textContent = '+' + fmt(lucroLiqSelic);
+
+      const diff = lucroLiqSelic - lucroPoupanca;
+      const elDiff = document.getElementById('diferenca-lucro-reais');
+      if (elDiff) {
+        elDiff.textContent = fmt(diff) + ' a MAIS';
+      }
+    }
+
+    inputValor.addEventListener('input', calcular);
+
+    // Chips de valores rápidos
+    document.querySelectorAll('.btn-chip').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.btn-chip').forEach(b => b.classList.remove('ativa'));
+        btn.classList.add('ativa');
+        inputValor.value = btn.getAttribute('data-val');
+        calcular();
+      });
+    });
+
+    // Botões de prazos
+    document.querySelectorAll('.btn-prazo').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.btn-prazo').forEach(b => b.classList.remove('ativa'));
+        btn.classList.add('ativa');
+        mesesSelecionados = parseInt(btn.getAttribute('data-meses'), 10) || 12;
+        calcular();
+      });
+    });
+
+    calcular();
+  }

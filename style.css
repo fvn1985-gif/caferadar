@@ -1318,3 +1318,30 @@ body {
 .card-cvm-aba strong {
   color: var(--texto-principal);
 }
+
+/* ===== CALCULADORA DE RENDA FIXA ===== */
+.btn-chip, .btn-prazo {
+  background-color: #f1f5f9;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-md);
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-chip:hover, .btn-prazo:hover {
+  background-color: var(--destaque-suave);
+  color: var(--destaque);
+}
+.btn-chip.ativa, .btn-prazo.ativa {
+  background-color: var(--destaque);
+  color: #ffffff;
+  border-color: var(--destaque);
+}
+@media (max-width: 640px) {
+  .grid-calc-controles {
+    grid-template-columns: 1fr !important;
+  }
+}
