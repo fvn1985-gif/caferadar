@@ -1,21 +1,46 @@
 {
-  "edicao_padrao": "fechamento",
-  "data_referencia": "2026-11-03",
-  "data_formatada": "03/11/2026",
+  "edicao_padrao": "abertura",
+  "data_referencia": "2026-11-04",
+  "data_formatada": "04/11/2026",
   "edicoes": {
     "abertura": {
       "id": "abertura",
       "nome": "Abertura",
       "icone": "🌅",
       "horario": "08h30",
-      "titulo": "RADAR DE ABERTURA — 03/11/2026",
+      "titulo": "RADAR DE ABERTURA — 04/11/2026",
       "subtitulo": "Futuros em NY operam em compasso de espera com eleições nos EUA; Commodities mistas e foco local no Boletim Focus pós-feriado",
       "mercado_geral": {
-        "sp500": { "nome": "S&P 500 Futuro", "valor": "5.820 pts", "variacao": "-0,12%", "positivo": false },
-        "nasdaq": { "nome": "Nasdaq Futuro", "valor": "20.350 pts", "variacao": "-0,18%", "positivo": false },
-        "dolar": { "nome": "Dólar Futuro", "valor": "R$ 5,46", "variacao": "+0,35%", "positivo": true },
-        "bitcoin": { "nome": "Bitcoin (BTC)", "valor": "US$ 76.850", "variacao": "+0,45%", "positivo": true },
-        "brent": { "nome": "Petróleo Brent", "valor": "US$ 104,80", "variacao": "-0,95%", "positivo": false }
+        "sp500": {
+          "nome": "S&P 500 Futuro",
+          "valor": "7.569 pts",
+          "variacao": "+0,35%",
+          "positivo": true
+        },
+        "nasdaq": {
+          "nome": "Nasdaq Futuro",
+          "valor": "20.350 pts",
+          "variacao": "-0,18%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Futuro",
+          "valor": "R$ 5,46",
+          "variacao": "-0,50%",
+          "positivo": false
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 78.323",
+          "variacao": "+1,28%",
+          "positivo": true
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 101,73",
+          "variacao": "-1,73%",
+          "positivo": false
+        }
       },
       "leitura_rapida": [
         {
@@ -39,40 +64,108 @@
         }
       ],
       "acoes_blue_chips": [
-        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
-        { "ticker": "VALE3", "nome": "Vale ON", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
-        { "ticker": "ITUB4", "nome": "Itaú PN", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
-        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null }
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 50,71",
+          "variacao_dia": "-4,27%",
+          "variacao_mes": "—",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 60,25",
+          "variacao_dia": "-2,90%",
+          "variacao_mes": "—",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú PN",
+          "preco": "R$ 38,49",
+          "variacao_dia": "-0,77%",
+          "variacao_mes": "—",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 49,17",
+          "variacao_dia": "+1,17%",
+          "variacao_mes": "—",
+          "positivo": true
+        }
       ],
       "destaques": {
         "altas": [
-          { "ticker": "Agenda", "variacao": "08h30 Boletim Focus" },
-          { "ticker": "EUA", "variacao": "Eleições Midterms" }
+          {
+            "ticker": "Agenda",
+            "variacao": "08h30 Boletim Focus"
+          },
+          {
+            "ticker": "EUA",
+            "variacao": "Eleições Midterms"
+          }
         ],
         "quedas": [
-          { "ticker": "Minério Dalian", "variacao": "-1,10%" },
-          { "ticker": "Petróleo Brent", "variacao": "-0,95%" }
+          {
+            "ticker": "Minério Dalian",
+            "variacao": "-1,10%"
+          },
+          {
+            "ticker": "Petróleo Brent",
+            "variacao": "-0,95%"
+          }
         ]
       },
       "comparacao_anterior": [
-        { "texto": "Futuros americanos indicam abertura estável após o fechamento negativo no final da tarde anterior." },
-        { "texto": "Abertura da curva de juros pré-mercado reflete cautela fiscal do mercado local." }
+        {
+          "texto": "Futuros americanos indicam abertura estável após o fechamento negativo no final da tarde anterior."
+        },
+        {
+          "texto": "Abertura da curva de juros pré-mercado reflete cautela fiscal do mercado local."
+        }
       ]
     },
-
     "almoco": {
       "id": "almoco",
       "nome": "Meio-Dia / Almoço",
       "icone": "☀️",
       "horario": "12h30",
-      "titulo": "RADAR DO ALMOÇO — 03/11/2026",
+      "titulo": "RADAR DE MEIO-DIA / ALMOÇO — 04/11/2026",
       "subtitulo": "Ibovespa acelera perdas e recua mais de 1% com pressão em Petrobras e alta dos juros futuros; Dólar vai a R$ 5,48",
       "mercado_geral": {
-        "ibov": { "nome": "Ibovespa", "pontos": "165.920", "variacao": "-1,20%", "positivo": false },
-        "dolar": { "nome": "Dólar Comercial", "valor": "R$ 5,48", "variacao": "+0,78%", "positivo": true },
-        "sp500": { "nome": "S&P 500", "variacao": "+0,15%", "positivo": true },
-        "bitcoin": { "nome": "Bitcoin (BTC)", "valor": "US$ 77.200", "variacao": "+0,85%", "positivo": true },
-        "brent": { "nome": "Petróleo Brent", "valor": "US$ 105,40", "variacao": "+0,60%", "positivo": true }
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "165.529 pts",
+          "variacao": "-1,57%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 5,46",
+          "variacao": "-0,50%",
+          "positivo": false
+        },
+        "sp500": {
+          "nome": "S&P 500",
+          "variacao": "+0,35%",
+          "positivo": true,
+          "valor": "7.569 pts"
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 78.323",
+          "variacao": "+1,28%",
+          "positivo": true
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 101,73",
+          "variacao": "-1,73%",
+          "positivo": false
+        }
       },
       "leitura_rapida": [
         {
@@ -96,39 +189,82 @@
         }
       ],
       "acoes_blue_chips": [
-        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "R$ 51,10", "variacao_dia": "-3,05%", "variacao_mes": "-3,05%", "positivo": false },
-        { "ticker": "VALE3", "nome": "Vale ON", "preco": "R$ 60,50", "variacao_dia": "-2,45%", "variacao_mes": "-2,45%", "positivo": false },
-        { "ticker": "ITUB4", "nome": "Itaú PN", "preco": "R$ 38,55", "variacao_dia": "-0,36%", "variacao_mes": "-0,36%", "positivo": false },
-        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "R$ 49,05", "variacao_dia": "+1,42%", "variacao_mes": "+1,42%", "positivo": true }
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 50,71",
+          "variacao_dia": "-4,27%",
+          "variacao_mes": "-3,05%",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 60,25",
+          "variacao_dia": "-2,90%",
+          "variacao_mes": "-2,45%",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú PN",
+          "preco": "R$ 38,49",
+          "variacao_dia": "-0,77%",
+          "variacao_mes": "-0,36%",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 49,17",
+          "variacao_dia": "+1,17%",
+          "variacao_mes": "+1,42%",
+          "positivo": true
+        }
       ],
       "destaques": {
         "altas": [
-          { "ticker": "TIMS3", "variacao": "+2,85%" },
-          { "ticker": "EMBJ3", "variacao": "+2,50%" }
+          {
+            "ticker": "TIMS3",
+            "variacao": "+2,85%"
+          },
+          {
+            "ticker": "EMBJ3",
+            "variacao": "+2,50%"
+          }
         ],
         "quedas": [
-          { "ticker": "COGN3", "variacao": "-8,90%" },
-          { "ticker": "PETR4", "variacao": "-3,05%" }
+          {
+            "ticker": "COGN3",
+            "variacao": "-8,90%"
+          },
+          {
+            "ticker": "PETR4",
+            "variacao": "-3,05%"
+          }
         ]
       },
       "comparacao_anterior": [
-        { "texto": "Curva de juros futura acentua inclinação e DI1 janeiro 2027 sobe 14 bps em relação à abertura." },
-        { "texto": "Volume negociado na B3 está 15% acima da média das primeiras 3 horas de pregão." }
+        {
+          "texto": "Curva de juros futura acentua inclinação e DI1 janeiro 2027 sobe 14 bps em relação à abertura."
+        },
+        {
+          "texto": "Volume negociado na B3 está 15% acima da média das primeiras 3 horas de pregão."
+        }
       ]
     },
-
     "fechamento": {
       "id": "fechamento",
       "nome": "Fechamento",
       "icone": "🌙",
       "horario": "18h30",
-      "titulo": "RADAR DE FECHAMENTO — 03/11/2026",
+      "titulo": "RADAR DE FECHAMENTO — 04/11/2026",
       "subtitulo": "Ibov recua 1,35% com cautela fiscal pré-Copom; Dólar vai a R$ 5,49 e Wall Street avança em dia de eleições nos EUA",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
-          "pontos": "165.659",
-          "variacao": "-1,35%",
+          "pontos": "165.529 pts",
+          "variacao": "-1,57%",
           "positivo": false,
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
@@ -141,17 +277,18 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,49",
-          "variacao": "+0,95%",
-          "positivo": true,
+          "valor": "R$ 5,46",
+          "variacao": "-0,50%",
+          "positivo": false,
           "ptax": "R$ 5,4935",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br/noticias/news-8551923"
         },
         "sp500": {
           "nome": "S&P 500",
-          "variacao": "+0,36%",
-          "positivo": true
+          "variacao": "+0,35%",
+          "positivo": true,
+          "valor": "7.569 pts"
         },
         "nasdaq": {
           "nome": "Nasdaq",
@@ -160,8 +297,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 77.798",
-          "variacao": "+1,32%",
+          "valor": "US$ 78.323",
+          "variacao": "+1,28%",
           "positivo": true,
           "detalhe": "+1,47% na sessão"
         },
@@ -171,9 +308,9 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 106,52",
-          "variacao": "+1,67%",
-          "positivo": true,
+          "valor": "US$ 101,73",
+          "variacao": "-1,73%",
+          "positivo": false,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
         },
@@ -186,25 +323,99 @@
         }
       },
       "acoes_blue_chips": [
-        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "R$ 50,71", "variacao_dia": "-3,79%", "variacao_mes": "-3,79%", "positivo": false },
-        { "ticker": "VALE3", "nome": "Vale ON", "preco": "R$ 60,25", "variacao_dia": "-2,85%", "variacao_mes": "-2,85%", "positivo": false },
-        { "ticker": "ITUB4", "nome": "Itaú Unibanco PN", "preco": "R$ 38,49", "variacao_dia": "-0,52%", "variacao_mes": "-0,52%", "positivo": false },
-        { "ticker": "BBAS3", "nome": "Banco do Brasil ON", "preco": "R$ 16,19", "variacao_dia": "-1,70%", "variacao_mes": "-1,70%", "positivo": false },
-        { "ticker": "BBDC4", "nome": "Bradesco PN", "preco": "R$ 13,58", "variacao_dia": "-2,02%", "variacao_mes": "-2,02%", "positivo": false },
-        { "ticker": "ELET3", "nome": "Eletrobras ON", "preco": "R$ 46,39", "variacao_dia": "-2,19%", "variacao_mes": "-2,19%", "positivo": false },
-        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "R$ 49,17", "variacao_dia": "+1,67%", "variacao_mes": "+1,67%", "positivo": true },
-        { "ticker": "B3SA3", "nome": "B3 ON", "preco": "R$ 13,61", "variacao_dia": "+1,34%", "variacao_mes": "+1,34%", "positivo": true }
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 50,71",
+          "variacao_dia": "-4,27%",
+          "variacao_mes": "-3,79%",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 60,25",
+          "variacao_dia": "-2,90%",
+          "variacao_mes": "-2,85%",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú Unibanco PN",
+          "preco": "R$ 38,49",
+          "variacao_dia": "-0,77%",
+          "variacao_mes": "-0,52%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBAS3",
+          "nome": "Banco do Brasil ON",
+          "preco": "R$ 16,19",
+          "variacao_dia": "-1,70%",
+          "variacao_mes": "-1,70%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBDC4",
+          "nome": "Bradesco PN",
+          "preco": "R$ 13,58",
+          "variacao_dia": "-2,02%",
+          "variacao_mes": "-2,02%",
+          "positivo": false
+        },
+        {
+          "ticker": "ELET3",
+          "nome": "Eletrobras ON",
+          "preco": "R$ 46,39",
+          "variacao_dia": "-2,19%",
+          "variacao_mes": "-2,19%",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 49,17",
+          "variacao_dia": "+1,17%",
+          "variacao_mes": "+1,67%",
+          "positivo": true
+        },
+        {
+          "ticker": "B3SA3",
+          "nome": "B3 ON",
+          "preco": "R$ 13,61",
+          "variacao_dia": "+1,34%",
+          "variacao_mes": "+1,34%",
+          "positivo": true
+        }
       ],
       "destaques": {
         "altas": [
-          { "ticker": "EMBJ3", "variacao": "+3,72%" },
-          { "ticker": "TIMS3", "variacao": "+3,23%" },
-          { "ticker": "USIM5", "variacao": "+3,20%" }
+          {
+            "ticker": "EMBJ3",
+            "variacao": "+3,72%"
+          },
+          {
+            "ticker": "TIMS3",
+            "variacao": "+3,23%"
+          },
+          {
+            "ticker": "USIM5",
+            "variacao": "+3,20%"
+          }
         ],
         "quedas": [
-          { "ticker": "COGN3", "variacao": "-10,76%" },
-          { "ticker": "CMIN3", "variacao": "-5,56%" },
-          { "ticker": "PETR4", "variacao": "-3,95%" }
+          {
+            "ticker": "COGN3",
+            "variacao": "-10,76%"
+          },
+          {
+            "ticker": "CMIN3",
+            "variacao": "-5,56%"
+          },
+          {
+            "ticker": "PETR4",
+            "variacao": "-3,95%"
+          }
         ],
         "fonte_link": "https://trademap.com.br/noticias/news-8552005"
       },
