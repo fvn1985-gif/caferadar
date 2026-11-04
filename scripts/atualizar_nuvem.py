@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Robô de Atualização Automática na Nuvem (GitHub Actions) para caferadar.com.br
-Roda 3x ao dia (08h30, 12h30, 18h30) com notícias contextuais do dia da semana e cotações ao vivo.
+Roda 3x ao dia (08h30, 12h30, 18h30) com notícias contextuais, cotações ao vivo e Destaques B3.
 """
 
 from __future__ import annotations
@@ -58,7 +58,11 @@ def coletar_cotacoes():
         "PETR4.SA": "PETR4",
         "VALE3.SA": "VALE3",
         "ITUB4.SA": "ITUB4",
-        "WEGE3.SA": "WEGE3"
+        "WEGE3.SA": "WEGE3",
+        "B3SA3.SA": "B3SA3",
+        "BBDC4.SA": "BBDC4",
+        "BBAS3.SA": "BBAS3",
+        "PRIO3.SA": "PRIO3"
     }
 
     simbolos = list(tickers_map.keys())
@@ -140,31 +144,31 @@ def gerar_conteudo_dinamico(ed_key: str, dia_semana: str, data_fmt: str, cotacoe
         }
     elif ed_key == "almoco":
         return {
-            "subtitulo": f"Ibovespa opera aos {ibov_str} no início da tarde desta {dia_semana}; Dólar a {dolar_str} e liquidez concentrada em grandes bancos e estatais",
+            "subtitulo": f"Ibovespa oscila em torno dos {ibov_str} no início da tarde desta {dia_semana}; Dólar cotado a {dolar_str} com giro concentrado no setor bancário e Vale",
             "leitura_rapida": [
                 {
-                    "texto": f"O Ibovespa oscila em torno dos {ibov_str} nesta tarde de {dia_semana}, com investidores locais calibrando posições em meio ao noticiário corporativo e fiscal.",
+                    "texto": f"O Ibovespa opera próximo de {ibov_str} no balanço do meio-dia desta {dia_semana}, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
                     "fonte": "TradeMap",
                     "link": "https://trademap.com.br"
                 },
                 {
-                    "texto": f"Petrobras e Vale comandam o volume financeiro do pregão, repercutindo as oscilações do barril de petróleo a {brent_str} e das commodities metálicas na Ásia.",
+                    "texto": f"Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a {brent_str}.",
                     "fonte": "Visno Invest",
                     "link": "https://visnoinvest.com.br"
                 },
                 {
-                    "texto": f"O dólar comercial registra cotação de {dolar_str} ({dolar_var}), mantendo prêmio de risco prudente antes dos comunicados de política monetária.",
+                    "texto": f"O dólar comercial registra cotação de {dolar_str} ({dolar_var}), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
                     "fonte": "ADVFN",
                     "link": "https://br.advfn.com/jornal"
                 },
                 {
-                    "texto": f"Em Wall Street, os índices operam mistos, com o S&P 500 cotado próximo de {sp500_str} em compasso de espera por balanços de grandes empresas de tecnologia.",
+                    "texto": f"Em Wall Street, o S&P 500 opera aos {sp500_str}, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
                     "fonte": "BB InvesTalk"
                 }
             ],
             "comparacao_anterior": [
-                { "texto": f"Volume negociado no meio do dia mostra investidores institucionais mais seletivos nesta {dia_semana}." },
-                { "texto": "Destaque para o setor elétrico e financeiro atuando como colchão de liquidez contra a volatilidade." }
+                { "texto": f"Volume negociado na primeira metade do pregão de {dia_semana} mostra investidores institucionais atuando com seletividade." },
+                { "texto": "Setor financeiro (Itaú e Bradesco) e B3 sustentam suporte relevante frente às oscilações externas." }
             ]
         }
     else: # fechamento
@@ -231,8 +235,6 @@ def main():
 
     cotacoes = coletar_cotacoes()
 
-    tempo_min = hora * 60 + minuto
-
     disp_map = {
         "abertura": True,
         "almoco": tempo_min >= 12 * 60,
@@ -241,6 +243,24 @@ def main():
 
     if forcar:
         disp_map[forcar] = True
+
+    # Montar Maiores Altas e Quedas reais da B3
+    altas_reais = []
+    quedas_reais = []
+    if cotacoes:
+        acoes_lista = []
+        for ticker in ["PETR4", "VALE3", "ITUB4", "WEGE3", "B3SA3", "BBDC4", "BBAS3", "PRIO3"]:
+            if ticker in cotacoes:
+                acoes_lista.append((ticker, cotacoes[ticker]["var_pct"]))
+        
+        if acoes_lista:
+            acoes_lista.sort(key=lambda x: x[1], reverse=True)
+            for t, v_pct in acoes_lista[:2]:
+                s = "+" if v_pct >= 0 else ""
+                altas_reais.append({"ticker": t, "variacao": f"{s}{v_pct:.2f}%".replace(".", ",")})
+            for t, v_pct in acoes_lista[-2:]:
+                s = "+" if v_pct >= 0 else ""
+                quedas_reais.append({"ticker": t, "variacao": f"{s}{v_pct:.2f}%".replace(".", ",")})
 
     if "edicoes" in dados:
         for ed_key in ["abertura", "almoco", "fechamento"]:
@@ -251,11 +271,16 @@ def main():
             ed["disponivel"] = disp_map.get(ed_key, True)
             ed["status_publicacao"] = "Publicado" if ed["disponivel"] else f"Prevista para as {ed.get('horario', '12h30')}"
 
-            # Notícias e subtítulos dinâmicos com dia da semana exato
             conteudo = gerar_conteudo_dinamico(ed_key, dia_semana, data_fmt, cotacoes)
             ed["subtitulo"] = conteudo["subtitulo"]
             ed["leitura_rapida"] = conteudo["leitura_rapida"]
             ed["comparacao_anterior"] = conteudo["comparacao_anterior"]
+
+            if altas_reais and quedas_reais:
+                ed["destaques"] = {
+                    "altas": altas_reais,
+                    "quedas": quedas_reais
+                }
 
             if cotacoes:
                 mg = ed.setdefault("mercado_geral", {})
@@ -298,7 +323,7 @@ def main():
     print("fechamento.json atualizado na nuvem com notícias contextuais!")
 
     # Atualiza também o Radar Longo Prazo na nuvem
-    atualizar_dashboard_nuvem(data_ref, data_fmt, hora_fmt, cotacoes)
+    atualizar_dashboard_nuvem(data_ref, data_fmt, agora_sp.strftime("%Hh%M"), cotacoes)
 
 def atualizar_dashboard_nuvem(data_ref: str, data_fmt: str, hora_fmt: str, cotacoes: dict | None):
     dash_json = ROOT / "data" / "dashboard.json"
