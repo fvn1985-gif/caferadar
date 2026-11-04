@@ -231,12 +231,25 @@ def main():
 
     cotacoes = coletar_cotacoes()
 
+    tempo_min = hora * 60 + minuto
+
+    disp_map = {
+        "abertura": True,
+        "almoco": tempo_min >= 12 * 60,
+        "fechamento": tempo_min >= 17 * 60 + 30
+    }
+
+    if forcar:
+        disp_map[forcar] = True
+
     if "edicoes" in dados:
         for ed_key in ["abertura", "almoco", "fechamento"]:
             if ed_key not in dados["edicoes"]:
                 continue
             ed = dados["edicoes"][ed_key]
             ed["titulo"] = f"RADAR DE {ed['nome'].upper()} — {data_fmt}"
+            ed["disponivel"] = disp_map.get(ed_key, True)
+            ed["status_publicacao"] = "Publicado" if ed["disponivel"] else f"Prevista para as {ed.get('horario', '12h30')}"
 
             # Notícias e subtítulos dinâmicos com dia da semana exato
             conteudo = gerar_conteudo_dinamico(ed_key, dia_semana, data_fmt, cotacoes)

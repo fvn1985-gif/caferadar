@@ -125,9 +125,23 @@
   function configurarBotoesEdicao(dados) {
     const botoes = document.querySelectorAll('.btn-edicao');
     botoes.forEach(function (btn) {
+      const idEdicao = btn.getAttribute('data-edicao');
+      const ed = dados.edicoes && dados.edicoes[idEdicao];
+      if (ed && ed.disponivel === false) {
+        btn.classList.add('edicao-pendente');
+        const horaEl = btn.querySelector('.edicao-hora');
+        if (horaEl && !horaEl.textContent.includes('⏳')) {
+          horaEl.textContent = '⏳ ' + (ed.horario || '');
+        }
+      } else if (ed && ed.disponivel === true) {
+        btn.classList.remove('edicao-pendente');
+        const horaEl = btn.querySelector('.edicao-hora');
+        if (horaEl) {
+          horaEl.textContent = ed.horario || '';
+        }
+      }
       btn.addEventListener('click', function (e) {
         e.preventDefault();
-        const idEdicao = btn.getAttribute('data-edicao');
         exibirEdicao(idEdicao);
       });
     });
@@ -151,8 +165,49 @@
       dadosEdicao = dadosFechamentoCache;
     }
 
+    const boxPublicada = document.getElementById('conteudo-edicao-publicada');
+    const boxAguardando = document.getElementById('conteudo-edicao-aguardando');
+
+    // Se a edição ainda não está disponível no horário de hoje
+    if (dadosEdicao && dadosEdicao.disponivel === false) {
+      if (boxPublicada) boxPublicada.style.display = 'none';
+      if (boxAguardando) {
+        boxAguardando.style.display = 'block';
+        boxAguardando.innerHTML = `
+          <div class="card-bloco-noticia" style="text-align:center; padding: 56px 24px; margin-top: 16px;">
+            <div style="font-size: 3.2rem; margin-bottom: 14px;">⏳</div>
+            <h3 style="font-size: 1.45rem; color: var(--primaria); font-weight: 800; margin-bottom: 10px;">
+              Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '12h30')}
+            </h3>
+            <p style="font-size: 1rem; color: var(--texto-secundario); max-width: 540px; margin: 0 auto 18px; line-height: 1.6;">
+              O pregão da B3 está em andamento. A síntese, cotações consolidadas e destaques do mercado para esta edição serão publicados pontualmente às <strong>${escaparHtml(dadosEdicao.horario || '')}</strong>.
+            </p>
+            <div style="display:inline-block; background: var(--destaque-suave); color: var(--destaque); padding: 6px 16px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; margin-bottom: 24px;">
+              ● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}
+            </div>
+            <div>
+              <button id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">
+                ← Acessar Edição de Abertura (08h30)
+              </button>
+            </div>
+          </div>
+        `;
+        const btnVoltar = document.getElementById('btn-voltar-abertura');
+        if (btnVoltar) {
+          btnVoltar.addEventListener('click', function() {
+            exibirEdicao('abertura');
+          });
+        }
+      }
+      return;
+    }
+
+    if (boxPublicada) boxPublicada.style.display = 'block';
+    if (boxAguardando) boxAguardando.style.display = 'none';
+
     renderizarFechamento(dadosEdicao, dadosFechamentoCache.data_formatada);
   }
+  window.exibirEdicao = exibirEdicao;
 
   function renderizarFechamento(dados, dataGeral) {
     if (!dados) return;
