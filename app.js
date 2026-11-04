@@ -376,7 +376,13 @@
     if (elAlvo && est.alvo_padrao_percentual) elAlvo.textContent = `+${est.alvo_padrao_percentual.toFixed(2)}%`;
 
     const elAssert = document.getElementById('st-assertividade');
-    if (elAssert && est.assertividade_historica_1ano) elAssert.textContent = est.assertividade_historica_1ano;
+    if (elAssert && est.assertividade_historica_1ano) {
+      if (est.operacoes_vencedoras) {
+        elAssert.textContent = `${est.operacoes_vencedoras} de ${est.operacoes_vencedoras} encerradas no alvo`;
+      } else {
+        elAssert.textContent = est.assertividade_historica_1ano;
+      }
+    }
 
     const elTempo = document.getElementById('st-tempo');
     if (elTempo && est.tempo_medio_posicao) elTempo.textContent = est.tempo_medio_posicao;
