@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós & Contato — Radar Invest</title>
+  <meta name="description" content="Conheça o propósito, a metodologia quantitativa e os canais de contato do Radar Invest.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pagina-container {
+      max-width: 860px;
+      margin: 32px auto 64px;
+    }
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f1f5f9;
+      color: var(--texto-secundario);
+      padding: 8px 16px;
+      border-radius: var(--raio-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      transition: all 0.15s ease;
+    }
+    .btn-voltar:hover {
+      background-color: var(--destaque-suave);
+      color: var(--destaque);
+    }
+    .card-documento {
+      background-color: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-lg);
+      padding: 36px;
+      margin-bottom: 24px;
+      box-shadow: var(--sombra-card);
+    }
+    .card-documento h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primaria);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-documento h2:first-of-type {
+      margin-top: 0;
+    }
+    .card-documento p {
+      font-size: 0.95rem;
+      color: var(--texto-secundario);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .card-documento ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--texto-principal);
+      line-height: 1.55;
+    }
+    .bloco-contato {
+      background: #f8fafc;
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-md);
+      padding: 20px;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .item-contato {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .item-contato strong {
+      min-width: 130px;
+      color: var(--primaria);
+    }
+    .item-contato a {
+      color: var(--destaque);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .item-contato a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo -->
+  <header class="cabecalho-portal">
+    <div class="container container-header">
+      <div class="marca-portal">
+        <div class="logo-icone">RI</div>
+        <div>
+          <h1 class="portal-titulo">RADAR INVEST</h1>
+          <p class="portal-slogan">Missão Editorial, Governança & Fale Conosco</p>
+        </div>
+      </div>
+      <div class="status-topo">
+        <a href="index.html" class="btn-tab ativa" style="border:1px solid var(--borda); border-radius:9999px; padding:6px 14px;">
+          <span>← Voltar ao Portal</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container pagina-container">
+    <a href="index.html" class="btn-voltar">← Voltar à página inicial</a>
+
+    <div class="card-documento">
+      <h2><span>🎯</span> 1. Nossa Missão e Propósito</h2>
+      <p>
+        O <strong>Radar Invest</strong> nasceu da convicção de que investidores e operadores de mercado tomam melhores decisões quando contam com dados limpos, modelos estatísticos consistentes e zero viés emocional.
+      </p>
+      <p>
+        Enquanto a maior parte do conteúdo financeiro na internet se baseia em ruídos diários, manchetes alarmistas e promessas irreais de enriquecimento rápido, o Radar Invest combina tecnologia e disciplina algorítmica para entregar valor em três frentes complementares:
+      </p>
+      <ul>
+        <li><strong>Fechamento Diário de Mercado:</strong> 3 edições ao dia (Abertura 08h30, Almoço 12h30 e Fechamento 18h30) com síntese objetiva, sem enrolação e com os fatos que realmente importam;</li>
+        <li><strong>Scanner Tático de Swing Trade B3:</strong> Rastreamento quantitativo de 59 ações selecionadas da bolsa brasileira, com meta fixa de ganho assimétrico de +5,0% e stop loss predefinido;</li>
+        <li><strong>Radar de Alocação de Longo Prazo:</strong> Um modelo quantitativo com regras matemáticas estritas que orienta novos aportes mensais com proteção cambial (IVVB11), juro real garantido (Tesouro IPCA+) e controle rigoroso de risco soberano.</li>
+      </ul>
+
+      <h2><span>⚙️</span> 2. Tecnologia & Metodologia Independente</h2>
+      <p>
+        Nossa arquitetura de processamento opera em código Python dedicado, consumindo dados públicos e auditáveis de fontes oficiais:
+      </p>
+      <ul>
+        <li><strong>Banco Central do Brasil:</strong> Séries de câmbio PTAX Olinda em tempo real;</li>
+        <li><strong>Tesouro Nacional:</strong> Taxas e preços unitários dos títulos públicos federais (Tesouro Direto);</li>
+        <li><strong>B3 / Ipeadata:</strong> Histórico e pontuações do Ibovespa;</li>
+        <li><strong>Binance Spot API:</strong> Cotações internacionais de Bitcoin (BTCUSDT).</li>
+      </ul>
+      <p>
+        Nenhuma métrica exibida nesta plataforma é inventada por opinião subjetiva: todos os gatilhos passam por conferência algorítmica de dados e validação de integridade.
+      </p>
+
+      <h2><span>📬</span> 3. Fale Conosco & Atendimento</h2>
+      <p>
+        Tem dúvidas sobre as análises, sugestões de melhorias na plataforma, propostas de parcerias institucionais ou solicitações sobre tratamento de dados (LGPD)? Fale diretamente conosco:
+      </p>
+
+      <div class="bloco-contato">
+        <div class="item-contato">
+          <span>📧</span>
+          <strong>E-mail Geral:</strong>
+          <a href="mailto:contato@caferadar.com.br">contato@caferadar.com.br</a>
+        </div>
+        <div class="item-contato">
+          <span>⚖️</span>
+          <strong>Privacidade (DPO):</strong>
+          <a href="mailto:privacidade@caferadar.com.br">privacidade@caferadar.com.br</a>
+        </div>
+        <div class="item-contato">
+          <span>🌐</span>
+          <strong>Plataforma Web:</strong>
+          <span>Radar Invest / CafeRadar</span>
+        </div>
+        <div class="item-contato">
+          <span>⏱️</span>
+          <strong>Tempo de resposta:</strong>
+          <span>Respondemos em até 24 a 48 horas úteis</span>
+        </div>
+      </div>
+
+      <h2><span>🛡️</span> 4. Governança e Transparência (CVM)</h2>
+      <p>
+        Reiteramos nosso compromisso com a total conformidade com a <strong>Resolução CVM nº 20/2021</strong>. O Radar Invest é um veículo de comunicação de tecnologia financeira e educação, não exercendo consultoria personalizada, gestão de patrimônio de terceiros ou intermediação de ordens.
+      </p>
+    </div>
+
+    <!-- CVM Footer Note -->
+    <div class="card-cvm-aba" style="margin-top:20px;">
+      <div class="card-cvm-header">
+        <span>⚖️</span>
+        <h4>Conformidade Legal & CVM Resolução nº 20/2021</h4>
+      </div>
+      <p>
+        Rentabilidade passada não representa garantia de ganhos futuros. Investimentos em ações e criptoativos envolvem volatilidade. Invista com consciência e respeito ao seu perfil pessoal de risco.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="rodape-portal">
+    <div class="container container-rodape">
+      <div class="rodape-colunas">
+        <div class="col-institucional">
+          <div class="logo-rodape">RADAR INVEST</div>
+          <p class="desc-rodape">
+            Plataforma independente de inteligência de mercado, síntese de pregão diário, scanner tático de Swing Trade e modelagem quantitativa de longo prazo.
+          </p>
+        </div>
+        <div class="col-links">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="index.html">Início do Portal</a></li>
+            <li><a href="sobre.html">Sobre & Contato</a></li>
+            <li><a href="privacy.html">Política de Privacidade</a></li>
+            <li><a href="rules.html">Regras do Motor</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="disclaimer-cvm">
+        <p class="copy-texto">© 2026 Radar Invest. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
