@@ -106,7 +106,7 @@
 
   async function carregarFechamentoDiario() {
     try {
-      const resp = await fetch('data/fechamento.json', { cache: 'no-store' });
+      const resp = await fetch('data/fechamento.json?_t=' + Date.now(), { cache: 'no-store' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const dados = await resp.json();
       dadosFechamentoCache = dados;
@@ -291,7 +291,7 @@
 
   async function carregarSwingTrade() {
     try {
-      const resp = await fetch('data/swingtrade.json', { cache: 'no-store' });
+      const resp = await fetch('data/swingtrade.json?_t=' + Date.now(), { cache: 'no-store' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const dados = await resp.json();
       renderizarSwingTrade(dados);
@@ -415,7 +415,7 @@
 
   async function carregarRadarAlocacao() {
     try {
-      const resp = await fetch('data/dashboard.json', { cache: 'no-store' });
+      const resp = await fetch('data/dashboard.json?_t=' + Date.now(), { cache: 'no-store' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const dados = await resp.json();
       renderizarRadar(dados, false);
