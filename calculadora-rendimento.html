@@ -216,7 +216,7 @@
         </div>
 
         <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 20px; text-align: center; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Mais Seguro</div>
+          <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Menor Risco de Crédito</div>
           <span style="font-size: 0.82rem; font-weight: 700; color: var(--destaque); text-transform: uppercase;">Tesouro Selic Oficial</span>
           <div id="res-total-selic" style="font-size: 1.6rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
           <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-selic" style="color: var(--destaque);">+R$ 0,00</strong></div>
@@ -346,11 +346,11 @@
       <div class="coluna-links">
         <h4>Navegação</h4>
         <ul>
-          <li><a href="index.html#fechamento">Fechamento Diário</a></li>
-          <li><a href="index.html#swingtrade">Swing Trade B3 (+5%)</a></li>
-          <li><a href="index.html#alocacao">Radar Longo Prazo</a></li>
+          <li><a href="/index.html#fechamento">Fechamento Diário</a></li>
+          <li><a href="/index.html#swingtrade">Swing Trade B3 (+5%)</a></li>
+          <li><a href="/index.html#alocacao">Radar Longo Prazo</a></li>
           <li><a href="calculadora-rendimento.html">Calculadora de Renda</a></li>
-          <li><a href="index.html#metodologia">Como Usar o Portal</a></li>
+          <li><a href="/index.html#metodologia">Como Usar o Portal</a></li>
         </ul>
       </div>
 
@@ -390,7 +390,11 @@
       const poupancaAnual = 0.0617; // 6,17% a.a.
 
       function obterAliquotaIR(m) {
-        const dias = m * 30;
+        let dias = m * 30;
+        if (m === 12) dias = 365;
+        else if (m === 24) dias = 730;
+        else if (m === 36) dias = 1095;
+
         if (dias <= 180) return 0.225;
         if (dias <= 360) return 0.20;
         if (dias <= 720) return 0.175;

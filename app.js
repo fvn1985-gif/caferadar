@@ -52,19 +52,25 @@
       });
     });
 
-    // Suporte a hash na URL (#fechamento, #swingtrade, #alocacao, #metodologia)
+    // Suporte a hash na URL (#fechamento, #swingtrade, #alocacao, #metodologia, #simulador)
     window.addEventListener('hashchange', aplicarHashUrl);
+    window.addEventListener('load', aplicarHashUrl);
     aplicarHashUrl();
   }
 
   window.trocarTab = function (tabId) {
     if (!tabId) return;
 
+    // Normaliza id caso venha com prefixo tab-
+    const idLimpo = tabId.replace(/^tab-/, '');
+
     // Atualiza botões
     document.querySelectorAll('.btn-tab').forEach(function (btn) {
-      btn.classList.remove('ativa');
-      if (btn.getAttribute('data-tab') === tabId) {
+      const dt = btn.getAttribute('data-tab') || '';
+      if (dt === idLimpo || dt === 'tab-' + idLimpo) {
         btn.classList.add('ativa');
+      } else {
+        btn.classList.remove('ativa');
       }
     });
 
@@ -73,31 +79,30 @@
       sec.classList.remove('ativa');
     });
 
-    const secAlvo = document.getElementById(tabId);
+    const secAlvo = document.getElementById(idLimpo) || document.getElementById('tab-' + idLimpo);
     if (secAlvo) {
       secAlvo.classList.add('ativa');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Atualiza hash sem saltos na página
-    const hash = tabId.replace('tab-', '');
     if (history.pushState) {
-      history.pushState(null, null, '#' + hash);
+      history.pushState(null, null, '#' + idLimpo);
     }
   };
 
   function aplicarHashUrl() {
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'simulador' || hash === 'calculadora' || hash === 'renda') {
-      window.trocarTab('tab-simulador');
-    } else if (hash === 'swingtrade' || hash === 'swing' || hash === 'trade') {
-      window.trocarTab('tab-swingtrade');
-    } else if (hash === 'alocacao' || hash === 'longoprazo' || hash === 'radar') {
-      window.trocarTab('tab-alocacao');
-    } else if (hash === 'metodologia' || hash === 'filosofia' || hash === 'comousar') {
-      window.trocarTab('tab-metodologia');
-    } else if (hash === 'fechamento' || hash === 'diario') {
-      window.trocarTab('tab-fechamento');
+    const hash = (window.location.hash || '').replace('#', '').trim();
+    if (hash === 'simulador' || hash === 'calculadora' || hash === 'renda' || hash === 'tab-simulador') {
+      window.trocarTab('simulador');
+    } else if (hash === 'swingtrade' || hash === 'swing' || hash === 'trade' || hash === 'tab-swingtrade') {
+      window.trocarTab('swingtrade');
+    } else if (hash === 'alocacao' || hash === 'longoprazo' || hash === 'radar' || hash === 'tab-alocacao') {
+      window.trocarTab('alocacao');
+    } else if (hash === 'metodologia' || hash === 'filosofia' || hash === 'comousar' || hash === 'tab-metodologia') {
+      window.trocarTab('metodologia');
+    } else if (hash === 'fechamento' || hash === 'diario' || hash === 'tab-fechamento') {
+      window.trocarTab('fechamento');
     }
   }
 
@@ -937,7 +942,11 @@
       const cdiAnual = 0.1115;   // 11,15% a.a.
       const poupancaAnual = 0.0617; // 6,17% a.a. (0,5% a.m. + TR)
 
-      const dias = mesesSelecionados * 30;
+      let dias = mesesSelecionados * 30;
+      if (mesesSelecionados === 12) dias = 365;
+      else if (mesesSelecionados === 24) dias = 730;
+      else if (mesesSelecionados === 36) dias = 1095;
+
       let aliquotaIR = 0.225; // até 180 dias
       if (dias > 180 && dias <= 360) aliquotaIR = 0.20;
       else if (dias > 360 && dias <= 720) aliquotaIR = 0.175;
