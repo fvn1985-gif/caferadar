@@ -1,0 +1,147 @@
+{
+  "atualizado_em": "27/10/2026 às 05h13",
+  "data_referencia": "2026-11-04",
+  "estrategia": {
+    "nome": "Swing Trade — Reversão Quantitativa B3",
+    "universo_total": 59,
+    "universo_descricao": "59 ações selecionadas de alta liquidez e governança",
+    "alvo_padrao_percentual": 5.0,
+    "assertividade_historica_1ano": "89,0%",
+    "operacoes_vencedoras": 154,
+    "operacoes_totais_1ano": 173,
+    "tempo_medio_posicao": "6 a 12 dias úteis",
+    "status_scanner": "Scanner Atualizado (27/10/2026 às 05h13)"
+  },
+  "resumo_pregão_hoje": {
+    "oportunidades": 0,
+    "ressalvas": 0,
+    "aguardando": 7,
+    "desfavoravel": 11
+  },
+  "posicoes_destaque": [
+    {
+      "ticker": "TAEE11",
+      "empresa": "Taesa Unit",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "ENGI11",
+      "empresa": "Energisa Unit",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "BBDC4",
+      "empresa": "Bradesco PN",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "BPAC11",
+      "empresa": "BTG Pactual Unit",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "ITUB4",
+      "empresa": "Itaú Unibanco PN",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "BBSE3",
+      "empresa": "BB Seguridade ON",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "CPLE3",
+      "empresa": "Copel ON",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardar Gatilho"
+    },
+    {
+      "ticker": "VALE3",
+      "empresa": "Vale ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "AXIA3",
+      "empresa": "Eletrobras ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "BBAS3",
+      "empresa": "Banco do Brasil ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    }
+  ],
+  "principais_regras_simples": [
+    {
+      "titulo": "1. Apenas Empresas de Primeira Linha",
+      "descricao": "O robô monitora apenas as 59 maiores e mais sólidas empresas da B3 (como Itaú, WEG, BB Seguridade, etc.). Nunca entra em ações de centavos ou empresas em recuperação judicial."
+    },
+    {
+      "titulo": "2. Alvo Objetivo de +5% de Lucro",
+      "descricao": "Assim que a ação atinge 5% de valorização a partir da entrada técnica, o sistema orienta a realização do lucro no bolso. Não há apego emocional: bateu a meta, encerra a operação."
+    },
+    {
+      "titulo": "3. Disciplina de Não Comprar na Queda Livre",
+      "descricao": "Se uma ação estiver caindo sem sinal claro de reversão, o sistema classifica como 'Desfavorável' e proíbe novas compras até que o pivô técnico seja confirmado."
+    }
+  ]
+}

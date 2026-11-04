@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar Invest — Fechamento Diário, Swing Trade & Radar Longo Prazo</title>
+  <meta name="description" content="Portal financeiro com síntese diária do pregão B3, scanner tático de Swing Trade com alvo de +5% e estratégia de alocação de longo prazo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== TOPO DO PORTAL ==================== -->
+  <header class="cabecalho-portal">
+    <div class="container container-header">
+      <div class="marca-portal">
+        <div class="logo-icone">RI</div>
+        <div>
+          <h1 class="portal-titulo">RADAR INVEST</h1>
+          <p class="portal-slogan">Fechamento Diário, Oportunidades de Swing Trade & Alocação de Longo Prazo</p>
+        </div>
+      </div>
+      <div class="status-topo">
+        <span class="badge-status-mercado fechado"><span class="bolinha-pulso"></span> Pregão B3 Fechado</span>
+        <span class="badge-status-motor"><span class="bolinha-pulso ativa"></span> Sistema Quant Ativo</span>
+      </div>
+    </div>
+
+    <!-- Navegação de Abas -->
+    <nav class="barra-navegacao-tabs">
+      <div class="container abas-container">
+        <button class="btn-tab ativa" data-tab="tab-fechamento">
+          <span class="tab-icone">📰</span>
+          <span>Fechamento Diário</span>
+          <span class="tab-data-badge" id="badge-data-fechamento">Hoje</span>
+        </button>
+        <button class="btn-tab" data-tab="tab-swingtrade">
+          <span class="tab-icone">⚡</span>
+          <span>Swing Trade B3</span>
+          <span class="tab-tag-badge verde">Alvo +5%</span>
+        </button>
+        <button class="btn-tab" data-tab="tab-alocacao">
+          <span class="tab-icone">🏛️</span>
+          <span>Radar Longo Prazo</span>
+          <span class="tab-tag-badge">Bússola Mensal</span>
+        </button>
+        <button class="btn-tab" data-tab="tab-metodologia">
+          <span class="tab-icone">💡</span>
+          <span>Como Usar</span>
+        </button>
+        <a href="rules.html" class="btn-tab link-regras" target="_blank">
+          <span class="tab-icone">📜</span>
+          <span>Regras do Motor ↗</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== ESPAÇO DE ANÚNCIO (ADSENSE LEADERBOARD) ==================== -->
+  <div class="container container-ad">
+    <div class="slot-publicidade leaderboard">
+      <span class="rotulo-ad">PUBLICIDADE</span>
+      <div class="placeholder-ad">
+        <span class="texto-ad">Espaço reservado para Anúncio AdSense (Leaderboard 728x90 / Responsivo)</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- ========================================================================= -->
+    <!-- ABA 1: RADAR DE MERCADO DIÁRIO (3 Edições: Abertura, Almoço, Fechamento)   -->
+    <!-- ========================================================================= -->
+    <section id="tab-fechamento" class="conteudo-tab ativa">
+      
+      <!-- Seletor de Edições Diárias (Manhã / Almoço / Fechamento) -->
+      <div class="seletor-edicoes-dia">
+        <span class="rotulo-edicao">Edições de Hoje:</span>
+        <div class="grupo-botoes-edicao" id="grupo-botoes-edicao">
+          <button class="btn-edicao" data-edicao="abertura">
+            <span class="edicao-icone">🌅</span>
+            <span class="edicao-nome">Abertura</span>
+            <span class="edicao-hora">08h30</span>
+          </button>
+          <button class="btn-edicao" data-edicao="almoco">
+            <span class="edicao-icone">☀️</span>
+            <span class="edicao-nome">Almoço</span>
+            <span class="edicao-hora">12h30</span>
+          </button>
+          <button class="btn-edicao ativa" data-edicao="fechamento">
+            <span class="edicao-icone">🌙</span>
+            <span class="edicao-nome">Fechamento</span>
+            <span class="edicao-hora">18h30</span>
+            <span class="ponto-ativo">●</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="cabecalho-noticia">
+        <div class="meta-noticia">
+          <span class="categoria-tag">MERCADOS & ECONOMIA</span>
+          <span class="horario-tag" id="fechamento-atualizacao">Atualizado em 03/11/2026 às 18h30</span>
+        </div>
+        <h2 class="titulo-destaque-fechamento" id="fechamento-titulo">
+          RADAR DE FECHAMENTO — 03/11/2026
+        </h2>
+        <p class="subtitulo-destaque-fechamento" id="fechamento-subtitulo">
+          Ibov recua 1,35% com cautela fiscal pré-Copom; Dólar vai a R$ 5,49 e Wall Street avança em dia de eleições nos EUA
+        </p>
+      </div>
+
+      <!-- Tickers Rápidos -->
+      <div class="grid-tickers-fechamento" id="cards-mercado-fechamento"></div>
+
+      <!-- Leitura Rápida em 2 Minutos -->
+      <section class="card-bloco-noticia leitura-rapida">
+        <div class="bloco-cabecalho">
+          <span class="bloco-icone">⏱️</span>
+          <h3>Leitura Rápida do Dia (Em 2 minutos)</h3>
+        </div>
+        <div class="lista-bullets-noticia" id="leitura-rapida-fechamento"></div>
+      </section>
+
+      <!-- Grid de Ações Blue Chips e Destaques -->
+      <div class="grid-duplo-mercado">
+        
+        <!-- Blue Chips B3 -->
+        <div class="card-bloco-noticia">
+          <div class="bloco-cabecalho">
+            <span class="bloco-icone">🇧🇷</span>
+            <h3>Ações Mais Negociadas na B3</h3>
+          </div>
+          <div class="tabela-container-responsiva">
+            <table class="tabela-portal">
+              <thead>
+                <tr>
+                  <th>Ativo</th>
+                  <th>Preço</th>
+                  <th>Dia</th>
+                  <th>Mês</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-blue-chips"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Altas e Baixas -->
+        <div class="card-bloco-noticia">
+          <div class="bloco-cabecalho">
+            <span class="bloco-icone">📊</span>
+            <h3>Destaques do Pregão</h3>
+          </div>
+          <div class="grid-altas-baixas" id="destaques-altas-quedas"></div>
+          <div class="slot-publicidade in-card">
+            <span class="rotulo-ad">PUBLICIDADE</span>
+            <div class="placeholder-ad compacto">
+              <span>Anúncio AdSense (Retângulo Médio 300x250)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Comparação com o Dia Anterior -->
+      <section class="card-bloco-noticia comparacao-anterior">
+        <div class="bloco-cabecalho">
+          <span class="bloco-icone">🔄</span>
+          <h3>O que mudou em relação ao pregão anterior</h3>
+        </div>
+        <div class="lista-bullets-noticia" id="comparacao-anterior"></div>
+      </section>
+
+    
+      <div class="card-cvm-aba">
+        <span class="cvm-icone">⚖️</span>
+        <p><strong>Nota Informativa & Governança (Resolução CVM nº 20/2021):</strong> O Fechamento Diário é uma compilação de caráter exclusivamente jornalístico e informativo de dados públicos de mercado. Não constitui recomendação, oferta ou consultoria de valores mobiliários.</p>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- ABA 2: SWING TRADE B3 (Oportunidades Táticas com Alvo de +5%)             -->
+    <!-- ========================================================================= -->
+    <section id="tab-swingtrade" class="conteudo-tab">
+      
+      <!-- Banner Didático de Swing Trade -->
+      <div class="banner-guia-alocacao" style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
+        <div class="guia-icone">⚡</div>
+        <div class="guia-texto">
+          <h3>Como funciona o Swing Trade do Radar?</h3>
+          <p>
+            Um scanner quantitativo que analisa diariamente as <strong>59 melhores empresas da B3</strong> procurando sinais de reversão técnica. O objetivo é objetivo e frio: <strong>buscar +5,0% de lucro por operação</strong> e colocar o dinheiro no bolso.
+          </p>
+        </div>
+      </div>
+
+      <!-- Painel de Métricas do Motor de Swing -->
+      <div class="grid-metricas-swing">
+        <div class="card-metrica-swing">
+          <span class="rotulo-metrica">Universo de Ativos</span>
+          <span class="valor-metrica" id="st-universo">59 Ações</span>
+          <span class="sub-metrica">Apenas empresas de alta qualidade</span>
+        </div>
+        <div class="card-metrica-swing">
+          <span class="rotulo-metrica">Alvo da Estratégia</span>
+          <span class="valor-metrica verde" id="st-alvo">+5,00%</span>
+          <span class="sub-metrica">Lucro pré-definido por trade</span>
+        </div>
+        <div class="card-metrica-swing">
+          <span class="rotulo-metrica">Assertividade Auditada (1 ano)</span>
+          <span class="valor-metrica destaque" id="st-assertividade">89,0%</span>
+          <span class="sub-metrica">154 saídas no lucro / 173 trades</span>
+        </div>
+        <div class="card-metrica-swing">
+          <span class="rotulo-metrica">Prazo Médio</span>
+          <span class="valor-metrica" id="st-tempo">6 a 12 dias</span>
+          <span class="sub-metrica">Operações curtas em pregões úteis</span>
+        </div>
+      </div>
+
+      <!-- Termômetro do Scanner Hoje -->
+      <div class="card-bloco-noticia">
+        <div class="bloco-cabecalho">
+          <span class="bloco-icone">🎯</span>
+          <h3>Termômetro de Oportunidades do Pregão Atual</h3>
+        </div>
+        <div class="termometro-scanner" id="st-termometro">
+          <!-- Renderizado dinamicamente pelo JS -->
+        </div>
+      </div>
+
+      <!-- Lista de Ações Monitoradas no Radar -->
+      <div class="card-bloco-noticia">
+        <div class="bloco-cabecalho">
+          <span class="bloco-icone">📋</span>
+          <h3>Monitor de Oportunidades & Posições</h3>
+        </div>
+        <div class="tabela-container-responsiva">
+          <table class="tabela-portal">
+            <thead>
+              <tr>
+                <th>Ação</th>
+                <th>Setup Técnico</th>
+                <th>Preço Entrada</th>
+                <th>Alvo de Saída</th>
+                <th>Desempenho</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-swing-trade">
+              <!-- Renderizado dinamicamente pelo JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- As 3 Regras de Ouro do Swing Trade -->
+      <section class="secao tradutores-humanos">
+        <h2>As 3 Regras de Ouro do Swing Trade (Sem Complicação)</h2>
+        <div class="grid-cards-humanos" id="st-regras">
+          <!-- Renderizado dinamicamente pelo JS -->
+        </div>
+      </section>
+
+      <div class="slot-publicidade">
+        <span class="rotulo-ad">PUBLICIDADE</span>
+        <div class="placeholder-ad compacto">
+          <span>Espaço de Anúncio AdSense Integrado</span>
+        </div>
+      </div>
+
+    
+      <div class="card-cvm-aba">
+        <span class="cvm-icone">⚖️</span>
+        <p><strong>Aviso Regulatório de Renda Variável (Resolução CVM nº 20/2021):</strong> As operações e setups exibidos são simulações quantitativas algorítmicas com finalidade puramente educacional e de estudo. Não configuram 'calls' de compra/venda nem assessoria de investimentos. Rentabilidade passada não garante retornos futuros.</p>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- ABA 3: RADAR LONGO PRAZO (A Bússola Quantitativa de Aportes Patrimoniais)  -->
+    <!-- ========================================================================= -->
+    <section id="tab-alocacao" class="conteudo-tab">
+      
+      <!-- Banner explicativo: Como usar a bússola -->
+      <div class="banner-guia-alocacao">
+        <div class="guia-icone">🧭</div>
+        <div class="guia-texto">
+          <h3>Como usar o Radar de Longo Prazo?</h3>
+          <p>
+            <strong>Você não precisa girar ou vender sua carteira atual.</strong> O Radar funciona como uma bússola matemática para responder a uma única pergunta: <em>"Sobrou dinheiro novo neste mês, qual é o ativo com maior assimetria de retorno real e segurança para construir patrimônio sem estresse?"</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner de Demonstração / Dados Históricos do Motor -->
+      <div class="banner-demo">
+        <strong>RELATÓRIO OFICIAL DO RADAR — MOTOR PYTHON v0.3.0</strong>
+      </div>
+
+      <!-- Metadados da Execução Oficial -->
+      <section class="secao execucao">
+        <h2>Situação da Execução do Motor</h2>
+        <div class="grid-execucao">
+          <div class="campo-execucao">
+            <span class="rotulo">Data de referência do cálculo</span>
+            <span class="valor" id="data-referencia">—</span>
+          </div>
+          <div class="campo-execucao">
+            <span class="rotulo">Status de validação governada</span>
+            <span class="valor badge-estado" id="estado-execucao">—</span>
+          </div>
+        </div>
+        <p class="aviso-execucao" id="aviso-demo">—</p>
+      </section>
+
+      <!-- Alocação Patrimonial -->
+      <section class="secao alocacao">
+        <h2>Alocação Recomendada para o Novo Aporte</h2>
+        <div class="grid-alocacao">
+          <div id="grafico-pizza" class="area-grafico"></div>
+          <div id="lista-alocacao" class="lista-cards"></div>
+        </div>
+        <p class="nota-rodape">Percentuais gerados automaticamente pelas regras quantitativas do motor Python homologado.</p>
+      </section>
+
+      <!-- Tradução Humana dos Ativos (Cards Educativos) -->
+      <section class="secao tradutores-humanos">
+        <h2>Por que cada ativo está nesta proporção? (Em Linguagem Direta)</h2>
+        <div class="grid-cards-humanos">
+          <div class="card-humano">
+            <div class="card-humano-header" style="border-left-color: #1f77b4;">
+              <span class="humano-icone">🏛️</span>
+              <h4>Tesouro IPCA+ (60%) — A Âncora de Riqueza Real</h4>
+            </div>
+            <p>Com juros reais acima de <strong>6,50% a.a.</strong> acima da inflação e sem crise soberana, o governo brasileiro está oferecendo um retorno histórico com risco soberano zero. O Radar prioriza acumular o máximo desse ativo quando a taxa é favorável.</p>
+          </div>
+          <div class="card-humano">
+            <div class="card-humano-header" style="border-left-color: #2ca02c;">
+              <span class="humano-icone">🌐</span>
+              <h4>IVVB11 (30%) — A Trava Global em Moeda Forte</h4>
+            </div>
+            <p>Investe nas 500 maiores corporações do planeta (EUA). Garante que parte relevante do seu patrimônio esteja dolarizada e imune ao risco fiscal e político brasileiro.</p>
+          </div>
+          <div class="card-humano">
+            <div class="card-humano-header" style="border-left-color: #d62728;">
+              <span class="humano-icone">🛡️</span>
+              <h4>BOVA11 (0%) — Filtro de Prudência Ativo</h4>
+            </div>
+            <p>O motor acionou veto de governança. A bolsa brasileira só recebe novos aportes quando os múltiplos de valuation e as contas públicas justificarem o risco. Evita comprar empresas no momento errado.</p>
+          </div>
+          <div class="card-humano">
+            <div class="card-humano-header" style="border-left-color: #ff7f0e;">
+              <span class="humano-icone">⚡</span>
+              <h4>Bitcoin (10%) — A Assimetria Digital Global</h4>
+            </div>
+            <p>Fatia limitada a no máximo 10% do novo aporte. Ativo de escassez matemática global para capturar upside tecnológico sem colocar em risco a carteira geral.</p>
+          </div>
+          <div class="card-humano">
+            <div class="card-humano-header" style="border-left-color: #7f7f7f;">
+              <span class="humano-icone">💼</span>
+              <h4>Caixa Tático & Residual (0%) — Pólvora Seca</h4>
+            </div>
+            <p>Sem alertas de estresse ativos e com o Tesouro em taxa alta, 100% dos recursos puderam ser alocados em ativos produtivos e remunerados.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alertas de Risco do Sistema -->
+      <section class="secao alertas">
+        <h2>Monitor de Estresse & Ruptura de Mercado</h2>
+        <div id="lista-alertas" class="grid-alertas"></div>
+      </section>
+
+      <!-- Indicadores Macroeconômicos -->
+      <section class="secao indicadores">
+        <h2>Indicadores Macroeconômicos Auditados</h2>
+        <div id="legenda-estados" class="legenda-estados"></div>
+        <div class="tabela-container-responsiva">
+          <table class="tabela-indicadores">
+            <thead>
+              <tr>
+                <th>Indicador</th>
+                <th>Valor de Mercado</th>
+                <th>Métrica / Limiar</th>
+                <th>Fonte Oficial</th>
+                <th>Atualização</th>
+                <th>Estado de Auditoria</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-indicadores"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Justificativas e Avisos do Motor -->
+      <section class="secao justificativas">
+        <h2>Racional Técnico Homologado pelo Motor</h2>
+        <div id="lista-justificativas" class="lista-justificativas"></div>
+        <div id="lista-avisos"></div>
+      </section>
+
+      <!-- Histórico de Execuções -->
+      <section class="secao historico">
+        <h2>Registro de Auditoria do Sistema</h2>
+        <div class="tabela-container-responsiva">
+          <table class="tabela-historico">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Classificação</th>
+              </tr>
+            </thead>
+            <tbody id="lista-historico"></tbody>
+          </table>
+        </div>
+      </section>
+
+    
+      <div class="card-cvm-aba">
+        <span class="cvm-icone">⚖️</span>
+        <p><strong>Bússola Quantitativa Teórica (Resolução CVM nº 20/2021):</strong> Os percentuais de alocação são derivados de algoritmos matemáticos e modelagem teórica para fins de pesquisa e suporte à decisão. Cada investidor deve respeitar seu perfil de risco e objetivos individuais.</p>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- ABA 4: COMO USAR & FILOSOFIA DE INVESTIMENTO                              -->
+    <!-- ========================================================================= -->
+    <section id="tab-metodologia" class="conteudo-tab">
+      
+      <div class="card-bloco-noticia filosofia-container">
+        <h2>A Filosofia por Trás do Radar Invest</h2>
+        <p class="lead-filosofia">
+          A maioria dos investidores perde dinheiro tentando adivinhar para onde a bolsa vai amanhã. O Radar Invest nasceu para eliminar a ansiedade e substituir o "achismo" por regras sistemáticas, frias e disciplinadas tanto nas operações curtas de Swing Trade quanto na alocação de Longo Prazo.
+        </p>
+
+        <div class="grid-pilares-filosofia">
+          <div class="pilar-card">
+            <div class="pilar-numero">01</div>
+            <h4>Longo Prazo: O Poder dos Juros Compostos</h4>
+            <p>Construir patrimônio exige tempo e paciência. Em títulos atrelados à inflação e ETFs globais, o tempo e os lucros das maiores empresas do mundo blindam o seu dinheiro contra crises.</p>
+          </div>
+          <div class="pilar-card">
+            <div class="pilar-numero">02</div>
+            <h4>Fluxo, Não Estoque (Zero Giro)</h4>
+            <p>Você não precisa vender suas ações ou pagar imposto girando patrimônio. A bússola de longo prazo só olha para o <strong>dinheiro novo</strong> que você economizou no mês. O aporte novo reequilibra tudo.</p>
+          </div>
+          <div class="pilar-card">
+            <div class="pilar-numero">03</div>
+            <h4>Swing Trade: Ganhos Táticos com Alvo Objetivo</h4>
+            <p>Para quem deseja rentabilizar uma parcela menor do capital com operações ativas de 1 a 2 semanas, o scanner só atua nas 59 melhores ações da B3 buscando +5% de valorização com saída programada.</p>
+          </div>
+          <div class="pilar-card">
+            <div class="pilar-numero">04</div>
+            <h4>Independência Matemática e Zero Emoção</h4>
+            <p>Nenhuma recomendação do Radar é baseada em palpite de rede social. Todas as análises derivam de algoritmos quantitativos que analisam preços, médias e fundamentos oficiais do mercado.</p>
+          </div>
+        </div>
+
+        <div class="passo-a-passo-aporte">
+          <h3>Como aplicar na prática em 3 passos:</h3>
+          <ol>
+            <li><strong>Diariamente às 18h30:</strong> Acesse o site para ler o <strong>Fechamento Diário</strong> em 2 minutos e ver se o scanner de <strong>Swing Trade</strong> identificou alguma compra com alvo de +5%.</li>
+            <li><strong>Todo início de mês:</strong> Consulte o <strong>Radar Longo Prazo</strong> para direcionar seu aporte mensal novo (ex: Tesouro, IVVB11, Bitcoin).</li>
+            <li><strong>Mantenha a disciplina:</strong> Não tente antecipar o mercado. Deixe a matemática e a consistência trabalharem a favor da sua tranquilidade.</li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== RODAPÉ INSTITUCIONAL (ADSENSE & CVM COMPLIANCE) ==================== -->
+  <footer class="rodape-portal">
+    <div class="container container-rodape">
+      <div class="rodape-colunas">
+        <div class="col-institucional">
+          <div class="logo-rodape">RADAR INVEST</div>
+          <p class="desc-rodape">
+            Plataforma independente de inteligência de mercado, síntese de pregão diário, scanner tático de Swing Trade e modelagem quantitativa de alocação patrimonial de longo prazo.
+          </p>
+        </div>
+        <div class="col-links">
+          <h4>Navegação do Portal</h4>
+          <ul>
+            <li><a href="#" onclick="trocarTab('tab-fechamento');return false;">Fechamento Diário</a></li>
+            <li><a href="#" onclick="trocarTab('tab-swingtrade');return false;">Swing Trade B3 (+5%)</a></li>
+            <li><a href="#" onclick="trocarTab('tab-alocacao');return false;">Radar Longo Prazo</a></li>
+            <li><a href="#" onclick="trocarTab('tab-metodologia');return false;">Como Usar o Portal</a></li>
+            <li><a href="rules.html" target="_blank">Regras Oficiais do Motor</a></li>
+          </ul>
+        </div>
+        <div class="col-links">
+          <h4>Fontes & Auditoria</h4>
+          <ul>
+            <li>Banco Central do Brasil (PTAX Olinda)</li>
+            <li>Tesouro Nacional (Tesouro Direto)</li>
+            <li>B3 / Ipeadata (Série Oficial Ibovespa)</li>
+            <li>Binance Spot API (Bitcoin BTCUSDT)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer-cvm">
+        <strong>AVISO LEGAL & GOVERNANÇA (RESOLUÇÃO CVM Nº 20/2021):</strong>
+        <p>
+          As análises, fechamentos diários, oportunidades táticas de swing trade e modelos quantitativos de longo prazo divulgados no Radar Invest têm finalidade exclusivamente jornalística, informativa e educacional, não constituindo oferta, consultoria ou recomendação individualizada de investimento em valores mobiliários ou ativos digitais. Operações em renda variável envolvem risco de oscilação de preços e perda de capital. O Radar Invest não custodia recursos, não recebe comissões de corretagem e não executa ordens. Rentabilidade passada não é garantia de ganhos futuros.
+        </p>
+        <p class="copy-texto">© 2026 Radar Invest. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

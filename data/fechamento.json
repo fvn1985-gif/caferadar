@@ -1,0 +1,256 @@
+{
+  "edicao_padrao": "fechamento",
+  "data_referencia": "2026-11-03",
+  "data_formatada": "03/11/2026",
+  "edicoes": {
+    "abertura": {
+      "id": "abertura",
+      "nome": "Abertura",
+      "icone": "🌅",
+      "horario": "08h30",
+      "titulo": "RADAR DE ABERTURA — 03/11/2026",
+      "subtitulo": "Futuros em NY operam em compasso de espera com eleições nos EUA; Commodities mistas e foco local no Boletim Focus pós-feriado",
+      "mercado_geral": {
+        "sp500": { "nome": "S&P 500 Futuro", "valor": "5.820 pts", "variacao": "-0,12%", "positivo": false },
+        "nasdaq": { "nome": "Nasdaq Futuro", "valor": "20.350 pts", "variacao": "-0,18%", "positivo": false },
+        "dolar": { "nome": "Dólar Futuro", "valor": "R$ 5,46", "variacao": "+0,35%", "positivo": true },
+        "bitcoin": { "nome": "Bitcoin (BTC)", "valor": "US$ 76.850", "variacao": "+0,45%", "positivo": true },
+        "brent": { "nome": "Petróleo Brent", "valor": "US$ 104,80", "variacao": "-0,95%", "positivo": false }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "Bolsas na Europa operam em leve baixa nesta terça-feira, digerindo dados de atividade industrial enquanto investidores globais aguardam a votação das eleições legislativas nos Estados Unidos.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Na Ásia, os mercados fecharam sem direção única com queda no minério de ferro em Dalian (-1,1%), pressionando ativos ligados a metais básicos antes da abertura em São Paulo.",
+          "fonte": "BB InvesTalk",
+          "link": "https://investalk.bb.com.br"
+        },
+        {
+          "texto": "No Brasil, a volta do feriado de Finados coloca no radar a divulgação do Boletim Focus com revisão das projeções de inflação e Selic terminal, além da expectativa pela decisão do Copom na quarta-feira.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "O petróleo Brent recua perto de 1% após forte volatilidade recente, cotado a US$ 104,80 o barril.",
+          "fonte": "Investing"
+        }
+      ],
+      "acoes_blue_chips": [
+        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
+        { "ticker": "VALE3", "nome": "Vale ON", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
+        { "ticker": "ITUB4", "nome": "Itaú PN", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null },
+        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "Leilão Pré-abertura", "variacao_dia": "—", "variacao_mes": "—", "positivo": null }
+      ],
+      "destaques": {
+        "altas": [
+          { "ticker": "Agenda", "variacao": "08h30 Boletim Focus" },
+          { "ticker": "EUA", "variacao": "Eleições Midterms" }
+        ],
+        "quedas": [
+          { "ticker": "Minério Dalian", "variacao": "-1,10%" },
+          { "ticker": "Petróleo Brent", "variacao": "-0,95%" }
+        ]
+      },
+      "comparacao_anterior": [
+        { "texto": "Futuros americanos indicam abertura estável após o fechamento negativo no final da tarde anterior." },
+        { "texto": "Abertura da curva de juros pré-mercado reflete cautela fiscal do mercado local." }
+      ]
+    },
+
+    "almoco": {
+      "id": "almoco",
+      "nome": "Meio-Dia / Almoço",
+      "icone": "☀️",
+      "horario": "12h30",
+      "titulo": "RADAR DO ALMOÇO — 03/11/2026",
+      "subtitulo": "Ibovespa acelera perdas e recua mais de 1% com pressão em Petrobras e alta dos juros futuros; Dólar vai a R$ 5,48",
+      "mercado_geral": {
+        "ibov": { "nome": "Ibovespa", "pontos": "165.920", "variacao": "-1,20%", "positivo": false },
+        "dolar": { "nome": "Dólar Comercial", "valor": "R$ 5,48", "variacao": "+0,78%", "positivo": true },
+        "sp500": { "nome": "S&P 500", "variacao": "+0,15%", "positivo": true },
+        "bitcoin": { "nome": "Bitcoin (BTC)", "valor": "US$ 77.200", "variacao": "+0,85%", "positivo": true },
+        "brent": { "nome": "Petróleo Brent", "valor": "US$ 105,40", "variacao": "+0,60%", "positivo": true }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "O Ibovespa opera em forte baixa no início da tarde, caindo cerca de 1,2% aos 165.920 pontos, pressionado pela aversão a risco doméstica e pela piora nas expectativas do Boletim Focus.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br/noticias/news-8551923"
+        },
+        {
+          "texto": "Petrobras (PETR4) desaba mais de 3% e Vale (VALE3) cede 2,4%, respondendo pelo principal peso negativo sobre o índice Bovespa na primeira metade do pregão.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br"
+        },
+        {
+          "texto": "O dólar comercial renova máximas intradiárias a R$ 5,48, com investidores exigindo prêmio maior na curva de DI futuro antes do Copom de amanhã.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Em Nova York, os mercados abriram com viés positivo discreto, enquanto eleitores comparecem às urnas para a definição do controle do Congresso americano.",
+          "fonte": "BB InvesTalk"
+        }
+      ],
+      "acoes_blue_chips": [
+        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "R$ 51,10", "variacao_dia": "-3,05%", "variacao_mes": "-3,05%", "positivo": false },
+        { "ticker": "VALE3", "nome": "Vale ON", "preco": "R$ 60,50", "variacao_dia": "-2,45%", "variacao_mes": "-2,45%", "positivo": false },
+        { "ticker": "ITUB4", "nome": "Itaú PN", "preco": "R$ 38,55", "variacao_dia": "-0,36%", "variacao_mes": "-0,36%", "positivo": false },
+        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "R$ 49,05", "variacao_dia": "+1,42%", "variacao_mes": "+1,42%", "positivo": true }
+      ],
+      "destaques": {
+        "altas": [
+          { "ticker": "TIMS3", "variacao": "+2,85%" },
+          { "ticker": "EMBJ3", "variacao": "+2,50%" }
+        ],
+        "quedas": [
+          { "ticker": "COGN3", "variacao": "-8,90%" },
+          { "ticker": "PETR4", "variacao": "-3,05%" }
+        ]
+      },
+      "comparacao_anterior": [
+        { "texto": "Curva de juros futura acentua inclinação e DI1 janeiro 2027 sobe 14 bps em relação à abertura." },
+        { "texto": "Volume negociado na B3 está 15% acima da média das primeiras 3 horas de pregão." }
+      ]
+    },
+
+    "fechamento": {
+      "id": "fechamento",
+      "nome": "Fechamento",
+      "icone": "🌙",
+      "horario": "18h30",
+      "titulo": "RADAR DE FECHAMENTO — 03/11/2026",
+      "subtitulo": "Ibov recua 1,35% com cautela fiscal pré-Copom; Dólar vai a R$ 5,49 e Wall Street avança em dia de eleições nos EUA",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "165.659",
+          "variacao": "-1,35%",
+          "positivo": false,
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
+        },
+        "bova11": {
+          "nome": "BOVA11",
+          "valor": "R$ 163,01",
+          "variacao": "-1,44%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 5,49",
+          "variacao": "+0,95%",
+          "positivo": true,
+          "ptax": "R$ 5,4935",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br/noticias/news-8551923"
+        },
+        "sp500": {
+          "nome": "S&P 500",
+          "variacao": "+0,36%",
+          "positivo": true
+        },
+        "nasdaq": {
+          "nome": "Nasdaq",
+          "variacao": "+0,82%",
+          "positivo": true
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 77.798",
+          "variacao": "+1,32%",
+          "positivo": true,
+          "detalhe": "+1,47% na sessão"
+        },
+        "vix": {
+          "nome": "VIX (Volatilidade)",
+          "valor": "20,3"
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 106,52",
+          "variacao": "+1,67%",
+          "positivo": true,
+          "fonte": "BB InvesTalk",
+          "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
+        },
+        "minerio": {
+          "nome": "Minério de Ferro",
+          "variacao": "-0,74%",
+          "positivo": false,
+          "fonte": "BB InvesTalk",
+          "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
+        }
+      },
+      "acoes_blue_chips": [
+        { "ticker": "PETR4", "nome": "Petrobras PN", "preco": "R$ 50,71", "variacao_dia": "-3,79%", "variacao_mes": "-3,79%", "positivo": false },
+        { "ticker": "VALE3", "nome": "Vale ON", "preco": "R$ 60,25", "variacao_dia": "-2,85%", "variacao_mes": "-2,85%", "positivo": false },
+        { "ticker": "ITUB4", "nome": "Itaú Unibanco PN", "preco": "R$ 38,49", "variacao_dia": "-0,52%", "variacao_mes": "-0,52%", "positivo": false },
+        { "ticker": "BBAS3", "nome": "Banco do Brasil ON", "preco": "R$ 16,19", "variacao_dia": "-1,70%", "variacao_mes": "-1,70%", "positivo": false },
+        { "ticker": "BBDC4", "nome": "Bradesco PN", "preco": "R$ 13,58", "variacao_dia": "-2,02%", "variacao_mes": "-2,02%", "positivo": false },
+        { "ticker": "ELET3", "nome": "Eletrobras ON", "preco": "R$ 46,39", "variacao_dia": "-2,19%", "variacao_mes": "-2,19%", "positivo": false },
+        { "ticker": "WEGE3", "nome": "WEG ON", "preco": "R$ 49,17", "variacao_dia": "+1,67%", "variacao_mes": "+1,67%", "positivo": true },
+        { "ticker": "B3SA3", "nome": "B3 ON", "preco": "R$ 13,61", "variacao_dia": "+1,34%", "variacao_mes": "+1,34%", "positivo": true }
+      ],
+      "destaques": {
+        "altas": [
+          { "ticker": "EMBJ3", "variacao": "+3,72%" },
+          { "ticker": "TIMS3", "variacao": "+3,23%" },
+          { "ticker": "USIM5", "variacao": "+3,20%" }
+        ],
+        "quedas": [
+          { "ticker": "COGN3", "variacao": "-10,76%" },
+          { "ticker": "CMIN3", "variacao": "-5,56%" },
+          { "ticker": "PETR4", "variacao": "-3,95%" }
+        ],
+        "fonte_link": "https://trademap.com.br/noticias/news-8552005"
+      },
+      "leitura_rapida": [
+        {
+          "texto": "O Ibovespa caiu 1,35%, fechando aos 165.659 pontos na volta do feriado de Finados, acumulando o sexto pregão consecutivo de perdas em meio à cautela fiscal e à espera da decisão do Copom.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
+        },
+        {
+          "texto": "As perdas foram lideradas pelo tombo de Petrobras (PETR4 -3,79%), Vale (VALE3 -2,85%) e Cogna (COGN3 -10,76%), enquanto Embraer (EMBJ3 +3,72%), TIM (TIMS3 +3,23%) e WEG (WEGE3 +1,67%) atenuaram o recuo.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br/noticias/news-8552005"
+        },
+        {
+          "texto": "O dólar comercial avançou cerca de 1% para R$ 5,49 (com o PTAX a R$ 5,4935), pressionado pela alta dos juros futuros após a piora nas projeções de inflação e Selic do Boletim Focus.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br/noticias/news-8551923"
+        },
+        {
+          "texto": "Em Wall Street, os índices fecharam em alta com Nasdaq (+0,82%) e S&P 500 (+0,36%), sustentados por recomposição técnica em tecnologia enquanto os EUA votavam nas eleições legislativas de meio de mandato.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal/2026/11/meio-dia-mercado-o-ibovespa-operava-com-forte-queda-com-piora-do-cenario-apos-boletim-focus-nos-eua-eleicoes-no-foco"
+        },
+        {
+          "texto": "O Bitcoin avançou 1,47% no dia para US$ 77,8 mil, acompanhando a melhora de apetite por risco nos mercados acionários americanos.",
+          "fonte": "Binance Spot"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Na B3, que não operou na segunda-feira em função do feriado de Finados, o Ibovespa estendeu a trajetória de baixa e perdeu mais de 2.200 pontos em relação ao fechamento de sexta-feira (167.921 pts), acumulando a sexta queda consecutiva pós-eleição.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
+        },
+        {
+          "texto": "O dólar e a curva de juros futuros ampliaram a pressão de alta frente aos níveis da semana passada, refletindo a revisão para cima da Selic terminal (de 13,25% para 13,50%) no Boletim Focus e a postura defensiva antes do anúncio da taxa pelo Copom na quarta-feira.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal/2026/11/meio-dia-mercado-o-ibovespa-operava-com-forte-queda-com-piora-do-cenario-apos-boletim-focus-nos-eua-eleicoes-no-foco"
+        },
+        {
+          "texto": "O petróleo Brent recuperou 1,67% para US$ 106,52 o barril após ter desabado mais de 7% na véspera, enquanto em Nova York os principais índices reverteram o movimento negativo do fim da tarde de segunda-feira e fecharam em alta com alívio pré-eleitoral.",
+          "fonte": "BB InvesTalk",
+          "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
+        }
+      ]
+    }
+  }
+}
