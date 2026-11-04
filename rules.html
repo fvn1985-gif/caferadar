@@ -3,116 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regras — Radar de Alocação 2038 (Protótipo)</title>
+  <title>Regras do Motor & Governança — Radar Invest</title>
+  <meta name="description" content="Documentação técnica, regras de governança e princípios quantitativos do motor Python do Radar Invest.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .regras-container {
+      max-width: 860px;
+      margin: 32px auto 64px;
+    }
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f1f5f9;
+      color: var(--texto-secundario);
+      padding: 8px 16px;
+      border-radius: var(--raio-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      transition: all 0.15s ease;
+    }
+    .btn-voltar:hover {
+      background-color: var(--destaque-suave);
+      color: var(--destaque);
+    }
+    .regras-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--sombra-card);
+    }
+    .regras-card h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primaria);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .regras-card p {
+      font-size: 0.95rem;
+      color: var(--texto-secundario);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .regras-card ul {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--texto-principal);
+    }
+    .regras-card ul li strong {
+      color: var(--primaria);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ==================== CABEÇALHO ==================== -->
-  <header class="cabecalho">
-    <div class="container largura-total">
-      <div class="marca">
-        <h1>Radar de Alocação 2038</h1>
-        <p class="subtitulo">Regras e governança — PROTÓTIPO VISUAL</p>
+  <!-- ==================== TOPO DO PORTAL ==================== -->
+  <header class="cabecalho-portal">
+    <div class="container container-header">
+      <div class="marca-portal">
+        <div class="logo-icone">RI</div>
+        <div>
+          <h1 class="portal-titulo">RADAR INVEST</h1>
+          <p class="portal-slogan">Regras Técnicas, Metodologia Quantitativa & Governança do Motor</p>
+        </div>
       </div>
-      <nav class="navegacao">
-        <a href="index.html">Dashboard</a>
-        <a href="rules.html" class="ativo">Regras</a>
-      </nav>
-    </div>
-    <div class="banner-demo">
-      <strong>PROTÓTIPO — DADOS FICTÍCIOS — NÃO UTILIZAR PARA DECISÕES FINANCEIRAS</strong>
+      <div class="status-topo">
+        <a href="index.html" class="btn-tab ativa" style="border:1px solid var(--borda); border-radius:9999px; padding:6px 14px;">
+          <span>← Voltar ao Portal Principal</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container regras-container">
 
-    <section class="secao">
-      <h2>Objetivo do Radar de Alocação 2038</h2>
+    <a href="index.html" class="btn-voltar">← Voltar ao Radar Invest</a>
+
+    <!-- Bloco 1 -->
+    <div class="regras-card">
+      <h2><span>🏛️</span> Papel do Motor Python como Fonte Oficial</h2>
       <p>
-        O Radar de Alocação 2038 é um sistema de apoio à decisão de alocação
-        patrimonial de longo prazo. Seu objetivo é coletar indicadores de
-        mercado, aplicar regras financeiras previamente homologadas e
-        apresentar uma alocação sugerida para novos aportes e caixa em
-        revisão regular.
+        Todas as decisões calculadas apresentadas na plataforma (indicadores de mercado, alertas de estresse, elegibilidade de ativos e alocação percentual) são geradas <strong>exclusivamente por um motor em código Python homologado</strong>.
       </p>
-      <p class="nota-rodape">
-        O Radar não executa ordens nem movimenta dinheiro. Quando indicadores
-        críticos não podem ser validados, o sistema gera relatório
-        preliminar em vez de inventar dados.
-      </p>
-    </section>
-
-    <section class="secao">
-      <h2>Papel do motor Python como fonte oficial</h2>
       <p>
-        Todas as decisões calculadas (indicadores, alertas, elegibilidade e
-        alocação) são produzidas exclusivamente pelo motor Python do Radar.
-        O dashboard web apresenta os resultados desse motor, sem duplicar,
-        reinterpretar ou recalcular suas regras financeiras.
+        A interface web atua estritamente como uma camada de visualização limpa. Ela <strong>não recalcula, não reinterpreta e não inventa dados</strong>. O contrato de dados entre o motor e o site é imutável e auditável.
       </p>
-    </section>
+    </div>
 
-    <section class="secao">
-      <h2>Indicadores, alertas, elegibilidade e alocação</h2>
+    <!-- Bloco 2 -->
+    <div class="regras-card">
+      <h2><span>📊</span> Indicadores, Alertas e Filtros Técnicos</h2>
+      <p>O motor monitora continuamente séries temporais oficiais e aplica filtros de proteção:</p>
       <ul>
-        <li><strong>Indicadores:</strong> valores de mercado e métricas técnicas (por exemplo: IBOV, PTAX, Tesouro IPCA+ 2040, DI1, CDS Brasil 5Y, Bitcoin, ERP).</li>
-        <li><strong>Alertas:</strong> sinais de atenção derivados dos indicadores (esticamento do IBOV, estresse soberano, ruptura sistêmica).</li>
-        <li><strong>Elegibilidade:</strong> definição de quais ativos podem receber alocação, com base em regras de qualidade e atualidade dos dados.</li>
-        <li><strong>Alocação:</strong> percentuais sugeridos por ativo, respeitando caps homologados, vetos persistentes e filtros de mercado.</li>
+        <li><strong>Ibovespa (SMA200 / SMA50):</strong> Filtro de esticamento. Se a bolsa estiver mais de 15% acima da sua média de 200 períodos, o alerta de esticamento é acionado.</li>
+        <li><strong>Dólar PTAX (SMA200):</strong> Filtro cambial para compras de IVVB11 (S&P 500).</li>
+        <li><strong>Tesouro IPCA+ (Taxa Real):</strong> Limiar de prioridade em 6,50% a.a. Quando o juro real supera esse patamar sem estresse soberano, o título público recebe até 60% de prioridade no novo aporte.</li>
+        <li><strong>DI1 & CDS Brasil 5Y (Estresse Soberano):</strong> Alerta conjugado que detecta disparada nos juros futuros e no risco de crédito do país.</li>
+        <li><strong>Bitcoin (Tendência & Drawdown):</strong> Alocação limitada ao teto prudencial de 10%, condicionada a fechamento acima da SMA200.</li>
+        <li><strong>Veto ao BOVA11:</strong> Veto sistemático acionado para evitar compras de ações brasileiras quando múltiplos e risco fiscal estiverem desfavoráveis.</li>
       </ul>
-      <p class="nota-rodape">
-        Estes são conceitos gerais. Os valores numéricos, limiares e critérios
-        específicos são definidos e mantidos pelo motor Python e pela
-        documentação de governança do projeto.
-      </p>
-    </section>
+    </div>
 
-    <section class="secao">
-      <h2>Qualidade, atualidade e ausência de dados</h2>
+    <!-- Bloco 3 -->
+    <div class="regras-card">
+      <h2><span>🛡️</span> Qualidade, Atualidade e Falha Fechada</h2>
       <p>
-        O sistema trata explicitamente dados ausentes, inválidos ou
-        desatualizados. Um indicador pode estar em um dos seguintes estados
-        conceituais:</p>
+        O sistema opera sob o princípio de <strong>segurança por padrão (falha fechada)</strong>. Caso um dado oficial de mercado esteja ausente, corrompido ou fora do prazo de frescura homologado, o motor se recusa a inventar números.
+      </p>
       <ul>
-        <li><strong>Válido:</strong> dado disponível, dentro do limite de atualidade e com fonte aprovada.</li>
-        <li><strong>Desatualizado:</strong> dado disponível, mas além do prazo de frescura homologado.</li>
-        <li><strong>Inválido / indisponível:</strong> dado não disponível, não verificável ou com fonte não autorizada.</li>
+        <li><strong>Válido:</strong> Dado auditado, disponível e dentro do limite de dias úteis tolerado.</li>
+        <li><strong>Desatualizado / Pendente:</strong> Dado atrasado em relação à data do pregão.</li>
+        <li><strong>Inválido / Rejeitado:</strong> Dado não verificado ou com fonte rejeitada. Nesse caso, a alocação de aportes é preventivamente <strong>bloqueada</strong> pelo motor até a correção.</li>
       </ul>
-      <p>
-        Quando dados críticos estão ausentes ou indeterminados, o sistema
-        não preenche lacunas com estimativas. A alocação pode ficar
-        bloqueada até a resolução das pendências.
-      </p>
-    </section>
+    </div>
 
-    <section class="secao">
-      <h2>Escopo do dashboard web</h2>
+    <!-- Bloco 4 -->
+    <div class="regras-card">
+      <h2><span>⚡</span> Metodologia do Swing Trade (Alvo +5%)</h2>
       <p>
-        O dashboard web é uma camada de apresentação que consome os resultados
-        do motor Python. Ele não calcula alocação, não aplica regras de
-        elegibilidade e não determina alertas. Apenas exibe, de forma
-        visual, o que o motor já processou.
+        O módulo tático do Radar analisa diariamente o universo fechado das <strong>59 ações mais líquidas e sólidas da B3</strong>:
       </p>
-      <p class="nota-rodape">
-        Esta página de regras é explicativa e não substitui o relatório
-        oficial do sistema (arquivos em <code>output/</code>), os logs de
-        execução nem o banco de histórico local.
-      </p>
-    </section>
-
-    <section class="secao">
-      <h2>Avisos importantes</h2>
       <ul>
-        <li>Este é um protótipo visual com dados fictícios.</li>
-        <li>Não é uma recomendação de investimento.</li>
-        <li>Não envia dados para serviços externos.</li>
-        <li>Não realiza operações financeiras.</li>
-        <li>Não substitui a análise do investidor nem o relatório oficial do Radar.</li>
+        <li><strong>Zero Especulação em Micos:</strong> O robô nunca monitora ações de centavos, empresas pré-operacionais ou companhias em recuperação judicial.</li>
+        <li><strong>Alvo Fixo e Disciplinado:</strong> Toda entrada técnica possui saída pré-programada no alvo objetivo de <strong>+5,00% de valorização</strong>.</li>
+        <li><strong>Proteção Contra Quedas Livres:</strong> Ativos em tendência de baixa são automaticamente classificados como <em>Desfavoráveis</em> para evitar a compra prematura de ações em sangria.</li>
       </ul>
-    </section>
+    </div>
+
+    <!-- Bloco 5: CVM Compliance -->
+    <div class="card-cvm-aba" style="background-color: #fff; padding: 20px; border: 1px solid var(--borda);">
+      <span class="cvm-icone">⚖️</span>
+      <div>
+        <strong style="display:block; margin-bottom:6px;">AVISO LEGAL & GOVERNANÇA (RESOLUÇÃO CVM Nº 20/2021):</strong>
+        <p style="margin:0; font-size:0.85rem; color:var(--texto-secundario);">
+          O Radar Invest é uma ferramenta computacional independente de modelagem quantitativa, análise de dados de mercado e síntese jornalística. As simulações e indicadores não constituem relatório de análise, consultoria, recomendação de investimento nem oferta de valores mobiliários. O investidor é integralmente responsável por suas decisões e gestão de risco.
+        </p>
+      </div>
+    </div>
 
   </main>
+
+  <footer class="rodape-portal" style="margin-top:0;">
+    <div class="container" style="text-align:center;">
+      <p class="copy-texto">© 2026 Radar Invest. Regras Técnicas & Governança.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
