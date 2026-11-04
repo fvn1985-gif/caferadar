@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora: Poupança vs CDB vs Tesouro Selic — Quanto Rende de Verdade | CafeRadar</title>
+  <meta name="description" content="Simule quanto R$ 1.000, R$ 5.000 ou qualquer valor rende em Poupança, CDB 100% CDI e Tesouro Selic, já com desconto oficial de Imposto de Renda (IR). 100% gratuito e sem cadastro.">
+  <link rel="canonical" href="https://caferadar.com.br/calculadora-rendimento.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon & Icons -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- OpenGraph / Social Cards -->
+  <meta property="og:site_name" content="CafeRadar">
+  <meta property="og:title" content="Calculadora de Rendimento: Poupança vs CDB vs Tesouro Selic — CafeRadar">
+  <meta property="og:description" content="Descubra quanto sobra líquido no seu bolso comparando Poupança, CDB 100% CDI e Tesouro Selic com desconto oficial de IR. Grátis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caferadar.com.br/calculadora-rendimento.html">
+  <meta property="og:image" content="https://caferadar.com.br/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://caferadar.com.br/og-image.png">
+
+  <!-- Google AdSense Oficial -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de Renda Fixa: Poupança vs CDB vs Tesouro Selic",
+    "url": "https://caferadar.com.br/calculadora-rendimento.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "Ferramenta gratuita para comparar o rendimento líquido real da Poupança, CDB 100% CDI e Tesouro Selic com base na tabela regressiva de IR e taxas do Banco Central.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CafeRadar",
+      "url": "https://caferadar.com.br"
+    }
+  }
+  </script>
+
+  <style>
+    .calc-container {
+      max-width: 920px;
+      margin: 32px auto 60px;
+    }
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f1f5f9;
+      color: var(--texto-secundario);
+      padding: 8px 16px;
+      border-radius: var(--raio-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      transition: all 0.15s ease;
+    }
+    .btn-voltar:hover {
+      background-color: var(--destaque-suave);
+      color: var(--destaque);
+    }
+    .tabela-calc {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.92rem;
+    }
+    .tabela-calc th {
+      background: #f8fafc;
+      padding: 12px 14px;
+      text-align: right;
+      font-weight: 700;
+      color: var(--primaria);
+      border-bottom: 2px solid var(--borda);
+    }
+    .tabela-calc th:first-child {
+      text-align: left;
+    }
+    .tabela-calc td {
+      padding: 14px;
+      text-align: right;
+      border-bottom: 1px solid var(--borda);
+      font-family: var(--fonte-mono);
+    }
+    .tabela-calc td:first-child {
+      text-align: left;
+      font-family: var(--fonte-padrao);
+      font-weight: 700;
+    }
+    .linha-destaque-selic {
+      background: #eff6ff;
+    }
+    .badge-fgc {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #475569;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== TOPO DO PORTAL ==================== -->
+  <header class="cabecalho-portal">
+    <div class="container container-header">
+      <div class="marca-portal">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+          <div class="logo-icone">CR</div>
+          <div>
+            <h1 class="portal-titulo">CAFERADAR</h1>
+            <p class="portal-slogan">Inteligência de Mercado B3, Swing Trade & Simuladores</p>
+          </div>
+        </a>
+      </div>
+      <div class="status-topo">
+        <a href="index.html" class="btn-tab ativa" style="border: 1px solid var(--borda); border-radius: 9999px; padding: 6px 14px; text-decoration: none;">
+          <span>← Voltar ao Fechamento Diário</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== ESPAÇO DE ANÚNCIO (ADSENSE LEADERBOARD) ==================== -->
+  <div class="container container-ad">
+    <div class="slot-publicidade leaderboard">
+      <span class="rotulo-ad">PUBLICIDADE</span>
+      <div class="placeholder-ad">
+        <span class="texto-ad">Espaço reservado para Anúncio AdSense (Leaderboard 728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container calc-container">
+    <a href="index.html" class="btn-voltar">← Voltar à página inicial</a>
+
+    <div class="card-bloco-noticia" style="border: 2px solid var(--destaque-suave); padding: 32px; margin-bottom: 24px;">
+      <div class="bloco-cabecalho" style="border-bottom: 1px solid var(--borda); padding-bottom: 18px; margin-bottom: 24px;">
+        <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 48px; height: 48px; font-size: 1.5rem;">🧮</span>
+        <div>
+          <h2 style="font-size: 1.55rem; color: var(--primaria); margin-bottom: 6px; font-weight: 800;">
+            Poupança, CDB ou Tesouro Selic: Quanto Sobra no Bolso?
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--texto-secundario); margin: 0; line-height: 1.6;">
+            Simule o rendimento líquido real do seu dinheiro com a alíquota regressiva oficial de Imposto de Renda (IR) e as taxas vigentes do Banco Central. Gratuito, sem cadastro e sem viés de corretora.
+          </p>
+        </div>
+      </div>
+
+      <!-- Controles da Calculadora -->
+      <div class="grid-calc-controles" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 28px;">
+        <div class="grupo-campo-calc">
+          <label for="calc-valor" style="font-size: 0.9rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">
+            Valor a aplicar (R$)
+          </label>
+          <div style="position: relative;">
+            <span style="position: absolute; left: 14px; top: 12px; font-weight: 700; color: var(--texto-secundario); font-family: var(--fonte-mono);">R$</span>
+            <input type="number" id="calc-valor" value="5000" min="100" step="100" style="width: 100%; padding: 10px 14px 10px 44px; border-radius: var(--raio-md); border: 1px solid var(--borda); font-family: var(--fonte-mono); font-size: 1.15rem; font-weight: 700; color: var(--primaria); background: #f8fafc;">
+          </div>
+          <div class="chips-calc" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+            <button class="btn-chip" data-val="1000">R$ 1.000</button>
+            <button class="btn-chip ativa" data-val="5000">R$ 5.000</button>
+            <button class="btn-chip" data-val="10000">R$ 10.000</button>
+            <button class="btn-chip" data-val="50000">R$ 50.000</button>
+            <button class="btn-chip" data-val="100000">R$ 100.000</button>
+          </div>
+        </div>
+
+        <div class="grupo-campo-calc">
+          <label style="font-size: 0.9rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">
+            Prazo de aplicação
+          </label>
+          <div class="botoes-prazos" style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-prazo" data-meses="1">1 Mês</button>
+            <button class="btn-prazo" data-meses="6">6 Meses</button>
+            <button class="btn-prazo ativa" data-meses="12">1 Ano (12 meses)</button>
+            <button class="btn-prazo" data-meses="24">2 Anos (24 meses)</button>
+            <button class="btn-prazo" data-meses="36">3 Anos (36 meses)</button>
+          </div>
+          <div style="margin-top: 12px; font-size: 0.85rem; color: var(--texto-secundario);">
+            Alíquota de IR aplicada: <strong id="aliquota-ir-exibida" style="color: var(--primaria);">17,5%</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards de Destaque Rápido -->
+      <div class="grid-calc-resultados" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0 24px;">
+        <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 20px; text-align: center;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">Poupança Tradicional</span>
+          <div id="res-total-poupanca" style="font-size: 1.6rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
+          <div style="font-size: 0.85rem; color: #64748b;">Rendimento: <strong id="res-lucro-poupanca" style="color: var(--primaria);">+R$ 0,00</strong></div>
+          <span style="display: inline-block; background: #e2e8f0; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Isento de IR</span>
+        </div>
+
+        <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 20px; text-align: center;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">CDB 100% do CDI</span>
+          <div id="res-total-cdi" style="font-size: 1.6rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
+          <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-cdi" style="color: var(--verde);">+R$ 0,00</strong></div>
+          <span style="display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia FGC</span>
+        </div>
+
+        <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 20px; text-align: center; position: relative;">
+          <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Mais Seguro</div>
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--destaque); text-transform: uppercase;">Tesouro Selic Oficial</span>
+          <div id="res-total-selic" style="font-size: 1.6rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
+          <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-selic" style="color: var(--destaque);">+R$ 0,00</strong></div>
+          <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia Soberana</span>
+        </div>
+      </div>
+
+      <!-- Diferença em Reais -->
+      <div id="aviso-lucro-extra" style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--raio-md); padding: 16px 20px; display: flex; align-items: center; gap: 14px; margin-bottom: 28px;">
+        <span style="font-size: 1.6rem;">💡</span>
+        <p style="margin: 0; font-size: 0.95rem; color: #065f46; line-height: 1.5;">
+          Ao escolher o <strong>Tesouro Selic</strong> em vez da Poupança, você recebe <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> com garantia soberana do Governo Federal!
+        </p>
+      </div>
+
+      <!-- Tabela Detalhada de Comparação -->
+      <h3 style="font-size: 1.15rem; color: var(--primaria); font-weight: 800; margin-bottom: 12px;">📊 Demonstrativo Detalhado de Rendimento</h3>
+      <div class="tabela-responsiva-wrapper">
+        <table class="tabela-calc">
+          <thead>
+            <tr>
+              <th>Onde Aplicar</th>
+              <th>Valor Bruto</th>
+              <th>Alíquota IR</th>
+              <th>Desconto IR</th>
+              <th>Total Líquido</th>
+              <th>Rendimento Líquido</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela-detalhada">
+            <!-- Linhas preenchidas via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Explicação Didática sobre Regras e Tributação -->
+    <div class="card-bloco-noticia" style="padding: 28px; margin-bottom: 28px;">
+      <h3 style="font-size: 1.25rem; color: var(--primaria); font-weight: 800; margin-bottom: 14px;">📘 Como Funciona o Cálculo dos Investimentos</h3>
+      
+      <p style="font-size: 0.92rem; color: var(--texto-secundario); line-height: 1.6; margin-bottom: 14px;">
+        Para manter máxima transparência e rigor com as normas do Banco Central do Brasil (BCB) e Receita Federal, nossa calculadora utiliza as fórmulas oficiais de matemática financeira:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 18px;">
+        <div style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px;">
+          <h4 style="font-size: 1rem; color: var(--primaria); margin-bottom: 6px; font-weight: 700;">1. Poupança Nova</h4>
+          <p style="font-size: 0.88rem; color: var(--texto-secundario); line-height: 1.5; margin: 0;">
+            Com a Selic acima de 8,5% a.a., a poupança rende fixos <strong>0,5% ao mês + Taxa Referencial (TR)</strong> (~6,17% a.a.). É isenta de Imposto de Renda para pessoas físicas.
+          </p>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px;">
+          <h4 style="font-size: 1rem; color: var(--primaria); margin-bottom: 6px; font-weight: 700;">2. CDB 100% do CDI</h4>
+          <p style="font-size: 0.88rem; color: var(--texto-secundario); line-height: 1.5; margin: 0;">
+            O CDI acompanha a taxa Selic com um spread de ~0,10% (atualmente em ~11,15% a.a.). O lucro bruto sofre retenção de IR na fonte conforme o prazo da aplicação.
+          </p>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px;">
+          <h4 style="font-size: 1rem; color: var(--primaria); margin-bottom: 6px; font-weight: 700;">3. Tesouro Selic</h4>
+          <p style="font-size: 0.88rem; color: var(--texto-secundario); line-height: 1.5; margin: 0;">
+            Título emitido pelo Tesouro Nacional (risco soberano zero). Rende a taxa Selic diária acrescida de um pequeno ágio de ~0,05% a.a., com liquidez diária e incidência regressiva de IR.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tabela Regressiva de IR -->
+      <h4 style="font-size: 1rem; color: var(--primaria); margin-top: 24px; margin-bottom: 10px; font-weight: 700;">Tabela Regressiva de Imposto de Renda (Renda Fixa):</h4>
+      <div class="tabela-responsiva-wrapper">
+        <table class="tabela-cotacoes" style="width: 100%; font-size: 0.88rem;">
+          <thead>
+            <tr>
+              <th>Prazo da Aplicação</th>
+              <th>Alíquota de IR sobre o Lucro</th>
+              <th>Onde se aplica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Até 180 dias (até 6 meses)</td>
+              <td class="cel-num" style="font-weight: 700; color: var(--baixa);">22,5%</td>
+              <td>CDB, LC, Tesouro Direto</td>
+            </tr>
+            <tr>
+              <td>De 181 a 360 dias (de 6 meses a 1 ano)</td>
+              <td class="cel-num" style="font-weight: 700; color: #d97706;">20,0%</td>
+              <td>CDB, LC, Tesouro Direto</td>
+            </tr>
+            <tr>
+              <td>De 361 a 720 dias (de 1 a 2 anos)</td>
+              <td class="cel-num" style="font-weight: 700; color: var(--destaque);">17,5%</td>
+              <td>CDB, LC, Tesouro Direto</td>
+            </tr>
+            <tr>
+              <td>Acima de 720 dias (mais de 2 anos)</td>
+              <td class="cel-num" style="font-weight: 700; color: var(--alta);">15,0% (Mínima)</td>
+              <td>CDB, LC, Tesouro Direto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Aviso Legal CVM -->
+    <div class="aviso-legal-cvm" style="margin-top: 32px;">
+      <span class="icone-balanca">⚖️</span>
+      <p>
+        <strong>Aviso Legal & Governança (Resolução CVM nº 20/2021):</strong> Esta calculadora é uma ferramenta matemática de simulação educativa com base em parâmetros regulatórios públicos. Não constitui recomendação, consultoria, oferta ou aconselhamento financeiro individualizado. Rentabilidade passada não é garantia de resultados futuros.
+      </p>
+    </div>
+  </main>
+
+  <!-- Rodapé Unificado -->
+  <footer class="rodape-portal">
+    <div class="container container-rodape">
+      <div class="coluna-sobre">
+        <div class="marca-rodape">
+          <div class="logo-icone mini">CR</div>
+          <span class="nome-portal">CAFERADAR</span>
+        </div>
+        <p class="desc-rodape">
+          Plataforma independente de inteligência de mercado B3, síntese de pregão diário em 3 edições, scanner tático de Swing Trade e modelagem quantitativa de alocação de ativos.
+        </p>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#fechamento">Fechamento Diário</a></li>
+          <li><a href="index.html#swingtrade">Swing Trade B3 (+5%)</a></li>
+          <li><a href="index.html#alocacao">Radar Longo Prazo</a></li>
+          <li><a href="calculadora-rendimento.html">Calculadora de Renda</a></li>
+          <li><a href="index.html#metodologia">Como Usar o Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Institucional & Legal</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre & Contato</a></li>
+          <li><a href="privacy.html">Política de Privacidade</a></li>
+          <li><a href="rules.html">Regras Oficiais do Motor</a></li>
+        </ul>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Fontes Oficiais</h4>
+        <ul>
+          <li><a href="https://www.bcb.gov.br" target="_blank" rel="noopener">Banco Central (PTAX)</a></li>
+          <li><a href="https://www.tesourodireto.com.br" target="_blank" rel="noopener">Tesouro Nacional</a></li>
+          <li><a href="https://www.b3.com.br" target="_blank" rel="noopener">B3 Oficial</a></li>
+          <li><a href="https://www.binance.com" target="_blank" rel="noopener">Binance API (Bitcoin)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container copy-rodape">
+      <p>© 2026 CafeRadar. Todos os direitos reservados. Informação independente e matemática financeira sem viés comercial.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Lógica Autônoma da Calculadora
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputValor = document.getElementById('calc-valor');
+      let meses = 12;
+
+      const selicAnual = 0.1125; // 11,25% a.a.
+      const cdiAnual = 0.1115;   // 11,15% a.a.
+      const poupancaAnual = 0.0617; // 6,17% a.a.
+
+      function obterAliquotaIR(m) {
+        const dias = m * 30;
+        if (dias <= 180) return 0.225;
+        if (dias <= 360) return 0.20;
+        if (dias <= 720) return 0.175;
+        return 0.15;
+      }
+
+      function fmt(val) {
+        return 'R$ ' + val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function calcular() {
+        const valor = parseFloat(inputValor.value) || 0;
+        if (valor <= 0) return;
+
+        const anos = meses / 12.0;
+        const aliquotaIR = obterAliquotaIR(meses);
+
+        document.getElementById('aliquota-ir-exibida').textContent = (aliquotaIR * 100).toFixed(1).replace('.', ',') + '%';
+
+        // 1. Poupança
+        const brutoPoup = valor * Math.pow(1 + poupancaAnual, anos);
+        const lucroPoup = brutoPoup - valor;
+        const irPoup = 0;
+        const liqPoup = brutoPoup;
+
+        // 2. CDB 100% CDI
+        const brutoCDI = valor * Math.pow(1 + cdiAnual, anos);
+        const lucroBrutoCDI = brutoCDI - valor;
+        const irCDI = lucroBrutoCDI * aliquotaIR;
+        const liqCDI = brutoCDI - irCDI;
+        const lucroLiqCDI = liqCDI - valor;
+
+        // 3. Tesouro Selic
+        const taxaSelicEfetiva = selicAnual + 0.0005;
+        const brutoSelic = valor * Math.pow(1 + taxaSelicEfetiva, anos);
+        const lucroBrutoSelic = brutoSelic - valor;
+        const irSelic = lucroBrutoSelic * aliquotaIR;
+        const liqSelic = brutoSelic - irSelic;
+        const lucroLiqSelic = liqSelic - valor;
+
+        // Atualizar cards de topo
+        document.getElementById('res-total-poupanca').textContent = fmt(liqPoup);
+        document.getElementById('res-lucro-poupanca').textContent = '+' + fmt(lucroPoup);
+
+        document.getElementById('res-total-cdi').textContent = fmt(liqCDI);
+        document.getElementById('res-lucro-cdi').textContent = '+' + fmt(lucroLiqCDI);
+
+        document.getElementById('res-total-selic').textContent = fmt(liqSelic);
+        document.getElementById('res-lucro-selic').textContent = '+' + fmt(lucroLiqSelic);
+
+        const diff = lucroLiqSelic - lucroPoup;
+        document.getElementById('diferenca-lucro-reais').textContent = fmt(diff) + ' a MAIS';
+
+        // Preencher tabela detalhada
+        const tbody = document.getElementById('corpo-tabela-detalhada');
+        tbody.innerHTML = `
+          <tr>
+            <td>Poupança Tradicional <span class="badge-fgc">FGC</span></td>
+            <td>${fmt(brutoPoup)}</td>
+            <td style="color:var(--alta); font-weight:700;">Isento</td>
+            <td>R$ 0,00</td>
+            <td><strong>${fmt(liqPoup)}</strong></td>
+            <td style="color:var(--primaria); font-weight:700;">+${fmt(lucroPoup)}</td>
+          </tr>
+          <tr>
+            <td>CDB 100% do CDI <span class="badge-fgc">FGC</span></td>
+            <td>${fmt(brutoCDI)}</td>
+            <td>${(aliquotaIR*100).toFixed(1).replace('.', ',')}%</td>
+            <td style="color:var(--baixa);">${fmt(irCDI)}</td>
+            <td><strong>${fmt(liqCDI)}</strong></td>
+            <td style="color:var(--verde); font-weight:700;">+${fmt(lucroLiqCDI)}</td>
+          </tr>
+          <tr class="linha-destaque-selic">
+            <td><strong style="color:var(--destaque);">Tesouro Selic Oficial</strong> <span class="badge-fgc" style="background:#dbeafe; color:#1e40af;">Soberano</span></td>
+            <td>${fmt(brutoSelic)}</td>
+            <td>${(aliquotaIR*100).toFixed(1).replace('.', ',')}%</td>
+            <td style="color:var(--baixa);">${fmt(irSelic)}</td>
+            <td><strong style="color:var(--destaque); font-size:1.05rem;">${fmt(liqSelic)}</strong></td>
+            <td style="color:var(--destaque); font-weight:800;">+${fmt(lucroLiqSelic)}</td>
+          </tr>
+        `;
+      }
+
+      // Chips de valores rápidos
+      document.querySelectorAll('.btn-chip').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.btn-chip').forEach(b => b.classList.remove('ativa'));
+          btn.classList.add('ativa');
+          inputValor.value = btn.getAttribute('data-val');
+          calcular();
+        });
+      });
+
+      // Prazos
+      document.querySelectorAll('.btn-prazo').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.btn-prazo').forEach(b => b.classList.remove('ativa'));
+          btn.classList.add('ativa');
+          meses = parseInt(btn.getAttribute('data-meses'), 10);
+          calcular();
+        });
+      });
+
+      inputValor.addEventListener('input', calcular);
+
+      // Execução inicial
+      calcular();
+    });
+  </script>
+</body>
+</html>

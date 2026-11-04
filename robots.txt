@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
+
+User-agent: Mediapartners-Google
+Allow: /
 
 Sitemap: https://caferadar.com.br/sitemap.xml
