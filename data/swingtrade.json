@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "04/11/2026 às 10h10",
+  "atualizado_em": "04/11/2026 às 10h18",
   "data_referencia": "2026-11-04",
   "estrategia": {
     "nome": "Swing Trade — Reversão Quantitativa B3",
@@ -10,7 +10,7 @@
     "operacoes_vencedoras": 154,
     "operacoes_totais_1ano": 173,
     "tempo_medio_posicao": "6 a 12 dias úteis",
-    "status_scanner": "Scanner Atualizado (04/11/2026 às 10h10)"
+    "status_scanner": "Scanner Atualizado (04/11/2026 às 10h18)"
   },
   "resumo_pregão_hoje": {
     "oportunidades": 0,
@@ -31,8 +31,8 @@
       "status_badge": "Aguardar Gatilho"
     },
     {
-      "ticker": "PETR4",
-      "empresa": "Petrobras PN",
+      "ticker": "BBSE3",
+      "empresa": "BB Seguridade ON",
       "categoria": "AGUARDAR",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -42,8 +42,8 @@
       "status_badge": "Aguardar Gatilho"
     },
     {
-      "ticker": "BBSE3",
-      "empresa": "BB Seguridade ON",
+      "ticker": "PETR4",
+      "empresa": "Petrobras PN",
       "categoria": "AGUARDAR",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -75,8 +75,8 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "RANI3",
-      "empresa": "RANI3",
+      "ticker": "VIVT3",
+      "empresa": "Telefônica Brasil ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -86,8 +86,8 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "SAUD3",
-      "empresa": "SAUD3",
+      "ticker": "ISAE4",
+      "empresa": "ISAE4",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -108,8 +108,8 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "TIMS3",
-      "empresa": "TIM Brasil ON",
+      "ticker": "GRND3",
+      "empresa": "Grendene ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -119,8 +119,8 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "VLID3",
-      "empresa": "Valid ON",
+      "ticker": "VALE3",
+      "empresa": "Vale ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",

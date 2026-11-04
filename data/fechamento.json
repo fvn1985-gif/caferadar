@@ -26,19 +26,19 @@
         "dolar": {
           "nome": "Dólar Futuro",
           "valor": "R$ 5,46",
-          "variacao": "-0,50%",
+          "variacao": "-0,54%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 78.323",
-          "variacao": "+1,28%",
+          "valor": "US$ 78.208",
+          "variacao": "+1,13%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 101,73",
-          "variacao": "-1,73%",
+          "valor": "US$ 101,59",
+          "variacao": "-1,86%",
           "positivo": false
         }
       },
@@ -138,14 +138,14 @@
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
-          "pontos": "165.529 pts",
-          "variacao": "-1,57%",
+          "pontos": "165.585 pts",
+          "variacao": "-0,04%",
           "positivo": false
         },
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,46",
-          "variacao": "-0,50%",
+          "variacao": "-0,54%",
           "positivo": false
         },
         "sp500": {
@@ -156,14 +156,14 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 78.323",
-          "variacao": "+1,28%",
+          "valor": "US$ 78.208",
+          "variacao": "+1,13%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 101,73",
-          "variacao": "-1,73%",
+          "valor": "US$ 101,59",
+          "variacao": "-1,86%",
           "positivo": false
         }
       },
@@ -263,8 +263,8 @@
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
-          "pontos": "165.529 pts",
-          "variacao": "-1,57%",
+          "pontos": "165.585 pts",
+          "variacao": "-0,04%",
           "positivo": false,
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
@@ -278,7 +278,7 @@
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,46",
-          "variacao": "-0,50%",
+          "variacao": "-0,54%",
           "positivo": false,
           "ptax": "R$ 5,4935",
           "fonte": "TradeMap",
@@ -297,8 +297,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 78.323",
-          "variacao": "+1,28%",
+          "valor": "US$ 78.208",
+          "variacao": "+1,13%",
           "positivo": true,
           "detalhe": "+1,47% na sessão"
         },
@@ -308,8 +308,8 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 101,73",
-          "variacao": "-1,73%",
+          "valor": "US$ 101,59",
+          "variacao": "-1,86%",
           "positivo": false,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
