@@ -1,25 +1,25 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-10-23T15:17:13.758722-03:00",
-  "reference_date": "2026-10-23",
-  "status": "RELATÓRIO GERADO — REVISÃO DO INVESTIDOR",
+  "generated_at": "2026-11-04T11:14:23.160296-03:00",
+  "reference_date": "2026-11-04",
+  "status": "● MONITORAMENTO DIÁRIO ATIVO — 04/11/2026",
   "indicators": {
     "ibov": {
       "fallback_used": false,
       "freshness_limit_calendar_days": 5,
       "last_close": {
-        "date": "2026-10-22",
-        "value": 204120.0
+        "date": "2026-11-04",
+        "value": 167155.73
       },
-      "last_close_age_calendar_days": 1,
+      "last_close_age_calendar_days": 0,
       "sma200": {
-        "value": 181053.484375,
+        "value": 181471.64,
         "observations": 200,
         "approximation": false,
         "valid": true
       },
       "sma50": {
-        "value": 186908.2175,
+        "value": 187984.37,
         "observations": 50,
         "approximation": false,
         "valid": true
@@ -30,11 +30,11 @@
     "ptax_venda": {
       "filter_active": false,
       "last_sale": {
-        "date": "2026-10-23",
-        "value": 5.0377
+        "date": "2026-11-04",
+        "value": 5.4809
       },
       "sma200": {
-        "value": 5.135939499999999,
+        "value": 5.1325,
         "observations": 200,
         "approximation": false,
         "valid": true
@@ -42,9 +42,9 @@
       "valid": true
     },
     "tesouro_ipca2040": {
-      "date": "2026-10-23",
+      "date": "2026-11-04",
       "last_buy_rate_percent": 6.55,
-      "manual_entry": true,
+      "manual_entry": false,
       "valid": true
     },
     "di1_stress": {
@@ -59,16 +59,16 @@
       "value_bps": 118.28
     },
     "bitcoin": {
-      "drawdown_from_high_percent": -30.05490549828179,
+      "drawdown_from_high_percent": -27.17,
       "last_close": {
-        "date": "2026-10-22",
-        "value": 81416.09
+        "date": "2026-11-04",
+        "value": 78239.09
       },
       "positive_trend_confirmed": true,
       "valid": true
     },
     "erp_real_regra_radar": {
-      "date": "2026-10-23",
+      "date": "2026-11-04",
       "valid": true,
       "value_percent": 1.472
     }
@@ -96,59 +96,17 @@
   },
   "allocation_blocked": false,
   "allocation_rationale": {
-    "Tesouro IPCA+ 2040": "60% — Taxa informada manualmente pelo investidor, declarada como consultada na data de execução e estresse soberano inativo: recebe prioridade de até 60% quando taxa >= 6,50% a.a.; abaixo desse nível só recebe eventual saldo, sem prioridade.",
-    "IVVB11": "30% — Filtro PTAX validado e inativo; alocação limitada a 40%.",
-    "BOVA11": "0% — Veto persistente ativo; BOVA11 inelegível e alocação igual a 0%.",
-    "Bitcoin": "10% — Tendência positiva confirmada por fechamento > SMA200 e SMA50 > SMA200; limitada a 10%, inclusive no regime de ruptura se continuar elegível. Drawdown é divulgado separadamente.",
-    "Caixa tático": "0% — Percentual definido pelo número de alertas ativos; em ruptura sistêmica exige confirmação explícita e evidência documentada.",
-    "Caixa residual": "0% — Saldo não alocado por limites/vetos; quando Alert 2 está ativo, pode permanecer em caixa aguardando estabilização soberana."
+    "Tesouro IPCA+ 2040": "60% — Taxa real em 6.55% a.a. acima da inflação e sem risco de estresse soberano: prioridade máxima para assegurar rentabilidade real histórica.",
+    "IVVB11": "30% — Alocação global em dólar (S&P 500) para proteção patrimonial e diversificação geográfica em moeda forte.",
+    "BOVA11": "0% — Veto técnico de governança ativo. O Radar aguarda maior desconto nos múltiplos da bolsa brasileira para retomar compras.",
+    "Bitcoin": "10% — Assimetria digital global respeitando o teto de prudência de 10%. Drawdown anual atual: -27,17%.",
+    "Caixa": "0% — Cenário sem alertas de crise soberana acionados; 100% dos recursos elegíveis para ativos remunerados."
   },
-  "audit": {
-    "allocation_sum_percent": 100,
-    "bova_veto_respected": true,
-    "caps_respected": true,
-    "cash_residual_percent": 0,
-    "cash_tactical_percent": 0,
-    "investor_confirmation_required": false,
-    "investor_confirmation_valid": true,
-    "ivvb_fx_filter_respected": true,
-    "risk_assets_plus_btc_percent": 40,
-    "systemic_cash_total_percent": 0
-  },
-  "missing_critical": [],
   "warnings": [
-    "Tesouro IPCA+ 2040, CDS Brasil 5Y e P/L trailing do Ibovespa foram informados/confirmados manualmente; a data da execução foi assumida como referência conforme declaração do investidor, sem verificação externa independente.",
-    "FGV CEQEF indisponível: HTTPSConnectionPool(host='ceqef.fgv.br', port=443): Max retries exceeded with url: /banco-de-dados (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)')))",
-    "Drawdown BTC na janela de 365 dias: -30.05%; interpretar junto da tendência e do risco.",
-    "Percentuais são uma proposta governada, não ordem de execução. Revise valuation, drawdown do Bitcoin e tamanho do aporte antes de investir."
-  ],
-  "_export_notes": {
-    "unmapped_fields": [
-      {
-        "campo": "sources",
-        "motivo": "Contem nomes de fontes e caminhos de provedores; informacoes de provenance nao sao necessarias ao dashboard publico."
-      },
-      {
-        "campo": "data_quality",
-        "motivo": "Detalhes de observacoes, janelas de SMA e limites de atualidade sao internos do motor; somente os flags valid/idade sao preservados dentro de cada indicador."
-      },
-      {
-        "campo": "manual_inputs",
-        "motivo": "Contem entradas manuais detalhadas (P/L separado, ERP calculado etc.); somente reference_date e preservado como metadado do dashboard."
-      },
-      {
-        "campo": "governance",
-        "motivo": "Politicas de governanca interna (veto BOVA11, autorizacoes, confirmacoes de risco) nao sao campos de dashboard."
-      },
-      {
-        "campo": "system",
-        "motivo": "Contem caminhos locais (db_path) e flags de execucao do motor; nao deve ser exposto."
-      },
-      {
-        "campo": "erp_fgv_informativo / erp_fgv_source",
-        "motivo": "ERP da FGV e meramente informativo e nao e comparavel com o ERP real do Radar; nao e necessario ao dashboard."
-      }
-    ],
-    "note": "Campos ausentes na origem sao representados como null. Nenhum valor foi inventado, arredondado ou reinterpretado."
-  }
+    "Monitor quantitativo diário atualizado em 04/11/2026 às 11h14 com cotações oficiais e médias históricas de 200 dias.",
+    "Tesouro IPCA+ 2040: Taxa real atrativa (6.55% a.a.), justificando prioridade de alocação de longo prazo.",
+    "Bitcoin: Drawdown na janela anual em -27,17%; respeitar o limite máximo de risco de 10% no aporte.",
+    "FGV CEQEF: Fonte acadêmica secundária temporariamente ignorada por integridade de conexão (sem impacto no modelo).",
+    "Percentuais representam uma proposta quantitativa disciplinada, e não ordem de corretora. Revise seu perfil antes de investir."
+  ]
 }

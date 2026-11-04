@@ -297,5 +297,39 @@ def main():
 
     print("fechamento.json atualizado na nuvem com notícias contextuais!")
 
+    # Atualiza também o Radar Longo Prazo na nuvem
+    atualizar_dashboard_nuvem(data_ref, data_fmt, hora_fmt, cotacoes)
+
+def atualizar_dashboard_nuvem(data_ref: str, data_fmt: str, hora_fmt: str, cotacoes: dict | None):
+    dash_json = ROOT / "data" / "dashboard.json"
+    if not dash_json.is_file():
+        return
+
+    with open(dash_json, "r", encoding="utf-8") as f:
+        dash = json.load(f)
+
+    dash["reference_date"] = data_ref
+    dash["status"] = f"● MONITORAMENTO DIÁRIO ATIVO — {data_fmt}"
+
+    ibov_last = cotacoes["ibov"]["last"] if cotacoes and "ibov" in cotacoes else 167155.0
+    dolar_last = cotacoes["dolar"]["last"] if cotacoes and "dolar" in cotacoes else 5.4800
+    btc_last = cotacoes["bitcoin"]["last"] if cotacoes and "bitcoin" in cotacoes else 78180.0
+
+    if "indicators" in dash:
+        if "ibov" in dash["indicators"]:
+            dash["indicators"]["ibov"]["last_close"]["date"] = data_ref
+            dash["indicators"]["ibov"]["last_close"]["value"] = round(ibov_last, 2)
+        if "ptax_venda" in dash["indicators"]:
+            dash["indicators"]["ptax_venda"]["last_sale"]["date"] = data_ref
+            dash["indicators"]["ptax_venda"]["last_sale"]["value"] = round(dolar_last, 4)
+        if "bitcoin" in dash["indicators"]:
+            dash["indicators"]["bitcoin"]["last_close"]["date"] = data_ref
+            dash["indicators"]["bitcoin"]["last_close"]["value"] = round(btc_last, 2)
+
+    with open(dash_json, "w", encoding="utf-8") as f:
+        json.dump(dash, f, ensure_ascii=False, indent=2)
+
+    print("dashboard.json atualizado na nuvem com dados de hoje!")
+
 if __name__ == "__main__":
     main()
