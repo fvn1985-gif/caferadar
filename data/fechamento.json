@@ -9,7 +9,7 @@
       "icone": "🌅",
       "horario": "08h00",
       "titulo": "RADAR DE CAFÉ MATINAL — 05/11/2026",
-      "subtitulo": "Mercados globais operam com volatilidade nesta quinta-feira; Dólar cotado a R$ 5,50 e atenção redobrada aos juros e fiscal em Brasília",
+      "subtitulo": "Mercados globais operam com volatilidade nesta quinta-feira; Dólar cotado a R$ 5,49 e atenção redobrada aos juros e fiscal em Brasília",
       "mercado_geral": {
         "sp500": {
           "nome": "S&P 500 Futuro",
@@ -25,20 +25,20 @@
         },
         "dolar": {
           "nome": "Dólar Futuro",
-          "valor": "R$ 5,50",
-          "variacao": "+0,82%",
+          "valor": "R$ 5,49",
+          "variacao": "+0,50%",
           "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.854",
-          "variacao": "-5,69%",
+          "valor": "US$ 75.308",
+          "variacao": "-6,37%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 99,25",
-          "variacao": "+6,05%",
+          "valor": "US$ 99,15",
+          "variacao": "+5,94%",
           "positivo": true
         },
         "ibov": {
@@ -55,17 +55,17 @@
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,50 (+0,82%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
+          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,49 (+0,50%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "O petróleo Brent é negociado a US$ 99,25 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
+          "texto": "O petróleo Brent é negociado a US$ 99,15 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 75.854, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
+          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 75.308, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
           "fonte": "Binance / CoinDesk"
         }
       ],
@@ -106,22 +106,22 @@
       "destaques": {
         "altas": [
           {
-            "ticker": "ITUB4",
-            "variacao": "+0,73%"
+            "ticker": "CEAB3",
+            "variacao": "+9,25%"
           },
           {
-            "ticker": "B3SA3",
-            "variacao": "+0,42%"
+            "ticker": "SMFT3",
+            "variacao": "+5,48%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PETR4",
-            "variacao": "-1,69%"
+            "ticker": "CMIN3",
+            "variacao": "-6,49%"
           },
           {
-            "ticker": "WEGE3",
-            "variacao": "-3,77%"
+            "ticker": "TEND3",
+            "variacao": "-17,72%"
           }
         ]
       },
@@ -142,7 +142,7 @@
       "icone": "🔔",
       "horario": "10h30",
       "titulo": "RADAR DE ABERTURA B3 — 05/11/2026",
-      "subtitulo": "Ibovespa oscila em torno dos 166.191 pts no início da tarde desta quinta-feira; Dólar cotado a R$ 5,50 com giro concentrado no setor bancário e Vale",
+      "subtitulo": "Ibovespa oscila em torno dos 166.191 pts no início da tarde desta quinta-feira; Dólar cotado a R$ 5,49 com giro concentrado no setor bancário e Vale",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -152,8 +152,8 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,50",
-          "variacao": "+0,82%",
+          "valor": "R$ 5,49",
+          "variacao": "+0,50%",
           "positivo": true
         },
         "sp500": {
@@ -164,14 +164,14 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.854",
-          "variacao": "-5,69%",
+          "valor": "US$ 75.308",
+          "variacao": "-6,37%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 99,25",
-          "variacao": "+6,05%",
+          "valor": "US$ 99,15",
+          "variacao": "+5,94%",
           "positivo": true
         }
       },
@@ -182,12 +182,12 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 99,25.",
+          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 99,15.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
         {
-          "texto": "O dólar comercial registra cotação de R$ 5,50 (+0,82%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
+          "texto": "O dólar comercial registra cotação de R$ 5,49 (+0,50%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
@@ -233,22 +233,22 @@
       "destaques": {
         "altas": [
           {
-            "ticker": "ITUB4",
-            "variacao": "+0,73%"
+            "ticker": "CEAB3",
+            "variacao": "+9,25%"
           },
           {
-            "ticker": "B3SA3",
-            "variacao": "+0,42%"
+            "ticker": "SMFT3",
+            "variacao": "+5,48%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PETR4",
-            "variacao": "-1,69%"
+            "ticker": "CMIN3",
+            "variacao": "-6,49%"
           },
           {
-            "ticker": "WEGE3",
-            "variacao": "-3,77%"
+            "ticker": "TEND3",
+            "variacao": "-17,72%"
           }
         ]
       },
@@ -269,7 +269,7 @@
       "icone": "🏁",
       "horario": "18h15",
       "titulo": "RADAR DE FECHAMENTO B3 — 05/11/2026",
-      "subtitulo": "Ibovespa encerra a quinta-feira aos 166.191 pts; Dólar fecha a R$ 5,50 e investidores avaliam balanços trimestrais",
+      "subtitulo": "Ibovespa encerra a quinta-feira aos 166.191 pts; Dólar fecha a R$ 5,49 e investidores avaliam balanços trimestrais",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -287,8 +287,8 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,50",
-          "variacao": "+0,82%",
+          "valor": "R$ 5,49",
+          "variacao": "+0,50%",
           "positivo": true,
           "ptax": "R$ 5,4935",
           "fonte": "TradeMap",
@@ -307,8 +307,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.854",
-          "variacao": "-5,69%",
+          "valor": "US$ 75.308",
+          "variacao": "-6,37%",
           "positivo": false,
           "detalhe": "+1,47% na sessão"
         },
@@ -318,8 +318,8 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 99,25",
-          "variacao": "+6,05%",
+          "valor": "US$ 99,15",
+          "variacao": "+5,94%",
           "positivo": true,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
@@ -401,22 +401,22 @@
       "destaques": {
         "altas": [
           {
-            "ticker": "ITUB4",
-            "variacao": "+0,73%"
+            "ticker": "CEAB3",
+            "variacao": "+9,25%"
           },
           {
-            "ticker": "B3SA3",
-            "variacao": "+0,42%"
+            "ticker": "SMFT3",
+            "variacao": "+5,48%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PETR4",
-            "variacao": "-1,69%"
+            "ticker": "CMIN3",
+            "variacao": "-6,49%"
           },
           {
-            "ticker": "WEGE3",
-            "variacao": "-3,77%"
+            "ticker": "TEND3",
+            "variacao": "-17,72%"
           }
         ]
       },
@@ -427,17 +427,17 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,50 (+0,82%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
+          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,49 (+0,50%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 99,25, ditando o rumo das petroleiras no pregão da B3.",
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 99,15, ditando o rumo das petroleiras no pregão da B3.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 75.854, preservando suporte relevante em sua estrutura de médio prazo.",
+          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 75.308, preservando suporte relevante em sua estrutura de médio prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
