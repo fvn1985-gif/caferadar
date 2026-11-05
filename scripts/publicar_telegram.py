@@ -140,7 +140,12 @@ def publicar_material_categoria(
         if not arquivos_img:
             arquivos_img = sorted(out.glob(f"*_{cat}_x.png"))
 
-    arquivos_txt = sorted(out.glob(f"*_{cat}_legenda.txt"))
+    if fmt_escolhido == "x":
+        arquivos_txt = sorted(out.glob(f"*_{cat}_x_tweet.txt"))
+        if not arquivos_txt:
+            arquivos_txt = sorted(out.glob(f"*_{cat}_legenda.txt"))
+    else:
+        arquivos_txt = sorted(out.glob(f"*_{cat}_legenda.txt"))
 
     if not arquivos_img or not arquivos_txt:
         print(f"AVISO: Materiais para '{categoria}' não encontrados em {out}")

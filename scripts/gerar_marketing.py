@@ -49,6 +49,7 @@ Melhorias v1.0.1:
 """
 
 from __future__ import annotations
+import formatadores_x
 
 import json
 
@@ -830,6 +831,8 @@ $IBOV $BOVA11 $USDBRL {cashtags_str}
     p_legenda = out / f"{data_pub}_negocios_legenda.txt"
 
     p_legenda.write_text(legenda, encoding="utf-8")
+    tweet_txt = formatadores_x.formatar_tweet_negocios(dados_fechamento, data_fmt)
+    (out / f"{data_pub}_negocios_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
 
@@ -1102,6 +1105,8 @@ $IBOV $BOVA11 $USDBRL {cashtags_str}
     p_legenda = out / f"{data_pub}_fechamento_legenda.txt"
 
     p_legenda.write_text(legenda, encoding="utf-8")
+    tweet_txt = formatadores_x.formatar_tweet_fechamento(dados_fechamento, data_fmt)
+    (out / f"{data_pub}_fechamento_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
 
@@ -1372,6 +1377,8 @@ $IBOV {cashtags_str}
     p_legenda = out / f"{data_pub}_swingtrade_legenda.txt"
 
     p_legenda.write_text(legenda, encoding="utf-8")
+    tweet_txt = formatadores_x.formatar_tweet_swingtrade(resumo, data_fmt)
+    (out / f"{data_pub}_swingtrade_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
 
@@ -1576,6 +1583,8 @@ $IBOV $BOVA11 $IVVB11 $BTC
     p_legenda = out / f"{data_pub}_longoprazo_legenda.txt"
 
     p_legenda.write_text(legenda, encoding="utf-8")
+    tweet_txt = formatadores_x.formatar_tweet_longoprazo(dados_dashboard, data_base_br)
+    (out / f"{data_pub}_longoprazo_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
 
@@ -1695,6 +1704,8 @@ $SELIC $CDI $TESOURO
 """
     p_legenda = out / f"{data_pub}_calculadora_legenda.txt"
     p_legenda.write_text(legenda, encoding="utf-8")
+    tweet_txt = formatadores_x.formatar_tweet_calculadora(data_fmt)
+    (out / f"{data_pub}_calculadora_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
 
