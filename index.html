@@ -265,6 +265,15 @@
         </div>
       </div>
 
+      <!-- Barra de Frescor dos Dados do Swing Trade -->
+      <div id="st-frescor-container" class="barra-frescor-swing">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span id="st-frescor-icone">📅</span>
+          <span id="st-frescor-texto">Carregando status do scanner...</span>
+        </div>
+        <span id="st-badge-frescor" class="badge-frescor">--</span>
+      </div>
+
       <!-- Painel de Métricas do Motor de Swing -->
       <div class="grid-metricas-swing">
         <div class="card-metrica-swing">
@@ -279,8 +288,8 @@
         </div>
         <div class="card-metrica-swing">
           <span class="rotulo-metrica">Auditoria Pública (1 ano)</span>
-          <span class="valor-metrica destaque" id="st-assertividade" style="font-size:1.15rem; line-height:1.3;">154 de 154 encerradas no alvo</span>
-          <span class="sub-metrica" style="margin-top:4px;">18 de 19 abertas no vermelho, média -13,2%</span>
+          <span class="valor-metrica destaque" id="st-assertividade" style="font-size:1.15rem; line-height:1.3;">154 de 173 encerradas no alvo (89,0%)</span>
+          <span class="sub-metrica" id="st-abertas-detalhe" style="margin-top:4px;">19 em aberto (18 no vermelho) — modelo sem stop loss</span>
           <a href="historico-swing.html" target="_blank" style="display:inline-block; margin-top:6px; font-size:0.75rem; color:var(--destaque); font-weight:700; text-decoration:underline;">Ver log dos 173 trades auditados ↗</a></div>
         <div class="card-metrica-swing">
           <span class="rotulo-metrica">Prazo Mediano</span>

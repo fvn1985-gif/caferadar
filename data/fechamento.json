@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "almoco",
+  "edicao_padrao": "fechamento",
   "data_referencia": "2026-11-04",
   "data_formatada": "04/11/2026",
   "edicoes": {
@@ -9,12 +9,12 @@
       "icone": "🌅",
       "horario": "08h30",
       "titulo": "RADAR DE ABERTURA — 04/11/2026",
-      "subtitulo": "Mercados globais operam com volatilidade nesta quarta-feira; Dólar cotado a R$ 5,45 e atenção redobrada aos juros e fiscal em Brasília",
+      "subtitulo": "Mercados globais operam com volatilidade nesta quarta-feira; Dólar cotado a R$ 5,46 e atenção redobrada aos juros e fiscal em Brasília",
       "mercado_geral": {
         "sp500": {
           "nome": "S&P 500 Futuro",
-          "valor": "7.704 pts",
-          "variacao": "+1,79%",
+          "valor": "7.689 pts",
+          "variacao": "+1,59%",
           "positivo": true
         },
         "nasdaq": {
@@ -25,20 +25,20 @@
         },
         "dolar": {
           "nome": "Dólar Futuro",
-          "valor": "R$ 5,45",
-          "variacao": "-0,61%",
+          "valor": "R$ 5,46",
+          "variacao": "-0,52%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.103",
-          "variacao": "+3,58%",
+          "valor": "US$ 80.638",
+          "variacao": "+0,54%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 94,63",
-          "variacao": "-8,59%",
+          "valor": "US$ 94,66",
+          "variacao": "-8,56%",
           "positivo": false
         }
       },
@@ -49,17 +49,17 @@
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,45 (-0,61%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
+          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,46 (-0,52%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "O petróleo Brent é negociado a US$ 94,63 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quarta-feira.",
+          "texto": "O petróleo Brent é negociado a US$ 94,66 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quarta-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.103, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
+          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.638, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
           "fonte": "Binance / CoinDesk"
         }
       ],
@@ -67,32 +67,32 @@
         {
           "ticker": "PETR4",
           "nome": "Petrobras PN",
-          "preco": "R$ 46,93",
-          "variacao_dia": "-7,49%",
+          "preco": "R$ 47,12",
+          "variacao_dia": "-7,12%",
           "variacao_mes": "—",
           "positivo": false
         },
         {
           "ticker": "VALE3",
           "nome": "Vale ON",
-          "preco": "R$ 62,62",
-          "variacao_dia": "+3,85%",
+          "preco": "R$ 62,35",
+          "variacao_dia": "+3,40%",
           "variacao_mes": "—",
           "positivo": true
         },
         {
           "ticker": "ITUB4",
           "nome": "Itaú PN",
-          "preco": "R$ 39,74",
-          "variacao_dia": "+3,19%",
+          "preco": "R$ 39,71",
+          "variacao_dia": "+3,12%",
           "variacao_mes": "—",
           "positivo": true
         },
         {
           "ticker": "WEGE3",
           "nome": "WEG ON",
-          "preco": "R$ 50,36",
-          "variacao_dia": "+2,17%",
+          "preco": "R$ 50,05",
+          "variacao_dia": "+1,54%",
           "variacao_mes": "—",
           "positivo": true
         }
@@ -101,21 +101,21 @@
         "altas": [
           {
             "ticker": "CMIN3",
-            "variacao": "+9,33%"
+            "variacao": "+13,67%"
           },
           {
             "ticker": "VAMO3",
-            "variacao": "+8,09%"
+            "variacao": "+9,36%"
           }
         ],
         "quedas": [
           {
             "ticker": "PRIO3",
-            "variacao": "-8,30%"
+            "variacao": "-8,73%"
           },
           {
             "ticker": "BRAV3",
-            "variacao": "-8,39%"
+            "variacao": "-9,19%"
           }
         ]
       },
@@ -136,57 +136,57 @@
       "icone": "☀️",
       "horario": "12h30",
       "titulo": "RADAR DE MEIO-DIA / ALMOÇO — 04/11/2026",
-      "subtitulo": "Ibovespa oscila em torno dos 167.257 pts no início da tarde desta quarta-feira; Dólar cotado a R$ 5,45 com giro concentrado no setor bancário e Vale",
+      "subtitulo": "Ibovespa oscila em torno dos 167.563 pts no início da tarde desta quarta-feira; Dólar cotado a R$ 5,46 com giro concentrado no setor bancário e Vale",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
-          "pontos": "167.257 pts",
-          "variacao": "+0,97%",
+          "pontos": "167.563 pts",
+          "variacao": "+1,15%",
           "positivo": true
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,45",
-          "variacao": "-0,61%",
+          "valor": "R$ 5,46",
+          "variacao": "-0,52%",
           "positivo": false
         },
         "sp500": {
           "nome": "S&P 500",
-          "variacao": "+1,79%",
+          "variacao": "+1,59%",
           "positivo": true,
-          "valor": "7.704 pts"
+          "valor": "7.689 pts"
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.103",
-          "variacao": "+3,58%",
+          "valor": "US$ 80.638",
+          "variacao": "+0,54%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 94,63",
-          "variacao": "-8,59%",
+          "valor": "US$ 94,66",
+          "variacao": "-8,56%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "O Ibovespa opera próximo de 167.257 pts no balanço do meio-dia desta quarta-feira, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
+          "texto": "O Ibovespa opera próximo de 167.563 pts no balanço do meio-dia desta quarta-feira, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 94,63.",
+          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 94,66.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
         {
-          "texto": "O dólar comercial registra cotação de R$ 5,45 (-0,61%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
+          "texto": "O dólar comercial registra cotação de R$ 5,46 (-0,52%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Em Wall Street, o S&P 500 opera aos 7.704 pts, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
+          "texto": "Em Wall Street, o S&P 500 opera aos 7.689 pts, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
           "fonte": "BB InvesTalk"
         }
       ],
@@ -194,32 +194,32 @@
         {
           "ticker": "PETR4",
           "nome": "Petrobras PN",
-          "preco": "R$ 46,93",
-          "variacao_dia": "-7,49%",
+          "preco": "R$ 47,12",
+          "variacao_dia": "-7,12%",
           "variacao_mes": "-3,05%",
           "positivo": false
         },
         {
           "ticker": "VALE3",
           "nome": "Vale ON",
-          "preco": "R$ 62,62",
-          "variacao_dia": "+3,85%",
+          "preco": "R$ 62,35",
+          "variacao_dia": "+3,40%",
           "variacao_mes": "-2,45%",
           "positivo": true
         },
         {
           "ticker": "ITUB4",
           "nome": "Itaú PN",
-          "preco": "R$ 39,74",
-          "variacao_dia": "+3,19%",
+          "preco": "R$ 39,71",
+          "variacao_dia": "+3,12%",
           "variacao_mes": "-0,36%",
           "positivo": true
         },
         {
           "ticker": "WEGE3",
           "nome": "WEG ON",
-          "preco": "R$ 50,36",
-          "variacao_dia": "+2,17%",
+          "preco": "R$ 50,05",
+          "variacao_dia": "+1,54%",
           "variacao_mes": "+1,42%",
           "positivo": true
         }
@@ -228,21 +228,21 @@
         "altas": [
           {
             "ticker": "CMIN3",
-            "variacao": "+9,33%"
+            "variacao": "+13,67%"
           },
           {
             "ticker": "VAMO3",
-            "variacao": "+8,09%"
+            "variacao": "+9,36%"
           }
         ],
         "quedas": [
           {
             "ticker": "PRIO3",
-            "variacao": "-8,30%"
+            "variacao": "-8,73%"
           },
           {
             "ticker": "BRAV3",
-            "variacao": "-8,39%"
+            "variacao": "-9,19%"
           }
         ]
       },
@@ -263,12 +263,12 @@
       "icone": "🌙",
       "horario": "18h30",
       "titulo": "RADAR DE FECHAMENTO — 04/11/2026",
-      "subtitulo": "Ibovespa encerra a quarta-feira aos 167.257 pts; Dólar fecha a R$ 5,45 e investidores avaliam balanços trimestrais",
+      "subtitulo": "Ibovespa encerra a quarta-feira aos 167.563 pts; Dólar fecha a R$ 5,46 e investidores avaliam balanços trimestrais",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
-          "pontos": "167.257 pts",
-          "variacao": "+0,97%",
+          "pontos": "167.563 pts",
+          "variacao": "+1,15%",
           "positivo": true,
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br/news/16044/ibovespa-fecha-em-queda-de-14-e-rcsl4-sobe-35-na-b3-hoje"
@@ -281,8 +281,8 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,45",
-          "variacao": "-0,61%",
+          "valor": "R$ 5,46",
+          "variacao": "-0,52%",
           "positivo": false,
           "ptax": "R$ 5,4935",
           "fonte": "TradeMap",
@@ -290,9 +290,9 @@
         },
         "sp500": {
           "nome": "S&P 500",
-          "variacao": "+1,79%",
+          "variacao": "+1,59%",
           "positivo": true,
-          "valor": "7.704 pts"
+          "valor": "7.689 pts"
         },
         "nasdaq": {
           "nome": "Nasdaq",
@@ -301,8 +301,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.103",
-          "variacao": "+3,58%",
+          "valor": "US$ 80.638",
+          "variacao": "+0,54%",
           "positivo": true,
           "detalhe": "+1,47% na sessão"
         },
@@ -312,8 +312,8 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 94,63",
-          "variacao": "-8,59%",
+          "valor": "US$ 94,66",
+          "variacao": "-8,56%",
           "positivo": false,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
@@ -330,40 +330,40 @@
         {
           "ticker": "PETR4",
           "nome": "Petrobras PN",
-          "preco": "R$ 46,93",
-          "variacao_dia": "-7,49%",
+          "preco": "R$ 47,12",
+          "variacao_dia": "-7,12%",
           "variacao_mes": "-3,79%",
           "positivo": false
         },
         {
           "ticker": "VALE3",
           "nome": "Vale ON",
-          "preco": "R$ 62,62",
-          "variacao_dia": "+3,85%",
+          "preco": "R$ 62,35",
+          "variacao_dia": "+3,40%",
           "variacao_mes": "-2,85%",
           "positivo": true
         },
         {
           "ticker": "ITUB4",
           "nome": "Itaú Unibanco PN",
-          "preco": "R$ 39,74",
-          "variacao_dia": "+3,19%",
+          "preco": "R$ 39,71",
+          "variacao_dia": "+3,12%",
           "variacao_mes": "-0,52%",
           "positivo": true
         },
         {
           "ticker": "BBAS3",
           "nome": "Banco do Brasil ON",
-          "preco": "R$ 16,47",
-          "variacao_dia": "+1,29%",
+          "preco": "R$ 16,49",
+          "variacao_dia": "+1,41%",
           "variacao_mes": "-1,70%",
           "positivo": true
         },
         {
           "ticker": "BBDC4",
           "nome": "Bradesco PN",
-          "preco": "R$ 13,97",
-          "variacao_dia": "+3,02%",
+          "preco": "R$ 14,06",
+          "variacao_dia": "+3,69%",
           "variacao_mes": "-2,02%",
           "positivo": true
         },
@@ -378,16 +378,16 @@
         {
           "ticker": "WEGE3",
           "nome": "WEG ON",
-          "preco": "R$ 50,36",
-          "variacao_dia": "+2,17%",
+          "preco": "R$ 50,05",
+          "variacao_dia": "+1,54%",
           "variacao_mes": "+1,67%",
           "positivo": true
         },
         {
           "ticker": "B3SA3",
           "nome": "B3 ON",
-          "preco": "R$ 14,27",
-          "variacao_dia": "+6,02%",
+          "preco": "R$ 14,30",
+          "variacao_dia": "+6,24%",
           "variacao_mes": "+1,34%",
           "positivo": true
         }
@@ -396,42 +396,42 @@
         "altas": [
           {
             "ticker": "CMIN3",
-            "variacao": "+9,33%"
+            "variacao": "+13,67%"
           },
           {
             "ticker": "VAMO3",
-            "variacao": "+8,09%"
+            "variacao": "+9,36%"
           }
         ],
         "quedas": [
           {
             "ticker": "PRIO3",
-            "variacao": "-8,30%"
+            "variacao": "-8,73%"
           },
           {
             "ticker": "BRAV3",
-            "variacao": "-8,39%"
+            "variacao": "-9,19%"
           }
         ]
       },
       "leitura_rapida": [
         {
-          "texto": "A bolsa brasileira encerra as negociações desta quarta-feira com o Ibovespa marcando 167.257 pts, em pregão marcado por disciplina seletiva dos investidores.",
+          "texto": "A bolsa brasileira encerra as negociações desta quarta-feira com o Ibovespa marcando 167.563 pts, em pregão marcado por disciplina seletiva dos investidores.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,45 (-0,61%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
+          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,46 (-0,52%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 94,63, ditando o rumo das petroleiras no pregão da B3.",
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 94,66, ditando o rumo das petroleiras no pregão da B3.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.103, preservando suporte relevante em sua estrutura de médio prazo.",
+          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.638, preservando suporte relevante em sua estrutura de médio prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
@@ -443,8 +443,8 @@
           "texto": "Mercado aguarda a abertura de amanhã para digerir novos indicadores de inflação e atividade."
         }
       ],
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 18h30"
+      "disponivel": true,
+      "status_publicacao": "Publicado"
     }
   }
 }

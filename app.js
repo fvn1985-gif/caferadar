@@ -181,17 +181,44 @@
       if (boxPublicada) boxPublicada.style.display = 'none';
       if (boxAguardando) {
         boxAguardando.style.display = 'block';
+
+        // Determinar se já passou do horário previsto
+        const agora = new Date();
+        const horaAtual = agora.getHours();
+        const minAtual = agora.getMinutes();
+        const tempoAtualMin = horaAtual * 60 + minAtual;
+
+        let tempoPrevistoMin = 0;
+        const mHorario = String(dadosEdicao.horario || '').match(/^(\d{2})h(\d{2})/);
+        if (mHorario) {
+          tempoPrevistoMin = parseInt(mHorario[1], 10) * 60 + parseInt(mHorario[2], 10);
+        }
+
+        const jaPassou = tempoPrevistoMin > 0 && tempoAtualMin >= tempoPrevistoMin;
+
+        const tituloAguardando = jaPassou
+          ? `Edição de ${escaparHtml(dadosEdicao.nome)} em Processamento`
+          : `Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '18h30')}`;
+
+        const textoAguardando = jaPassou
+          ? `O pregão desta sessão já foi encerrado. A consolidação dos dados de fechamento está sendo processada pela equipe e estará disponível em instantes.`
+          : `O pregão da B3 está em andamento. A síntese, cotações consolidadas e destaques do mercado para esta edição serão publicados pontualmente às <strong>${escaparHtml(dadosEdicao.horario || '')}</strong>.`;
+
+        const badgeAguardando = jaPassou
+          ? `● Consolidação em andamento (${escaparHtml(dadosEdicao.horario || '')})`
+          : `● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}`;
+
         boxAguardando.innerHTML = `
           <div class="card-bloco-noticia" style="text-align:center; padding: 56px 24px; margin-top: 16px;">
             <div style="font-size: 3.2rem; margin-bottom: 14px;">⏳</div>
             <h3 style="font-size: 1.45rem; color: var(--primaria); font-weight: 800; margin-bottom: 10px;">
-              Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '12h30')}
+              ${tituloAguardando}
             </h3>
             <p style="font-size: 1rem; color: var(--texto-secundario); max-width: 540px; margin: 0 auto 18px; line-height: 1.6;">
-              O pregão da B3 está em andamento. A síntese, cotações consolidadas e destaques do mercado para esta edição serão publicados pontualmente às <strong>${escaparHtml(dadosEdicao.horario || '')}</strong>.
+              ${textoAguardando}
             </p>
             <div style="display:inline-block; background: var(--destaque-suave); color: var(--destaque); padding: 6px 16px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem; margin-bottom: 24px;">
-              ● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}
+              ${badgeAguardando}
             </div>
             <div>
               <button id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">
@@ -367,6 +394,52 @@
   function renderizarSwingTrade(dados) {
     if (!dados) return;
 
+    // 0. Frescor dos dados e execução do scanner
+    const elFrescorTexto = document.getElementById('st-frescor-texto');
+    const elBadgeFrescor = document.getElementById('st-badge-frescor');
+    const containerFrescor = document.getElementById('st-frescor-container');
+
+    if (containerFrescor && elFrescorTexto && elBadgeFrescor) {
+      const dataRef = dados.data_referencia;
+      const dataExec = dados.data_execucao_scanner || dados.atualizado_em;
+      const statusFrescor = dados.status_frescor || 'DESATUALIZADO';
+      const defasagem = typeof dados.dias_uteis_defasagem === 'number' ? dados.dias_uteis_defasagem : null;
+
+      // Formatar data_referencia (YYYY-MM-DD -> DD/MM)
+      let dataRefFmt = '—';
+      if (dataRef && /^\d{4}-\d{2}-\d{2}$/.test(dataRef)) {
+        const p = dataRef.split('-');
+        dataRefFmt = `${p[2]}/${p[1]}`;
+      } else if (dataRef && dataRef !== '—') {
+        dataRefFmt = String(dataRef);
+      }
+
+      // Formatar data_execucao_scanner (ex: "04/11/2026 às 10h18" -> "04/11 às 10h18")
+      let dataExecFmt = '—';
+      if (dataExec && dataExec !== '—') {
+        const mExec = String(dataExec).match(/^(\d{2})\/(\d{2})\/\d{4}\s+às\s+(\d{2}h\d{2})/);
+        if (mExec) {
+          dataExecFmt = `${mExec[1]}/${mExec[2]} às ${mExec[3]}`;
+        } else {
+          dataExecFmt = String(dataExec);
+        }
+      }
+
+      if (statusFrescor === 'ATUALIZADO') {
+        containerFrescor.classList.remove('alerta-desatualizado');
+        elBadgeFrescor.className = 'badge-frescor atualizado';
+        elBadgeFrescor.textContent = 'Scanner Atualizado';
+        elFrescorTexto.innerHTML = `<strong>Dados de ${escaparHtml(dataRefFmt)}</strong> — scanner executado em ${escaparHtml(dataExecFmt)}`;
+      } else {
+        containerFrescor.classList.add('alerta-desatualizado');
+        elBadgeFrescor.className = 'badge-frescor desatualizado';
+        elBadgeFrescor.textContent = (defasagem !== null && defasagem < 999)
+          ? `Desatualizado (${defasagem} pregões)`
+          : 'Dados Desatualizados';
+        elFrescorTexto.innerHTML = `<span style="color:var(--baixa); font-weight:700;">⚠️ ALERTA DE FRESCOR:</span> Dados de ${escaparHtml(dataRefFmt)} — scanner executado em ${escaparHtml(dataExecFmt)}. O mercado pode ter mudado desde esta leitura.`;
+      }
+    }
+
     // 1. Painel de Métricas do Motor
     const est = dados.estrategia || {};
     const elUni = document.getElementById('st-universo');
@@ -376,12 +449,18 @@
     if (elAlvo && est.alvo_padrao_percentual) elAlvo.textContent = `+${est.alvo_padrao_percentual.toFixed(2)}%`;
 
     const elAssert = document.getElementById('st-assertividade');
-    if (elAssert && est.assertividade_historica_1ano) {
-      if (est.operacoes_vencedoras) {
-        elAssert.textContent = `${est.operacoes_vencedoras} de ${est.operacoes_vencedoras} encerradas no alvo`;
-      } else {
-        elAssert.textContent = est.assertividade_historica_1ano;
-      }
+    if (elAssert) {
+      const venc = est.operacoes_vencedoras ?? 154;
+      const tot = est.operacoes_totais_1ano ?? 173;
+      const pct = est.assertividade_historica_1ano || '89,0%';
+      elAssert.textContent = `${venc} de ${tot} encerradas no alvo (${pct})`;
+    }
+
+    const elAbertasDetalhe = document.getElementById('st-abertas-detalhe');
+    if (elAbertasDetalhe) {
+      const abertas = est.operacoes_em_aberto ?? 19;
+      const vermelho = est.operacoes_abertas_vermelho ?? 18;
+      elAbertasDetalhe.textContent = `${abertas} em aberto (${vermelho} no vermelho) — modelo sem stop loss`;
     }
 
     const elTempo = document.getElementById('st-tempo');
@@ -853,7 +932,15 @@
 
   function obterSwingFallback() {
     return {
+      data_referencia: '—',
+      data_execucao_scanner: '—',
+      status_frescor: 'DESATUALIZADO',
+      dias_uteis_defasagem: 999,
       estrategia: {
+        operacoes_vencedoras: 154,
+        operacoes_totais_1ano: 173,
+        operacoes_em_aberto: 19,
+        operacoes_abertas_vermelho: 18,
         universo_total: 59,
         alvo_padrao_percentual: 5.0,
         assertividade_historica_1ano: '89,0%',

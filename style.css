@@ -1223,7 +1223,50 @@ body {
   background-color: #f8fafc;
   color: #94a3b8;
 }
-\n
+
+/* ==================== BARRA E BADGE DE FRESCOR DO SWING TRADE ==================== */
+.barra-frescor-swing {
+  background-color: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-md);
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  box-shadow: var(--sombra-card);
+}
+
+.barra-frescor-swing.alerta-desatualizado {
+  border-color: var(--baixa-borda);
+  background-color: var(--baixa-bg);
+}
+
+.badge-frescor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.badge-frescor.atualizado {
+  background-color: var(--alta-bg);
+  color: var(--alta);
+  border: 1px solid var(--alta-borda);
+}
+
+.badge-frescor.desatualizado {
+  background-color: var(--baixa-bg);
+  color: var(--baixa);
+  border: 1px solid var(--baixa-borda);
+}
 /* ==================== SELETOR DE EDIÇÕES DIÁRIAS ==================== */
 .seletor-edicoes-dia {
   background-color: var(--bg-card);
