@@ -287,10 +287,10 @@
           <span class="sub-metrica">Lucro pré-definido por trade</span>
         </div>
         <div class="card-metrica-swing">
-          <span class="rotulo-metrica">Auditoria Pública (1 ano)</span>
-          <span class="valor-metrica destaque" id="st-assertividade" style="font-size:1.15rem; line-height:1.3;">154 de 173 encerradas no alvo (89,0%)</span>
-          <span class="sub-metrica" id="st-abertas-detalhe" style="margin-top:4px;">19 em aberto (18 no vermelho) — modelo sem stop loss</span>
-          <a href="historico-swing.html" target="_blank" style="display:inline-block; margin-top:6px; font-size:0.75rem; color:var(--destaque); font-weight:700; text-decoration:underline;">Ver log dos 173 trades auditados ↗</a></div>
+          <span class="rotulo-metrica">Auditoria Pública (Backtest 1 ano)</span>
+          <span class="valor-metrica destaque" id="st-assertividade" style="font-size:1.05rem; line-height:1.35;">154 encerradas no alvo · 19 em aberto (18 no vermelho)</span>
+          <span class="sub-metrica" id="st-abertas-detalhe" style="margin-top:6px; font-size:0.78rem; line-height:1.45;">Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest auditado no período apurado, não é histórico de operações reais.</span>
+          <a href="historico-swing.html" target="_blank" style="display:inline-block; margin-top:8px; font-size:0.75rem; color:var(--destaque); font-weight:700; text-decoration:underline;">Ver log dos 173 trades auditados ↗</a></div>
         <div class="card-metrica-swing">
           <span class="rotulo-metrica">Prazo Mediano</span>
           <span class="valor-metrica" id="st-tempo">11 pregões</span>
@@ -395,12 +395,12 @@
 
       <!-- Alocação Patrimonial -->
       <section class="secao alocacao">
-        <h2>Alocação do Motor Quantitativo para o Novo Aporte</h2>
+        <h2>Estudo Teórico de Alocação Macroeconômica do Modelo</h2>
         <div class="grid-alocacao">
           <div id="grafico-pizza" class="area-grafico"></div>
           <div id="lista-alocacao" class="lista-cards"></div>
         </div>
-        <p class="nota-rodape">Percentuais gerados automaticamente pelas regras quantitativas do motor Python homologado.</p>
+        <p class="nota-rodape">Percentuais conceituais derivados automaticamente pelas regras quantitativas do modelo em Python. Não constitui carteira recomendada.</p>
       </section>
 
       <!-- Tradução Humana dos Ativos (Cards Educativos) -->
@@ -659,11 +659,11 @@
         </div>
 
         <div class="passo-a-passo-aporte">
-          <h3>Como aplicar na prática em 3 passos:</h3>
+          <h3>Como acompanhar os estudos quantitativos:</h3>
           <ol>
-            <li><strong>Diariamente às 18h30:</strong> Acesse o site para ler o <strong>Fechamento Diário</strong> em 2 minutos e ver se o scanner de <strong>Swing Trade</strong> identificou alguma compra com alvo de +5%.</li>
-            <li><strong>Todo início de mês:</strong> Consulte o <strong>Radar Longo Prazo</strong> para direcionar seu aporte mensal novo (ex: Tesouro, IVVB11, Bitcoin).</li>
-            <li><strong>Mantenha a disciplina:</strong> Não tente antecipar o mercado. Deixe a matemática e a consistência trabalharem a favor da sua tranquilidade.</li>
+            <li><strong>Fechamento Diário:</strong> Acompanhe a síntese informativa do pregão com cotações consolidadas e fatos econômicos do dia.</li>
+            <li><strong>Filtro de Swing Trade:</strong> Monitore o comportamento estatístico das 59 ações sob os critérios de reversão à média e volatilidade.</li>
+            <li><strong>Estudo de Longo Prazo:</strong> Avalie a dinâmica matemática de ponderação entre juros reais, moeda forte e ativos de assimetria.</li>
           </ol>
         </div>
       </div>
@@ -712,9 +712,9 @@
       </div>
 
       <div class="disclaimer-cvm">
-        <strong>AVISO LEGAL & GOVERNANÇA (RESOLUÇÃO CVM Nº 20/2021):</strong>
+        <strong>AVISO LEGAL & GOVERNANÇA REGULATÓRIA (RESOLUÇÕES CVM Nº 19/2021 E Nº 20/2021):</strong>
         <p>
-          As análises, fechamentos diários, oportunidades táticas de swing trade e modelos quantitativos de longo prazo divulgados no CafeRadar têm finalidade exclusivamente jornalística, informativa e educacional, não constituindo oferta, consultoria ou recomendação individualizada de investimento em valores mobiliários ou ativos digitais. Operações em renda variável envolvem risco de oscilação de preços e perda de capital. O CafeRadar não custodia recursos, não recebe comissões de corretagem e não executa ordens. Rentabilidade passada não é garantia de ganhos futuros.
+          O CafeRadar é uma plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado. Os fechamentos diários, filtros algorítmicos e estudos de alocação têm finalidade estritamente jornalística, tecnológica e educacional. Não constituem oferta pública, consultoria de investimentos individualizada (Resolução CVM nº 19/2021), gestão de carteira nem recomendação de compra ou venda de valores mobiliários (Resolução CVM nº 20/2021). Os sinais do Swing Trade representam filtros técnicos matemáticos e não correspondem a operações executadas na carteira real do autor. O CafeRadar não custodia valores, não recebe corretagem e não executa ordens. Renda variável envolve risco de perda de capital; rentabilidade passada obtida em simulação algorítmica não garante retornos futuros.
         </p>
         <p class="copy-texto">© 2026 CafeRadar. Todos os direitos reservados.</p>
       </div>
@@ -722,5 +722,53 @@
   </footer>
 
   <script src="app.js"></script>
+
+  <!-- Modais de Governança & Ciência do Usuário (CVM 19 e 20) -->
+  <div id="modal-governanca-swing" class="modal-governanca" style="display:none;">
+    <div class="modal-governanca-backdrop"></div>
+    <div class="modal-governanca-conteudo">
+      <div class="modal-header">
+        <span style="font-size:1.6rem;">⚖️</span>
+        <h3>Aviso de Pesquisa Quantitativa: Swing Trade B3</h3>
+      </div>
+      <div class="modal-corpo">
+        <p><strong>Antes de visualizar os dados desta seção, compreenda os critérios de governança:</strong></p>
+        <ul>
+          <li><strong>Filtros Estatísticos Automatizados:</strong> Os ativos listados decorrem de fórmulas matemáticas pré-programadas de volatilidade e reversão à média, <em>não correspondendo necessariamente a operações executadas na carteira do autor</em>.</li>
+          <li><strong>Ausência de Recomendação:</strong> Estes dados não configuram recomendação de investimento, "call" de compra/venda nem consultoria financeira (Resoluções CVM nº 19/2021 e nº 20/2021).</li>
+          <li><strong>Risco e Ausência de Stop Loss:</strong> O modelo opera sem stop loss clássico; toda operação não encerrada no alvo permanece em aberto acumulando rebaixamento a mercado. Rentabilidade passada em backtests não é garantia de lucros futuros.</li>
+        </ul>
+      </div>
+      <div class="modal-rodape">
+        <button id="btn-concordo-swing" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
+          Compreendo e Desejo Acessar o Estudo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-governanca-alocacao" class="modal-governanca" style="display:none;">
+    <div class="modal-governanca-backdrop"></div>
+    <div class="modal-governanca-conteudo">
+      <div class="modal-header">
+        <span style="font-size:1.6rem;">🏛️</span>
+        <h3>Aviso de Estudo Conceitual: Radar de Longo Prazo</h3>
+      </div>
+      <div class="modal-corpo">
+        <p><strong>Antes de visualizar os estudos macroeconômicos de alocação:</strong></p>
+        <ul>
+          <li><strong>Modelo Teórico Quantitativo:</strong> As proporções exibidas são geradas por algoritmos conceituais para fins didáticos e de simulação acadêmica sobre classes de ativos.</li>
+          <li><strong>Não é Carteira Personalizada:</strong> O modelo não avalia o seu perfil de investidor, tolerância a perdas, horizonte de vida ou necessidades de liquidez particulares.</li>
+          <li><strong>Decisão Autônoma:</strong> O conteúdo não substitui consultoria individualizada nem dispensa a realização de avaliação própria antes de qualquer alocação de recursos.</li>
+        </ul>
+      </div>
+      <div class="modal-rodape">
+        <button id="btn-concordo-alocacao" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
+          Compreendo e Desejo Acessar o Modelo
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

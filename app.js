@@ -58,11 +58,49 @@
     aplicarHashUrl();
   }
 
+
+  // Controle de Ciência Regulatória e Consentimento Informado (CVM 19 e 20)
+  function verificarModalConsentimento(tabId, callbackProsseguir) {
+    const consentimentoSwing = localStorage.getItem('caferadar_consent_swing');
+    const consentimentoAlocacao = localStorage.getItem('caferadar_consent_alocacao');
+
+    if (tabId === 'swingtrade' && !consentimentoSwing) {
+      const modalSwing = document.getElementById('modal-governanca-swing');
+      const btnConcordo = document.getElementById('btn-concordo-swing');
+      if (modalSwing && btnConcordo) {
+        modalSwing.style.display = 'flex';
+        btnConcordo.onclick = function() {
+          localStorage.setItem('caferadar_consent_swing', 'true');
+          modalSwing.style.display = 'none';
+          callbackProsseguir();
+        };
+        return false;
+      }
+    } else if (tabId === 'alocacao' && !consentimentoAlocacao) {
+      const modalAlocacao = document.getElementById('modal-governanca-alocacao');
+      const btnConcordoAloc = document.getElementById('btn-concordo-alocacao');
+      if (modalAlocacao && btnConcordoAloc) {
+        modalAlocacao.style.display = 'flex';
+        btnConcordoAloc.onclick = function() {
+          localStorage.setItem('caferadar_consent_alocacao', 'true');
+          modalAlocacao.style.display = 'none';
+          callbackProsseguir();
+        };
+        return false;
+      }
+    }
+    return true;
+  }
+
   window.trocarTab = function (tabId) {
     if (!tabId) return;
 
-    // Normaliza id caso venha com prefixo tab-
     const idLimpo = tabId.replace(/^tab-/, '');
+
+    // Verifica modal de consentimento informado antes de exibir Swing Trade ou Radar Longo Prazo
+    if (!verificarModalConsentimento(idLimpo, function() { window.trocarTab(idLimpo); })) {
+      return;
+    }
 
     // Atualiza botões
     document.querySelectorAll('.btn-tab').forEach(function (btn) {
@@ -391,6 +429,57 @@
     }
   }
 
+  /**
+   * Determina a defasagem em pregões B3 e status de frescor dinamicamente a partir de data_referencia.
+   * Considera o fuso horário de São Paulo (America/Sao_Paulo).
+   * Fallback explícito: Cálculo padrão por dias úteis B3 (segunda a sexta, excluindo fins de semana).
+   */
+  function calcularFrescorDinamico(dataRefStr) {
+    if (!dataRefStr || !/^\d{4}-\d{2}-\d{2}$/.test(dataRefStr)) {
+      return { status: 'DESATUALIZADO', defasagem: 999, fallback: 'data_invalida' };
+    }
+
+    try {
+      // Obter data atual no fuso de São Paulo
+      const agora = new Date();
+      const spFormatter = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Sao_Paulo',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+      const dataSpStr = spFormatter.format(agora); // YYYY-MM-DD
+      const partesRef = dataRefStr.split('-').map(Number);
+      const partesHoje = dataSpStr.split('-').map(Number);
+
+      const dRef = new Date(Date.UTC(partesRef[0], partesRef[1] - 1, partesRef[2]));
+      const dHoje = new Date(Date.UTC(partesHoje[0], partesHoje[1] - 1, partesHoje[2]));
+
+      if (dRef > dHoje) {
+        return { status: 'ATUALIZADO', defasagem: 0, fallback: 'data_futura' };
+      }
+
+      // Contagem de pregões úteis (Fallback explícito: dias úteis bancários B3 segunda a sexta)
+      let contagem = 0;
+      let cur = new Date(dRef.getTime() + 86400000);
+
+      while (cur <= dHoje) {
+        const diaSemana = cur.getUTCDay(); // 0: Dom, 6: Sab
+        if (diaSemana !== 0 && diaSemana !== 6) {
+          contagem++;
+        }
+        cur = new Date(cur.getTime() + 86400000);
+      }
+
+      // Regime B3 regular: sessão atual (0) ou sessão imediatamente anterior (1) é ATUALIZADO
+      const status = contagem <= 1 ? 'ATUALIZADO' : 'DESATUALIZADO';
+      return { status: status, defasagem: contagem, fallback: 'dias_uteis_b3_simplificado' };
+    } catch (e) {
+      console.warn('Falha no cálculo dinâmico de frescor, usando dados brutos:', e);
+      return { status: 'DESATUALIZADO', defasagem: 999, fallback: 'erro' };
+    }
+  }
+
   function renderizarSwingTrade(dados) {
     if (!dados) return;
 
@@ -402,8 +491,12 @@
     if (containerFrescor && elFrescorTexto && elBadgeFrescor) {
       const dataRef = dados.data_referencia;
       const dataExec = dados.data_execucao_scanner || dados.atualizado_em;
-      const statusFrescor = dados.status_frescor || 'DESATUALIZADO';
-      const defasagem = typeof dados.dias_uteis_defasagem === 'number' ? dados.dias_uteis_defasagem : null;
+      // 0.1 Cálculo de frescor dinâmico no frontend (Fuso de São Paulo)
+      const dinamico = calcularFrescorDinamico(dataRef);
+      // O frontend não confia exclusivamente no JSON: se a defasagem real superar 1 pregão, força DESATUALIZADO
+      const statusFrescor = (dinamico.defasagem > 1) ? 'DESATUALIZADO' : (dados.status_frescor || dinamico.status);
+      const defasagem = dinamico.defasagem !== null ? dinamico.defasagem : (typeof dados.dias_uteis_defasagem === 'number' ? dados.dias_uteis_defasagem : null);
+      const avisoFrescorExtra = dados.aviso_frescor ? ` (${escaparHtml(dados.aviso_frescor)})` : '';
 
       // Formatar data_referencia (YYYY-MM-DD -> DD/MM)
       let dataRefFmt = '—';
@@ -427,16 +520,20 @@
 
       if (statusFrescor === 'ATUALIZADO') {
         containerFrescor.classList.remove('alerta-desatualizado');
+        containerFrescor.style.borderLeft = '';
         elBadgeFrescor.className = 'badge-frescor atualizado';
         elBadgeFrescor.textContent = 'Scanner Atualizado';
         elFrescorTexto.innerHTML = `<strong>Dados de ${escaparHtml(dataRefFmt)}</strong> — scanner executado em ${escaparHtml(dataExecFmt)}`;
       } else {
+        // Exibir faixa vermelha destacada quando defasagem superar um pregão ou estiver desatualizado
         containerFrescor.classList.add('alerta-desatualizado');
+        containerFrescor.style.borderLeft = '6px solid var(--baixa, #dc2626)';
+        containerFrescor.style.background = 'rgba(239, 68, 68, 0.08)';
         elBadgeFrescor.className = 'badge-frescor desatualizado';
         elBadgeFrescor.textContent = (defasagem !== null && defasagem < 999)
           ? `Desatualizado (${defasagem} pregões)`
           : 'Dados Desatualizados';
-        elFrescorTexto.innerHTML = `<span style="color:var(--baixa); font-weight:700;">⚠️ ALERTA DE FRESCOR:</span> Dados de ${escaparHtml(dataRefFmt)} — scanner executado em ${escaparHtml(dataExecFmt)}. O mercado pode ter mudado desde esta leitura.`;
+        elFrescorTexto.innerHTML = `<span style="color:var(--baixa, #dc2626); font-weight:800;">🚨 DADOS DEFASADOS (${defasagem !== null ? defasagem + ' pregões' : ''}):</span> Dados de <strong>${escaparHtml(dataRefFmt)}</strong> — scanner executado em ${escaparHtml(dataExecFmt)}${avisoFrescorExtra}. O mercado mudou desde esta leitura; opere com cautela.`;
       }
     }
 
@@ -451,16 +548,14 @@
     const elAssert = document.getElementById('st-assertividade');
     if (elAssert) {
       const venc = est.operacoes_vencedoras ?? 154;
-      const tot = est.operacoes_totais_1ano ?? 173;
-      const pct = est.assertividade_historica_1ano || '89,0%';
-      elAssert.textContent = `${venc} de ${tot} encerradas no alvo (${pct})`;
+      const abertas = est.operacoes_em_aberto ?? 19;
+      const vermelho = est.operacoes_abertas_vermelho ?? 18;
+      elAssert.textContent = `${venc} encerradas no alvo · ${abertas} em aberto (${vermelho} no vermelho)`;
     }
 
     const elAbertasDetalhe = document.getElementById('st-abertas-detalhe');
     if (elAbertasDetalhe) {
-      const abertas = est.operacoes_em_aberto ?? 19;
-      const vermelho = est.operacoes_abertas_vermelho ?? 18;
-      elAbertasDetalhe.textContent = `${abertas} em aberto (${vermelho} no vermelho) — modelo sem stop loss`;
+      elAbertasDetalhe.textContent = est.nota_metodologica || 'Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest auditado, não é histórico de operações reais.';
     }
 
     const elTempo = document.getElementById('st-tempo');
@@ -943,8 +1038,7 @@
         operacoes_abertas_vermelho: 18,
         universo_total: 59,
         alvo_padrao_percentual: 5.0,
-        assertividade_historica_1ano: '89,0%',
-        tempo_medio_posicao: '6 a 12 dias'
+        tempo_medio_posicao: '11 pregões (mediana)'
       },
       resumo_pregão_hoje: { oportunidades: 1, ressalvas: 1, aguardando: 14, desfavoravel: 43 },
       posicoes_destaque: [

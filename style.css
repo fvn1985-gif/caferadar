@@ -1388,3 +1388,77 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* Modais de Governança e Ciência Regulatória (CVM 19 e 20) */
+.modal-governanca {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-governanca-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+}
+.modal-governanca-conteudo {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 560px;
+  width: 90%;
+  padding: 28px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--borda);
+  animation: modalSurgir 0.2s ease-out;
+}
+@keyframes modalSurgir {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--borda);
+  padding-bottom: 12px;
+}
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primaria);
+  margin: 0;
+}
+.modal-corpo p {
+  font-size: 0.92rem;
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.modal-corpo ul {
+  margin-left: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--texto-principal);
+  line-height: 1.5;
+}
+.modal-rodape {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+}

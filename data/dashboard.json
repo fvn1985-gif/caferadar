@@ -1,15 +1,15 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-04T21:25:53.883107-03:00",
-  "reference_date": "2026-11-04",
-  "status": "● MONITORAMENTO DIÁRIO ATIVO — 04/11/2026",
+  "generated_at": "2026-11-05T08:29:16.593536-03:00",
+  "reference_date": "2026-11-05",
+  "status": "● MONITORAMENTO DIÁRIO ATIVO — 05/11/2026",
   "indicators": {
     "ibov": {
       "fallback_used": false,
       "freshness_limit_calendar_days": 5,
       "last_close": {
-        "date": "2026-11-04",
-        "value": 167563.47
+        "date": "2026-11-05",
+        "value": 167564.0
       },
       "last_close_age_calendar_days": 0,
       "sma200": {
@@ -19,7 +19,7 @@
         "valid": true
       },
       "sma50": {
-        "value": 187992.53,
+        "value": 187992.54,
         "observations": 50,
         "approximation": false,
         "valid": true
@@ -30,11 +30,11 @@
     "ptax_venda": {
       "filter_active": false,
       "last_sale": {
-        "date": "2026-11-04",
-        "value": 5.487
+        "date": "2026-11-05",
+        "value": 5.4551
       },
       "sma200": {
-        "value": 5.1325,
+        "value": 5.1338,
         "observations": 200,
         "approximation": false,
         "valid": true
@@ -42,7 +42,7 @@
       "valid": true
     },
     "tesouro_ipca2040": {
-      "date": "2026-11-04",
+      "date": "2026-11-05",
       "last_buy_rate_percent": 6.55,
       "manual_entry": false,
       "valid": true
@@ -59,16 +59,16 @@
       "value_bps": 118.28
     },
     "bitcoin": {
-      "drawdown_from_high_percent": -24.91,
+      "drawdown_from_high_percent": -25.38,
       "last_close": {
-        "date": "2026-11-04",
-        "value": 80666.32
+        "date": "2026-11-05",
+        "value": 80166.24
       },
       "positive_trend_confirmed": true,
       "valid": true
     },
     "erp_real_regra_radar": {
-      "date": "2026-11-04",
+      "date": "2026-11-05",
       "valid": true,
       "value_percent": 1.472
     }
@@ -99,13 +99,13 @@
     "Tesouro IPCA+ 2040": "60% — Taxa real em 6.55% a.a. acima da inflação e sem risco de estresse soberano: prioridade máxima para assegurar rentabilidade real histórica.",
     "IVVB11": "30% — Alocação global em dólar (S&P 500) para proteção patrimonial e diversificação geográfica em moeda forte.",
     "BOVA11": "0% — Veto técnico de governança ativo. O Radar aguarda maior desconto nos múltiplos da bolsa brasileira para retomar compras.",
-    "Bitcoin": "10% — Assimetria digital global respeitando o teto de prudência de 10%. Drawdown anual atual: -24,91%.",
+    "Bitcoin": "10% — Assimetria digital global respeitando o teto de prudência de 10%. Drawdown anual atual: -25,38%.",
     "Caixa": "0% — Cenário sem alertas de crise soberana acionados; 100% dos recursos elegíveis para ativos remunerados."
   },
   "warnings": [
-    "Monitor quantitativo diário atualizado em 04/11/2026 às 21h25 com cotações oficiais e médias históricas de 200 dias.",
+    "Monitor quantitativo diário atualizado em 05/11/2026 às 08h29 com cotações oficiais e médias históricas de 200 dias.",
     "Tesouro IPCA+ 2040: Taxa real atrativa (6.55% a.a.), justificando prioridade de alocação de longo prazo.",
-    "Bitcoin: Drawdown na janela anual em -24,91%; respeitar o limite máximo de risco de 10% no aporte.",
+    "Bitcoin: Drawdown na janela anual em -25,38%; respeitar o limite máximo de risco de 10% no aporte.",
     "FGV CEQEF: Fonte acadêmica secundária temporariamente ignorada por integridade de conexão (sem impacto no modelo).",
     "Percentuais representam uma proposta quantitativa disciplinada, e não ordem de corretora. Revise seu perfil antes de investir."
   ]

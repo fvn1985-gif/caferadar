@@ -3,18 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regras do Motor & Governança — CafeRadar</title>
-  <meta name="description" content="Documentação técnica, regras de governança e princípios quantitativos do motor Python do CafeRadar.">
+  <title>Regras Técnicas, Metodologia & Governança — CafeRadar</title>
+  <meta name="description" content="Documentação das regras algorítmicas, fontes oficiais, governança de falha fechada e diretrizes de conformidade regulatória do CafeRadar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="canonical" href="https://caferadar.com.br/rules.html">
+  <link rel="stylesheet" href="style.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://caferadar.com.br/rules.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
   <style>
     .regras-container {
       max-width: 860px;
       margin: 32px auto 64px;
+    }
+    .regras-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--sombra-card);
+    }
+    .regras-card h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primaria);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .regras-card p {
+      font-size: 0.95rem;
+      color: var(--texto-secundario);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .regras-card ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--texto-principal);
     }
     .btn-voltar {
       display: inline-flex;
@@ -34,122 +67,82 @@
       background-color: var(--destaque-suave);
       color: var(--destaque);
     }
-    .regras-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--borda);
-      border-radius: var(--raio-lg);
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: var(--sombra-card);
-    }
-    .regras-card h2 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--primaria);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .regras-card p {
-      font-size: 0.95rem;
-      color: var(--texto-secundario);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-    .regras-card ul {
-      margin-left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.92rem;
-      color: var(--texto-principal);
-    }
-    .regras-card ul li strong {
-      color: var(--primaria);
-    }
   </style>
-  <!-- Google AdSense Oficial -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309"
-     crossorigin="anonymous"></script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
-  <meta property="og:title" content="CafeRadar — Inteligência de Mercado & Swing Trade B3">
-  <meta property="og:description" content="Fechamento diário de mercado em 3 edições, scanner tático de Swing Trade B3 (+5%) e bússola quantitativa de alocação patrimonial.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://caferadar.com.br">
 </head>
 <body>
 
-  <!-- ==================== TOPO DO PORTAL ==================== -->
+  <!-- Topo -->
   <header class="cabecalho-portal">
     <div class="container container-header">
       <div class="marca-portal">
-        <div class="logo-icone">RI</div>
+        <div class="logo-icone">CR</div>
         <div>
-          <h1 class="portal-titulo">RADAR INVEST</h1>
-          <p class="portal-slogan">Regras Técnicas, Metodologia Quantitativa & Governança do Motor</p>
+          <h1 class="portal-titulo">CAFERADAR</h1>
+          <p class="portal-slogan">Regras Algorítmicas, Metodologia Quantitativa & Governança</p>
         </div>
       </div>
       <div class="status-topo">
         <a href="index.html" class="btn-tab ativa" style="border:1px solid var(--borda); border-radius:9999px; padding:6px 14px;">
-          <span>← Voltar ao Portal Principal</span>
+          <span>← Voltar ao Portal</span>
         </a>
       </div>
     </div>
   </header>
 
   <main class="container regras-container">
-
-    <a href="index.html" class="btn-voltar">← Voltar ao CafeRadar</a>
+    <a href="index.html" class="btn-voltar">← Voltar à página inicial</a>
 
     <!-- Bloco 1 -->
     <div class="regras-card">
-      <h2><span>🏛️</span> Papel do Motor Python como Fonte Oficial</h2>
+      <h2><span>⚙️</span> Natureza dos Modelos e Filtros Algorítmicos</h2>
       <p>
-        Todas as decisões calculadas apresentadas na plataforma (indicadores de mercado, alertas de estresse, elegibilidade de ativos e alocação percentual) são geradas <strong>exclusivamente por um motor em código Python homologado</strong>.
+        O <strong>CafeRadar</strong> é uma plataforma independente de pesquisa quantitativa, inteligência de dados e jornalismo de mercado. Suas ferramentas têm caráter estritamente analítico e didático:
       </p>
-      <p>
-        A interface web atua estritamente como uma camada de visualização limpa. Ela <strong>não recalcula, não reinterpreta e não inventa dados</strong>. O contrato de dados entre o motor e o site é imutável e auditável.
-      </p>
+      <ul>
+        <li><strong>Fórmulas Matemáticas de Domínio Público:</strong> Os modelos fundamentam-se em séries temporais, médias móveis (SMA50, SMA200), osciladores de volatilidade e diferenciais de juros reais;</li>
+        <li><strong>Processamento 100% Determinístico:</strong> Os resultados não contêm palpites, intuições subjetivas ou interferência comercial de mesas de negociação;</li>
+        <li><strong>Simulação Retrospectiva vs Operação Real:</strong> Os registros históricos do Swing Trade e do Radar derivam de backtests e filtros automatizados em Python. Não devem ser interpretados como relatório de execução de ordens pelo autor nem como garantia de rentabilidade futura.</li>
+      </ul>
     </div>
 
     <!-- Bloco 2 -->
     <div class="regras-card">
-      <h2><span>📊</span> Indicadores, Alertas e Filtros Técnicos</h2>
-      <p>O motor monitora continuamente séries temporais oficiais e aplica filtros de proteção:</p>
+      <h2><span>📐</span> Parâmetros do Radar de Longo Prazo</h2>
+      <p>
+        O modelo teórico de alocação patrimonial macroeconômica processa dados das seguintes fontes públicas:
+      </p>
       <ul>
-        <li><strong>Ibovespa (SMA200 / SMA50):</strong> Filtro de esticamento. Se a bolsa estiver mais de 15% acima da sua média de 200 períodos, o alerta de esticamento é acionado.</li>
-        <li><strong>Dólar PTAX (SMA200):</strong> Filtro cambial para compras de IVVB11 (S&P 500).</li>
-        <li><strong>Tesouro IPCA+ (Taxa Real):</strong> Limiar de prioridade em 6,50% a.a. Quando o juro real supera esse patamar sem estresse soberano, o título público recebe até 60% de prioridade no novo aporte.</li>
-        <li><strong>DI1 & CDS Brasil 5Y (Estresse Soberano):</strong> Alerta conjugado que detecta disparada nos juros futuros e no risco de crédito do país.</li>
-        <li><strong>Bitcoin (Tendência & Drawdown):</strong> Alocação limitada ao teto prudencial de 10%, condicionada a fechamento acima da SMA200.</li>
-        <li><strong>Veto ao BOVA11:</strong> Veto sistemático acionado para evitar compras de ações brasileiras quando múltiplos e risco fiscal estiverem desfavoráveis.</li>
+        <li><strong>Ibovespa (SMA200 / SMA50):</strong> Filtro de esticamento técnico sobre a média móvel longa;</li>
+        <li><strong>Dólar PTAX (Banco Central do Brasil):</strong> Monitoramento cambial para análise de exposição em moeda forte (IVVB11);</li>
+        <li><strong>Tesouro IPCA+ (Taxa Real / Tesouro Direto):</strong> Monitoramento do nível de juro real da economia para ponderação teórica da renda fixa pública;</li>
+        <li><strong>DI1 & Risco Soberano:</strong> Indicadores de estresse na curva futura de juros e percepção de crédito da República;</li>
+        <li><strong>Bitcoin:</strong> Parâmetro de assimetria tecnológica global limitado ao teto prudencial de 10%, condicionado a tendência técnica positiva.</li>
       </ul>
     </div>
 
     <!-- Bloco 3 -->
     <div class="regras-card">
-      <h2><span>🛡️</span> Qualidade, Atualidade e Falha Fechada</h2>
+      <h2><span>🛡️</span> Princípio de Falha Fechada & Integridade dos Dados</h2>
       <p>
-        O sistema opera sob o princípio de <strong>segurança por padrão (falha fechada)</strong>. Caso um dado oficial de mercado esteja ausente, corrompido ou fora do prazo de frescura homologado, o motor se recusa a inventar números.
+        O pipeline opera sob o princípio de <strong>segurança por padrão (fail-closed)</strong>. Caso um dado oficial esteja ausente, corrompido ou fora do limite de tolerância temporal, o sistema não inventa números nem mascara a defasagem:
       </p>
       <ul>
-        <li><strong>Válido:</strong> Dado auditado, disponível e dentro do limite de dias úteis tolerado.</li>
-        <li><strong>Desatualizado / Pendente:</strong> Dado atrasado em relação à data do pregão.</li>
-        <li><strong>Inválido / Rejeitado:</strong> Dado não verificado ou com fonte rejeitada. Nesse caso, a alocação de aportes é preventivamente <strong>bloqueada</strong> pelo motor até a correção.</li>
+        <li><strong>Válido / Atualizado:</strong> Dados auditados das fontes oficiais dentro do limite de defasagem de pregão;</li>
+        <li><strong>Desatualizado:</strong> Alerta visual explícito indicando que o mercado operou e novas cotações ainda não foram processadas;</li>
+        <li><strong>Falha Crítica:</strong> Caso arquivos essenciais estejam corrompidos ou inconsistentes, o pipeline aborta preventivamente para impedir a publicação de informações enganosas.</li>
       </ul>
     </div>
 
     <!-- Bloco 4 -->
     <div class="regras-card">
-      <h2><span>⚡</span> Metodologia do Swing Trade (Alvo +5%)</h2>
+      <h2><span>⚡</span> Metodologia do Filtro de Swing Trade (Alvo +5%)</h2>
       <p>
-        O módulo tático do Radar analisa diariamente o universo fechado das <strong>59 ações mais líquidas e sólidas da B3</strong>:
+        O scanner varre o universo das <strong>59 ações de maior liquidez da B3</strong> com base em critérios matemáticos:
       </p>
       <ul>
-        <li><strong>Zero Especulação em Micos:</strong> O robô nunca monitora ações de centavos, empresas pré-operacionais ou companhias em recuperação judicial.</li>
-        <li><strong>Alvo Fixo e Disciplinado:</strong> Toda entrada técnica possui saída pré-programada no alvo objetivo de <strong>+5,00% de valorização</strong>.</li>
-        <li><strong>Proteção Contra Quedas Livres:</strong> Ativos em tendência de baixa são automaticamente classificados como <em>Desfavoráveis</em> para evitar a compra prematura de ações em sangria.</li>
+        <li><strong>Universo de Governança:</strong> Exclusão estrita de empresas em recuperação judicial, ativos ilíquidos ou companhias sem histórico consistente;</li>
+        <li><strong>Alvo Técnico Fixo (+5%):</strong> Estratégia de reversão com saída modelada em +5,0% sem stop loss clássico;</li>
+        <li><strong>Transparência sobre Rebaixamento:</strong> Como opera sem stop loss, as posições que não atingem o alvo permanecem em aberto. O risco reside nas operações não encerradas, todas expostas na auditoria pública do backtest.</li>
       </ul>
     </div>
 
@@ -157,9 +150,9 @@
     <div class="card-cvm-aba" style="background-color: #fff; padding: 20px; border: 1px solid var(--borda);">
       <span class="cvm-icone">⚖️</span>
       <div>
-        <strong style="display:block; margin-bottom:6px;">AVISO LEGAL & GOVERNANÇA (RESOLUÇÃO CVM Nº 20/2021):</strong>
-        <p style="margin:0; font-size:0.85rem; color:var(--texto-secundario);">
-          O CafeRadar é uma ferramenta computacional independente de modelagem quantitativa, análise de dados de mercado e síntese jornalística. As simulações e indicadores não constituem relatório de análise, consultoria, recomendação de investimento nem oferta de valores mobiliários. O investidor é integralmente responsável por suas decisões e gestão de risco.
+        <strong style="display:block; margin-bottom:6px;">AVISO LEGAL & GOVERNANÇA (RESOLUÇÕES CVM Nº 19/2021 E Nº 20/2021):</strong>
+        <p style="margin:0; font-size:0.85rem; color:var(--texto-secundario); line-height:1.5;">
+          O CafeRadar é uma plataforma de tecnologia, pesquisa quantitativa e jornalismo financeiro. Seus modelos estatísticos, filtros e fechamentos têm propósito estritamente informativo e educativo, não constituindo recomendação de investimento, consultoria financeira individualizada, relatório de análise nem oferta pública de valores mobiliários. Cada investidor é responsável por suas próprias decisões e gerenciamento de risco.
         </p>
       </div>
     </div>
@@ -168,7 +161,7 @@
 
   <footer class="rodape-portal" style="margin-top:0;">
     <div class="container" style="text-align:center;">
-      <p class="copy-texto">© 2026 CafeRadar. Regras Técnicas & Governança.</p>
+      <p class="copy-texto">© 2026 CafeRadar. Regras Técnicas, Metodologia & Governança.</p>
     </div>
   </footer>
 
