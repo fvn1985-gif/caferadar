@@ -569,7 +569,7 @@
         <div class="item-termometro verde">
           <div>
             <div class="termo-nome">Oportunidades Claras</div>
-            <span style="font-size:0.75rem;color:var(--alta);font-weight:600;">Sinal técnico ativado</span>
+            <span style="font-size:0.75rem;color:var(--alta);font-weight:600;">Filtro técnico preenchido</span>
           </div>
           <div class="termo-contagem" style="color:var(--alta);">${r.oportunidades || 0}</div>
         </div>
@@ -590,7 +590,7 @@
         <div class="item-termometro cinza">
           <div>
             <div class="termo-nome">Desfavoráveis</div>
-            <span style="font-size:0.75rem;color:var(--neutro);font-weight:600;">Sem compras na queda</span>
+            <span style="font-size:0.75rem;color:var(--neutro);font-weight:600;">Filtro restritivo de tendência</span>
           </div>
           <div class="termo-contagem" style="color:var(--neutro);">${r.desfavoravel || 0}</div>
         </div>
@@ -710,7 +710,7 @@
     containerLista.innerHTML = '';
 
     if (bloqueado || !alocacao) {
-      containerLista.innerHTML = '<div class="aviso-execucao" style="background:#fee2e2;color:#991b1b;"><strong>ALOCAÇÃO BLOQUEADA PELO MOTOR:</strong> O motor suspendeu preventivamente a recomendação por inconsistência nos dados de mercado.</div>';
+      containerLista.innerHTML = '<div class="aviso-execucao" style="background:#fee2e2;color:#991b1b;"><strong>ALOCAÇÃO BLOQUEADA PELO MOTOR:</strong> O motor suspendeu preventivamente o modelo de alocação por inconsistência nos dados de mercado.</div>';
       if (containerGrafico) containerGrafico.innerHTML = '<p style="color:#991b1b;font-weight:700;">Alocação Suspensa</p>';
       return;
     }
@@ -1048,7 +1048,7 @@
       principais_regras_simples: [
         { titulo: '1. Apenas 59 Melhores Ações', descricao: 'Sem empresas falidas ou micos da bolsa.' },
         { titulo: '2. Alvo Fixo de +5%', descricao: 'Bateu a meta, lucro no bolso.' },
-        { titulo: '3. Disciplina na Queda', descricao: 'Não compra faca caindo.' }
+        { titulo: '3. Disciplina de Tendência', descricao: 'Filtro restritivo contra ativos em tendência de baixa prolongada.' }
       ]
     };
   }

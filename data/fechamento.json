@@ -31,14 +31,14 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.192",
-          "variacao": "-0,29%",
+          "valor": "US$ 80.259",
+          "variacao": "-0,21%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,18",
-          "variacao": "+2,77%",
+          "valor": "US$ 96,31",
+          "variacao": "+2,91%",
           "positivo": true
         }
       },
@@ -54,12 +54,12 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "O petróleo Brent é negociado a US$ 96,18 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
+          "texto": "O petróleo Brent é negociado a US$ 96,31 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.192, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
+          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.259, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
           "fonte": "Binance / CoinDesk"
         }
       ],
@@ -158,14 +158,14 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.192",
-          "variacao": "-0,29%",
+          "valor": "US$ 80.259",
+          "variacao": "-0,21%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,18",
-          "variacao": "+2,77%",
+          "valor": "US$ 96,31",
+          "variacao": "+2,91%",
           "positivo": true
         }
       },
@@ -176,7 +176,7 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 96,18.",
+          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 96,31.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
@@ -301,8 +301,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.192",
-          "variacao": "-0,29%",
+          "valor": "US$ 80.259",
+          "variacao": "-0,21%",
           "positivo": false,
           "detalhe": "+1,47% na sessão"
         },
@@ -312,8 +312,8 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,18",
-          "variacao": "+2,77%",
+          "valor": "US$ 96,31",
+          "variacao": "+2,91%",
           "positivo": true,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
@@ -426,12 +426,12 @@
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 96,18, ditando o rumo das petroleiras no pregão da B3.",
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 96,31, ditando o rumo das petroleiras no pregão da B3.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.192, preservando suporte relevante em sua estrutura de médio prazo.",
+          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.259, preservando suporte relevante em sua estrutura de médio prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],

@@ -2,7 +2,7 @@
   "atualizado_em": "05/11/2026 às 08h29",
   "data_referencia": "2026-11-04",
   "data_execucao_scanner": "05/11/2026 às 08h29",
-  "data_exportacao": "05/11/2026 às 08h29",
+  "data_exportacao": "05/11/2026 às 08h40",
   "status_frescor": "ATUALIZADO",
   "dias_uteis_defasagem": 1,
   "estrategia": {
@@ -138,16 +138,16 @@
   ],
   "principais_regras_simples": [
     {
-      "titulo": "1. Apenas Empresas de Primeira Linha",
-      "descricao": "O robô monitora apenas as 59 maiores e mais sólidas empresas da B3 (como Itaú, WEG, BB Seguridade, etc.). Nunca entra em ações de centavos ou empresas em recuperação judicial."
+      "titulo": "1. Universo de Liquidez Restrito",
+      "descricao": "O algoritmo monitora as 59 empresas com maior liquidez e representatividade na B3. Penny stocks ou empresas em recuperação judicial são sumariamente excluídas dos testes."
     },
     {
-      "titulo": "2. Alvo Objetivo de +5% de Lucro",
-      "descricao": "Assim que a ação atinge 5% de valorização a partir da entrada técnica, o sistema orienta a realização do lucro no bolso. Não há apego emocional: bateu a meta, encerra a operação."
+      "titulo": "2. Parâmetro Matemático de Alvo (+5%)",
+      "descricao": "Nos modelos de backtest, a posição teórica encerra-se automaticamente ao atingir a variação positiva pré-fixada de +5% sobre o preço de ativação do filtro."
     },
     {
-      "titulo": "3. Disciplina de Não Comprar na Queda Livre",
-      "descricao": "Se uma ação estiver caindo sem sinal claro de reversão, o sistema classifica como 'Desfavorável' e proíbe novas compras até que o pivô técnico seja confirmado."
+      "titulo": "3. Filtro Restritivo de Tendência",
+      "descricao": "Ativos em tendência de baixa sem confirmação estatística de reversão à média são classificados como 'Desfavorável', inibindo novas entradas no modelo quantitativo."
     }
   ]
 }
