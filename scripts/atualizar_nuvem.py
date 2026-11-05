@@ -388,5 +388,14 @@ def atualizar_dashboard_nuvem(data_ref: str, data_fmt: str, hora_fmt: str, cotac
 
     print("dashboard.json atualizado na nuvem com dados de hoje!")
 
+    # Atualiza também o feed RSS do Google News
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from gerar_rss_feed import gerar_feed
+        gerar_feed()
+    except Exception as e:
+        print(f"Aviso ao atualizar feed RSS: {e}")
+
+
 if __name__ == "__main__":
     main()

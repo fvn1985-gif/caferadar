@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Café Radar — Notícias e Síntese Diária do Mercado B3</title>
+    <link>https://caferadar.com.br/</link>
+    <description>Veículo independente de inteligência financeira, síntese de pregão diário da B3, cotações ao vivo e scanner quantitativo.</description>
+    <language>pt-br</language>
+    <lastBuildDate>Thu, 05 Nov 2026 19:30:14 +0000</lastBuildDate>
+    <atom:link href="https://caferadar.com.br/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://caferadar.com.br/google-news-square-1000.png</url>
+      <title>Café Radar</title>
+      <link>https://caferadar.com.br/</link>
+    </image>
+    <item>
+      <title>RADAR DE FECHAMENTO B3 — 05/11/2026</title>
+      <link>https://caferadar.com.br/#fechamento</link>
+      <guid isPermaLink="false">https://caferadar.com.br/2026-11-05/fechamento</guid>
+      <pubDate>Thu, 05 Nov 2026 18:15:00 -0300</pubDate>
+      <description><![CDATA[<p><strong>Ibovespa encerra a quinta-feira aos 168.764 pts; Dólar fecha a R$ 5,45 e investidores avaliam balanços e cenário macro</strong></p><p>A bolsa brasileira encerra as negociações desta quinta-feira com o Ibovespa marcando 168.764 pts, em pregão de disciplina tática. <em>(Fonte: TradeMap)</em></p><p>No câmbio, o dólar encerrou cotado a R$ 5,45 (-0,09%), refletindo o fluxo de capitais da sessão. <em>(Fonte: ADVFN)</em></p><p>Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 96,87, ditando o rumo das petroleiras na B3. <em>(Fonte: Investing)</em></p><p>No universo cripto, o Bitcoin fechou o dia no patamar de US$ 78.963, preservando suporte relevante em sua estrutura de médio prazo. <em>(Fonte: Binance / CoinMarketCap)</em></p><p><a href='https://caferadar.com.br/'>Acesse o painel completo de cotações em tempo real no Café Radar</a>.</p>]]></description>
+      <category>Mercados Financeiros</category>
+    </item>
+    <item>
+      <title>RADAR DE ABERTURA B3 — 05/11/2026</title>
+      <link>https://caferadar.com.br/#fechamento</link>
+      <guid isPermaLink="false">https://caferadar.com.br/2026-11-05/negocios</guid>
+      <pubDate>Thu, 05 Nov 2026 10:30:00 -0300</pubDate>
+      <description><![CDATA[<p><strong>B3 opera com negócios ativos nesta quinta-feira; Ibovespa aos 168.764 pts e Dólar cotado a R$ 5,45 com giro em Petrobras e Vale</strong></p><p>O pregão da bolsa brasileira abriu com investidores monitorando o fluxo de negociação das blue chips. O Ibovespa marca 168.764 pts nesta quinta-feira. <em>(Fonte: TradeMap)</em></p><p>Petrobras, Vale e o setor bancário ditam o ritmo da liquidez na B3, enquanto o barril de petróleo Brent é cotado a US$ 96,87. <em>(Fonte: Visno Invest)</em></p><p>No câmbio doméstico, o dólar comercial registra cotação de R$ 5,45 (-0,09%), acompanhando os prêmios na curva de juros. <em>(Fonte: ADVFN)</em></p><p>Em Wall Street, o S&amp;P 500 opera aos 7.602 pts, servindo de balizador para o apetite global a risco. <em>(Fonte: BB InvesTalk)</em></p><p><a href='https://caferadar.com.br/'>Acesse o painel completo de cotações em tempo real no Café Radar</a>.</p>]]></description>
+      <category>Mercados Financeiros</category>
+    </item>
+    <item>
+      <title>RADAR DE CAFÉ MATINAL — 05/11/2026</title>
+      <link>https://caferadar.com.br/#fechamento</link>
+      <guid isPermaLink="false">https://caferadar.com.br/2026-11-05/abertura</guid>
+      <pubDate>Thu, 05 Nov 2026 08:00:00 -0300</pubDate>
+      <description><![CDATA[<p><strong>Mercados globais operam no pré-mercado nesta quinta-feira; Dólar cotado a R$ 5,45 e investidores monitoram juros e commodities</strong></p><p>Bolsas internacionais operam em compasso de espera nesta quinta-feira, com investidores digerindo dados de atividade econômica global e juros nos EUA. <em>(Fonte: ADVFN)</em></p><p>No câmbio doméstico, o dólar comercial opera cotado a R$ 5,45 (-0,09%), refletindo ajustes pré-mercado na curva futura. <em>(Fonte: TradeMap)</em></p><p>O petróleo Brent é negociado a US$ 96,87 o barril, influenciando o ritmo de abertura do setor de óleo e gás na B3 nesta quinta-feira. <em>(Fonte: Investing)</em></p><p>O Bitcoin (BTC) se mantém firme no patamar de US$ 78.963, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais. <em>(Fonte: Binance / CoinDesk)</em></p><p><a href='https://caferadar.com.br/'>Acesse o painel completo de cotações em tempo real no Café Radar</a>.</p>]]></description>
+      <category>Mercados Financeiros</category>
+    </item>
+  </channel>
+</rss>
