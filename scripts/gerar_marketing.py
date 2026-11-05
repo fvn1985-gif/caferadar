@@ -1377,7 +1377,7 @@ $IBOV {cashtags_str}
     p_legenda = out / f"{data_pub}_swingtrade_legenda.txt"
 
     p_legenda.write_text(legenda, encoding="utf-8")
-    tweet_txt = formatadores_x.formatar_tweet_swingtrade(resumo, data_fmt)
+    tweet_txt = formatadores_x.formatar_tweet_swingtrade(resumo, data_base_br)
     (out / f"{data_pub}_swingtrade_x_tweet.txt").write_text(tweet_txt, encoding="utf-8")
 
     return arquivos_png, p_legenda
