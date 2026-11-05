@@ -26,19 +26,19 @@
         "dolar": {
           "nome": "Dólar Futuro",
           "valor": "R$ 5,46",
-          "variacao": "-0,08%",
+          "variacao": "-0,03%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.259",
-          "variacao": "-0,21%",
+          "valor": "US$ 80.057",
+          "variacao": "-0,46%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,31",
-          "variacao": "+2,91%",
+          "valor": "US$ 96,70",
+          "variacao": "+3,32%",
           "positivo": true
         }
       },
@@ -49,17 +49,17 @@
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,46 (-0,08%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
+          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,46 (-0,03%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "O petróleo Brent é negociado a US$ 96,31 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
+          "texto": "O petróleo Brent é negociado a US$ 96,70 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de quinta-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.259, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
+          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 80.057, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
           "fonte": "Binance / CoinDesk"
         }
       ],
@@ -147,7 +147,7 @@
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,46",
-          "variacao": "-0,08%",
+          "variacao": "-0,03%",
           "positivo": false
         },
         "sp500": {
@@ -158,14 +158,14 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.259",
-          "variacao": "-0,21%",
+          "valor": "US$ 80.057",
+          "variacao": "-0,46%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,31",
-          "variacao": "+2,91%",
+          "valor": "US$ 96,70",
+          "variacao": "+3,32%",
           "positivo": true
         }
       },
@@ -176,12 +176,12 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 96,31.",
+          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 96,70.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
         {
-          "texto": "O dólar comercial registra cotação de R$ 5,46 (-0,08%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
+          "texto": "O dólar comercial registra cotação de R$ 5,46 (-0,03%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
@@ -282,7 +282,7 @@
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,46",
-          "variacao": "-0,08%",
+          "variacao": "-0,03%",
           "positivo": false,
           "ptax": "R$ 5,4935",
           "fonte": "TradeMap",
@@ -301,8 +301,8 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 80.259",
-          "variacao": "-0,21%",
+          "valor": "US$ 80.057",
+          "variacao": "-0,46%",
           "positivo": false,
           "detalhe": "+1,47% na sessão"
         },
@@ -312,8 +312,8 @@
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 96,31",
-          "variacao": "+2,91%",
+          "valor": "US$ 96,70",
+          "variacao": "+3,32%",
           "positivo": true,
           "fonte": "BB InvesTalk",
           "link": "https://investalk.bb.com.br/noticias/mercado/mercado-agora-03-11-26"
@@ -421,17 +421,17 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,46 (-0,08%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
+          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,46 (-0,03%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 96,31, ditando o rumo das petroleiras no pregão da B3.",
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 96,70, ditando o rumo das petroleiras no pregão da B3.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.259, preservando suporte relevante em sua estrutura de médio prazo.",
+          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 80.057, preservando suporte relevante em sua estrutura de médio prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
