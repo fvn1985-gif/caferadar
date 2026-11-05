@@ -1585,6 +1585,120 @@ $IBOV $BOVA11 $IVVB11 $BTC
 
 # ==============================================================================
 
+
+# ==============================================================================
+# GERADOR CATEGORIA E: CALCULADORA DE RENDIMENTO REAL & EDUCAÇÃO FINANCEIRA
+# ==============================================================================
+
+def gerar_materiais_calculadora(output_dir: Optional[Path] = None) -> Tuple[List[Path], Path]:
+    """Gera cards (Feed e X) e legenda magnética de Educação Financeira (Calculadora IR Real)."""
+    out = Path(output_dir or DEFAULT_OUTPUT_DIR)
+    out.mkdir(parents=True, exist_ok=True)
+
+    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_fmt = datetime.now().strftime("%d/%m/%Y")
+
+    arquivos_png = []
+
+    # 1. Instagram Feed (1080x1350)
+    img_feed, draw_feed = criar_canvas_base(1080, 1350, "Simulador de Renda", "Poupança vs CDB 100% vs Tesouro Selic", data_fmt)
+    y_sub = 220
+    x_left = 60
+
+    draw_feed.text((x_left, y_sub), "SIMULAÇÃO COMPARATIVA — R$ 10.000 APLICADOS POR 2 ANOS", font=FONTES["body_bold"](18), fill=PALETA["destaque_claro"])
+
+    linhas_sim = [
+        ("Poupança (Isenta)", "R$ 11.236", "+12,36%", "Rendimento tradicional corrigido pela TR", PALETA["neutro"]),
+        ("CDB 100% CDI (Líquido IR)", "R$ 12.080", "+20,80%", "Desconto automático de 15% de IR regressivo", PALETA["verde_texto"]),
+        ("Tesouro Selic (Líquido IR)", "R$ 12.115", "+21,15%", "Segurança máxima do Tesouro Nacional com juros compostos", PALETA["destaque_claro"])
+    ]
+
+    y_card = y_sub + 45
+    card_h = 145
+    for nome, total, ganho, obs, cor_dest in linhas_sim:
+        draw_feed.rounded_rectangle([x_left, y_card, x_left + 960, y_card + card_h], radius=16, fill=PALETA["card_bg"], outline=PALETA["card_border"], width=1)
+        draw_feed.text((x_left + 24, y_card + 20), nome, font=FONTES["body_bold"](20), fill=PALETA["texto_branco"])
+        draw_feed.text((x_left + 24, y_card + 54), obs, font=FONTES["body"](15), fill=PALETA["texto_secundario"])
+        draw_feed.text((x_left + 24, y_card + 90), f"Saldo Líquido Estimado: {total}", font=FONTES["mono"](24), fill=cor_dest)
+
+        draw_feed.rounded_rectangle([x_left + 960 - 150, y_card + 35, x_left + 960 - 24, y_card + 90], radius=8, fill=PALETA["card_inner"])
+        draw_feed.text((x_left + 960 - 138, y_card + 48), ganho, font=FONTES["body_bold"](24), fill=cor_dest)
+        y_card += card_h + 20
+
+    y_aviso = y_card + 20
+    draw_feed.rounded_rectangle([x_left, y_aviso, x_left + 960, y_aviso + 220], radius=16, fill="#1e1b4b", outline="#6366f1", width=2)
+    draw_feed.text((x_left + 28, y_aviso + 24), "💡 VOCÊ ESTÁ PERDENDO DINHEIRO POR FALTA DE CÁLCULO?", font=FONTES["card_title"](20), fill="#a5b4fc")
+    aviso_textos = [
+        "A maioria dos poupadores deixa o dinheiro parado achando que 'poupança é segura'.",
+        "Porém, ao descontar a inflação real, o poder de compra é corroído ano a ano.",
+        "Em 2 anos, a diferença a favor do Tesouro Selic passa de R$ 870 em apenas R$ 10.000.",
+        "Simule qualquer valor gratuitamente na calculadora oficial do Café Radar."
+    ]
+    y_at = y_aviso + 70
+    for at in aviso_textos:
+        draw_feed.text((x_left + 28, y_at), f"• {at}", font=FONTES["body"](18), fill=PALETA["texto_branco"])
+        y_at += 34
+
+    p_feed = out / f"{data_pub}_calculadora_feed.png"
+    img_feed.save(p_feed)
+    arquivos_png.append(p_feed)
+
+    # 2. X / Twitter (1200x675)
+    img_x, draw_x = criar_canvas_base(1200, 675, "Calculadora de Renda", "Poupança vs CDB vs Tesouro Selic", data_fmt)
+    y_xt = 160
+
+    col_w_x = 330
+    gap_x = 25
+    x_start = 66
+
+    for idx, (nome, total, ganho, obs, cor_dest) in enumerate(linhas_sim):
+        cx = x_start + idx * (col_w_x + gap_x)
+        draw_x.rounded_rectangle([cx, y_xt, cx + col_w_x, y_xt + 280], radius=14, fill=PALETA["card_bg"], outline=PALETA["card_border"])
+        draw_x.text((cx + 18, y_xt + 20), nome.split("(")[0].strip()[:18], font=FONTES["body_bold"](18), fill=PALETA["texto_branco"])
+        draw_x.text((cx + 18, y_xt + 50), "Rendimento 24 Meses", font=FONTES["body"](13), fill=PALETA["texto_secundario"])
+        draw_x.text((cx + 18, y_xt + 90), total, font=FONTES["mono"](28), fill=cor_dest)
+
+        draw_x.rounded_rectangle([cx + 18, y_xt + 140, cx + col_w_x - 18, y_xt + 185], radius=6, fill=PALETA["card_inner"])
+        draw_x.text((cx + 30, y_xt + 150), f"Ganho Real Líquido: {ganho}", font=FONTES["body_bold"](15), fill=cor_dest)
+
+        draw_x.text((cx + 18, y_xt + 205), obs[:36], font=FONTES["body"](12), fill=PALETA["texto_secundario"])
+        if len(obs) > 36:
+            draw_x.text((cx + 18, y_xt + 225), obs[36:72], font=FONTES["body"](12), fill=PALETA["texto_secundario"])
+
+    y_bot = y_xt + 310
+    draw_x.rounded_rectangle([66, y_bot, 1134, y_bot + 95], radius=12, fill="#1e1b4b", outline="#6366f1", width=1)
+    draw_x.text((86, y_bot + 22), "💡 SIMULADOR INTERATIVO DISPONÍVEL NO PORTAL CAFE RADAR", font=FONTES["body_bold"](17), fill="#a5b4fc")
+    draw_x.text((86, y_bot + 54), "Desconto automático oficial da tabela regressiva da Receita Federal (22,5% a 15% de IR).", font=FONTES["body"](15), fill=PALETA["texto_branco"])
+
+    p_x = out / f"{data_pub}_calculadora_x.png"
+    img_x.save(p_x)
+    arquivos_png.append(p_x)
+
+    legenda = f"""💡 O ERRO DE R$ 1.800 QUE QUASE TODO BRASILEIRO COMETE ({data_fmt})
+
+Deixar R$ 10.000 parados na Poupança parece "seguro". Mas em 2 anos, você perde quase R$ 2.000 de retorno líquido comparado ao Tesouro Selic ou a um CDB 100% CDI com juros compostos.
+
+E a maioria das pessoas esquece de descontar o Imposto de Renda regressivo real da Receita Federal.
+
+Criamos uma calculadora gratuita no Café Radar que faz essa conta na ponta do lápis em segundos:
+• Poupança: Isenta, porém rendendo menos que a inflação real
+• CDB 100% CDI: Rendimento com tabela de IR calculada automaticamente
+• Tesouro Selic: Segurança máxima institucional
+
+Simule qualquer valor gratuitamente sem cadastro:
+🔗 https://caferadar.com.br/calculadora-rendimento.html
+
+—
+$SELIC $CDI $TESOURO
+#EducacaoFinanceira #RendaFixa #TesouroDireto #Investimentos #CafeRadar
+(Ferramenta com propósito estritamente educativo e informativo. Não constitui recomendação de investimento nos termos da CVM 19/2021).
+"""
+    p_legenda = out / f"{data_pub}_calculadora_legenda.txt"
+    p_legenda.write_text(legenda, encoding="utf-8")
+
+    return arquivos_png, p_legenda
+
+
 def main(categorias: Optional[List[str]] = None, output_dir: Optional[Path] = None) -> int:
 
     """Executa a geração completa de cards e legendas."""
@@ -1684,6 +1798,12 @@ def main(categorias: Optional[List[str]] = None, output_dir: Optional[Path] = No
             print(f"      [OK] Gerados {len(pngs)} cards PNG e 1 arquivo de legenda TXT.")
 
     # 4. Longo Prazo
+
+        # 5. Calculadora de Renda e Educação Financeira
+    if "calculadora" in categorias_alvo or "renda" in categorias_alvo:
+        print("\n---> [5/5] Gerando materiais da Calculadora de Rendimento Real...")
+        pngs, txt = gerar_materiais_calculadora(output_dir=out)
+        print(f"      [OK] Gerados {len(pngs)} cards PNG e 1 arquivo de legenda TXT.")
 
     if "longoprazo" in categorias_alvo or "alocacao" in categorias_alvo:
 

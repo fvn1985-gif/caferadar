@@ -5,10 +5,11 @@ scripts/executar_marketing_nuvem.py
 ===================================
 Orquestrador de Geração de Cards de Marketing e Disparo para o Telegram na Nuvem (GitHub Actions).
 
-Horários Principais:
-  - 08h00 Brasília: Café Matinal (Pré-mercado) -> Gera e dispara Card 16:9 (X) + Legenda de Café Matinal para o Telegram.
-  - 10h30 Brasília: Abertura B3 (Primeiros Negócios) -> Gera e dispara Card 16:9 (X) + Legenda de Abertura B3 para o Telegram.
-  - 18h15 Brasília: Fechamento B3 -> Gera e dispara Card 16:9 (X) + Legenda de Fechamento B3 e Swing Trade.
+Grade Diária Oficial (4 Disparos):
+  - 10h30 Brasília: Abertura B3 (Hard News) -> Card 16:9 de Abertura B3 (cotações ao vivo)
+  - 13h00 Brasília: Isca Educativa Almoço -> Card 16:9 da Calculadora de Rendimento Real / IR
+  - 18h15 Brasília: Fechamento B3 (Hard News) -> Card 16:9 de Fechamento B3 e Swing Trade (+5%)
+  - 20h30 Brasília: Insight Noturno -> Card 16:9 de Alocação Macro & Regras Quantitativas
 """
 
 from __future__ import annotations
@@ -47,16 +48,22 @@ def main():
 
     arg_edicao = sys.argv[1] if len(sys.argv) > 1 else "auto"
 
-    if arg_edicao in ["abertura", "negocios", "fechamento", "swingtrade", "longoprazo"]:
+    if arg_edicao in ["abertura", "negocios", "fechamento", "swingtrade", "longoprazo", "calculadora"]:
         edicao = arg_edicao
     elif arg_edicao == "almoco":
+        edicao = "calculadora"
+    elif tempo_min < 11 * 60 + 45:
+        # Perto de 10h30
         edicao = "negocios"
-    elif tempo_min < 10 * 60 + 15:
-        edicao = "abertura"
-    elif tempo_min < 17 * 60 + 30:
-        edicao = "negocios"
-    else:
+    elif tempo_min < 15 * 60:
+        # Perto de 13h00
+        edicao = "calculadora"
+    elif tempo_min < 19 * 60 + 30:
+        # Perto de 18h15
         edicao = "fechamento"
+    else:
+        # Perto de 20h30
+        edicao = "longoprazo"
 
     print("====================================================================")
     print(f"   CAFÉ RADAR — MARKETING ENGINE & TELEGRAM NA NUVEM")
@@ -68,10 +75,14 @@ def main():
         categorias = ["abertura"]
     elif edicao == "negocios":
         categorias = ["negocios"]
+    elif edicao == "calculadora":
+        categorias = ["calculadora"]
     elif edicao == "fechamento":
         categorias = ["fechamento", "swingtrade"]
     elif edicao == "swingtrade":
         categorias = ["swingtrade"]
+    elif edicao == "longoprazo":
+        categorias = ["longoprazo"]
     else:
         categorias = [edicao]
 
@@ -100,6 +111,13 @@ def main():
             formato="x",
             output_dir=OUTPUT_DIR
         )
+    elif edicao == "calculadora":
+        print("[TELEGRAM] Disparando Isca Educativa da Calculadora de Renda (formato X)...")
+        publicar_telegram.publicar_material_categoria(
+            categoria="calculadora",
+            formato="x",
+            output_dir=OUTPUT_DIR
+        )
     elif edicao == "fechamento":
         print("[TELEGRAM] Disparando Card e Legenda de Fechamento B3 (formato X)...")
         publicar_telegram.publicar_material_categoria(
@@ -110,6 +128,13 @@ def main():
         print("[TELEGRAM] Disparando Card e Legenda de Swing Trade (formato X)...")
         publicar_telegram.publicar_material_categoria(
             categoria="swingtrade",
+            formato="x",
+            output_dir=OUTPUT_DIR
+        )
+    elif edicao == "longoprazo":
+        print("[TELEGRAM] Disparando Insight Noturno de Longo Prazo / Alocação (formato X)...")
+        publicar_telegram.publicar_material_categoria(
+            categoria="longoprazo",
             formato="x",
             output_dir=OUTPUT_DIR
         )
