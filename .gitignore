@@ -2,3 +2,6 @@
 *.tmp
 .DS_Store
 Thumbs.db
+marketing_output/
+__pycache__/
+*.pyc
