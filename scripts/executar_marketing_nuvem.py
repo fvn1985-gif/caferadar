@@ -6,8 +6,9 @@ scripts/executar_marketing_nuvem.py
 Orquestrador de Geração de Cards de Marketing e Disparo para o Telegram na Nuvem (GitHub Actions).
 
 Horários Principais:
-  - 10h00 Brasília: Abertura B3 -> Gera e dispara Card 16:9 (X) + Legenda de Abertura para o Telegram.
-  - 18h15 Brasília: Fechamento B3 -> Gera e dispara Card 16:9 (X) + Legenda de Fechamento e Swing Trade.
+  - 08h00 Brasília: Café Matinal (Pré-mercado) -> Gera e dispara Card 16:9 (X) + Legenda de Café Matinal para o Telegram.
+  - 10h30 Brasília: Abertura B3 (Primeiros Negócios) -> Gera e dispara Card 16:9 (X) + Legenda de Abertura B3 para o Telegram.
+  - 18h15 Brasília: Fechamento B3 -> Gera e dispara Card 16:9 (X) + Legenda de Fechamento B3 e Swing Trade.
 """
 
 from __future__ import annotations
@@ -46,12 +47,14 @@ def main():
 
     arg_edicao = sys.argv[1] if len(sys.argv) > 1 else "auto"
 
-    if arg_edicao in ["abertura", "fechamento", "swingtrade", "almoco", "longoprazo"]:
+    if arg_edicao in ["abertura", "negocios", "fechamento", "swingtrade", "longoprazo"]:
         edicao = arg_edicao
-    elif tempo_min < 12 * 60:
+    elif arg_edicao == "almoco":
+        edicao = "negocios"
+    elif tempo_min < 10 * 60 + 15:
         edicao = "abertura"
     elif tempo_min < 17 * 60 + 30:
-        edicao = "almoco"
+        edicao = "negocios"
     else:
         edicao = "fechamento"
 
@@ -63,12 +66,12 @@ def main():
     # 1. Definir quais categorias serão geradas
     if edicao == "abertura":
         categorias = ["abertura"]
+    elif edicao == "negocios":
+        categorias = ["negocios"]
     elif edicao == "fechamento":
         categorias = ["fechamento", "swingtrade"]
     elif edicao == "swingtrade":
         categorias = ["swingtrade"]
-    elif edicao == "almoco":
-        categorias = ["abertura"]
     else:
         categorias = [edicao]
 
@@ -84,17 +87,27 @@ def main():
 
     print("\n[2/2] Disparando publicações formatadas para o X no Telegram...")
     if edicao == "abertura":
+        print("[TELEGRAM] Disparando Card e Legenda de Café Matinal (formato X)...")
         publicar_telegram.publicar_material_categoria(
             categoria="abertura",
             formato="x",
             output_dir=OUTPUT_DIR
         )
+    elif edicao == "negocios":
+        print("[TELEGRAM] Disparando Card e Legenda de Abertura B3 (formato X)...")
+        publicar_telegram.publicar_material_categoria(
+            categoria="negocios",
+            formato="x",
+            output_dir=OUTPUT_DIR
+        )
     elif edicao == "fechamento":
+        print("[TELEGRAM] Disparando Card e Legenda de Fechamento B3 (formato X)...")
         publicar_telegram.publicar_material_categoria(
             categoria="fechamento",
             formato="x",
             output_dir=OUTPUT_DIR
         )
+        print("[TELEGRAM] Disparando Card e Legenda de Swing Trade (formato X)...")
         publicar_telegram.publicar_material_categoria(
             categoria="swingtrade",
             formato="x",
@@ -106,8 +119,6 @@ def main():
             formato="x",
             output_dir=OUTPUT_DIR
         )
-    else:
-        print(f"Nenhum disparo agendado para o modo {edicao}.")
 
     print("\n[SUCESSO] Processo de marketing na nuvem concluído com êxito!")
     return 0

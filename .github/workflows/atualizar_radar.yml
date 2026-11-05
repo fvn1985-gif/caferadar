@@ -3,11 +3,11 @@ name: Atualizar CafeRadar na Nuvem e Disparar Marketing
 on:
   schedule:
     # Horários em UTC (Brasília = UTC - 3)
-    # 13:00 UTC = 10h00 Brasília (Abertura B3 & Disparo Telegram para o X, Seg a Sex)
-    - cron: '0 13 * * 1-5'
-    # 15:30 UTC = 12h30 Brasília (Edição Almoço, Seg a Sex)
-    - cron: '30 15 * * 1-5'
-    # 21:15 UTC = 18h15 Brasília (Fechamento B3 & Disparo Telegram para o X, Seg a Sex)
+    # 11:00 UTC = 08h00 Brasília (Café Matinal / Pré-Mercado, Seg a Sex)
+    - cron: '0 11 * * 1-5'
+    # 13:30 UTC = 10h30 Brasília (Abertura B3 / Primeiros Negócios, Seg a Sex)
+    - cron: '30 13 * * 1-5'
+    # 21:15 UTC = 18h15 Brasília (Fechamento B3 & Swing Trade, Seg a Sex)
     - cron: '15 21 * * 1-5'
 
   # Permite executar manualmente pelo site ou app do GitHub a qualquer momento
@@ -21,7 +21,7 @@ on:
         options:
           - auto
           - abertura
-          - almoco
+          - negocios
           - fechamento
           - swingtrade
 

@@ -119,6 +119,8 @@ def publicar_material_categoria(
         cat = "swingtrade"
     elif c_raw in ["longo", "longoprazo", "alocacao", "radar"]:
         cat = "longoprazo"
+    elif c_raw in ["negocios", "abertura_b3", "b3", "primeiros_negocios"]:
+        cat = "negocios"
     elif c_raw in ["manha", "matinal", "abertura"]:
         cat = "abertura"
     else:

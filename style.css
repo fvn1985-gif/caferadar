@@ -1462,3 +1462,115 @@ body {
   padding-top: 12px;
   border-top: 1px solid var(--borda);
 }
+
+
+/* ============================================================================
+   FITA DE COTAÇÕES AO VIVO (TICKER TAPE B3 - DELAY 15 MIN)
+   ============================================================================ */
+.fita-cotacoes-wrapper {
+  background: #090e1a;
+  border-top: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.fita-cotacoes-badge {
+  background: #0f172a;
+  border-right: 1px solid #334155;
+  color: #f8fafc;
+  padding: 0 14px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  flex-shrink: 0;
+  z-index: 3;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.fita-titulo {
+  color: #38bdf8;
+  font-family: var(--fonte-principal);
+}
+
+.fita-delay-aviso {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+.fita-cotacoes-trilho-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+}
+
+.fita-cotacoes-trilho {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: fita-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.fita-cotacoes-wrapper:hover .fita-cotacoes-trilho {
+  animation-play-state: paused;
+}
+
+@keyframes fita-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.fita-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 18px;
+  font-family: var(--fonte-mono);
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.fita-ticker {
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.fita-preco {
+  color: #94a3b8;
+}
+
+.fita-var {
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+}
+
+.fita-var.positivo {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.fita-var.negativo {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+}
