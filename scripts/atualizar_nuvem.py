@@ -210,13 +210,13 @@ def main():
     tempo_min = hora * 60 + minuto
     dia_semana = DIAS_SEMANA_PT[agora_sp.weekday()]
 
-    forcar = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] in ["abertura", "almoco", "fechamento"] else None
+    forcar = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] in ["abertura", "negocios", "almoco", "fechamento"] else None
     if forcar:
-        edicao_ativa = forcar
-    elif tempo_min < 12 * 60:
+        edicao_ativa = "negocios" if forcar == "almoco" else forcar
+    elif tempo_min < 10 * 60:
         edicao_ativa = "abertura"
     elif tempo_min < 17 * 60 + 30:
-        edicao_ativa = "almoco"
+        edicao_ativa = "negocios"
     else:
         edicao_ativa = "fechamento"
 
@@ -237,12 +237,15 @@ def main():
 
     disp_map = {
         "abertura": True,
-        "almoco": tempo_min >= 12 * 60,
+        "negocios": tempo_min >= 10 * 60,
+        "almoco": tempo_min >= 10 * 60,
         "fechamento": tempo_min >= 17 * 60 + 30
     }
 
     if forcar:
-        disp_map[forcar] = True
+        k_force = "negocios" if forcar == "almoco" else forcar
+        disp_map[k_force] = True
+        disp_map["almoco"] = True
 
     # Montar Maiores Altas e Quedas reais da B3
     altas_reais = []
@@ -263,7 +266,7 @@ def main():
                 quedas_reais.append({"ticker": t, "variacao": f"{s}{v_pct:.2f}%".replace(".", ",")})
 
     if "edicoes" in dados:
-        for ed_key in ["abertura", "almoco", "fechamento"]:
+        for ed_key in ["abertura", "negocios", "almoco", "fechamento"]:
             if ed_key not in dados["edicoes"]:
                 continue
             ed = dados["edicoes"][ed_key]

@@ -1,22 +1,20 @@
-name: Atualizar CafeRadar na Nuvem e Disparar Marketing
+name: Atualizar CafeRadar na Nuvem (Portal & Cotações)
 
 on:
   schedule:
     # Horários em UTC (Brasília = UTC - 3)
     # 13:30 UTC = 10h30 Brasília (Abertura B3 / Primeiros Negócios, Seg a Sex)
     - cron: '30 13 * * 1-5'
-    # 16:00 UTC = 13h00 Brasília (Isca Educativa da Calculadora de Renda, Seg a Sex)
+    # 16:00 UTC = 13h00 Brasília (Atualização de Almoço, Seg a Sex)
     - cron: '0 16 * * 1-5'
-    # 21:15 UTC = 18h15 Brasília (Fechamento B3 & Swing Trade +5%, Seg a Sex)
+    # 21:15 UTC = 18h15 Brasília (Fechamento B3 consolidado, Seg a Sex)
     - cron: '15 21 * * 1-5'
-    # 23:30 UTC = 20h30 Brasília (Insight Noturno de Alocação & Regras Quantitativas, Seg a Sex)
-    - cron: '30 23 * * 1-5'
 
   # Permite executar manualmente pelo site ou app do GitHub a qualquer momento
   workflow_dispatch:
     inputs:
       edicao:
-        description: 'Escolha a edição para atualizar e publicar'
+        description: 'Escolha a edição para atualizar no portal'
         required: true
         default: 'auto'
         type: choice
@@ -24,10 +22,7 @@ on:
           - auto
           - abertura
           - negocios
-          - calculadora
           - fechamento
-          - swingtrade
-          - longoprazo
 
 permissions:
   contents: write
@@ -46,26 +41,14 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Instalar fontes do sistema (Linux)
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq fonts-dejavu-core
-
-      - name: Instalar bibliotecas de mercado e imagem
+      - name: Instalar bibliotecas de mercado
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install yfinance pandas
 
       - name: Executar Robô de Cotações em Tempo Real
         run: |
           python scripts/atualizar_nuvem.py ${{ github.event.inputs.edicao || 'auto' }}
-
-      - name: Gerar Cards e Disparar para o Telegram (X / Redes)
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          python scripts/executar_marketing_nuvem.py ${{ github.event.inputs.edicao || 'auto' }}
 
       - name: Publicar atualizações no caferadar.com.br
         run: |

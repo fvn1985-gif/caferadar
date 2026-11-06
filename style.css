@@ -246,21 +246,21 @@ body {
   text-transform: uppercase;
 }
 
-.placeholder-ad {
+ins.adsbygoogle {
+  display: block;
   min-height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #f8fafc;
   border-radius: var(--raio-sm);
-  color: #94a3b8;
-  font-size: 0.85rem;
 }
 
-.placeholder-ad.compacto {
+.slot-publicidade.in-card ins.adsbygoogle,
+.slot-publicidade.compacto ins.adsbygoogle {
   min-height: 180px;
 }
 
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
 /* ==================== CONTROLE DE ABAS ==================== */
 .conteudo-tab {
   display: none;
