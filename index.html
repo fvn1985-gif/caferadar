@@ -165,19 +165,19 @@
 
       <!-- Seletor de Edições Diárias (Manhã / Almoço / Fechamento) -->
       <div class="seletor-edicoes-dia">
-        <span class="rotulo-edicao">Edições de Hoje:</span>
+        <span class="rotulo-edicao" id="rotulo-seletor-edicoes">Edições de Hoje:</span>
         <div class="grupo-botoes-edicao" id="grupo-botoes-edicao">
-          <button class="btn-edicao" data-edicao="abertura">
+          <button type="button" class="btn-edicao" data-edicao="abertura">
             <span class="edicao-icone" aria-hidden="true">🌅</span>
             <span class="edicao-nome">Café Matinal</span>
             <span class="edicao-hora">08h00</span>
           </button>
-          <button class="btn-edicao" data-edicao="negocios">
+          <button type="button" class="btn-edicao" data-edicao="negocios">
             <span class="edicao-icone" aria-hidden="true">🔔</span>
             <span class="edicao-nome">Abertura B3</span>
             <span class="edicao-hora">10h30</span>
           </button>
-          <button class="btn-edicao ativa" data-edicao="fechamento">
+          <button type="button" class="btn-edicao ativa" data-edicao="fechamento">
             <span class="edicao-icone" aria-hidden="true">🏁</span>
             <span class="edicao-nome">Fechamento</span>
             <span class="edicao-hora">18h15</span>
@@ -185,6 +185,116 @@
           </button>
         </div>
       </div>
+
+      <!-- Painel Especial de Fim de Semana & Planejamento do Investidor -->
+      <section id="painel-fim-de-semana" class="painel-fim-de-semana" aria-label="Central de Planejamento e Estudos da Semana">
+        <div class="fds-cabecalho">
+          <div class="fds-cabecalho-texto">
+            <span class="fds-badge" id="fds-badge-status">☕ ESPECIAL DE FIM DE SEMANA &amp; ESTUDOS</span>
+            <h2 class="fds-titulo" id="fds-titulo-principal">Central de Planejamento para a Próxima Semana</h2>
+            <p class="fds-subtitulo" id="fds-subtitulo-principal">
+              Aproveite o mercado fechado para revisar o fechamento da semana, conferir as ações monitoradas pelo scanner quantitativo e planejar seus aportes sem o ruído do pregão.
+            </p>
+          </div>
+          <div class="fds-atalhos-topo">
+            <button type="button" class="btn-fds-acao primaria" onclick="trocarTab('swingtrade')">
+              ⚡ Ver Scanner (59 Ações)
+            </button>
+            <button type="button" class="btn-fds-acao secundaria" onclick="trocarTab('simulador')">
+              💰 Simular Renda Fixa
+            </button>
+          </div>
+        </div>
+
+        <div class="fds-grid-cards">
+          <!-- Card 1: Mapa de Segunda-feira & Agenda Macro -->
+          <div class="fds-card">
+            <div class="fds-card-topo">
+              <span class="fds-card-icone" aria-hidden="true">📅</span>
+              <div>
+                <span class="fds-card-tag">BÚSSOLA MACRO</span>
+                <h4>Mapa de Segunda-feira &amp; Horários B3</h4>
+              </div>
+            </div>
+            <ul class="fds-lista-agenda" id="fds-lista-agenda">
+              <li><strong>08h25 — Boletim Focus (BCB):</strong> Projeções atualizadas do mercado para IPCA, Selic, PIB e Câmbio.</li>
+              <li><strong>09h00 — Mercado Futuro (B3):</strong> Abertura dos contratos de mini-índice (WIN) e mini-dólar (WDO).</li>
+              <li><strong>10h00 — Pregão à Vista (B3):</strong> Abertura oficial das negociações das ações brasileiras.</li>
+              <li><strong>24h / 7 dias — Termômetro Cripto:</strong> <span id="fds-btc-status">Bitcoin operando continuamente no fim de semana.</span></li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Ações no Radar Técnico (Swing Trade +5%) -->
+          <div class="fds-card">
+            <div class="fds-card-topo">
+              <span class="fds-card-icone" aria-hidden="true">🎯</span>
+              <div>
+                <span class="fds-card-tag">SCANNER QUANTITATIVO B3</span>
+                <h4>Ações no Radar Técnico para Segunda</h4>
+              </div>
+            </div>
+            <div id="fds-radar-swing-conteudo" class="fds-corpo-dinamico">
+              <p class="fds-texto-aux">Carregando leitura do scanner sobre as 59 ações da B3...</p>
+            </div>
+            <div class="fds-card-rodape">
+              <button type="button" class="link-fds-interno" onclick="trocarTab('swingtrade')">
+                Abrir tabela completa e backtest (173 trades) →
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Duelo Renda Fixa & Planejamento de Aporte -->
+          <div class="fds-card">
+            <div class="fds-card-topo">
+              <span class="fds-card-icone" aria-hidden="true">🏦</span>
+              <div>
+                <span class="fds-card-tag">SIMULADOR DE APORTE</span>
+                <h4>Quanto R$ 5.000 rendem em 12 meses?</h4>
+              </div>
+            </div>
+            <div class="fds-comparativo-rf" id="fds-comparativo-rf">
+              <div class="fds-linha-rf destaque">
+                <span>🏆 Tesouro Selic (Líquido IR)</span>
+                <strong id="fds-rf-selic">R$ 5.464,20 (+R$ 464,20)</strong>
+              </div>
+              <div class="fds-linha-rf">
+                <span>📈 CDB 100% CDI (Líquido IR)</span>
+                <strong id="fds-rf-cdi">R$ 5.459,94 (+R$ 459,94)</strong>
+              </div>
+              <div class="fds-linha-rf alerta">
+                <span>⚠️ Poupança Antiga/Atual</span>
+                <strong id="fds-rf-poup">R$ 5.308,50 (+R$ 308,50)</strong>
+              </div>
+            </div>
+            <div class="fds-card-rodape">
+              <button type="button" class="link-fds-interno" onclick="trocarTab('simulador')">
+                Calcular com outro valor ou prazo →
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Pílula Quantitativa & Alocação 2038 -->
+          <div class="fds-card">
+            <div class="fds-card-topo">
+              <span class="fds-card-icone" aria-hidden="true">🧭</span>
+              <div>
+                <span class="fds-card-tag">ESTUDO DE LONGO PRAZO</span>
+                <h4>Bússola de Alocação 2038 &amp; Juro Real</h4>
+              </div>
+            </div>
+            <div id="fds-resumo-alocacao" class="fds-corpo-dinamico">
+              <p class="fds-texto-aux">
+                Quando o <strong>Tesouro IPCA+ 2040</strong> supera o limiar de <strong>6,50% a.a. de juro real</strong>, o motor prioriza a proteção inflacionária soberana (60%), combinada a S&amp;P 500 via IVVB11 (30%) e Bitcoin (10%).
+              </p>
+            </div>
+            <div class="fds-card-rodape">
+              <button type="button" class="link-fds-interno" onclick="trocarTab('alocacao')">
+                Ver painel oficial de Alocação 2038 →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Container para Edicao Publicada -->
       <div id="conteudo-edicao-publicada">

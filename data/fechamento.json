@@ -1,15 +1,15 @@
 {
-  "edicao_padrao": "negocios",
+  "edicao_padrao": "fechamento",
   "data_referencia": "2026-11-07",
   "data_formatada": "07/11/2026",
   "edicoes": {
     "abertura": {
       "id": "abertura",
-      "nome": "Café Matinal",
+      "nome": "Mapa da Semana",
       "icone": "🌅",
       "horario": "08h00",
-      "titulo": "RADAR DE CAFÉ MATINAL — 07/11/2026",
-      "subtitulo": "Mercados globais operam com volatilidade nesta sábado; Dólar cotado a R$ 5,50 e atenção redobrada aos juros e fiscal em Brasília",
+      "titulo": "ESPECIAL DE FIM DE SEMANA: MAPA DA SEMANA — 07/11/2026",
+      "subtitulo": "Especial de Fim de Semana (neste sábado): preparação para a abertura de segunda-feira com Ibovespa aos 168.499 pts, Dólar a R$ 5,50 e Bitcoin 24h em US$ 75.511",
       "mercado_geral": {
         "sp500": {
           "nome": "S&P 500 Futuro",
@@ -31,9 +31,9 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.746",
-          "variacao": "+0,02%",
-          "positivo": true
+          "valor": "US$ 75.511",
+          "variacao": "-0,29%",
+          "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
@@ -50,23 +50,23 @@
       },
       "leitura_rapida": [
         {
-          "texto": "Bolsas internacionais operam em compasso de espera nesta sábado, com investidores digerindo dados de atividade econômica global e o rumo da política monetária nos Estados Unidos.",
-          "fonte": "ADVFN",
-          "link": "https://br.advfn.com/jornal"
+          "texto": "Com a B3 fechada no fim de semana (neste sábado), o investidor organiza o mapa da próxima semana: na segunda-feira às 08h25 o Banco Central divulga o Boletim Focus, calibrando as expectativas para IPCA, Selic e PIB.",
+          "fonte": "Banco Central",
+          "link": "https://www.bcb.gov.br/publicacoes/focus"
         },
         {
-          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,50 (+0,16%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
-          "fonte": "TradeMap",
-          "link": "https://trademap.com.br"
+          "texto": "No mercado cripto — único ativo de liquidez global contínua 24/7 — o Bitcoin opera neste sábado cotado a US$ 75.511, servindo como termômetro antecipado de apetite por risco para a reabertura das bolsas.",
+          "fonte": "Binance / CoinDesk"
         },
         {
-          "texto": "O petróleo Brent é negociado a US$ 98,32 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de sábado.",
+          "texto": "O dólar comercial encerrou o último pregão útil a R$ 5,50 (+0,16%), enquanto o S&P 500 fechou aos 7.377 pts em Nova York e o barril de petróleo Brent marcou US$ 98,32.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 75.746, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
-          "fonte": "Binance / CoinDesk"
+          "texto": "Na renda fixa soberana, o prêmio real do Tesouro IPCA+ 2040 acima de 6,5% a.a. segue como âncora estrutural do Radar de Alocação 2038 para novos aportes.",
+          "fonte": "Tesouro Direto",
+          "link": "https://www.tesourodireto.com.br"
         }
       ],
       "acoes_blue_chips": [
@@ -127,22 +127,23 @@
       },
       "comparacao_anterior": [
         {
-          "texto": "Futuros americanos apontam cautela e acomodação de lucros nas primeiras horas desta sábado."
+          "texto": "Agenda da semana: Boletim Focus (segunda, 08h25), abertura do mercado futuro B3 (09h00) e pregão à vista (10h00)."
         },
         {
-          "texto": "Curva de juros futuros de curto prazo precifica expectativa de manutenção ou ajuste na taxa Selic."
+          "texto": "Use o painel Especial de Fim de Semana abaixo para revisar os ativos no radar técnico e simular aportes em Renda Fixa."
         }
       ],
       "disponivel": true,
-      "status_publicacao": "Publicado"
+      "status_publicacao": "Publicado",
+      "horario_exibicao": "Especial"
     },
     "almoco": {
       "id": "almoco",
-      "nome": "Abertura B3",
+      "nome": "Radar de Segunda",
       "icone": "🔔",
       "horario": "10h30",
-      "titulo": "RADAR DE ABERTURA B3 — 07/11/2026",
-      "subtitulo": "Ibovespa oscila em torno dos 168.499 pts no início da tarde desta sábado; Dólar cotado a R$ 5,50 com giro concentrado no setor bancário e Vale",
+      "titulo": "ESPECIAL DE FIM DE SEMANA: RADAR DE SEGUNDA — 07/11/2026",
+      "subtitulo": "Radar Tático para Segunda-feira (neste sábado): estudo quantitativo das 59 ações da B3, filtro de médias móveis e comparativo Selic vs CDI",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -164,9 +165,9 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.746",
-          "variacao": "+0,02%",
-          "positivo": true
+          "valor": "US$ 75.511",
+          "variacao": "-0,29%",
+          "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
@@ -177,23 +178,22 @@
       },
       "leitura_rapida": [
         {
-          "texto": "O Ibovespa opera próximo de 168.499 pts no balanço do meio-dia desta sábado, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
-          "fonte": "TradeMap",
+          "texto": "Durante o sábado sem pregão na B3, o Scanner Quantitativo de Swing Trade consolida o fechamento semanal das 59 ações monitoradas, destacando os papéis próximos às médias móveis de 21 e 200 períodos.",
+          "fonte": "Scanner B3 CafeRadar"
+        },
+        {
+          "texto": "As blue chips encerraram a semana com o Ibovespa aos 168.499 pts: bancos, elétricas e seguradoras seguem no radar defensivo, enquanto exportadoras acompanham o Brent a US$ 98,32 e o dólar a R$ 5,50.",
+          "fonte": "B3 / TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 98,32.",
-          "fonte": "Visno Invest",
-          "link": "https://visnoinvest.com.br"
+          "texto": "No Simulador de Renda Fixa do portal, o investidor pode comparar o rendimento líquido do Tesouro Selic e CDBs (100% a 110% do CDI) contra a poupança antes de enviar ordens na segunda-feira.",
+          "fonte": "Calculadora CafeRadar"
         },
         {
-          "texto": "O dólar comercial registra cotação de R$ 5,50 (+0,16%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
+          "texto": "No cenário internacional, o S&P 500 (7.377 pts) e o Bitcoin (US$ 75.511) compõem os referenciais externos para precificação dos ETFs globais (IVVB11) na reabertura local.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
-        },
-        {
-          "texto": "Em Wall Street, o S&P 500 opera aos 7.377 pts, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
-          "fonte": "BB InvesTalk"
         }
       ],
       "acoes_blue_chips": [
@@ -254,22 +254,23 @@
       },
       "comparacao_anterior": [
         {
-          "texto": "Volume negociado na primeira metade do pregão de sábado mostra investidores institucionais atuando com seletividade."
+          "texto": "Estudo de fim de semana permite avaliar pontos técnicos sem o ruído emocional do pregão intradiário."
         },
         {
-          "texto": "Setor financeiro (Itaú e Bradesco) e B3 sustentam suporte relevante frente às oscilações externas."
+          "texto": "Confira na aba Swing Trade (+5%) a tabela completa de auditoria e o status atualizado dos 59 ativos."
         }
       ],
       "disponivel": true,
-      "status_publicacao": "Publicado"
+      "status_publicacao": "Publicado",
+      "horario_exibicao": "Estudo"
     },
     "fechamento": {
       "id": "fechamento",
-      "nome": "Fechamento B3",
+      "nome": "Balanço da Semana",
       "icone": "🏁",
       "horario": "18h15",
-      "titulo": "RADAR DE FECHAMENTO B3 — 07/11/2026",
-      "subtitulo": "Ibovespa encerra a sábado aos 168.499 pts; Dólar fecha a R$ 5,50 e investidores avaliam balanços trimestrais",
+      "titulo": "ESPECIAL DE FIM DE SEMANA: BALANÇO DA SEMANA — 07/11/2026",
+      "subtitulo": "Balanço Consolidado da B3 (neste sábado): último pregão útil fechou com Ibovespa aos 168.499 pts e Dólar a R$ 5,50; Bitcoin opera a US$ 75.511",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -307,9 +308,9 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.746",
-          "variacao": "+0,02%",
-          "positivo": true,
+          "valor": "US$ 75.511",
+          "variacao": "-0,29%",
+          "positivo": false,
           "detalhe": "+1,47% na sessão"
         },
         "vix": {
@@ -422,43 +423,44 @@
       },
       "leitura_rapida": [
         {
-          "texto": "A bolsa brasileira encerra as negociações desta sábado com o Ibovespa marcando 168.499 pts, em pregão marcado por disciplina seletiva dos investidores.",
+          "texto": "Com o mercado brasileiro fechado no fim de semana (neste sábado), o fechamento consolidado do último pregão útil registra o Ibovespa aos 168.499 pts, refletindo o balanço semanal das ações de maior peso no índice.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,50 (+0,16%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
+          "texto": "No câmbio comercial, a última cotação de fechamento ficou em R$ 5,50 (+0,16%), em linha com o comportamento dos yields dos Treasuries americanos e o fluxo cambial na B3.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 98,32, ditando o rumo das petroleiras no pregão da B3.",
+          "texto": "Entre as commodities globais, o petróleo Brent encerrou a semana a US$ 98,32 o barril, enquanto o índice S&P 500 marcou 7.377 pts em Wall Street.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 75.746, preservando suporte relevante em sua estrutura de médio prazo.",
+          "texto": "Em negociação ininterrupta neste sábado, o Bitcoin é cotado a US$ 75.511, mantendo sua estrutura monitorada pelo motor quantitativo de longo prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
       "comparacao_anterior": [
         {
-          "texto": "Fechamento desta sábado confirma a consolidação do índice dentro da faixa técnica de suporte."
+          "texto": "Dados consolidados do último pregão útil da B3, disponíveis integralmente para consulta neste sábado."
         },
         {
-          "texto": "Mercado aguarda a abertura de amanhã para digerir novos indicadores de inflação e atividade."
+          "texto": "O pregão regular da B3 reabre no próximo dia útil às 10h00 (leilão de pré-abertura às 09h45)."
         }
       ],
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 18h15"
+      "disponivel": true,
+      "status_publicacao": "Publicado",
+      "horario_exibicao": "Consolidado"
     },
     "negocios": {
       "id": "negocios",
-      "nome": "Abertura B3",
+      "nome": "Radar de Segunda",
       "icone": "🔔",
       "horario": "10h30",
-      "titulo": "RADAR DE ABERTURA B3 — 07/11/2026",
-      "subtitulo": "Ibovespa oscila em torno dos 168.499 pts no início da tarde desta sábado; Dólar cotado a R$ 5,50 com giro concentrado no setor bancário e Vale",
+      "titulo": "ESPECIAL DE FIM DE SEMANA: RADAR DE SEGUNDA — 07/11/2026",
+      "subtitulo": "Radar Tático para Segunda-feira (neste sábado): estudo quantitativo das 59 ações da B3, filtro de médias móveis e comparativo Selic vs CDI",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -480,9 +482,9 @@
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 75.746",
-          "variacao": "+0,02%",
-          "positivo": true
+          "valor": "US$ 75.511",
+          "variacao": "-0,29%",
+          "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
@@ -493,23 +495,22 @@
       },
       "leitura_rapida": [
         {
-          "texto": "O Ibovespa opera próximo de 168.499 pts no balanço do meio-dia desta sábado, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
-          "fonte": "TradeMap",
+          "texto": "Durante o sábado sem pregão na B3, o Scanner Quantitativo de Swing Trade consolida o fechamento semanal das 59 ações monitoradas, destacando os papéis próximos às médias móveis de 21 e 200 períodos.",
+          "fonte": "Scanner B3 CafeRadar"
+        },
+        {
+          "texto": "As blue chips encerraram a semana com o Ibovespa aos 168.499 pts: bancos, elétricas e seguradoras seguem no radar defensivo, enquanto exportadoras acompanham o Brent a US$ 98,32 e o dólar a R$ 5,50.",
+          "fonte": "B3 / TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 98,32.",
-          "fonte": "Visno Invest",
-          "link": "https://visnoinvest.com.br"
+          "texto": "No Simulador de Renda Fixa do portal, o investidor pode comparar o rendimento líquido do Tesouro Selic e CDBs (100% a 110% do CDI) contra a poupança antes de enviar ordens na segunda-feira.",
+          "fonte": "Calculadora CafeRadar"
         },
         {
-          "texto": "O dólar comercial registra cotação de R$ 5,50 (+0,16%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
+          "texto": "No cenário internacional, o S&P 500 (7.377 pts) e o Bitcoin (US$ 75.511) compõem os referenciais externos para precificação dos ETFs globais (IVVB11) na reabertura local.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
-        },
-        {
-          "texto": "Em Wall Street, o S&P 500 opera aos 7.377 pts, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
-          "fonte": "BB InvesTalk"
         }
       ],
       "acoes_blue_chips": [
@@ -570,14 +571,18 @@
       },
       "comparacao_anterior": [
         {
-          "texto": "Volume negociado na primeira metade do pregão de sábado mostra investidores institucionais atuando com seletividade."
+          "texto": "Estudo de fim de semana permite avaliar pontos técnicos sem o ruído emocional do pregão intradiário."
         },
         {
-          "texto": "Setor financeiro (Itaú e Bradesco) e B3 sustentam suporte relevante frente às oscilações externas."
+          "texto": "Confira na aba Swing Trade (+5%) a tabela completa de auditoria e o status atualizado dos 59 ativos."
         }
       ],
       "disponivel": true,
-      "status_publicacao": "Publicado"
+      "status_publicacao": "Publicado",
+      "horario_exibicao": "Estudo"
     }
-  }
+  },
+  "dia_semana": "sábado",
+  "fim_de_semana": true,
+  "modo_mercado": "fim_de_semana"
 }

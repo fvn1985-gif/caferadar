@@ -112,6 +112,8 @@
     if (!badge || !txt) return;
     try {
       const sp = obterAgoraSaoPaulo();
+      const dow = sp.dtUtc.getUTCDay();
+      const ehFds = (dow === 0 || dow === 6);
       const pregaoDia = ehDiaPregaoB3(sp.dtUtc);
       const emHorarioPregao = pregaoDia && sp.totalMin >= (10 * 60) && sp.totalMin < (17 * 60 + 55);
       const dot = badge.querySelector('.bolinha-pulso');
@@ -124,7 +126,13 @@
         badge.classList.add('fechado');
         badge.classList.remove('aberto');
         if (dot) dot.classList.remove('ativa');
-        txt.textContent = 'Pregão B3 Fechado';
+        if (ehFds) {
+          txt.textContent = 'Pregão B3 Fechado (Fim de Semana)';
+        } else if (!pregaoDia) {
+          txt.textContent = 'Pregão B3 Fechado (Feriado)';
+        } else {
+          txt.textContent = 'Pregão B3 Fechado';
+        }
       }
     } catch (e) {
       txt.textContent = 'Pregão B3';
@@ -356,6 +364,90 @@
   // =========================================================================
 
   let dadosFechamentoCache = null;
+  let dadosSwingCache = null;
+  let dadosRadarCache = null;
+
+  function ehModoSemPregao(dados) {
+    if (dados && dados.fim_de_semana === true) return true;
+    try {
+      const sp = obterAgoraSaoPaulo();
+      return !ehDiaPregaoB3(sp.dtUtc);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function renderizarPainelFimDeSemana() {
+    const painel = document.getElementById('painel-fim-de-semana');
+    if (!painel) return;
+
+    const sp = obterAgoraSaoPaulo();
+    const semPregao = ehModoSemPregao(dadosFechamentoCache);
+    const badgeEl = document.getElementById('fds-badge-status');
+    const tituloEl = document.getElementById('fds-titulo-principal');
+    const subEl = document.getElementById('fds-subtitulo-principal');
+
+    if (semPregao) {
+      if (badgeEl) badgeEl.textContent = '☕ ESPECIAL DE FIM DE SEMANA & PLANEJAMENTO DA SEMANA';
+      if (tituloEl) tituloEl.textContent = 'Mercado B3 Fechado: Central de Estudos & Radar para Segunda-feira';
+      if (subEl) subEl.textContent = 'Aproveite a pausa do pregão para revisar o balanço consolidado da semana, acompanhar as ações monitoradas pelo scanner quantitativo (+5%) e planejar seus aportes com tranquilidade.';
+    } else {
+      if (badgeEl) badgeEl.textContent = '🧭 CENTRAL RÁPIDA DE PLANEJAMENTO & ESTUDOS DO INVESTIDOR';
+      if (tituloEl) tituloEl.textContent = 'Resumo Estratégico: Agenda B3, Radar Técnico e Renda Fixa';
+      if (subEl) subEl.textContent = 'Visão integrada dos 3 motores do CafeRadar: agenda macroeconômica, ações próximas ao gatilho técnico e comparativo atualizado de renda fixa.';
+    }
+
+    // Atualizar status do Bitcoin 24/7 na agenda
+    const elBtcStatus = document.getElementById('fds-btc-status');
+    if (elBtcStatus && dadosFechamentoCache && dadosFechamentoCache.edicoes) {
+      const edRef = dadosFechamentoCache.edicoes.fechamento || dadosFechamentoCache.edicoes.negocios || dadosFechamentoCache.edicoes.abertura;
+      const btc = edRef && edRef.mercado_geral && edRef.mercado_geral.bitcoin;
+      if (btc && btc.valor) {
+        const seta = btc.positivo ? '▲' : '▼';
+        elBtcStatus.textContent = `Bitcoin cotado a ${btc.valor} (${seta} ${btc.variacao || '0,00%'}) em negociação contínua.`;
+      }
+    }
+
+    // Atualizar Card 2: Ações no Radar Técnico (Swing Trade +5%)
+    const elSwingConteudo = document.getElementById('fds-radar-swing-conteudo');
+    if (elSwingConteudo && dadosSwingCache) {
+      const r = dadosSwingCache.resumo_pregao_hoje || dadosSwingCache.resumo_pregão_hoje || {};
+      const pos = Array.isArray(dadosSwingCache.posicoes_destaque) ? dadosSwingCache.posicoes_destaque : [];
+      const destaquesRadar = pos.filter(function(p) {
+        return p.categoria === 'OPORTUNIDADE' || p.categoria === 'OPORTUNIDADE_COM_RESSALVA' || p.categoria === 'OBSERVAR' || p.categoria === 'AGUARDAR' || p.categoria === 'ALVO_ATINGIDO';
+      }).slice(0, 3);
+      const listaExibir = destaquesRadar.length > 0 ? destaquesRadar : pos.slice(0, 3);
+
+      let htmlSwing = `<div style="margin-bottom:8px;font-size:0.79rem;color:#94a3b8;">Resumo das 59 ações: <strong style="color:#4ade80;">${r.oportunidades || 0} sinais ativos</strong> · <strong style="color:#fbbf24;">${r.ressalvas || 0} em observação</strong> · <strong style="color:#38bdf8;">${r.aguardando || 0} aguardando gatilho</strong></div>`;
+      listaExibir.forEach(function(item) {
+        const corTag = (item.categoria === 'OPORTUNIDADE') ? '#4ade80' : ((item.categoria === 'OBSERVAR' || item.categoria === 'OPORTUNIDADE_COM_RESSALVA') ? '#fbbf24' : '#38bdf8');
+        htmlSwing += `
+          <div class="fds-mini-item">
+            <div>
+              <strong style="color:#ffffff;font-family:var(--fonte-mono);">${escaparHtml(item.ticker)}</strong>
+              <span style="color:#94a3b8;font-size:0.75rem;margin-left:4px;">${escaparHtml(item.setup || '')}</span>
+            </div>
+            <span style="color:${corTag};font-weight:700;font-size:0.75rem;">${escaparHtml(item.status_badge || item.categoria)}</span>
+          </div>
+        `;
+      });
+      elSwingConteudo.innerHTML = htmlSwing;
+    }
+
+    // Atualizar Card 4: Resumo Alocação 2038
+    const elResumoAloc = document.getElementById('fds-resumo-alocacao');
+    if (elResumoAloc && dadosRadarCache && dadosRadarCache.allocation) {
+      const al = dadosRadarCache.allocation;
+      const ind = dadosRadarCache.indicators || {};
+      const taxaIpca = (ind.tesouro_ipca2040 && ind.tesouro_ipca2040.last_buy_rate_percent) ? formatarNumero(ind.tesouro_ipca2040.last_buy_rate_percent, 2) + '% a.a.' : '6,55% a.a.';
+      elResumoAloc.innerHTML = `
+        <div style="margin-bottom:8px;font-size:0.8rem;color:#cbd5e1;">Taxa real do <strong>Tesouro IPCA+ 2040</strong> em <strong style="color:#38bdf8;">${escaparHtml(taxaIpca)}</strong> (acima da meta de 6,50% a.a.):</div>
+        <div class="fds-mini-item"><span>🇧🇷 Tesouro IPCA+ 2040</span><strong style="color:#38bdf8;font-family:var(--fonte-mono);">${Number(al['Tesouro IPCA+ 2040'] ?? 60)}%</strong></div>
+        <div class="fds-mini-item"><span>🌎 S&amp;P 500 (IVVB11)</span><strong style="color:#4ade80;font-family:var(--fonte-mono);">${Number(al['IVVB11'] ?? 30)}%</strong></div>
+        <div class="fds-mini-item"><span>₿ Bitcoin (Cripto)</span><strong style="color:#fbbf24;font-family:var(--fonte-mono);">${Number(al['Bitcoin'] ?? 10)}%</strong></div>
+      `;
+    }
+  }
 
   function renderizarFitaCotacoes(dados) {
     const trilho = document.getElementById('fita-cotacoes-trilho');
@@ -439,7 +531,9 @@
       dadosFechamentoCache = dados;
       renderizarFitaCotacoes(dados);
       configurarBotoesEdicao(dados);
-      const edicaoInicial = dados.edicao_padrao || 'fechamento';
+      renderizarPainelFimDeSemana();
+      const semPregao = ehModoSemPregao(dados);
+      const edicaoInicial = semPregao ? 'fechamento' : (dados.edicao_padrao || 'fechamento');
       exibirEdicao(edicaoInicial);
     } catch (err) {
       console.warn('Usando dados de fallback para Fechamento Diário:', err.message);
@@ -447,32 +541,59 @@
       dadosFechamentoCache = fallback;
       renderizarFitaCotacoes(fallback);
       configurarBotoesEdicao(fallback);
+      renderizarPainelFimDeSemana();
       exibirEdicao('fechamento');
     }
   }
 
   function configurarBotoesEdicao(dados) {
     const botoes = document.querySelectorAll('.btn-edicao');
+    const semPregao = ehModoSemPregao(dados);
+    const rotuloEl = document.getElementById('rotulo-seletor-edicoes');
+    if (rotuloEl) {
+      rotuloEl.textContent = semPregao ? 'Especial de Fim de Semana:' : 'Edições de Hoje:';
+    }
+
+    const mapaFds = {
+      abertura: { icone: '📅', nome: 'Mapa da Semana', hora: 'Especial' },
+      negocios: { icone: '🎯', nome: 'Radar de Segunda', hora: 'Estudo' },
+      fechamento: { icone: '🏁', nome: 'Balanço da Semana', hora: 'Consolidado' }
+    };
+    const mapaUtil = {
+      abertura: { icone: '🌅', nome: 'Café Matinal', hora: '08h00' },
+      negocios: { icone: '🔔', nome: 'Abertura B3', hora: '10h30' },
+      fechamento: { icone: '🏁', nome: 'Fechamento', hora: '18h15' }
+    };
+
     botoes.forEach(function (btn) {
       const idEdicao = btn.getAttribute('data-edicao');
       const ed = dados.edicoes && dados.edicoes[idEdicao];
-      if (ed && ed.disponivel === false) {
+      const iconeEl = btn.querySelector('.edicao-icone');
+      const nomeEl = btn.querySelector('.edicao-nome');
+      const horaEl = btn.querySelector('.edicao-hora');
+      const info = semPregao ? mapaFds[idEdicao] : mapaUtil[idEdicao];
+
+      if (info) {
+        if (iconeEl) iconeEl.textContent = info.icone;
+        if (nomeEl) nomeEl.textContent = (ed && ed.nome && semPregao) ? ed.nome : info.nome;
+      }
+
+      if (!semPregao && ed && ed.disponivel === false) {
         btn.classList.add('edicao-pendente');
-        const horaEl = btn.querySelector('.edicao-hora');
-        if (horaEl && !horaEl.textContent.includes('⏳')) {
-          horaEl.textContent = '⏳ ' + (ed.horario || '');
-        }
-      } else if (ed && ed.disponivel === true) {
-        btn.classList.remove('edicao-pendente');
-        const horaEl = btn.querySelector('.edicao-hora');
         if (horaEl) {
-          horaEl.textContent = ed.horario || '';
+          horaEl.textContent = '⏳ ' + (ed.horario || (info ? info.hora : ''));
+        }
+      } else {
+        btn.classList.remove('edicao-pendente');
+        if (horaEl) {
+          horaEl.textContent = semPregao ? (info ? info.hora : 'Disponível') : ((ed && ed.horario) || (info ? info.hora : ''));
         }
       }
-      btn.addEventListener('click', function (e) {
+
+      btn.onclick = function (e) {
         e.preventDefault();
         exibirEdicao(idEdicao);
-      });
+      };
     });
   }
 
@@ -498,9 +619,10 @@
 
     const boxPublicada = document.getElementById('conteudo-edicao-publicada');
     const boxAguardando = document.getElementById('conteudo-edicao-aguardando');
+    const semPregao = ehModoSemPregao(dadosFechamentoCache);
 
-    // Se a edição ainda não está disponível
-    if (dadosEdicao && dadosEdicao.disponivel === false) {
+    // Se a edição ainda não está disponível (somente em dias de pregão útil antes do horário)
+    if (!semPregao && dadosEdicao && dadosEdicao.disponivel === false) {
       if (boxPublicada) boxPublicada.style.display = 'none';
       if (boxAguardando) {
         boxAguardando.style.display = 'block';
@@ -725,10 +847,15 @@
       const resp = await fetch('data/swingtrade.json?_t=' + Date.now(), { cache: 'no-store' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const dados = await resp.json();
+      dadosSwingCache = dados;
       renderizarSwingTrade(dados);
+      renderizarPainelFimDeSemana();
     } catch (err) {
       console.warn('Usando dados de fallback para Swing Trade:', err.message);
-      renderizarSwingTrade(obterSwingFallback());
+      const fb = obterSwingFallback();
+      dadosSwingCache = fb;
+      renderizarSwingTrade(fb);
+      renderizarPainelFimDeSemana();
     }
   }
 
@@ -998,10 +1125,15 @@
       const resp = await fetch('data/dashboard.json?_t=' + Date.now(), { cache: 'no-store' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const dados = await resp.json();
+      dadosRadarCache = dados;
       renderizarRadar(dados, false);
+      renderizarPainelFimDeSemana();
     } catch (err) {
       console.warn('Usando dados de fallback para Radar Longo Prazo:', err.message);
-      renderizarRadar(obterRadarFallback(), true);
+      const fb = obterRadarFallback();
+      dadosRadarCache = fb;
+      renderizarRadar(fb, true);
+      renderizarPainelFimDeSemana();
     }
   }
 
