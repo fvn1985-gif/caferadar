@@ -49,7 +49,10 @@ Melhorias v1.0.1:
 """
 
 from __future__ import annotations
-import formatadores_x
+try:
+    import formatadores_x
+except ImportError:
+    from tools import formatadores_x
 
 import json
 
