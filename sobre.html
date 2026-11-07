@@ -11,11 +11,18 @@
   <link rel="stylesheet" href="style.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="https://caferadar.com.br/sobre.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
+  <meta property="og:site_name" content="CafeRadar">
   <meta property="og:title" content="Sobre Nós, Metodologia & Governança — CafeRadar">
   <meta property="og:description" content="CafeRadar — Plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://caferadar.com.br/sobre.html">
+  <meta property="og:image" content="https://caferadar.com.br/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sobre Nós, Metodologia & Governança — CafeRadar">
+  <meta name="twitter:description" content="CafeRadar — Plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado.">
+  <meta name="twitter:image" content="https://caferadar.com.br/og-image.png">
   <style>
     .pagina-container {
       max-width: 860px;
@@ -191,14 +198,16 @@
   <header class="cabecalho-portal">
     <div class="container container-header">
       <div class="marca-portal">
-        <div class="logo-icone">CR</div>
-        <div>
-          <h1 class="portal-titulo">CAFERADAR</h1>
-          <p class="portal-slogan">Plataforma Independente de Informação Financeira & Pesquisa Quantitativa</p>
-        </div>
+        <a href="./" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+          <div class="logo-icone">CR</div>
+          <div>
+            <div class="portal-titulo">CAFERADAR</div>
+            <p class="portal-slogan">Plataforma Independente de Informação Financeira & Pesquisa Quantitativa</p>
+          </div>
+        </a>
       </div>
       <div class="status-topo">
-        <a href="index.html" class="btn-tab ativa" style="border:1px solid var(--borda); border-radius:9999px; padding:6px 14px;">
+        <a href="./" class="btn-tab ativa" style="border:1px solid var(--borda); border-radius:9999px; padding:6px 14px;">
           <span>← Voltar ao Portal</span>
         </a>
       </div>
@@ -206,9 +215,10 @@
   </header>
 
   <main class="container pagina-container">
-    <a href="index.html" class="btn-voltar">← Voltar à página inicial</a>
+    <a href="./" class="btn-voltar">← Voltar à página inicial</a>
 
     <div class="card-documento">
+      <h1 style="font-size: 1.55rem; font-weight: 800; color: var(--primaria); margin-bottom: 16px;">Sobre o CafeRadar — Origem, Metodologia & Governança</h1>
       <h2><span>🎯</span> 1. Origem e Propósito do CafeRadar</h2>
       <p>
         O <strong>CafeRadar</strong> é uma plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado.
@@ -245,7 +255,7 @@
         O portal estrutura-se em três frentes de pesquisa e monitoramento:
       </p>
       <ul>
-        <li><strong>Fechamento Diário (3 Edições):</strong> Compilação exclusivamente jornalística e factual de cotações consolidadas e acontecimentos relevantes do pregão (Abertura 08h30, Almoço 12h30 e Fechamento 18h30), baseada em fontes primárias de imprensa e repositórios oficiais;</li>
+        <li><strong>Fechamento Diário (3 Edições):</strong> Compilação exclusivamente jornalística e factual de cotações consolidadas e acontecimentos relevantes do pregão (Café Matinal 08h00, Abertura B3 10h30 e Fechamento 18h15), baseada em fontes primárias de imprensa e repositórios oficiais;</li>
         <li><strong>Scanner Tático de Swing Trade B3:</strong> Filtro algorítmico automatizado sobre 59 blue chips da B3, aplicando regras estritas de reversão à média e volatilidade. Todos os estudos históricos (173 trades) derivam de simulações retrospectivas computacionais (backtests) com alvo teórico de +5,0% sem stop loss, com todas as operações em aberto auditadas publicamente;</li>
         <li><strong>Radar de Alocação de Longo Prazo:</strong> Modelo quantitativo teórico que pondera variáveis macroeconômicas objetivas (taxa de juro real do Tesouro IPCA+, comportamento da média móvel do câmbio e valuation do Ibovespa) como subsídio didático para estudo de classes de ativos.</li>
       </ul>
@@ -290,7 +300,7 @@
     <div class="container container-rodape">
       <div class="rodape-colunas">
         <div class="col-institucional">
-          <div class="logo-rodape">CAFE RADAR</div>
+          <div class="logo-rodape">CAFERADAR</div>
           <p class="desc-rodape">
             Plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado.
           </p>
@@ -298,7 +308,7 @@
         <div class="col-links">
           <h4>Institucional</h4>
           <ul>
-            <li><a href="index.html">Início do Portal</a></li>
+            <li><a href="./">Início do Portal</a></li>
             <li><a href="sobre.html">Sobre & Metodologia</a></li>
             <li><a href="privacy.html">Política de Privacidade</a></li>
             <li><a href="rules.html">Regras do Motor</a></li>

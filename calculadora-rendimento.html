@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
   
   <!-- Favicon & Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -26,6 +27,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de Rendimento: Poupança vs CDB vs Tesouro Selic — CafeRadar">
+  <meta name="twitter:description" content="Descubra quanto sobra líquido no seu bolso comparando Poupança, CDB 100% CDI e Tesouro Selic com desconto oficial de IR. Grátis.">
   <meta name="twitter:image" content="https://caferadar.com.br/og-image.png">
 
     <!-- Google Analytics 4 (gtag.js) -->
@@ -131,16 +134,16 @@
   <header class="cabecalho-portal">
     <div class="container container-header">
       <div class="marca-portal">
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+        <a href="./" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
           <div class="logo-icone">CR</div>
           <div>
-            <h1 class="portal-titulo">CAFERADAR</h1>
+            <div class="portal-titulo">CAFERADAR</div>
             <p class="portal-slogan">Inteligência de Mercado B3, Swing Trade & Simuladores</p>
           </div>
         </a>
       </div>
       <div class="status-topo">
-        <a href="index.html" class="btn-tab ativa" style="border: 1px solid var(--borda); border-radius: 9999px; padding: 6px 14px; text-decoration: none;">
+        <a href="./" class="btn-tab ativa" style="border: 1px solid var(--borda); border-radius: 9999px; padding: 6px 14px; text-decoration: none;">
           <span>← Voltar ao Fechamento Diário</span>
         </a>
       </div>
@@ -151,22 +154,25 @@
   <div class="container container-ad">
     <div class="slot-publicidade leaderboard">
       <span class="rotulo-ad">PUBLICIDADE</span>
-      <div class="placeholder-ad">
-        <span class="texto-ad">Espaço reservado para Anúncio AdSense (Leaderboard 728x90)</span>
-      </div>
+      <ins class="adsbygoogle"
+           style="display:block; width:100%; min-height:90px;"
+           data-ad-client="ca-pub-6721082194258309"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
   </div>
 
   <main class="container calc-container">
-    <a href="index.html" class="btn-voltar">← Voltar à página inicial</a>
+    <a href="./" class="btn-voltar">← Voltar à página inicial</a>
 
     <div class="card-bloco-noticia" style="border: 2px solid var(--destaque-suave); padding: 32px; margin-bottom: 24px;">
       <div class="bloco-cabecalho" style="border-bottom: 1px solid var(--borda); padding-bottom: 18px; margin-bottom: 24px;">
         <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 48px; height: 48px; font-size: 1.5rem;">🧮</span>
         <div>
-          <h2 style="font-size: 1.55rem; color: var(--primaria); margin-bottom: 6px; font-weight: 800;">
+          <h1 style="font-size: 1.55rem; color: var(--primaria); margin-bottom: 6px; font-weight: 800;">
             Poupança, CDB ou Tesouro Selic: Quanto Sobra no Bolso?
-          </h2>
+          </h1>
           <p style="font-size: 0.95rem; color: var(--texto-secundario); margin: 0; line-height: 1.6;">
             Simule o rendimento líquido real do seu dinheiro com a alíquota regressiva oficial de Imposto de Renda (IR) e as taxas vigentes do Banco Central. Gratuito, sem cadastro e sem viés de corretora.
           </p>
@@ -193,10 +199,10 @@
         </div>
 
         <div class="grupo-campo-calc">
-          <label style="font-size: 0.9rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">
+          <label id="label-prazo-calc" style="font-size: 0.9rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">
             Prazo de aplicação
           </label>
-          <div class="botoes-prazos" style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <div class="botoes-prazos" role="group" aria-labelledby="label-prazo-calc" style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button class="btn-prazo" data-meses="1">1 Mês</button>
             <button class="btn-prazo" data-meses="6">6 Meses</button>
             <button class="btn-prazo ativa" data-meses="12">1 Ano (12 meses)</button>
@@ -226,11 +232,11 @@
         </div>
 
         <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 20px; text-align: center; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Menor Risco de Crédito</div>
+          <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Risco Soberano</div>
           <span style="font-size: 0.82rem; font-weight: 700; color: var(--destaque); text-transform: uppercase;">Tesouro Selic Oficial</span>
           <div id="res-total-selic" style="font-size: 1.6rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
           <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-selic" style="color: var(--destaque);">+R$ 0,00</strong></div>
-          <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia Soberana</span>
+          <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia do Tesouro Nacional</span>
         </div>
       </div>
 
@@ -238,7 +244,7 @@
       <div id="aviso-lucro-extra" style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--raio-md); padding: 16px 20px; display: flex; align-items: center; gap: 14px; margin-bottom: 28px;">
         <span style="font-size: 1.6rem;">💡</span>
         <p style="margin: 0; font-size: 0.95rem; color: #065f46; line-height: 1.5;">
-          Ao escolher o <strong>Tesouro Selic</strong> em vez da Poupança, você recebe <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> com garantia soberana do Governo Federal!
+          Na simulação matemática acima, o rendimento líquido estimado do <strong>Tesouro Selic</strong> supera o da Poupança em <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> no período selecionado (título público federal emitido pelo Tesouro Nacional).
         </p>
       </div>
 
@@ -289,7 +295,7 @@
         <div style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px;">
           <h4 style="font-size: 1rem; color: var(--primaria); margin-bottom: 6px; font-weight: 700;">3. Tesouro Selic</h4>
           <p style="font-size: 0.88rem; color: var(--texto-secundario); line-height: 1.5; margin: 0;">
-            Título emitido pelo Tesouro Nacional (risco soberano zero). Rende a taxa Selic diária acrescida de um pequeno ágio de ~0,05% a.a., com liquidez diária e incidência regressiva de IR.
+            Título público federal emitido pelo Tesouro Nacional (risco soberano da União). Rende a taxa Selic diária acrescida de um pequeno ágio (~0,05% a.a.), com liquidez diária e incidência regressiva de IR. Há isenção da taxa de custódia da B3 (0,20% a.a.) para saldos de até R$ 10.000 no Tesouro Selic (incidindo apenas sobre o valor excedente). Para resgates antes de 30 dias corridos, incide IOF regressivo sobre o rendimento no CDB e no Tesouro.
           </p>
         </div>
       </div>
@@ -356,11 +362,12 @@
       <div class="coluna-links">
         <h4>Navegação</h4>
         <ul>
-          <li><a href="/index.html#fechamento">Fechamento Diário</a></li>
-          <li><a href="/index.html#swingtrade">Swing Trade B3 (+5%)</a></li>
-          <li><a href="/index.html#alocacao">Radar Longo Prazo</a></li>
+          <li><a href="./#fechamento">Fechamento Diário</a></li>
+          <li><a href="./#swingtrade">Swing Trade B3 (+5%)</a></li>
+          <li><a href="./#alocacao">Radar Longo Prazo</a></li>
           <li><a href="calculadora-rendimento.html">Calculadora de Renda</a></li>
-          <li><a href="/index.html#metodologia">Como Usar o Portal</a></li>
+          <li><a href="edicoes/">Acervo de Edições</a></li>
+          <li><a href="./#metodologia">Como Usar o Portal</a></li>
         </ul>
       </div>
 
@@ -512,6 +519,10 @@
 
       // Execução inicial
       calcular();
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
     });
   </script>
 </body>

@@ -141,6 +141,12 @@ body {
   border: 1px solid #cbd5e1;
 }
 
+.badge-status-mercado.aberto {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
 .badge-status-motor {
   background-color: var(--destaque-suave);
   color: var(--destaque);
@@ -1573,4 +1579,79 @@ ins.adsbygoogle[data-ad-status="unfilled"] {
 .fita-var.negativo {
   color: #f87171;
   background: rgba(239, 68, 68, 0.12);
+}
+
+/* ============================================================================
+   ACESSIBILIDADE (FOCO VISÍVEL & REDUÇÃO DE MOVIMENTO) E BANNER LGPD
+   ============================================================================ */
+:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fita-cotacoes-trilho {
+    animation: none !important;
+  }
+}
+
+.banner-cookies-lgpd {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 880px;
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 9999;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.banner-cookies-texto a {
+  color: #38bdf8;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.btn-cookies-aceitar {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-cookies-aceitar:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 640px) {
+  .banner-cookies-lgpd {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+  .btn-cookies-aceitar {
+    width: 100%;
+  }
 }

@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://caferadar.com.br/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/calculadora-rendimento.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/historico-swing.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/edicoes/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -36,19 +36,19 @@
   </url>
   <url>
     <loc>https://caferadar.com.br/sobre.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/rules.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/privacy.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -73,8 +73,18 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://caferadar.com.br/edicoes/2026-11-05-negocios.html</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://caferadar.com.br/edicoes/2026-11-06-abertura.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://caferadar.com.br/edicoes/2026-11-06-almoco.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://caferadar.com.br/edicoes/2026-11-06-fechamento.html</loc>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

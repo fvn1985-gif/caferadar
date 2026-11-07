@@ -2,9 +2,9 @@
   "atualizado_em": "05/11/2026 às 20h16",
   "data_referencia": "2026-11-05",
   "data_execucao_scanner": "05/11/2026 às 20h16",
-  "data_exportacao": "05/11/2026 às 20h16",
+  "data_exportacao": "07/11/2026 às 13h48",
   "status_frescor": "ATUALIZADO",
-  "dias_uteis_defasagem": 0,
+  "dias_uteis_defasagem": 1,
   "estrategia": {
     "nome": "Swing Trade — Reversão Quantitativa B3",
     "universo_total": 59,
@@ -29,7 +29,7 @@
       "ticker": "CXSE3",
       "empresa": "Caixa Seguridade ON",
       "categoria": "OBSERVAR",
-      "setup": "TOQUE_SMA21",
+      "setup": "Toque na Média 21 (SMA21)",
       "preco_entrada": "Monitorando",
       "alvo_saida": "Alvo +5,0%",
       "variacao_atual": "—",
@@ -38,7 +38,7 @@
     },
     {
       "ticker": "SAUD3",
-      "empresa": "SAUD3",
+      "empresa": "Mater Dei ON",
       "categoria": "AGUARDAR",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -49,7 +49,7 @@
     },
     {
       "ticker": "LEVE3",
-      "empresa": "LEVE3",
+      "empresa": "Mahle Metal Leve ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -71,7 +71,7 @@
     },
     {
       "ticker": "MBRF3",
-      "empresa": "MBRF3",
+      "empresa": "Marfrig ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -115,7 +115,7 @@
     },
     {
       "ticker": "POMO3",
-      "empresa": "POMO3",
+      "empresa": "Marcopolo ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",

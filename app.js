@@ -1,11 +1,11 @@
 /**
- * RADAR INVEST — Aplicação Web & Central do Investidor
- * 
+ * CAFERADAR — Aplicação Web & Central do Investidor
+ *
  * Gerencia a navegação entre:
- * 1. Fechamento Diário (Resumo de mercado em 2 minutos)
- * 2. Swing Trade B3 (Oportunidades com alvo de +5% nas 59 ações selecionadas)
- * 3. Radar Longo Prazo (Bússola quantitativa de alocação de aportes)
- * 4. Como Usar & Filosofia
+ * 1. Fechamento Diário (Síntese do pregão da B3)
+ * 2. Swing Trade B3 (Scanner quantitativo sobre 59 ações)
+ * 3. Radar Longo Prazo (Estudo quantitativo de alocação)
+ * 4. Simulador de Renda Fixa & Filosofia
  */
 
 (function () {
@@ -22,12 +22,140 @@
     'Caixa residual': '#7f7f7f'
   };
 
+  let abaAtual = 'fechamento';
+
+  // Calendário de feriados conhecidos da B3 (espelha src/engine.py::_b3_holidays)
+  function pascoaGregoriana(ano) {
+    const a = ano % 19;
+    const b = Math.floor(ano / 100);
+    const c = ano % 100;
+    const d = Math.floor(b / 4);
+    const e = b % 4;
+    const f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4);
+    const k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const mes = Math.floor((h + l - 7 * m + 114) / 31);
+    const dia = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(Date.UTC(ano, mes - 1, dia));
+  }
+
+  function somarDiasUTC(dt, dias) {
+    return new Date(dt.getTime() + dias * 86400000);
+  }
+
+  function fmtIsoUTC(dt) {
+    const y = dt.getUTCFullYear();
+    const m = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const d = String(dt.getUTCDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  const cacheFeriadosB3 = {};
+  function obterFeriadosB3(ano) {
+    if (cacheFeriadosB3[ano]) return cacheFeriadosB3[ano];
+    const pascoa = pascoaGregoriana(ano);
+    const set = new Set([
+      `${ano}-01-01`,
+      fmtIsoUTC(somarDiasUTC(pascoa, -48)),
+      fmtIsoUTC(somarDiasUTC(pascoa, -47)),
+      fmtIsoUTC(somarDiasUTC(pascoa, -2)),
+      `${ano}-04-21`,
+      `${ano}-05-01`,
+      fmtIsoUTC(somarDiasUTC(pascoa, 60)),
+      `${ano}-09-07`,
+      `${ano}-10-12`,
+      `${ano}-11-02`,
+      `${ano}-11-15`,
+      `${ano}-12-24`,
+      `${ano}-12-25`,
+      `${ano}-12-31`
+    ]);
+    if (ano >= 2024) set.add(`${ano}-11-20`);
+    cacheFeriadosB3[ano] = set;
+    return set;
+  }
+
+  function ehDiaPregaoB3(dtUtc) {
+    const dow = dtUtc.getUTCDay();
+    if (dow === 0 || dow === 6) return false;
+    const iso = fmtIsoUTC(dtUtc);
+    return !obterFeriadosB3(dtUtc.getUTCFullYear()).has(iso);
+  }
+
+  function obterAgoraSaoPaulo() {
+    const agora = new Date();
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Sao_Paulo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).formatToParts(agora);
+    const map = {};
+    parts.forEach(function (p) { map[p.type] = p.value; });
+    const dataIso = `${map.year}-${map.month}-${map.day}`;
+    const hora = parseInt(map.hour || '0', 10) % 24;
+    const minuto = parseInt(map.minute || '0', 10);
+    const dtUtc = new Date(Date.UTC(Number(map.year), Number(map.month) - 1, Number(map.day)));
+    return { dataIso: dataIso, hora: hora, minuto: minuto, totalMin: hora * 60 + minuto, dtUtc: dtUtc };
+  }
+
+  function atualizarBadgeStatusMercado() {
+    const badge = document.getElementById('badge-status-mercado');
+    const txt = document.getElementById('texto-status-mercado');
+    if (!badge || !txt) return;
+    try {
+      const sp = obterAgoraSaoPaulo();
+      const pregaoDia = ehDiaPregaoB3(sp.dtUtc);
+      const emHorarioPregao = pregaoDia && sp.totalMin >= (10 * 60) && sp.totalMin < (17 * 60 + 55);
+      const dot = badge.querySelector('.bolinha-pulso');
+      if (emHorarioPregao) {
+        badge.classList.remove('fechado');
+        badge.classList.add('aberto');
+        if (dot) dot.classList.add('ativa');
+        txt.textContent = 'Pregão B3 Aberto';
+      } else {
+        badge.classList.add('fechado');
+        badge.classList.remove('aberto');
+        if (dot) dot.classList.remove('ativa');
+        txt.textContent = 'Pregão B3 Fechado';
+      }
+    } catch (e) {
+      txt.textContent = 'Pregão B3';
+    }
+  }
+
+  function inicializarBannerCookies() {
+    const banner = document.getElementById('banner-cookies-lgpd');
+    const btn = document.getElementById('btn-aceitar-cookies');
+    if (!banner || !btn) return;
+    try {
+      if (!localStorage.getItem('caferadar_cookies_ack')) {
+        banner.style.display = 'flex';
+      }
+      btn.addEventListener('click', function () {
+        try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch (e) {}
+        banner.style.display = 'none';
+      });
+    } catch (e) {
+      banner.style.display = 'none';
+    }
+  }
+
   /**
    * Inicialização principal
    */
   async function inicializar() {
+    atualizarBadgeStatusMercado();
     configurarNavegacaoAbas();
     inicializarCalculadoraRendaFixa();
+    inicializarBannerCookies();
     renderizarLegendaEstados();
 
     // Carregamento paralelo das 3 fontes de dados
@@ -43,50 +171,103 @@
   // =========================================================================
 
   function configurarNavegacaoAbas() {
-    const botoes = document.querySelectorAll('.btn-tab[data-tab]');
-    botoes.forEach(function (btn) {
+    const botoes = Array.from(document.querySelectorAll('.btn-tab[data-tab]'));
+    botoes.forEach(function (btn, idx) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         const tabAlvo = btn.getAttribute('data-tab');
         trocarTab(tabAlvo);
       });
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const dir = e.key === 'ArrowRight' ? 1 : -1;
+          const next = botoes[(idx + dir + botoes.length) % botoes.length];
+          if (next) {
+            next.focus();
+            trocarTab(next.getAttribute('data-tab'));
+          }
+        }
+      });
     });
 
     // Suporte a hash na URL (#fechamento, #swingtrade, #alocacao, #metodologia, #simulador)
     window.addEventListener('hashchange', aplicarHashUrl);
-    window.addEventListener('load', aplicarHashUrl);
     aplicarHashUrl();
     inicializarAnunciosAdSense();
   }
 
 
   // Controle de Ciência Regulatória e Consentimento Informado (CVM 19 e 20)
+  function fecharModaisGovernanca() {
+    const mSwing = document.getElementById('modal-governanca-swing');
+    const mAloc = document.getElementById('modal-governanca-alocacao');
+    if (mSwing) mSwing.style.display = 'none';
+    if (mAloc) mAloc.style.display = 'none';
+  }
+
+  function cancelarModalConsentimento() {
+    fecharModaisGovernanca();
+    const destino = (abaAtual && abaAtual !== 'swingtrade' && abaAtual !== 'alocacao') ? abaAtual : 'fechamento';
+    if (window.location.hash && window.location.hash !== '#' + destino) {
+      if (history.replaceState) {
+        history.replaceState(null, null, '#' + destino);
+      }
+    }
+    const btnFoco = document.querySelector(`.btn-tab[data-tab="${destino}"]`);
+    if (btnFoco) btnFoco.focus();
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const mSwing = document.getElementById('modal-governanca-swing');
+      const mAloc = document.getElementById('modal-governanca-alocacao');
+      if ((mSwing && mSwing.style.display === 'flex') || (mAloc && mAloc.style.display === 'flex')) {
+        cancelarModalConsentimento();
+      }
+    }
+  });
+
   function verificarModalConsentimento(tabId, callbackProsseguir) {
-    const consentimentoSwing = localStorage.getItem('caferadar_consent_swing');
-    const consentimentoAlocacao = localStorage.getItem('caferadar_consent_alocacao');
+    let consentimentoSwing = null;
+    let consentimentoAlocacao = null;
+    try {
+      consentimentoSwing = localStorage.getItem('caferadar_consent_swing');
+      consentimentoAlocacao = localStorage.getItem('caferadar_consent_alocacao');
+    } catch (e) {}
 
     if (tabId === 'swingtrade' && !consentimentoSwing) {
       const modalSwing = document.getElementById('modal-governanca-swing');
       const btnConcordo = document.getElementById('btn-concordo-swing');
+      const btnCancelar = document.getElementById('btn-cancelar-swing');
+      const backdrop = modalSwing ? modalSwing.querySelector('.modal-governanca-backdrop') : null;
       if (modalSwing && btnConcordo) {
         modalSwing.style.display = 'flex';
+        btnConcordo.focus();
         btnConcordo.onclick = function() {
-          localStorage.setItem('caferadar_consent_swing', 'true');
+          try { localStorage.setItem('caferadar_consent_swing', 'true'); } catch (e) {}
           modalSwing.style.display = 'none';
           callbackProsseguir();
         };
+        if (btnCancelar) btnCancelar.onclick = cancelarModalConsentimento;
+        if (backdrop) backdrop.onclick = cancelarModalConsentimento;
         return false;
       }
     } else if (tabId === 'alocacao' && !consentimentoAlocacao) {
       const modalAlocacao = document.getElementById('modal-governanca-alocacao');
       const btnConcordoAloc = document.getElementById('btn-concordo-alocacao');
+      const btnCancelarAloc = document.getElementById('btn-cancelar-alocacao');
+      const backdropAloc = modalAlocacao ? modalAlocacao.querySelector('.modal-governanca-backdrop') : null;
       if (modalAlocacao && btnConcordoAloc) {
         modalAlocacao.style.display = 'flex';
+        btnConcordoAloc.focus();
         btnConcordoAloc.onclick = function() {
-          localStorage.setItem('caferadar_consent_alocacao', 'true');
+          try { localStorage.setItem('caferadar_consent_alocacao', 'true'); } catch (e) {}
           modalAlocacao.style.display = 'none';
           callbackProsseguir();
         };
+        if (btnCancelarAloc) btnCancelarAloc.onclick = cancelarModalConsentimento;
+        if (backdropAloc) backdropAloc.onclick = cancelarModalConsentimento;
         return false;
       }
     }
@@ -100,10 +281,11 @@
         window.adsbygoogle = [];
       }
       var escopo = container || document;
-      var slots = escopo.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])');
+      var slots = escopo.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status]):not([data-ad-pushed])');
       slots.forEach(function (slot) {
         if (slot.offsetParent !== null) {
           try {
+            slot.setAttribute('data-ad-pushed', 'true');
             (window.adsbygoogle = window.adsbygoogle || []).push({});
           } catch (e) {
             console.debug('AdSense slot push diferido:', e.message);
@@ -125,14 +307,15 @@
       return;
     }
 
-    // Atualiza botões
-    document.querySelectorAll('.btn-tab').forEach(function (btn) {
+    abaAtual = idLimpo;
+
+    // Atualiza botões e atributos ARIA
+    document.querySelectorAll('.btn-tab[data-tab]').forEach(function (btn) {
       const dt = btn.getAttribute('data-tab') || '';
-      if (dt === idLimpo || dt === 'tab-' + idLimpo) {
-        btn.classList.add('ativa');
-      } else {
-        btn.classList.remove('ativa');
-      }
+      const ativa = (dt === idLimpo || dt === 'tab-' + idLimpo);
+      btn.classList.toggle('ativa', ativa);
+      btn.setAttribute('aria-selected', ativa ? 'true' : 'false');
+      btn.setAttribute('tabindex', ativa ? '0' : '-1');
     });
 
     // Atualiza seções de conteúdo
@@ -148,7 +331,7 @@
     }
 
     // Atualiza hash sem saltos na página
-    if (history.pushState) {
+    if (history.pushState && window.location.hash !== '#' + idLimpo) {
       history.pushState(null, null, '#' + idLimpo);
     }
   };
@@ -225,7 +408,27 @@
         '</span>';
     }).join('');
 
-    trilho.innerHTML = htmlItens + htmlItens;
+    const htmlDuplicado = itens.map(function(item) {
+      const pos = item.positivo;
+      const cls = pos === true ? 'positivo' : (pos === false ? 'negativo' : '');
+      const seta = pos === true ? '▲' : (pos === false ? '▼' : '');
+      return '<span class="fita-item" aria-hidden="true">' +
+        '<span class="fita-ticker">' + escaparHtml(item.ticker) + '</span> ' +
+        '<span class="fita-preco">' + escaparHtml(item.preco || '') + '</span> ' +
+        '<span class="fita-var ' + cls + '">' + seta + ' ' + escaparHtml(item.variacao || '') + '</span>' +
+        '</span>';
+    }).join('');
+
+    trilho.innerHTML = htmlItens + htmlDuplicado;
+
+    const elRefFita = document.getElementById('fita-referencia');
+    if (elRefFita) {
+      const dtTxt = (dados && dados.data_formatada) ? dados.data_formatada.slice(0, 5) : '';
+      const hrTxt = (refEd && refEd.horario) ? refEd.horario : ((dados && dados.atualizado_as) || '');
+      if (dtTxt || hrTxt) {
+        elRefFita.textContent = '(' + [dtTxt, hrTxt].filter(Boolean).join(' ') + ')';
+      }
+    }
   }
 
   async function carregarFechamentoDiario() {
@@ -242,6 +445,7 @@
       console.warn('Usando dados de fallback para Fechamento Diário:', err.message);
       const fallback = obterFechamentoFallback();
       dadosFechamentoCache = fallback;
+      renderizarFitaCotacoes(fallback);
       configurarBotoesEdicao(fallback);
       exibirEdicao('fechamento');
     }
@@ -295,17 +499,17 @@
     const boxPublicada = document.getElementById('conteudo-edicao-publicada');
     const boxAguardando = document.getElementById('conteudo-edicao-aguardando');
 
-    // Se a edição ainda não está disponível no horário de hoje
+    // Se a edição ainda não está disponível
     if (dadosEdicao && dadosEdicao.disponivel === false) {
       if (boxPublicada) boxPublicada.style.display = 'none';
       if (boxAguardando) {
         boxAguardando.style.display = 'block';
 
-        // Determinar se já passou do horário previsto
-        const agora = new Date();
-        const horaAtual = agora.getHours();
-        const minAtual = agora.getMinutes();
-        const tempoAtualMin = horaAtual * 60 + minAtual;
+        const sp = obterAgoraSaoPaulo();
+        const dataRefArquivo = dadosFechamentoCache.data_referencia || '';
+        const dataFmtArquivo = dadosFechamentoCache.data_formatada || formatarData(dataRefArquivo) || '';
+        const ehMesmoDia = (!dataRefArquivo || dataRefArquivo === sp.dataIso);
+        const ehDiaPassado = Boolean(dataRefArquivo && dataRefArquivo < sp.dataIso);
 
         let tempoPrevistoMin = 0;
         const mHorario = String(dadosEdicao.horario || '').match(/^(\d{2})h(\d{2})/);
@@ -313,23 +517,41 @@
           tempoPrevistoMin = parseInt(mHorario[1], 10) * 60 + parseInt(mHorario[2], 10);
         }
 
-        const jaPassou = tempoPrevistoMin > 0 && tempoAtualMin >= tempoPrevistoMin;
+        const jaPassouNoMesmoDia = ehMesmoDia && tempoPrevistoMin > 0 && sp.totalMin >= tempoPrevistoMin;
 
-        const tituloAguardando = jaPassou
-          ? `Edição de ${escaparHtml(dadosEdicao.nome)} em Processamento`
-          : `Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '18h30')}`;
+        // Descobrir última edição disponível no cache para oferecer botão de retorno preciso
+        const edMap = dadosFechamentoCache.edicoes || {};
+        let edVoltarKey = 'abertura';
+        let edVoltarLabel = 'Edição de Abertura (08h00)';
+        if (edMap.negocios && edMap.negocios.disponivel) {
+          edVoltarKey = 'negocios';
+          edVoltarLabel = `Edição de Abertura B3 (${edMap.negocios.horario || '10h30'})`;
+        } else if (edMap.abertura && edMap.abertura.disponivel) {
+          edVoltarKey = 'abertura';
+          edVoltarLabel = `Edição de Café Matinal (${edMap.abertura.horario || '08h00'})`;
+        }
 
-        const textoAguardando = jaPassou
-          ? `O pregão desta sessão já foi encerrado. A consolidação dos dados de fechamento está sendo processada pela equipe e estará disponível em instantes.`
-          : `O pregão da B3 está em andamento. A síntese, cotações consolidadas e destaques do mercado para esta edição serão publicados pontualmente às <strong>${escaparHtml(dadosEdicao.horario || '')}</strong>.`;
+        let tituloAguardando = '';
+        let textoAguardando = '';
+        let badgeAguardando = '';
 
-        const badgeAguardando = jaPassou
-          ? `● Consolidação em andamento (${escaparHtml(dadosEdicao.horario || '')})`
-          : `● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}`;
+        if (ehDiaPassado) {
+          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} (${escaparHtml(dataFmtArquivo)}) Não Publicada`;
+          textoAguardando = `A consolidação desta edição de ${escaparHtml(dataFmtArquivo)} não foi registrada no ciclo automático. Você pode consultar a última edição disponível de ${escaparHtml(dataFmtArquivo)} abaixo ou o acervo completo.`;
+          badgeAguardando = `● Edição de ${escaparHtml(dataFmtArquivo)} indisponível`;
+        } else if (jaPassouNoMesmoDia) {
+          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} em Consolidação`;
+          textoAguardando = `O horário previsto (${escaparHtml(dadosEdicao.horario || '18h15')}) já foi atingido. Caso a consolidação automática ainda não tenha sido publicada, consulte a edição anterior disponível.`;
+          badgeAguardando = `● Horário previsto: ${escaparHtml(dadosEdicao.horario || '')}`;
+        } else {
+          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '18h15')}`;
+          textoAguardando = `A síntese, cotações consolidadas e destaques do mercado para esta edição têm publicação programada para as <strong>${escaparHtml(dadosEdicao.horario || '')}</strong> (horário de Brasília).`;
+          badgeAguardando = `● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}`;
+        }
 
         boxAguardando.innerHTML = `
           <div class="card-bloco-noticia" style="text-align:center; padding: 56px 24px; margin-top: 16px;">
-            <div style="font-size: 3.2rem; margin-bottom: 14px;">⏳</div>
+            <div style="font-size: 3.2rem; margin-bottom: 14px;" aria-hidden="true">⏳</div>
             <h3 style="font-size: 1.45rem; color: var(--primaria); font-weight: 800; margin-bottom: 10px;">
               ${tituloAguardando}
             </h3>
@@ -340,8 +562,8 @@
               ${badgeAguardando}
             </div>
             <div>
-              <button id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">
-                ← Acessar Edição de Abertura (08h30)
+              <button type="button" id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">
+                ← Acessar ${escaparHtml(edVoltarLabel)}
               </button>
             </div>
           </div>
@@ -349,7 +571,7 @@
         const btnVoltar = document.getElementById('btn-voltar-abertura');
         if (btnVoltar) {
           btnVoltar.addEventListener('click', function() {
-            exibirEdicao('abertura');
+            exibirEdicao(edVoltarKey);
           });
         }
       }
@@ -366,13 +588,13 @@
   function renderizarFechamento(dados, dataGeral) {
     if (!dados) return;
 
-    const dataFinal = dataGeral || dados.data_formatada || '03/11/2026';
+    const dataFinal = dataGeral || dados.data_formatada || '—';
     const elDataBadge = document.getElementById('badge-data-fechamento');
     if (elDataBadge) elDataBadge.textContent = dataFinal;
 
     const elAtualizacao = document.getElementById('fechamento-atualizacao');
     if (elAtualizacao) {
-      const hora = dados.horario || dados.atualizado_as || '18h30';
+      const hora = dados.horario || dados.atualizado_as || '18h15';
       const nomeEd = dados.nome ? `(${dados.nome})` : '';
       elAtualizacao.textContent = `Edição de ${dataFinal} às ${hora} ${nomeEd}`;
     }
@@ -540,13 +762,12 @@
         return { status: 'ATUALIZADO', defasagem: 0, fallback: 'data_futura' };
       }
 
-      // Contagem de pregões úteis (Fallback explícito: dias úteis bancários B3 segunda a sexta)
+      // Contagem de pregões B3 (exclui sábados, domingos e feriados oficiais da B3)
       let contagem = 0;
       let cur = new Date(dRef.getTime() + 86400000);
 
       while (cur <= dHoje) {
-        const diaSemana = cur.getUTCDay(); // 0: Dom, 6: Sab
-        if (diaSemana !== 0 && diaSemana !== 6) {
+        if (ehDiaPregaoB3(cur)) {
           contagem++;
         }
         cur = new Date(cur.getTime() + 86400000);
@@ -554,7 +775,7 @@
 
       // Regime B3 regular: sessão atual (0) ou sessão imediatamente anterior (1) é ATUALIZADO
       const status = contagem <= 1 ? 'ATUALIZADO' : 'DESATUALIZADO';
-      return { status: status, defasagem: contagem, fallback: 'dias_uteis_b3_simplificado' };
+      return { status: status, defasagem: contagem, fallback: 'calendario_b3' };
     } catch (e) {
       console.warn('Falha no cálculo dinâmico de frescor, usando dados brutos:', e);
       return { status: 'DESATUALIZADO', defasagem: 999, fallback: 'erro' };
@@ -644,12 +865,13 @@
 
     // 2. Termômetro do Scanner Hoje
     const containerTermo = document.getElementById('st-termometro');
-    if (containerTermo && dados.resumo_pregão_hoje) {
-      const r = dados.resumo_pregão_hoje;
+    const resumoPregao = dados.resumo_pregao_hoje || dados.resumo_pregão_hoje;
+    if (containerTermo && resumoPregao) {
+      const r = resumoPregao;
       containerTermo.innerHTML = `
         <div class="item-termometro verde">
           <div>
-            <div class="termo-nome">Oportunidades Claras</div>
+            <div class="termo-nome">Sinais Técnicos Ativos</div>
             <span style="font-size:0.75rem;color:var(--alta);font-weight:600;">Filtro técnico preenchido</span>
           </div>
           <div class="termo-contagem" style="color:var(--alta);">${r.oportunidades || 0}</div>
@@ -679,6 +901,37 @@
     }
 
     // 3. Tabela de Monitor de Oportunidades & Posições
+    const MAPA_EMPRESAS_B3 = {
+      'SAUD3': 'Mater Dei ON',
+      'LEVE3': 'Mahle Metal Leve ON',
+      'MBRF3': 'Marfrig / BRF ON',
+      'POMO3': 'Marcopolo ON',
+      'POMO4': 'Marcopolo PN',
+      'BBDC3': 'Bradesco ON',
+      'ITUB3': 'Itaú Unibanco ON',
+      'ALOS3': 'Allos ON',
+      'ISAE4': 'ISA Energia PN',
+      'BRAP4': 'Bradespar PN',
+      'RECV3': 'PetroRecôncavo ON',
+      'BRSR6': 'Banrisul PNB',
+      'JHSF3': 'JHSF ON',
+      'BMOB3': 'Bemobi ON',
+      'MDNE3': 'Moura Dubeux ON',
+      'BMGB4': 'Banco BMG PN',
+      'PGMN3': 'Pague Menos ON',
+      'RANI3': 'Irani ON',
+      'LAVV3': 'Lavvi ON',
+      'BRBI11': 'BR Partners Unit',
+      'EVEN3': 'Even ON'
+    };
+    const MAPA_SETUPS = {
+      'TOQUE_SMA21': 'Toque na Média 21 (SMA21)',
+      'REVERSAO_RSI': 'Reversão IFR (Sobrevenda)',
+      'PULLBACK_SMA50': 'Pullback na Média 50 (SMA50)',
+      'ROMPIMENTO_ CURTO': 'Rompimento de Curto Prazo',
+      'NENHUM': 'Monitorando Média'
+    };
+
     const tbodyST = document.getElementById('tabela-swing-trade');
     if (tbodyST && Array.isArray(dados.posicoes_destaque)) {
       tbodyST.innerHTML = '';
@@ -692,23 +945,26 @@
           badgeClasse = 'oportunidade';
         } else if (pos.categoria === 'ALVO_ATINGIDO') {
           badgeClasse = 'alvo-atingido';
-        } else if (pos.categoria === 'OPORTUNIDADE_COM_RESSALVA') {
+        } else if (pos.categoria === 'OPORTUNIDADE_COM_RESSALVA' || pos.categoria === 'OBSERVAR') {
           badgeClasse = 'ressalva';
         } else if (pos.categoria === 'DESFAVORAVEL') {
           badgeClasse = 'desfavoravel';
         }
 
-        const corVar = pos.variacao_atual.includes('-') ? 'var(--baixa)' : (pos.variacao_atual === '—' ? 'inherit' : 'var(--alta)');
+        const varAtualStr = String(pos.variacao_atual ?? '—');
+        const corVar = varAtualStr.includes('-') ? 'var(--baixa)' : (varAtualStr === '—' ? 'inherit' : 'var(--alta)');
+        const nomeEmpresa = (pos.empresa && pos.empresa !== pos.ticker) ? pos.empresa : (MAPA_EMPRESAS_B3[pos.ticker] || pos.empresa || pos.ticker);
+        const nomeSetup = MAPA_SETUPS[pos.setup] || pos.setup || '—';
 
         tr.innerHTML = `
           <td>
             <span class="ticker-tag">${escaparHtml(pos.ticker)}</span>
-            <span class="sub-empresa">${escaparHtml(pos.empresa)}</span>
+            <span class="sub-empresa">${escaparHtml(nomeEmpresa)}</span>
           </td>
-          <td style="font-size:0.85rem;">${escaparHtml(pos.setup)}</td>
+          <td style="font-size:0.85rem;">${escaparHtml(nomeSetup)}</td>
           <td class="cel-num">${escaparHtml(pos.preco_entrada)}</td>
           <td class="cel-num" style="color:var(--destaque);font-weight:700;">${escaparHtml(pos.alvo_saida)}</td>
-          <td class="cel-num" style="color:${corVar};font-weight:700;">${escaparHtml(pos.variacao_atual)}</td>
+          <td class="cel-num" style="color:${corVar};font-weight:700;">${escaparHtml(varAtualStr)}</td>
           <td><span class="badge-swing ${badgeClasse}">${escaparHtml(badgeTexto)}</span></td>
         `;
         tbodyST.appendChild(tr);
@@ -765,10 +1021,14 @@
     const elEstado = document.getElementById('estado-execucao');
     const elAviso = document.getElementById('aviso-demo');
     const elBanner = document.querySelector('.banner-demo');
+    const elTxtMotor = document.getElementById('texto-status-motor');
 
     const dataRef = dados.reference_date || (dados.generated_at ? dados.generated_at.split('T')[0] : '—');
     if (elData) elData.textContent = formatarData(dataRef);
     if (elEstado) elEstado.textContent = dados.status || 'CONCLUÍDO';
+    if (elTxtMotor && dataRef && dataRef !== '—') {
+      elTxtMotor.textContent = 'Motor Quant (' + formatarData(dataRef).slice(0, 5) + ')';
+    }
 
     if (isDemo) {
       if (elAviso) elAviso.textContent = 'Modo de visualização local offline (dados demonstrativos).';
@@ -781,6 +1041,27 @@
         elBanner.innerHTML = '<strong>RELATÓRIO OFICIAL DO RADAR (REFERÊNCIA: ' + formatarData(dataRef) + ') — MOTOR PYTHON v' + (dados.app_version || '0.3.0') + '</strong>';
       }
     }
+  }
+
+  function atualizarCardsPapelAtivos(alocacao) {
+    if (!alocacao) return;
+    const tatico = Number(alocacao['Caixa tático'] ?? alocacao['Caixa tatico'] ?? 0);
+    const residual = Number(alocacao['Caixa residual'] ?? 0);
+    const totalCaixa = Number(alocacao['Caixa'] ?? (tatico + residual));
+    const mapaIds = {
+      'card-perc-ipca': alocacao['Tesouro IPCA+ 2040'],
+      'card-perc-ivvb': alocacao['IVVB11'],
+      'card-perc-bova': alocacao['BOVA11'],
+      'card-perc-btc': alocacao['Bitcoin'],
+      'card-perc-caixa': totalCaixa
+    };
+    Object.keys(mapaIds).forEach(function (id) {
+      const el = document.getElementById(id);
+      const val = mapaIds[id];
+      if (el && val !== null && val !== undefined) {
+        el.textContent = `(${Number(val)}%)`;
+      }
+    });
   }
 
   function renderizarAlocacao(alocacao, elegibilidade, bloqueado) {
@@ -837,12 +1118,16 @@
     if (containerGrafico) {
       renderizarGraficoPizza(itens, containerGrafico);
     }
+    atualizarCardsPapelAtivos(alocacao);
   }
 
   function renderizarGraficoPizza(itens, container) {
     let acumulado = 0;
     const fatias = [];
     const itensValidos = itens.filter(i => Number(i.perc) > 0);
+    const resumoAria = itens
+      .map(i => `${i.nome}: ${i.perc !== null && i.perc !== undefined ? i.perc + '%' : '—'}`)
+      .join(', ');
 
     itensValidos.forEach(function (item) {
       const perc = Number(item.perc);
@@ -883,7 +1168,8 @@
     legendaHtml += '</div>';
 
     container.innerHTML = `
-      <svg viewBox="0 0 100 100" class="grafico-pizza" style="border-radius:50%; width:160px; height:160px;">
+      <svg viewBox="0 0 100 100" class="grafico-pizza" role="img" aria-label="${escaparHtml('Gráfico de alocação teórica: ' + resumoAria)}" style="border-radius:50%; width:160px; height:160px;">
+        <title>${escaparHtml('Alocação teórica: ' + resumoAria)}</title>
         ${svgContent}
       </svg>
       ${legendaHtml}
@@ -1127,9 +1413,9 @@
         { ticker: 'BBSE3', empresa: 'BB Seguridade', setup: 'Reversão Suporte', preco_entrada: 'R$ 34,20', alvo_saida: 'R$ 35,91 (+5%)', variacao_atual: '+5,00%', categoria: 'ALVO_ATINGIDO', status_badge: 'Alvo Batido' }
       ],
       principais_regras_simples: [
-        { titulo: '1. Apenas 59 Melhores Ações', descricao: 'Sem empresas falidas ou micos da bolsa.' },
-        { titulo: '2. Alvo Fixo de +5%', descricao: 'Bateu a meta, lucro no bolso.' },
-        { titulo: '3. Disciplina de Tendência', descricao: 'Filtro restritivo contra ativos em tendência de baixa prolongada.' }
+        { titulo: '1. Universo de Liquidez Restrito', descricao: 'O algoritmo monitora as 59 empresas com maior liquidez e representatividade na B3.' },
+        { titulo: '2. Parâmetro Matemático de Alvo (+5%)', descricao: 'Nos modelos de backtest, a posição teórica encerra-se automaticamente ao atingir +5% sobre o preço de ativação do filtro.' },
+        { titulo: '3. Filtro Restritivo de Tendência', descricao: 'Ativos em tendência de baixa sem confirmação estatística de reversão à média são classificados como Desfavorável.' }
       ]
     };
   }
@@ -1183,16 +1469,8 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', inicializar);
-  } else {
-    inicializar();
-  }
-
-})();
-
   // =========================================================================
-  // CALCULADORA DE RENDA FIXA INTERATIVA (TRÁFEGO ETERNO & BACKLINKS)
+  // CALCULADORA DE RENDA FIXA INTERATIVA (SIMULADOR EDUCATIVO)
   // =========================================================================
 
   function inicializarCalculadoraRendaFixa() {
@@ -1205,7 +1483,7 @@
       const valor = parseFloat(inputValor.value) || 0;
       if (valor <= 0) return;
 
-      // Taxas atuais de mercado
+      // Taxas de referência do simulador (base nov/2026)
       const selicAnual = 0.1125; // 11,25% a.a.
       const cdiAnual = 0.1115;   // 11,15% a.a.
       const poupancaAnual = 0.0617; // 6,17% a.a. (0,5% a.m. + TR)
@@ -1287,3 +1565,11 @@
 
     calcular();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inicializar);
+  } else {
+    inicializar();
+  }
+
+})();

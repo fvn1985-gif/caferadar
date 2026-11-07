@@ -1,1092 +1,531 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>CafeRadar — Fechamento Diário da B3, Swing Trade e Alocação de Longo Prazo</title>
-
   <meta name="description" content="Síntese diária do pregão da B3 com dados oficiais, scanner tático de swing trade sobre 59 blue chips e modelo quantitativo de alocação de longo prazo. Gratuito e sem recomendação personalizada.">
-
   <link rel="canonical" href="https://caferadar.com.br/">
 
-  
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 
-
-
   <!-- Favicon & Icons -->
-
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
-
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-
-
   <!-- OpenGraph / Social Cards -->
-
   <meta property="og:site_name" content="CafeRadar">
-
   <meta property="og:title" content="CafeRadar — Fechamento Diário da B3, Swing Trade e Alocação de Longo Prazo">
-
   <meta property="og:description" content="Dados oficiais do pregão em 2 minutos (3 edições diárias), scanner de swing trade sobre 59 blue chips e bússola quantitativa de aporte mensal.">
-
   <meta property="og:type" content="website">
-
   <meta property="og:url" content="https://caferadar.com.br/">
-
   <meta property="og:image" content="https://caferadar.com.br/og-image.png">
-
   <meta property="og:image:width" content="1200">
-
   <meta property="og:image:height" content="630">
-
   <meta property="og:locale" content="pt_BR">
-
   <meta name="twitter:card" content="summary_large_image">
-
+  <meta name="twitter:title" content="CafeRadar — Fechamento Diário da B3, Swing Trade e Alocação de Longo Prazo">
+  <meta name="twitter:description" content="Dados oficiais do pregão em 2 minutos (3 edições diárias), scanner de swing trade sobre 59 blue chips e estudo quantitativo de alocação de longo prazo.">
   <meta name="twitter:image" content="https://caferadar.com.br/og-image.png">
 
-
-
     <!-- Google Analytics 4 (gtag.js) -->
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
-
   <script>
-
     window.dataLayer = window.dataLayer || [];
-
     function gtag(){dataLayer.push(arguments);}
-
     gtag('js', new Date());
 
-
-
     gtag('config', 'G-50J887FJDV');
-
   </script>
-
-
 
   <!-- Google AdSense Oficial -->
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>
 
-
-
   <!-- Schema.org JSON-LD -->
-
   <script type="application/ld+json">
-
   {
-
     "@context": "https://schema.org",
-
     "@graph": [
-
       {
-
         "@type": "Organization",
-
         "@id": "https://caferadar.com.br/#organization",
-
         "name": "CafeRadar",
-
         "url": "https://caferadar.com.br/",
-
-        "logo": "https://caferadar.com.br/og-image.png",
-
+        "logo": "https://caferadar.com.br/apple-touch-icon.png",
         "description": "Veículo independente de dados de mercado financeiro, síntese do pregão B3 e modelagem quantitativa de alocação.",
-
         "email": "contato@caferadar.com.br",
-
         "knowsAbout": ["mercado de capitais", "B3", "renda fixa", "alocação de ativos", "swing trade"]
-
       },
-
       {
-
         "@type": "WebSite",
-
         "@id": "https://caferadar.com.br/#website",
-
         "url": "https://caferadar.com.br/",
-
         "name": "CafeRadar",
-
         "publisher": { "@id": "https://caferadar.com.br/#organization" }
-
       },
-
       {
-
         "@type": "WebApplication",
-
         "@id": "https://caferadar.com.br/calculadora-rendimento.html",
-
         "name": "Calculadora: Poupança vs CDB vs Tesouro Selic",
-
         "url": "https://caferadar.com.br/calculadora-rendimento.html",
-
         "applicationCategory": "FinanceApplication",
-
         "operatingSystem": "All",
-
         "description": "Simule o rendimento líquido real da Poupança, CDB 100% CDI e Tesouro Selic com alíquota regressiva oficial de IR."
-
       }
-
     ]
-
   }
-
   </script>
-
   <link rel="alternate" type="application/rss+xml" title="Café Radar — Feed RSS de Notícias B3" href="https://caferadar.com.br/feed.xml">
 </head>
-
 <body>
 
-
-
   <!-- ==================== TOPO DO PORTAL ==================== -->
-
   <header class="cabecalho-portal">
-
     <div class="container container-header">
-
       <div class="marca-portal">
-
         <div class="logo-icone">CR</div>
-
         <div>
-
           <h1 class="portal-titulo">CAFERADAR</h1>
-
-          <p class="portal-slogan">Fechamento Diário da B3, Oportunidades de Swing Trade & Alocação de Longo Prazo</p>
-
+          <p class="portal-slogan">Fechamento Diário da B3, Scanner de Swing Trade &amp; Estudo de Alocação de Longo Prazo</p>
         </div>
-
       </div>
-
       <div class="status-topo">
-
-        <span class="badge-status-mercado fechado"><span class="bolinha-pulso"></span> Pregão B3 Fechado</span>
-
-        <span class="badge-status-motor"><span class="bolinha-pulso ativa"></span> Sistema Quant Ativo</span>
-
+        <span class="badge-status-mercado fechado" id="badge-status-mercado"><span class="bolinha-pulso" aria-hidden="true"></span> <span id="texto-status-mercado">Pregão B3</span></span>
+        <span class="badge-status-motor" id="badge-status-motor"><span class="bolinha-pulso ativa" aria-hidden="true"></span> <span id="texto-status-motor">Dados quantitativos</span></span>
       </div>
-
     </div>
-
-
 
     <!-- Navegação de Abas -->
-
-    <nav class="barra-navegacao-tabs">
-
-      <div class="container abas-container">
-
-        <button class="btn-tab ativa" data-tab="fechamento">
-
-          <span class="tab-icone">📰</span>
-
+    <nav class="barra-navegacao-tabs" aria-label="Seções do portal">
+      <div class="container abas-container" role="tablist">
+        <button class="btn-tab ativa" data-tab="fechamento" role="tab" id="tab-btn-fechamento" aria-controls="fechamento" aria-selected="true">
+          <span class="tab-icone" aria-hidden="true">📰</span>
           <span>Radar do Pregão</span>
-
           <span class="tab-data-badge" id="badge-data-fechamento">Hoje</span>
-
         </button>
-
-        <button class="btn-tab" data-tab="swingtrade">
-
-          <span class="tab-icone">⚡</span>
-
+        <button class="btn-tab" data-tab="swingtrade" role="tab" id="tab-btn-swingtrade" aria-controls="swingtrade" aria-selected="false" tabindex="-1">
+          <span class="tab-icone" aria-hidden="true">⚡</span>
           <span>Swing Trade B3</span>
-
           <span class="tab-tag-badge verde">Alvo +5%</span>
-
         </button>
-
-        <button class="btn-tab" data-tab="simulador">
-
-          <span class="tab-icone">🧮</span>
-
+        <button class="btn-tab" data-tab="simulador" role="tab" id="tab-btn-simulador" aria-controls="simulador" aria-selected="false" tabindex="-1">
+          <span class="tab-icone" aria-hidden="true">🧮</span>
           <span>Simulador de Renda</span>
-
           <span class="tab-tag-badge verde">Novo</span>
-
         </button>
-
-        <button class="btn-tab" data-tab="alocacao">
-
-          <span class="tab-icone">🏛️</span>
-
+        <button class="btn-tab" data-tab="alocacao" role="tab" id="tab-btn-alocacao" aria-controls="alocacao" aria-selected="false" tabindex="-1">
+          <span class="tab-icone" aria-hidden="true">🏛️</span>
           <span>Radar Longo Prazo</span>
-
           <span class="tab-tag-badge">Bússola Mensal</span>
-
         </button>
-
-        <button class="btn-tab" data-tab="metodologia">
-
-          <span class="tab-icone">💡</span>
-
+        <button class="btn-tab" data-tab="metodologia" role="tab" id="tab-btn-metodologia" aria-controls="metodologia" aria-selected="false" tabindex="-1">
+          <span class="tab-icone" aria-hidden="true">💡</span>
           <span>Como Usar</span>
-
         </button>
-
-        <a href="rules.html" class="btn-tab link-regras" target="_blank">
-
-          <span class="tab-icone">📜</span>
-
+        <a href="rules.html" class="btn-tab link-regras" target="_blank" rel="noopener">
+          <span class="tab-icone" aria-hidden="true">📜</span>
           <span>Regras do Motor ↗</span>
-
         </a>
-
       </div>
-
     </nav>
-
   </header>
 
-
-
-  <!-- ==================== FITA DE COTAÇÕES AO VIVO (TICKER TAPE B3 - DELAY 15 MIN) ==================== -->
-
-  <div class="fita-cotacoes-wrapper" aria-label="Cotações de Mercado em Tempo Real">
-
+  <!-- ==================== FITA DE COTAÇÕES (DADOS DA ÚLTIMA EDIÇÃO PUBLICADA — NÃO É TEMPO REAL) ==================== -->
+  <div class="fita-cotacoes-wrapper" role="region" aria-label="Cotações da última edição publicada (não é tempo real)">
     <div class="fita-cotacoes-badge">
-
-      <span class="bolinha-pulso ativa"></span>
-
-      <span class="fita-titulo">B3 AO VIVO</span>
-
-      <span class="fita-delay-aviso">(Delay 15m)</span>
-
+      <span class="bolinha-pulso" aria-hidden="true"></span>
+      <span class="fita-titulo">COTAÇÕES B3</span>
+      <span class="fita-delay-aviso" id="fita-referencia">(última edição)</span>
     </div>
-
     <div class="fita-cotacoes-trilho-container">
-
       <div class="fita-cotacoes-trilho" id="fita-cotacoes-trilho">
-
-        <span class="fita-item"><span class="fita-ticker">IBOV</span> <span class="fita-preco">167.564 pts</span> <span class="fita-var positivo">▲ +1,15%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">DÓLAR</span> <span class="fita-preco">R$ 5,46</span> <span class="fita-var positivo">▲ +0,08%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">PETR4</span> <span class="fita-preco">R$ 47,12</span> <span class="fita-var negativo">▼ -7,12%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">VALE3</span> <span class="fita-preco">R$ 62,35</span> <span class="fita-var positivo">▲ +3,40%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">ITUB4</span> <span class="fita-preco">R$ 39,71</span> <span class="fita-var positivo">▲ +3,12%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">WEGE3</span> <span class="fita-preco">R$ 50,05</span> <span class="fita-var positivo">▲ +1,54%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">S&P 500</span> <span class="fita-preco">7.689 pts</span> <span class="fita-var positivo">▲ +1,59%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">BTC</span> <span class="fita-preco">US$ 79.889</span> <span class="fita-var negativo">▼ -0,67%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">BRENT</span> <span class="fita-preco">US$ 96,87</span> <span class="fita-var positivo">▲ +3,50%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">IBOV</span> <span class="fita-preco">167.564 pts</span> <span class="fita-var positivo">▲ +1,15%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">DÓLAR</span> <span class="fita-preco">R$ 5,46</span> <span class="fita-var positivo">▲ +0,08%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">PETR4</span> <span class="fita-preco">R$ 47,12</span> <span class="fita-var negativo">▼ -7,12%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">VALE3</span> <span class="fita-preco">R$ 62,35</span> <span class="fita-var positivo">▲ +3,40%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">ITUB4</span> <span class="fita-preco">R$ 39,71</span> <span class="fita-var positivo">▲ +3,12%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">WEGE3</span> <span class="fita-preco">R$ 50,05</span> <span class="fita-var positivo">▲ +1,54%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">S&P 500</span> <span class="fita-preco">7.689 pts</span> <span class="fita-var positivo">▲ +1,59%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">BTC</span> <span class="fita-preco">US$ 79.889</span> <span class="fita-var negativo">▼ -0,67%</span></span>
-
-        <span class="fita-item"><span class="fita-ticker">BRENT</span> <span class="fita-preco">US$ 96,87</span> <span class="fita-var positivo">▲ +3,50%</span></span>
-
+        <span class="fita-item"><span class="fita-ticker">Carregando cotações da última edição…</span></span>
       </div>
-
     </div>
-
   </div>
-
-
 
   <!-- ==================== ESPAÇO DE ANÚNCIO (ADSENSE LEADERBOARD) ==================== -->
-
   <div class="container container-ad">
-
     <div class="slot-publicidade leaderboard">
-
       <span class="rotulo-ad">PUBLICIDADE</span>
-
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6721082194258309" data-ad-format="auto" data-full-width-responsive="true"></ins>
-
     </div>
-
   </div>
-
-
 
   <main class="container">
 
-
-
     <!-- ========================================================================= -->
-
     <!-- ABA 1: RADAR DE MERCADO DIÁRIO (3 Edições: Abertura, Almoço, Fechamento)   -->
-
     <!-- ========================================================================= -->
-
-    <section id="fechamento" class="conteudo-tab ativa">
-
-      
+    <section id="fechamento" class="conteudo-tab ativa" role="tabpanel" aria-labelledby="tab-btn-fechamento">
 
       <!-- Seletor de Edições Diárias (Manhã / Almoço / Fechamento) -->
-
       <div class="seletor-edicoes-dia">
-
         <span class="rotulo-edicao">Edições de Hoje:</span>
-
         <div class="grupo-botoes-edicao" id="grupo-botoes-edicao">
-
           <button class="btn-edicao" data-edicao="abertura">
-
-            <span class="edicao-icone">🌅</span>
-
+            <span class="edicao-icone" aria-hidden="true">🌅</span>
             <span class="edicao-nome">Café Matinal</span>
-
             <span class="edicao-hora">08h00</span>
-
           </button>
-
           <button class="btn-edicao" data-edicao="negocios">
-
-            <span class="edicao-icone">🔔</span>
-
+            <span class="edicao-icone" aria-hidden="true">🔔</span>
             <span class="edicao-nome">Abertura B3</span>
-
             <span class="edicao-hora">10h30</span>
-
           </button>
-
           <button class="btn-edicao ativa" data-edicao="fechamento">
-
-            <span class="edicao-icone">🏁</span>
-
+            <span class="edicao-icone" aria-hidden="true">🏁</span>
             <span class="edicao-nome">Fechamento</span>
-
             <span class="edicao-hora">18h15</span>
-
-            <span class="ponto-ativo">●</span>
-
+            <span class="ponto-ativo" aria-hidden="true">●</span>
           </button>
-
         </div>
-
       </div>
-
-
 
       <!-- Container para Edicao Publicada -->
-
       <div id="conteudo-edicao-publicada">
-
       <div class="cabecalho-noticia">
-
         <div class="meta-noticia">
-
-          <span class="categoria-tag">MERCADOS & ECONOMIA</span>
-
-          <span class="horario-tag" id="fechamento-atualizacao">Atualizado em 03/11/2026 às 18h30</span>
-
+          <span class="categoria-tag">MERCADOS &amp; ECONOMIA</span>
+          <span class="horario-tag" id="fechamento-atualizacao">Carregando edição...</span>
         </div>
-
         <h2 class="titulo-destaque-fechamento" id="fechamento-titulo">
-
-          RADAR DE FECHAMENTO — 03/11/2026
-
+          RADAR DO PREGÃO B3
         </h2>
-
         <p class="subtitulo-destaque-fechamento" id="fechamento-subtitulo">
-
-          Ibov recua 1,35% com cautela fiscal pré-Copom; Dólar vai a R$ 5,49 e Wall Street avança em dia de eleições nos EUA
-
+          Síntese diária do pregão da B3, câmbio, índices globais e ações de maior liquidez.
         </p>
-
       </div>
-
-
 
       <!-- Tickers Rápidos -->
-
       <div class="grid-tickers-fechamento" id="cards-mercado-fechamento"></div>
 
-
-
       <!-- Leitura Rápida em 2 Minutos -->
-
       <section class="card-bloco-noticia leitura-rapida">
-
         <div class="bloco-cabecalho">
-
-          <span class="bloco-icone">⏱️</span>
-
+          <span class="bloco-icone" aria-hidden="true">⏱️</span>
           <h3>Leitura Rápida do Dia (Em 2 minutos)</h3>
-
         </div>
-
         <div class="lista-bullets-noticia" id="leitura-rapida-fechamento"></div>
-
       </section>
 
-
-
       <!-- Grid de Ações Blue Chips e Destaques -->
-
       <div class="grid-duplo-mercado">
 
-        
-
         <!-- Blue Chips B3 -->
-
         <div class="card-bloco-noticia">
-
           <div class="bloco-cabecalho">
-
-            <span class="bloco-icone">🇧🇷</span>
-
+            <span class="bloco-icone" aria-hidden="true">🇧🇷</span>
             <h3>Ações Mais Negociadas na B3</h3>
-
           </div>
-
           <div class="tabela-container-responsiva">
-
             <table class="tabela-portal">
-
               <thead>
-
                 <tr>
-
                   <th>Ativo</th>
-
                   <th>Preço</th>
-
                   <th>Dia</th>
-
                   <th>Mês</th>
-
                 </tr>
-
               </thead>
-
               <tbody id="tabela-blue-chips"></tbody>
-
             </table>
-
           </div>
-
         </div>
-
-
 
         <!-- Altas e Baixas -->
-
         <div class="card-bloco-noticia">
-
           <div class="bloco-cabecalho">
-
-            <span class="bloco-icone">📊</span>
-
+            <span class="bloco-icone" aria-hidden="true">📊</span>
             <h3>Destaques do Pregão</h3>
-
           </div>
-
           <div class="grid-altas-baixas" id="destaques-altas-quedas"></div>
-
           <div class="slot-publicidade in-card">
-
             <span class="rotulo-ad">PUBLICIDADE</span>
-
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6721082194258309" data-ad-format="auto" data-full-width-responsive="true"></ins>
-
           </div>
-
         </div>
-
-
 
       </div>
 
-
-
       <!-- Comparação com o Dia Anterior -->
-
       <section class="card-bloco-noticia comparacao-anterior">
-
         <div class="bloco-cabecalho">
-
-          <span class="bloco-icone">🔄</span>
-
+          <span class="bloco-icone" aria-hidden="true">🔄</span>
           <h3>O que mudou em relação ao pregão anterior</h3>
-
         </div>
-
         <div class="lista-bullets-noticia" id="comparacao-anterior"></div>
-
       </section>
-
-
-
-    
 
       </div><!-- fim conteudo-edicao-publicada -->
 
-
-
       <!-- Container para Edicao Aguardando Horario -->
-
       <div id="conteudo-edicao-aguardando" style="display:none;"></div>
 
-
-
       <div class="card-cvm-aba">
-
-        <span class="cvm-icone">⚖️</span>
-
-        <p><strong>Nota Informativa & Governança (Resolução CVM nº 20/2021):</strong> O Fechamento Diário é uma compilação de caráter exclusivamente jornalístico e informativo de dados públicos de mercado. Não constitui recomendação, oferta ou consultoria de valores mobiliários.</p>
-
+        <span class="cvm-icone" aria-hidden="true">⚖️</span>
+        <p><strong>Nota Informativa &amp; Governança (Resolução CVM nº 20/2021):</strong> O Fechamento Diário é uma compilação de caráter exclusivamente jornalístico e informativo de dados públicos de mercado. Não constitui recomendação, oferta ou consultoria de valores mobiliários.</p>
       </div>
-
     </section>
 
-
-
     <!-- ========================================================================= -->
-
-    <!-- ABA 2: SWING TRADE B3 (Oportunidades Táticas com Alvo de +5%)             -->
-
+    <!-- ABA 2: SWING TRADE B3 (Estudo Tático Quantitativo com Alvo de +5%)         -->
     <!-- ========================================================================= -->
-
-    <section id="swingtrade" class="conteudo-tab">
-
-      
+    <section id="swingtrade" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-swingtrade">
 
       <!-- Banner Didático de Swing Trade -->
-
       <div class="banner-guia-alocacao" style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
-
-        <div class="guia-icone">⚡</div>
-
+        <div class="guia-icone" aria-hidden="true">⚡</div>
         <div class="guia-texto">
-
-          <h3>Como funciona o Swing Trade do Radar?</h3>
-
+          <h3>Como funciona o Scanner de Swing Trade do Radar?</h3>
           <p>
-
-            Um scanner quantitativo que analisa diariamente as <strong>59 melhores empresas da B3</strong> procurando sinais de reversão técnica. O objetivo é objetivo e frio: <strong>buscar +5,0% de lucro por operação</strong> e colocar o dinheiro no bolso.
-
+            Um modelo quantitativo que monitora diariamente <strong>59 ações de alta liquidez da B3</strong> avaliando sinais estatísticos de reversão à média. O parâmetro de saída simulado é fixo e objetivo: <strong>alvo matemático de +5,0% por operação teórica</strong>, sem stop loss automático.
           </p>
-
         </div>
-
       </div>
-
-
 
       <!-- Barra de Frescor dos Dados do Swing Trade -->
-
       <div id="st-frescor-container" class="barra-frescor-swing">
-
         <div style="display:flex; align-items:center; gap:8px;">
-
-          <span id="st-frescor-icone">📅</span>
-
+          <span id="st-frescor-icone" aria-hidden="true">📅</span>
           <span id="st-frescor-texto">Carregando status do scanner...</span>
-
         </div>
-
         <span id="st-badge-frescor" class="badge-frescor">--</span>
-
       </div>
-
-
 
       <!-- Painel de Métricas do Motor de Swing -->
-
       <div class="grid-metricas-swing">
-
         <div class="card-metrica-swing">
-
           <span class="rotulo-metrica">Universo de Ativos</span>
-
           <span class="valor-metrica" id="st-universo">59 Ações</span>
-
-          <span class="sub-metrica">Apenas empresas de alta qualidade</span>
-
+          <span class="sub-metrica">Empresas de alta liquidez na B3</span>
         </div>
-
         <div class="card-metrica-swing">
-
-          <span class="rotulo-metrica">Alvo da Estratégia</span>
-
+          <span class="rotulo-metrica">Parâmetro de Alvo</span>
           <span class="valor-metrica verde" id="st-alvo">+5,00%</span>
-
-          <span class="sub-metrica">Lucro pré-definido por trade</span>
-
+          <span class="sub-metrica">Alvo técnico simulado por operação</span>
         </div>
-
         <div class="card-metrica-swing">
-
-          <span class="rotulo-metrica">Auditoria Pública (Backtest 1 ano)</span>
-
+          <span class="rotulo-metrica">Registro de Backtest (1 ano)</span>
           <span class="valor-metrica destaque" id="st-assertividade" style="font-size:1.05rem; line-height:1.35;">154 encerradas no alvo · 19 em aberto (18 no vermelho)</span>
-
-          <span class="sub-metrica" id="st-abertas-detalhe" style="margin-top:6px; font-size:0.78rem; line-height:1.45;">Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest auditado no período apurado, não é histórico de operações reais.</span>
-
-          <a href="historico-swing.html" target="_blank" style="display:inline-block; margin-top:8px; font-size:0.75rem; color:var(--destaque); font-weight:700; text-decoration:underline;">Ver log dos 173 trades auditados ↗</a></div>
-
+          <span class="sub-metrica" id="st-abertas-detalhe" style="margin-top:6px; font-size:0.78rem; line-height:1.45;">Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest histórico simulado, não é histórico de operações reais.</span>
+          <a href="historico-swing.html" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; font-size:0.75rem; color:var(--destaque); font-weight:700; text-decoration:underline;">Ver log completo das operações simuladas ↗</a></div>
         <div class="card-metrica-swing">
-
           <span class="rotulo-metrica">Prazo Mediano</span>
-
           <span class="valor-metrica" id="st-tempo">11 pregões</span>
-
           <span class="sub-metrica">Mediana nas encerradas (máx 210)</span>
-
         </div>
-
       </div>
-
-
 
       <!-- Termômetro do Scanner Hoje -->
-
       <div class="card-bloco-noticia">
-
         <div class="bloco-cabecalho">
-
-          <span class="bloco-icone">🎯</span>
-
-          <h3>Termômetro de Oportunidades do Pregão Atual</h3>
-
+          <span class="bloco-icone" aria-hidden="true">🎯</span>
+          <h3>Termômetro do Scanner no Pregão Atual</h3>
         </div>
-
         <div class="termometro-scanner" id="st-termometro">
-
           <!-- Renderizado dinamicamente pelo JS -->
-
         </div>
-
       </div>
-
-
 
       <!-- Lista de Ações Monitoradas no Radar -->
-
       <div class="card-bloco-noticia">
-
         <div class="bloco-cabecalho">
-
-          <span class="bloco-icone">📋</span>
-
-          <h3>Monitor de Oportunidades & Posições</h3>
-
+          <span class="bloco-icone" aria-hidden="true">📋</span>
+          <h3>Monitor de Sinais Técnicos &amp; Posições Simuladas</h3>
         </div>
-
         <div class="tabela-container-responsiva">
-
           <table class="tabela-portal">
-
             <thead>
-
               <tr>
-
                 <th>Ação</th>
-
                 <th>Setup Técnico</th>
-
                 <th>Preço Entrada</th>
-
                 <th>Alvo de Saída</th>
-
                 <th>Desempenho</th>
-
                 <th>Situação</th>
-
               </tr>
-
             </thead>
-
             <tbody id="tabela-swing-trade">
-
               <!-- Renderizado dinamicamente pelo JS -->
-
             </tbody>
-
           </table>
-
         </div>
-
       </div>
-
-
 
       <!-- As 3 Regras de Ouro do Swing Trade -->
-
       <section class="secao tradutores-humanos">
-
-        <h2>As 3 Regras de Ouro do Swing Trade (Sem Complicação)</h2>
-
+        <h2>Os 3 Critérios do Modelo de Swing Trade</h2>
         <div class="grid-cards-humanos" id="st-regras">
-
           <!-- Renderizado dinamicamente pelo JS -->
-
         </div>
-
       </section>
-
-
 
       <div class="slot-publicidade">
-
         <span class="rotulo-ad">PUBLICIDADE</span>
-
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6721082194258309" data-ad-format="auto" data-full-width-responsive="true"></ins>
-
       </div>
-
-
-
-    
 
       <div class="card-cvm-aba">
-
-        <span class="cvm-icone">⚖️</span>
-
+        <span class="cvm-icone" aria-hidden="true">⚖️</span>
         <p><strong>Aviso Regulatório de Renda Variável (Resolução CVM nº 20/2021):</strong> As operações e setups exibidos são simulações quantitativas algorítmicas com finalidade puramente educacional e de estudo. Não configuram 'calls' de compra/venda nem assessoria de investimentos. Rentabilidade passada não garante retornos futuros.</p>
-
       </div>
-
     </section>
 
-
-
     <!-- ========================================================================= -->
-
     <!-- ABA 3: RADAR LONGO PRAZO (A Bússola Quantitativa de Aportes Patrimoniais)  -->
-
     <!-- ========================================================================= -->
-
-    <section id="alocacao" class="conteudo-tab">
-
-      
+    <section id="alocacao" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-alocacao">
 
       <!-- Banner explicativo: Como usar a bússola -->
-
       <div class="banner-guia-alocacao">
-
-        <div class="guia-icone">🧭</div>
-
+        <div class="guia-icone" aria-hidden="true">🧭</div>
         <div class="guia-texto">
-
           <h3>Como funciona o estudo quantitativo de alocação?</h3>
-
           <p>
-
             <strong>Modelo puramente matemático e não prescritivo.</strong> O Radar funciona como uma modelagem quantitativa macroeconômica concebida para avaliar a assimetria estatística e o prêmio de risco relativo entre as principais classes de ativos brasileiros e globais, sem exigir o giro de posições prévias nem configurar consultoria financeira.
-
           </p>
-
         </div>
-
       </div>
-
-
 
       <!-- Banner de Demonstração / Dados Históricos do Motor -->
-
       <div class="banner-demo">
-
         <strong>RELATÓRIO OFICIAL DO RADAR — MOTOR PYTHON v0.3.0</strong>
-
       </div>
-
-
 
       <!-- Metadados da Execução Oficial -->
-
       <section class="secao execucao">
-
         <h2>Situação da Execução do Motor</h2>
-
         <div class="grid-execucao">
-
           <div class="campo-execucao">
-
             <span class="rotulo">Data de referência do cálculo</span>
-
             <span class="valor" id="data-referencia">—</span>
-
           </div>
-
           <div class="campo-execucao">
-
             <span class="rotulo">Status de validação governada</span>
-
             <span class="valor badge-estado" id="estado-execucao">—</span>
-
           </div>
-
         </div>
-
         <p class="aviso-execucao" id="aviso-demo">—</p>
-
       </section>
-
-
 
       <!-- Alocação Patrimonial -->
-
       <section class="secao alocacao">
-
         <h2>Estudo Teórico de Alocação Macroeconômica do Modelo</h2>
-
         <div class="grid-alocacao">
-
           <div id="grafico-pizza" class="area-grafico"></div>
-
           <div id="lista-alocacao" class="lista-cards"></div>
-
         </div>
-
         <p class="nota-rodape">Percentuais conceituais derivados automaticamente pelas regras quantitativas do modelo em Python. Não constitui carteira recomendada.</p>
-
       </section>
-
-
 
       <!-- Tradução Humana dos Ativos (Cards Educativos) -->
-
       <section class="secao tradutores-humanos">
-
-        <h2>Por que cada ativo está nesta proporção? (Em Linguagem Direta)</h2>
-
-        <div class="grid-cards-humanos">
-
+        <h2>Papel Conceitual de Cada Classe de Ativo no Modelo</h2>
+        <div class="grid-cards-humanos" id="cards-papel-ativos">
           <div class="card-humano">
-
             <div class="card-humano-header" style="border-left-color: #1f77b4;">
-
-              <span class="humano-icone">🏛️</span>
-
-              <h4>Tesouro IPCA+ (60%) — A Âncora de Riqueza Real</h4>
-
+              <span class="humano-icone" aria-hidden="true">🏛️</span>
+              <h4>Tesouro IPCA+ 2040 <span id="card-perc-ipca"></span> — Âncora de Juro Real</h4>
             </div>
-
-            <p>Com juros reais acima de <strong>6,50% a.a.</strong> acima da inflação e sem crise soberana, o governo brasileiro está oferecendo um retorno histórico com risco soberano da República (baixo risco relativo de crédito). O Radar prioriza acumular o máximo desse ativo quando a taxa é favorável.</p>
-
+            <p id="card-desc-ipca">Quando a taxa real supera o limiar parametrizado (6,50% a.a. acima da inflação) sem alerta de estresse soberano ativo, o modelo prioriza títulos públicos indexados ao IPCA com risco soberano do Tesouro Nacional.</p>
           </div>
-
           <div class="card-humano">
-
             <div class="card-humano-header" style="border-left-color: #2ca02c;">
-
-              <span class="humano-icone">🌐</span>
-
-              <h4>IVVB11 (30%) — A Trava Global em Moeda Forte</h4>
-
+              <span class="humano-icone" aria-hidden="true">🌐</span>
+              <h4>IVVB11 <span id="card-perc-ivvb"></span> — Exposição Global em Moeda Forte</h4>
             </div>
-
-            <p>Investe nas 500 maiores corporações do planeta (EUA). Representa exposição em moeda forte às maiores corporações globais, diversificando o risco macroeconômico doméstico.</p>
-
+            <p id="card-desc-ivvb">Replica o índice S&amp;P 500 em reais. Cumpre o papel de diversificação geográfica e cambial em relação ao risco macroeconômico doméstico, condicionado ao filtro de tendência do câmbio PTAX.</p>
           </div>
-
           <div class="card-humano">
-
             <div class="card-humano-header" style="border-left-color: #d62728;">
-
-              <span class="humano-icone">🛡️</span>
-
-              <h4>BOVA11 (0%) — Filtro de Prudência Ativo</h4>
-
+              <span class="humano-icone" aria-hidden="true">🛡️</span>
+              <h4>BOVA11 <span id="card-perc-bova"></span> — Renda Variável Doméstica</h4>
             </div>
-
-            <p>O motor acionou veto de governança. A bolsa brasileira só recebe novos aportes quando os múltiplos de valuation e as contas públicas justificarem o risco. Filtro quantitativo concebido para evitar exposição em cenários de prêmio de risco desfavorável.</p>
-
+            <p id="card-desc-bova">A fatia de bolsa brasileira passa por filtros de prêmio de risco (ERP), tendência (SMA200) e risco fiscal/soberano. Quando esses critérios não são atendidos, o modelo aplica veto técnico (0%).</p>
           </div>
-
           <div class="card-humano">
-
             <div class="card-humano-header" style="border-left-color: #ff7f0e;">
-
-              <span class="humano-icone">⚡</span>
-
-              <h4>Bitcoin (10%) — A Assimetria Digital Global</h4>
-
+              <span class="humano-icone" aria-hidden="true">⚡</span>
+              <h4>Bitcoin <span id="card-perc-btc"></span> — Assimetria Digital Limitada</h4>
             </div>
-
-            <p>Fatia máxima limitada conceitualmente a 10% do estudo teórico, buscando diversificação em ativo de assimetria tecnológica.</p>
-
+            <p id="card-desc-btc">Fatia conceitual limitada ao teto máximo de 10% do estudo teórico, condicionada aos filtros de drawdown e tendência definidos nas regras do motor.</p>
           </div>
-
           <div class="card-humano">
-
             <div class="card-humano-header" style="border-left-color: #7f7f7f;">
-
-              <span class="humano-icone">💼</span>
-
-              <h4>Caixa Tático & Residual (0%) — Pólvora Seca</h4>
-
+              <span class="humano-icone" aria-hidden="true">💼</span>
+              <h4>Caixa Tático &amp; Residual <span id="card-perc-caixa"></span> — Reserva de Liquidez</h4>
             </div>
-
-            <p>Sem alertas de estresse ativos e com o Tesouro em taxa alta, 100% dos recursos puderam ser alocados em ativos produtivos e remunerados.</p>
-
+            <p id="card-desc-caixa">Absorve recursos quando há alertas de estresse ou vetos em classes de risco, preservando liquidez imediata em pós-fixado soberano.</p>
           </div>
-
         </div>
-
       </section>
-
-
 
       <!-- Alertas de Risco do Sistema -->
-
       <section class="secao alertas">
-
-        <h2>Monitor de Estresse & Ruptura de Mercado</h2>
-
+        <h2>Monitor de Estresse &amp; Ruptura de Mercado</h2>
         <div id="lista-alertas" class="grid-alertas"></div>
-
       </section>
-
-
 
       <!-- Indicadores Macroeconômicos -->
-
       <section class="secao indicadores">
-
         <h2>Indicadores Macroeconômicos Auditados</h2>
-
         <div id="legenda-estados" class="legenda-estados"></div>
-
         <div class="tabela-container-responsiva">
-
           <table class="tabela-indicadores">
-
             <thead>
-
               <tr>
-
                 <th>Indicador</th>
-
                 <th>Valor de Mercado</th>
-
                 <th>Métrica / Limiar</th>
-
                 <th>Fonte Oficial</th>
-
                 <th>Atualização</th>
-
                 <th>Estado de Auditoria</th>
-
               </tr>
-
             </thead>
-
             <tbody id="tabela-indicadores"></tbody>
-
           </table>
-
         </div>
-
       </section>
-
-
 
       <!-- Justificativas e Avisos do Motor -->
-
       <section class="secao justificativas">
-
         <h2>Racional Técnico Homologado pelo Motor</h2>
-
         <div id="lista-justificativas" class="lista-justificativas"></div>
-
         <div id="lista-avisos"></div>
-
       </section>
-
-
 
       <!-- Histórico de Execuções -->
-
       <section class="secao historico">
-
-        <h2>Registro de Auditoria do Sistema</h2>
-
+        <h2>Última Execução Auditada do Sistema</h2>
         <div class="tabela-container-responsiva">
-
           <table class="tabela-historico">
-
             <thead>
-
               <tr>
-
                 <th>Data</th>
-
                 <th>Status</th>
-
                 <th>Classificação</th>
-
               </tr>
-
             </thead>
-
             <tbody id="lista-historico"></tbody>
-
           </table>
-
         </div>
-
       </section>
 
-
-
-    
-
       <div class="card-cvm-aba">
-
-        <span class="cvm-icone">⚖️</span>
-
+        <span class="cvm-icone" aria-hidden="true">⚖️</span>
         <p><strong>Bússola Quantitativa Teórica (Resolução CVM nº 20/2021):</strong> Os percentuais de alocação são derivados de algoritmos matemáticos e modelagem teórica para fins de pesquisa e suporte à decisão. Cada investidor deve respeitar seu perfil de risco e objetivos individuais.</p>
-
       </div>
-
     </section>
 
-
-
     <!-- ========================================================================= -->
-
     <!-- ABA: SIMULADOR DE RENDA FIXA (FERRAMENTA DE TRÁFEGO ORGÂNICO ETERNO)       -->
-
     <!-- ========================================================================= -->
-
-    <section id="simulador" class="conteudo-tab">
-
+    <section id="simulador" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-simulador">
       <!-- ESPAÇO DE ANÚNCIO (ADSENSE SIMULADOR) -->
       <div class="slot-publicidade">
         <span class="rotulo-ad">PUBLICIDADE</span>
@@ -1097,533 +536,284 @@
              data-full-width-responsive="true"></ins>
       </div>
 
-
-
       <div class="card-bloco-noticia secao-calculadora" style="border: 2px solid var(--destaque-suave); margin-bottom: 24px;">
-
         <div class="bloco-cabecalho" style="border-bottom: 1px solid var(--borda); padding-bottom: 16px; margin-bottom: 20px;">
-
-          <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 44px; height: 44px; font-size: 1.4rem;">🧮</span>
-
+          <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 44px; height: 44px; font-size: 1.4rem;" aria-hidden="true">🧮</span>
           <div>
-
             <h2 style="font-size: 1.35rem; color: var(--primaria); margin-bottom: 4px; font-weight: 800;">Simulador Gratuito: Quanto Rende Hoje?</h2>
-
-            <p style="font-size: 0.9rem; color: var(--texto-secundario); margin: 0;">Compare o rendimento líquido real na <strong>Poupança vs CDB 100% CDI (Nubank, Inter, Itaú) vs Tesouro Selic</strong> com as taxas oficiais do Banco Central e desconto de IR.</p>
-
+            <p style="font-size: 0.9rem; color: var(--texto-secundario); margin: 0;">Compare o rendimento líquido estimado na <strong>Poupança vs CDB 100% do CDI vs Tesouro Selic</strong> com base nas taxas de referência e tabela regressiva de IR.</p>
           </div>
-
         </div>
-
-
 
         <div class="grid-calc-controles">
-
           <div class="grupo-campo-calc">
-
             <label for="calc-valor" style="font-size: 0.88rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">Quanto você quer simular? (R$)</label>
-
             <div style="position: relative;">
-
               <span style="position: absolute; left: 14px; top: 12px; font-weight: 700; color: var(--texto-secundario); font-family: var(--fonte-mono);">R$</span>
-
               <input type="number" id="calc-valor" value="5000" min="100" step="100" style="width: 100%; padding: 10px 14px 10px 42px; border-radius: var(--raio-md); border: 1px solid var(--borda); font-family: var(--fonte-mono); font-size: 1.1rem; font-weight: 700; color: var(--primaria); background: #f8fafc;">
-
             </div>
-
             <div class="chips-calc" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
-
               <button class="btn-chip" data-val="1000">R$ 1.000</button>
-
               <button class="btn-chip ativa" data-val="5000">R$ 5.000</button>
-
               <button class="btn-chip" data-val="10000">R$ 10.000</button>
-
               <button class="btn-chip" data-val="50000">R$ 50.000</button>
-
             </div>
-
           </div>
-
-
 
           <div class="grupo-campo-calc">
-
-            <label style="font-size: 0.88rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">Por quanto tempo você vai deixar aplicado?</label>
-
-            <div class="botoes-prazos" style="display: flex; gap: 8px; flex-wrap: wrap;">
-
+            <span id="label-prazo-calc" style="font-size: 0.88rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">Por quanto tempo você vai deixar aplicado?</span>
+            <div class="botoes-prazos" role="group" aria-labelledby="label-prazo-calc" style="display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-prazo" data-meses="1">1 Mês</button>
-
               <button class="btn-prazo" data-meses="6">6 Meses</button>
-
               <button class="btn-prazo ativa" data-meses="12">1 Ano (12 meses)</button>
-
               <button class="btn-prazo" data-meses="24">2 Anos (24 meses)</button>
-
             </div>
-
-            <span style="display: block; margin-top: 10px; font-size: 0.82rem; color: var(--texto-secundario);">*Calculado com alíquota regressiva oficial de Imposto de Renda (IR).</span>
-
+            <span style="display: block; margin-top: 10px; font-size: 0.82rem; color: var(--texto-secundario);">*Cálculo educativo com alíquota regressiva de IR (15% a 22,5%). Não considera IOF (resgates em menos de 30 dias) nem taxa de custódia da B3 no Tesouro Selic (0,20% a.a. sobre o valor que exceder R$ 10 mil).</span>
           </div>
-
         </div>
-
-
 
         <!-- Resultados Comparativos -->
-
         <div class="grid-calc-resultados" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0 20px;">
-
           <!-- Card Poupança -->
-
           <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px; text-align: center;">
-
             <span style="font-size: 0.85rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">Poupança Tradicional</span>
-
             <div id="res-total-poupanca" style="font-size: 1.5rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-
             <div style="font-size: 0.85rem; color: #64748b;">Rendimento: <strong id="res-lucro-poupanca" style="color: var(--primaria);">+R$ 0,00</strong></div>
-
             <span style="display: inline-block; background: #e2e8f0; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Isento de IR</span>
-
           </div>
-
-
 
           <!-- Card CDB 100% CDI -->
-
           <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px; text-align: center;">
-
-            <span style="font-size: 0.85rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">CDB 100% CDI (Nubank/Inter)</span>
-
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">CDB 100% do CDI</span>
             <div id="res-total-cdi" style="font-size: 1.5rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-
             <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-cdi" style="color: var(--verde);">+R$ 0,00</strong></div>
-
-            <span style="display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia FGC</span>
-
+            <span style="display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia FGC (até R$ 250 mil)</span>
           </div>
 
-
-
-          <!-- Card Tesouro Selic (Vencedor) -->
-
+          <!-- Card Tesouro Selic -->
           <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 18px; text-align: center; position: relative;">
-
-            <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase;">Menor Risco de Crédito</div>
-
+            <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase;">Risco Soberano</div>
             <span style="font-size: 0.85rem; font-weight: 700; color: var(--destaque); text-transform: uppercase;">Tesouro Selic Oficial</span>
-
             <div id="res-total-selic" style="font-size: 1.5rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-
             <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-selic" style="color: var(--destaque);">+R$ 0,00</strong></div>
-
-            <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia Soberana</span>
-
+            <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia do Tesouro Nacional</span>
           </div>
-
         </div>
-
-
 
         <div id="aviso-lucro-extra" style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--raio-md); padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-
-          <span style="font-size: 1.4rem;">💡</span>
-
+          <span style="font-size: 1.4rem;" aria-hidden="true">💡</span>
           <p style="margin: 0; font-size: 0.92rem; color: #065f46; line-height: 1.5;">
-
-            Deixar seu dinheiro no <strong>Tesouro Selic</strong> rende <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> do que na Poupança tradicional, com risco de crédito zero do Governo Federal!
-
+            Nesta simulação, o <strong>Tesouro Selic</strong> apresenta diferença líquida estimada de <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> em relação à Poupança tradicional, contando com a garantia soberana do Tesouro Nacional.
           </p>
-
         </div>
-
       </div>
-
-
 
       <!-- Tabela de Referência Oficial de Taxas e Impostos -->
-
       <div class="card-bloco-noticia" style="margin-bottom: 32px;">
-
-        <h3 style="font-size: 1.15rem; color: var(--primaria); font-weight: 800; margin-bottom: 12px;">📋 Tabela Oficial de Taxas & Tributação da Renda Fixa</h3>
-
-        <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 16px;">Dados públicos e regulatórios auditados em conformidade com o Banco Central do Brasil (BCB) e Secretaria da Receita Federal:</p>
-
-        
+        <h3 style="font-size: 1.15rem; color: var(--primaria); font-weight: 800; margin-bottom: 12px;">📋 Parâmetros de Taxas &amp; Tributação Utilizados na Simulação</h3>
+        <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 16px;">Taxas anuais de referência parametrizadas neste simulador educativo (base: novembro/2026) e regras tributárias vigentes da Receita Federal:</p>
 
         <div class="tabela-responsiva-wrapper">
-
           <table class="tabela-cotacoes" style="width: 100%; font-size: 0.88rem;">
-
             <thead>
-
               <tr>
-
                 <th style="text-align: left;">Indicador / Aplicação</th>
-
-                <th>Taxa Atual</th>
-
+                <th>Taxa no Simulador</th>
                 <th>Tributação (IR)</th>
-
                 <th>Garantia Legal</th>
-
                 <th>Fonte Oficial</th>
-
               </tr>
-
             </thead>
-
             <tbody>
-
               <tr>
-
                 <td><strong>Tesouro Selic</strong></td>
-
-                <td class="cel-num" style="font-weight: 700; color: var(--destaque);">11,30% a.a.</td>
-
+                <td class="cel-num" style="font-weight: 700; color: var(--destaque);">11,30% a.a. (Selic 11,25% + 0,05%)</td>
                 <td style="text-align: center;">15% a 22,5% (Tabela Regressiva)</td>
-
                 <td style="text-align: center;">Tesouro Nacional (Risco Soberano)</td>
-
                 <td style="text-align: center;"><a href="https://www.tesourodireto.com.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Tesouro Direto ↗</a></td>
-
               </tr>
-
               <tr>
-
-                <td><strong>CDB 100% CDI</strong></td>
-
+                <td><strong>CDB 100% do CDI</strong></td>
                 <td class="cel-num" style="font-weight: 700;">11,15% a.a.</td>
-
                 <td style="text-align: center;">15% a 22,5% (Tabela Regressiva)</td>
-
                 <td style="text-align: center;">FGC até R$ 250 mil por CPF</td>
-
                 <td style="text-align: center;"><a href="https://www.bcb.gov.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Banco Central ↗</a></td>
-
               </tr>
-
               <tr>
-
                 <td><strong>Poupança Nova</strong></td>
-
-                <td class="cel-num" style="font-weight: 700;">6,17% a.a.</td>
-
+                <td class="cel-num" style="font-weight: 700;">6,17% a.a. (0,5% a.m. + TR)</td>
                 <td style="text-align: center;"><span style="color: var(--alta); font-weight: 700;">Isento</span> (Pessoa Física)</td>
-
                 <td style="text-align: center;">FGC até R$ 250 mil por CPF</td>
-
                 <td style="text-align: center;"><a href="https://www.bcb.gov.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Banco Central ↗</a></td>
-
               </tr>
-
             </tbody>
-
           </table>
-
         </div>
-
       </div>
 
-
-
     </section>
-
     <!-- ========================================================================= -->
-
     <!-- ABA 4: COMO USAR & FILOSOFIA DE INVESTIMENTO                              -->
-
     <!-- ========================================================================= -->
-
-    <section id="metodologia" class="conteudo-tab">
-
-
+    <section id="metodologia" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-metodologia">
 
       <div class="card-bloco-noticia filosofia-container">
-
         <h2>A Filosofia por Trás do CafeRadar</h2>
-
         <p class="lead-filosofia">
-
-          A maioria dos investidores perde dinheiro tentando adivinhar para onde a bolsa vai amanhã. O CafeRadar nasceu para eliminar a ansiedade e substituir o "achismo" por regras sistemáticas, frias e disciplinadas tanto nas operações curtas de Swing Trade quanto na alocação de Longo Prazo.
-
+          A maioria dos investidores perde dinheiro tentando adivinhar para onde a bolsa vai amanhã. O CafeRadar nasceu para eliminar a ansiedade e substituir o "achismo" por regras sistemáticas, frias e disciplinadas tanto nos estudos curtos de Swing Trade quanto na alocação de Longo Prazo.
         </p>
 
-
-
         <div class="grid-pilares-filosofia">
-
           <div class="pilar-card">
-
             <div class="pilar-numero">01</div>
-
             <h4>Longo Prazo: O Poder dos Juros Compostos</h4>
-
             <p>Construir patrimônio exige tempo e paciência. Em títulos atrelados à inflação e ETFs globais, o tempo e os lucros das maiores empresas do mundo oferecem proteção conceitual contra choques macroeconômicos e inflacionários.</p>
-
           </div>
-
           <div class="pilar-card">
-
             <div class="pilar-numero">02</div>
-
             <h4>Fluxo, Não Estoque (Zero Giro)</h4>
-
             <p>O modelo matemático prioriza a alocação conceitual de novos fluxos, sem pressupor a alienação de posições prévias ou fricção tributária decorrente de giro de carteira.</p>
-
           </div>
-
           <div class="pilar-card">
-
             <div class="pilar-numero">03</div>
-
-            <h4>Swing Trade: Ganhos Táticos com Alvo Objetivo</h4>
-
+            <h4>Swing Trade: Estudos Táticos com Alvo Objetivo</h4>
             <p>Para estudos táticos de curto prazo, o scanner monitora as 59 ações de maior liquidez da B3 simulando reversão à média com alvo matemático parametrizado em +5%.</p>
-
           </div>
-
           <div class="pilar-card">
-
             <div class="pilar-numero">04</div>
-
             <h4>Independência Matemática e Zero Emoção</h4>
-
             <p>Nenhum dado ou estudo do CafeRadar decorre de palpites discricionários. Todos os resultados são apurados por modelos quantitativos algorítmicos sobre dados públicos de preços, médias móveis e indicadores oficiais do mercado.</p>
-
           </div>
-
         </div>
-
-
 
         <div class="passo-a-passo-aporte">
-
           <h3>Como acompanhar os estudos quantitativos:</h3>
-
           <ol>
-
             <li><strong>Fechamento Diário:</strong> Acompanhe a síntese informativa do pregão com cotações consolidadas e fatos econômicos do dia.</li>
-
             <li><strong>Filtro de Swing Trade:</strong> Monitore o comportamento estatístico das 59 ações sob os critérios de reversão à média e volatilidade.</li>
-
             <li><strong>Estudo de Longo Prazo:</strong> Avalie a dinâmica matemática de ponderação entre juros reais, moeda forte e ativos de assimetria.</li>
-
           </ol>
-
         </div>
-
       </div>
 
-
-
     </section>
-
-
 
   </main>
 
-
-
   <!-- ==================== RODAPÉ INSTITUCIONAL (ADSENSE & CVM COMPLIANCE) ==================== -->
-
   <footer class="rodape-portal">
-
     <div class="container container-rodape">
-
       <div class="rodape-colunas">
-
         <div class="col-institucional">
-
           <div class="logo-rodape">CAFERADAR</div>
-
           <p class="desc-rodape">
-
             Plataforma independente de inteligência de mercado, síntese de pregão diário, scanner tático de Swing Trade e modelagem quantitativa de alocação patrimonial de longo prazo.
-
           </p>
-
         </div>
-
         <div class="col-links">
-
           <h4>Navegação</h4>
-
           <ul>
-
-            <li><a href="/index.html#fechamento">Fechamento Diário</a></li>
-
-            <li><a href="/index.html#swingtrade">Swing Trade B3 (+5%)</a></li>
-
-            <li><a href="/index.html#alocacao">Radar Longo Prazo</a></li>
-
+            <li><a href="#fechamento">Fechamento Diário</a></li>
+            <li><a href="#swingtrade">Swing Trade B3 (+5%)</a></li>
+            <li><a href="#alocacao">Radar Longo Prazo</a></li>
             <li><a href="calculadora-rendimento.html">Calculadora de Renda</a></li>
-
-            <li><a href="/index.html#metodologia">Como Usar o Portal</a></li>
-
+            <li><a href="edicoes/">Acervo de Edições</a></li>
+            <li><a href="#metodologia">Como Usar o Portal</a></li>
           </ul>
-
         </div>
-
         <div class="col-links">
-
-          <h4>Institucional & Legal</h4>
-
+          <h4>Institucional &amp; Legal</h4>
           <ul>
-
-            <li><a href="sobre.html">Sobre & Contato</a></li>
-
+            <li><a href="sobre.html">Sobre &amp; Contato</a></li>
             <li><a href="privacy.html">Política de Privacidade</a></li>
-
-            <li><a href="rules.html" target="_blank">Regras Oficiais do Motor</a></li>
-
+            <li><a href="rules.html" target="_blank" rel="noopener">Regras Oficiais do Motor</a></li>
           </ul>
-
         </div>
-
         <div class="col-links">
-
           <h4>Fontes Oficiais</h4>
-
           <ul>
-
             <li>Banco Central (PTAX)</li>
-
             <li>Tesouro Nacional</li>
-
             <li>B3 / Ipeadata (Ibovespa)</li>
-
             <li>Binance API (Bitcoin)</li>
-
           </ul>
-
         </div>
-
       </div>
-
-
 
       <div class="disclaimer-cvm">
-
-        <strong>AVISO LEGAL & GOVERNANÇA REGULATÓRIA (RESOLUÇÕES CVM Nº 19/2021 E Nº 20/2021):</strong>
-
+        <strong>AVISO LEGAL &amp; GOVERNANÇA REGULATÓRIA (RESOLUÇÕES CVM Nº 19/2021 E Nº 20/2021):</strong>
         <p>
-
           O CafeRadar é uma plataforma independente de informação financeira, pesquisa quantitativa e estudos de mercado. Os fechamentos diários, filtros algorítmicos e estudos de alocação têm finalidade estritamente jornalística, tecnológica e educacional. Não constituem oferta pública, consultoria de investimentos individualizada (Resolução CVM nº 19/2021), gestão de carteira nem recomendação de compra ou venda de valores mobiliários (Resolução CVM nº 20/2021). Os sinais do Swing Trade representam filtros técnicos matemáticos e não correspondem a operações executadas na carteira real do autor. O CafeRadar não custodia valores, não recebe corretagem e não executa ordens. Renda variável envolve risco de perda de capital; rentabilidade passada obtida em simulação algorítmica não garante retornos futuros.
-
         </p>
-
         <p class="copy-texto">© 2026 CafeRadar. Todos os direitos reservados.</p>
-
       </div>
-
     </div>
-
   </footer>
-
-
 
   <script src="app.js"></script>
 
-
-
   <!-- Modais de Governança & Ciência do Usuário (CVM 19 e 20) -->
-
-  <div id="modal-governanca-swing" class="modal-governanca" style="display:none;">
-
-    <div class="modal-governanca-backdrop"></div>
-
+  <div id="modal-governanca-swing" class="modal-governanca" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-swing" style="display:none;">
+    <div class="modal-governanca-backdrop" data-fechar-modal="swing"></div>
     <div class="modal-governanca-conteudo">
-
       <div class="modal-header">
-
-        <span style="font-size:1.6rem;">⚖️</span>
-
-        <h3>Aviso de Pesquisa Quantitativa: Swing Trade B3</h3>
-
+        <span style="font-size:1.6rem;" aria-hidden="true">⚖️</span>
+        <h3 id="titulo-modal-swing">Aviso de Pesquisa Quantitativa: Swing Trade B3</h3>
       </div>
-
       <div class="modal-corpo">
-
         <p><strong>Antes de visualizar os dados desta seção, compreenda os critérios de governança:</strong></p>
-
         <ul>
-
           <li><strong>Filtros Estatísticos Automatizados:</strong> Os ativos listados decorrem de fórmulas matemáticas pré-programadas de volatilidade e reversão à média, <em>não correspondendo necessariamente a operações executadas na carteira do autor</em>.</li>
-
           <li><strong>Ausência de Recomendação:</strong> Estes dados não configuram recomendação de investimento, "call" de compra/venda nem consultoria financeira (Resoluções CVM nº 19/2021 e nº 20/2021).</li>
-
           <li><strong>Risco e Ausência de Stop Loss:</strong> O modelo opera sem stop loss clássico; toda operação não encerrada no alvo permanece em aberto acumulando rebaixamento a mercado. Rentabilidade passada em backtests não é garantia de lucros futuros.</li>
-
         </ul>
-
       </div>
-
-      <div class="modal-rodape">
-
-        <button id="btn-concordo-swing" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
-
+      <div class="modal-rodape" style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+        <button type="button" id="btn-cancelar-swing" class="btn-tab" style="padding:10px 18px; border-radius:8px; cursor:pointer; font-weight:600; border:1px solid var(--borda);">
+          Voltar ao Fechamento
+        </button>
+        <button type="button" id="btn-concordo-swing" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
           Compreendo e Desejo Acessar o Estudo
-
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
-
-  <div id="modal-governanca-alocacao" class="modal-governanca" style="display:none;">
-
-    <div class="modal-governanca-backdrop"></div>
-
+  <div id="modal-governanca-alocacao" class="modal-governanca" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-alocacao" style="display:none;">
+    <div class="modal-governanca-backdrop" data-fechar-modal="alocacao"></div>
     <div class="modal-governanca-conteudo">
-
       <div class="modal-header">
-
-        <span style="font-size:1.6rem;">🏛️</span>
-
-        <h3>Aviso de Estudo Conceitual: Radar de Longo Prazo</h3>
-
+        <span style="font-size:1.6rem;" aria-hidden="true">🏛️</span>
+        <h3 id="titulo-modal-alocacao">Aviso de Estudo Conceitual: Radar de Longo Prazo</h3>
       </div>
-
       <div class="modal-corpo">
-
         <p><strong>Antes de visualizar os estudos macroeconômicos de alocação:</strong></p>
-
         <ul>
-
           <li><strong>Modelo Teórico Quantitativo:</strong> As proporções exibidas são geradas por algoritmos conceituais para fins didáticos e de simulação acadêmica sobre classes de ativos.</li>
-
           <li><strong>Não é Carteira Personalizada:</strong> O modelo não avalia o seu perfil de investidor, tolerância a perdas, horizonte de vida ou necessidades de liquidez particulares.</li>
-
           <li><strong>Decisão Autônoma:</strong> O conteúdo não substitui consultoria individualizada nem dispensa a realização de avaliação própria antes de qualquer alocação de recursos.</li>
-
         </ul>
-
       </div>
-
-      <div class="modal-rodape">
-
-        <button id="btn-concordo-alocacao" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
-
-          Compreendo e Desejo Acessar o Modelo
-
+      <div class="modal-rodape" style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+        <button type="button" id="btn-cancelar-alocacao" class="btn-tab" style="padding:10px 18px; border-radius:8px; cursor:pointer; font-weight:600; border:1px solid var(--borda);">
+          Voltar ao Fechamento
         </button>
-
+        <button type="button" id="btn-concordo-alocacao" class="btn-tab ativa" style="padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:700;">
+          Compreendo e Desejo Acessar o Modelo
+        </button>
       </div>
-
     </div>
-
   </div>
 
-
+  <!-- Banner informativo de Cookies & Privacidade (LGPD) -->
+  <div id="banner-cookies-lgpd" class="banner-cookies-lgpd" role="region" aria-label="Aviso de privacidade e cookies" style="display:none;">
+    <div class="banner-cookies-texto">
+      Utilizamos armazenamento local e cookies (incluindo Google Analytics e AdSense) para estatísticas de acesso e exibição de anúncios, conforme nossa <a href="privacy.html">Política de Privacidade (LGPD)</a>.
+    </div>
+    <div class="banner-cookies-acoes">
+      <button type="button" id="btn-aceitar-cookies" class="btn-cookies-aceitar">Entendi</button>
+    </div>
+  </div>
 
 </body>
-
 </html>
-
