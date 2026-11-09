@@ -140,14 +140,24 @@
   }
 
   function atualizarConsentimentoGtag(concedido) {
+    const estado = concedido ? 'granted' : 'denied';
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'consent_update',
+      'ad_storage': estado,
+      'analytics_storage': estado,
+      'ad_user_data': estado,
+      'ad_personalization': estado
+    });
     if (typeof window.gtag === 'function') {
       window.gtag('consent', 'update', {
-        'ad_storage': concedido ? 'granted' : 'denied',
-        'analytics_storage': concedido ? 'granted' : 'denied',
-        'ad_user_data': concedido ? 'granted' : 'denied',
-        'ad_personalization': concedido ? 'granted' : 'denied'
+        'ad_storage': estado,
+        'analytics_storage': estado,
+        'ad_user_data': estado,
+        'ad_personalization': estado
       });
     }
+    console.log('[Consent Mode v2] Status atualizado no Google Tag Manager / GA4:', estado.toUpperCase());
   }
 
   function inicializarBannerCookies() {

@@ -153,7 +153,11 @@
     </div>
     <div class="fita-cotacoes-trilho-container">
       <div class="fita-cotacoes-trilho" id="fita-cotacoes-trilho">
-        <span class="fita-item"><span class="fita-ticker">Carregando cotações da última edição…</span></span>
+        <span class="fita-item"><span class="fita-ticker">IBOVESPA</span> <span class="fita-preco">171.736 pts</span> <span class="fita-var alta">▲ +2,02%</span></span>
+        <span class="fita-item"><span class="fita-ticker">DÓLAR</span> <span class="fita-preco">R$ 5,50</span> <span class="fita-var alta">▲ +0,16%</span></span>
+        <span class="fita-item"><span class="fita-ticker">S&P 500</span> <span class="fita-preco">7.564 pts</span> <span class="fita-var alta">▲ +2,56%</span></span>
+        <span class="fita-item"><span class="fita-ticker">BITCOIN</span> <span class="fita-preco">US$ 74.849</span> <span class="fita-var alta">▲ +0,17%</span></span>
+        <span class="fita-item"><span class="fita-ticker">BRENT</span> <span class="fita-preco">US$ 91,35</span> <span class="fita-var baixa">▼ -7,11%</span></span>
       </div>
     </div>
   </div>
@@ -311,14 +315,10 @@
       <div class="cabecalho-noticia">
         <div class="meta-noticia">
           <span class="categoria-tag">MERCADOS &amp; ECONOMIA</span>
-          <span class="horario-tag" id="fechamento-atualizacao">Carregando edição...</span>
+          <span class="horario-tag" id="fechamento-atualizacao">Edição de 09/11/2026 às 18h15 (Fechamento)</span>
         </div>
-        <h2 class="titulo-destaque-fechamento" id="fechamento-titulo">
-          RADAR DO PREGÃO B3
-        </h2>
-        <p class="subtitulo-destaque-fechamento" id="fechamento-subtitulo">
-          Síntese diária do pregão da B3, câmbio, índices globais e ações de maior liquidez.
-        </p>
+        <h2 class="titulo-destaque-fechamento" id="fechamento-titulo">RADAR DE FECHAMENTO — 09/11/2026</h2>
+        <p class="subtitulo-destaque-fechamento" id="fechamento-subtitulo">Ibovespa encerra a segunda-feira aos 171.736 pts (+2,02%); Dólar fecha a R$ 5,50 e investidores avaliam balanços trimestrais e fluxo institucional</p>
       </div>
 
       <!-- Imagem Visual da Edição (Google Discover & CTR Social) -->
@@ -327,7 +327,33 @@
       </figure>
 
       <!-- Tickers Rápidos -->
-      <div class="grid-tickers-fechamento" id="cards-mercado-fechamento"></div>
+      <div class="grid-tickers-fechamento" id="cards-mercado-fechamento">
+        <div class="card-ticker-mercado">
+          <div class="ticker-nome">IBOVESPA</div>
+          <div class="ticker-valor">171.736 pts</div>
+          <div class="ticker-variacao" style="color:var(--alta);">▲ +2,02%</div>
+        </div>
+        <div class="card-ticker-mercado">
+          <div class="ticker-nome">DÓLAR COMERCIAL</div>
+          <div class="ticker-valor">R$ 5,50</div>
+          <div class="ticker-variacao" style="color:var(--alta);">▲ +0,16%</div>
+        </div>
+        <div class="card-ticker-mercado">
+          <div class="ticker-nome">S&P 500</div>
+          <div class="ticker-valor">7.564 pts</div>
+          <div class="ticker-variacao" style="color:var(--alta);">▲ +2,56%</div>
+        </div>
+        <div class="card-ticker-mercado">
+          <div class="ticker-nome">BITCOIN (24H)</div>
+          <div class="ticker-valor">US$ 74.849</div>
+          <div class="ticker-variacao" style="color:var(--alta);">▲ +0,17%</div>
+        </div>
+        <div class="card-ticker-mercado">
+          <div class="ticker-nome">PETRÓLEO BRENT</div>
+          <div class="ticker-valor">US$ 91,35</div>
+          <div class="ticker-variacao" style="color:var(--baixa);">▼ -7,11%</div>
+        </div>
+      </div>
 
       <!-- Leitura Rápida em 2 Minutos -->
       <section class="card-bloco-noticia leitura-rapida">
@@ -335,7 +361,24 @@
           <span class="bloco-icone" aria-hidden="true">⏱️</span>
           <h3>Leitura Rápida do Dia (Em 2 minutos)</h3>
         </div>
-        <div class="lista-bullets-noticia" id="leitura-rapida-fechamento"></div>
+        <div class="lista-bullets-noticia" id="leitura-rapida-fechamento">
+          <div class="bullet-noticia-item">
+            <span class="bullet-marcador"></span>
+            <p>A bolsa brasileira encerra as negociações nesta segunda-feira com o Ibovespa marcando 171.736 pts (+2,02%), impulsionada pelo ingresso consistente de capital institucional e reprecificação de múltiplos. <a href="https://trademap.com.br" target="_blank" rel="noopener" style="color:var(--destaque); font-weight:600;">(TradeMap ↗)</a></p>
+          </div>
+          <div class="bullet-noticia-item">
+            <span class="bullet-marcador"></span>
+            <p>No câmbio comercial, a moeda encerrou cotada a R$ 5,50 (+0,16%), refletindo liquidez fluida e equilíbrio entre fluxos de exportadores e demanda financeira. <a href="https://br.advfn.com/jornal" target="_blank" rel="noopener" style="color:var(--destaque); font-weight:600;">(ADVFN ↗)</a></p>
+          </div>
+          <div class="bullet-noticia-item">
+            <span class="bullet-marcador"></span>
+            <p>No mercado de commodities, o petróleo Brent finalizou a sessão cotado a US$ 91,35 o barril (-7,11%), enquanto Wall Street fechou com alta expressiva no índice S&P 500 (7.564 pts). <a href="https://br.investing.com" target="_blank" rel="noopener" style="color:var(--destaque); font-weight:600;">(Investing ↗)</a></p>
+          </div>
+          <div class="bullet-noticia-item">
+            <span class="bullet-marcador"></span>
+            <p>No universo cripto de negociação ininterrupta, o Bitcoin manteve estabilidade técnica em US$ 74.849 (+0,17%), consolidando suporte estrutural de médio prazo. <span style="color:#64748b; font-size:0.85rem;">(Binance / CoinMarketCap)</span></p>
+          </div>
+        </div>
       </section>
 
       <!-- Grid de Ações Blue Chips e Destaques -->
@@ -357,7 +400,56 @@
                   <th>Mês</th>
                 </tr>
               </thead>
-              <tbody id="tabela-blue-chips"></tbody>
+              <tbody id="tabela-blue-chips">
+                <tr>
+                  <td><strong>PETR4</strong> <span style="font-size:0.75rem; color:#64748b;">Petrobras PN</span></td>
+                  <td>R$ 44,76</td>
+                  <td style="color:var(--baixa); font-weight:700;">▼ -1,06%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>VALE3</strong> <span style="font-size:0.75rem; color:#64748b;">Vale ON</span></td>
+                  <td>R$ 66,11</td>
+                  <td style="color:var(--alta); font-weight:700;">▲ +3,56%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>ITUB4</strong> <span style="font-size:0.75rem; color:#64748b;">Itaú Unibanco PN</span></td>
+                  <td>R$ 41,63</td>
+                  <td style="color:var(--alta); font-weight:700;">▲ +2,54%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>BBAS3</strong> <span style="font-size:0.75rem; color:#64748b;">Banco do Brasil ON</span></td>
+                  <td>R$ 16,97</td>
+                  <td style="color:var(--baixa); font-weight:700;">▼ -0,93%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>BBDC4</strong> <span style="font-size:0.75rem; color:#64748b;">Bradesco PN</span></td>
+                  <td>R$ 14,61</td>
+                  <td style="color:var(--alta); font-weight:700;">▲ +3,25%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>ELET3</strong> <span style="font-size:0.75rem; color:#64748b;">Eletrobras ON</span></td>
+                  <td>R$ 46,39</td>
+                  <td style="color:var(--baixa); font-weight:700;">▼ -2,19%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>WEGE3</strong> <span style="font-size:0.75rem; color:#64748b;">WEG ON</span></td>
+                  <td>R$ 50,54</td>
+                  <td style="color:var(--alta); font-weight:700;">▲ +4,88%</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><strong>B3SA3</strong> <span style="font-size:0.75rem; color:#64748b;">B3 ON</span></td>
+                  <td>R$ 14,87</td>
+                  <td style="color:var(--alta); font-weight:700;">▲ +3,26%</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -650,7 +742,7 @@
     <!-- ========================================================================= -->
     <!-- ABA: SIMULADOR DE RENDA FIXA (FERRAMENTA DE TRÁFEGO ORGÂNICO ETERNO)       -->
     <!-- ========================================================================= -->
-    <section id="simulador" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-simulador">
+        <section id="simulador" class="conteudo-tab" role="tabpanel" aria-labelledby="tab-btn-simulador">
       <!-- ESPAÇO DE ANÚNCIO (ADSENSE SIMULADOR) -->
       <div class="slot-publicidade">
         <span class="rotulo-ad">PUBLICIDADE</span>
@@ -661,96 +753,58 @@
              data-full-width-responsive="true"></ins>
       </div>
 
-      <div class="card-bloco-noticia secao-calculadora" style="border: 2px solid var(--destaque-suave); margin-bottom: 24px;">
-        <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 16px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-          <div style="font-size:0.88rem; color:#1e40af;">
-            💡 <strong>Prefere uma página dedicada para salvar nos favoritos ou compartilhar?</strong>
-          </div>
-          <a href="calculadora-rendimento.html" style="color:#2563eb; font-weight:700; font-size:0.88rem; text-decoration:underline;">Acessar Calculadora Completa ↗</a>
-        </div>
-
-        <div class="bloco-cabecalho" style="border-bottom: 1px solid var(--borda); padding-bottom: 16px; margin-bottom: 20px;">
-          <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 44px; height: 44px; font-size: 1.4rem;" aria-hidden="true">🧮</span>
+      <div class="card-bloco-noticia secao-calculadora" style="border: 2px solid var(--destaque-suave); margin-bottom: 24px; padding: 32px 28px;">
+        <div class="bloco-cabecalho" style="border-bottom: 1px solid var(--borda); padding-bottom: 16px; margin-bottom: 24px;">
+          <span class="bloco-icone" style="background: var(--destaque-suave); color: var(--destaque); width: 48px; height: 48px; font-size: 1.5rem;" aria-hidden="true">🧮</span>
           <div>
-            <h2 style="font-size: 1.35rem; color: var(--primaria); margin-bottom: 4px; font-weight: 800;">Simulador Gratuito: Quanto Rende Hoje?</h2>
-            <p style="font-size: 0.9rem; color: var(--texto-secundario); margin: 0;">Compare o rendimento líquido estimado na <strong>Poupança vs CDB 100% do CDI vs Tesouro Selic</strong> com base nas taxas de referência e tabela regressiva de IR.</p>
+            <h2 style="font-size: 1.45rem; color: var(--primaria); margin-bottom: 6px; font-weight: 800;">Quanto Rendem R$ 5.000 em 12 Meses na Renda Fixa?</h2>
+            <p style="font-size: 0.95rem; color: var(--texto-secundario); margin: 0; line-height: 1.6;">
+              Comparativo de referência com as taxas vigentes do Banco Central (Selic 11,25% + 0,05%, CDI 11,15% e Poupança 6,17%) já com dedução oficial de Imposto de Renda (IR):
+            </p>
           </div>
         </div>
 
-        <div class="grid-calc-controles">
-          <div class="grupo-campo-calc">
-            <label for="calc-valor" style="font-size: 0.88rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">Quanto você quer simular? (R$)</label>
-            <div style="position: relative;">
-              <span style="position: absolute; left: 14px; top: 12px; font-weight: 700; color: var(--texto-secundario); font-family: var(--fonte-mono);">R$</span>
-              <input type="number" id="calc-valor" value="5000" min="100" step="100" style="width: 100%; padding: 10px 14px 10px 42px; border-radius: var(--raio-md); border: 1px solid var(--borda); font-family: var(--fonte-mono); font-size: 1.1rem; font-weight: 700; color: var(--primaria); background: #f8fafc;">
-            </div>
-            <div class="chips-calc" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
-              <button class="btn-chip" data-val="1000">R$ 1.000</button>
-              <button class="btn-chip ativa" data-val="5000">R$ 5.000</button>
-              <button class="btn-chip" data-val="10000">R$ 10.000</button>
-              <button class="btn-chip" data-val="50000">R$ 50.000</button>
-            </div>
-          </div>
-
-          <div class="grupo-campo-calc">
-            <span id="label-prazo-calc" style="font-size: 0.88rem; font-weight: 700; color: var(--primaria); display: block; margin-bottom: 8px;">Por quanto tempo você vai deixar aplicado?</span>
-            <div class="botoes-prazos" role="group" aria-labelledby="label-prazo-calc" style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-prazo" data-meses="1">1 Mês</button>
-              <button class="btn-prazo" data-meses="6">6 Meses</button>
-              <button class="btn-prazo ativa" data-meses="12">1 Ano (12 meses)</button>
-              <button class="btn-prazo" data-meses="24">2 Anos (24 meses)</button>
-            </div>
-            <span style="display: block; margin-top: 10px; font-size: 0.82rem; color: var(--texto-secundario);">*Cálculo educativo com alíquota regressiva de IR (15% a 22,5%). Não considera IOF (resgates em menos de 30 dias) nem taxa de custódia da B3 no Tesouro Selic (0,20% a.a. sobre o valor que exceder R$ 10 mil).</span>
-          </div>
-        </div>
-
-        <!-- Resultados Comparativos -->
-        <div class="grid-calc-resultados" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0 20px;">
+        <!-- 3 Cards Comparativos de Referência -->
+        <div class="grid-calc-resultados" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin: 24px 0;">
           <!-- Card Poupança -->
-          <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px; text-align: center;">
+          <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 20px; text-align: center;">
             <span style="font-size: 0.85rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">Poupança Tradicional</span>
-            <div id="res-total-poupanca" style="font-size: 1.5rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Rendimento: <strong id="res-lucro-poupanca" style="color: var(--primaria);">+R$ 0,00</strong></div>
-            <span style="display: inline-block; background: #e2e8f0; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Isento de IR</span>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 5.308,50</div>
+            <div style="font-size: 0.88rem; color: #64748b;">Rendimento: <strong style="color: var(--primaria);">+R$ 308,50</strong></div>
+            <span style="display: inline-block; background: #e2e8f0; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Isento de IR</span>
           </div>
 
           <!-- Card CDB 100% CDI -->
-          <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 18px; text-align: center;">
+          <div class="card-resultado-calc" style="background: #f8fafc; border: 1px solid var(--borda); border-radius: var(--raio-md); padding: 20px; text-align: center;">
             <span style="font-size: 0.85rem; font-weight: 700; color: var(--texto-secundario); text-transform: uppercase;">CDB 100% do CDI</span>
-            <div id="res-total-cdi" style="font-size: 1.5rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-cdi" style="color: var(--verde);">+R$ 0,00</strong></div>
-            <span style="display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia FGC (até R$ 250 mil)</span>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--primaria); font-family: var(--fonte-mono); margin: 8px 0;">R$ 5.459,94</div>
+            <div style="font-size: 0.88rem; color: #64748b;">Líquido após IR: <strong style="color: var(--verde);">+R$ 459,94</strong></div>
+            <span style="display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia FGC (até R$ 250 mil)</span>
           </div>
 
           <!-- Card Tesouro Selic -->
-          <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 18px; text-align: center; position: relative;">
-            <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase;">Risco Soberano</div>
+          <div class="card-resultado-calc destaque-vencedor" style="background: #eff6ff; border: 2px solid var(--destaque); border-radius: var(--raio-md); padding: 20px; text-align: center; position: relative;">
+            <div style="position: absolute; top: -10px; right: 12px; background: var(--destaque); color: white; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 9999px; text-transform: uppercase;">Risco Soberano</div>
             <span style="font-size: 0.85rem; font-weight: 700; color: var(--destaque); text-transform: uppercase;">Tesouro Selic Oficial</span>
-            <div id="res-total-selic" style="font-size: 1.5rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 0,00</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Rendimento Líquido: <strong id="res-lucro-selic" style="color: var(--destaque);">+R$ 0,00</strong></div>
-            <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; margin-top: 10px;">Garantia do Tesouro Nacional</span>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--destaque); font-family: var(--fonte-mono); margin: 8px 0;">R$ 5.464,20</div>
+            <div style="font-size: 0.88rem; color: #64748b;">Líquido após IR: <strong style="color: var(--destaque);">+R$ 464,20</strong></div>
+            <span style="display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 9999px; margin-top: 10px;">Garantia do Tesouro Nacional</span>
           </div>
         </div>
 
-        <div id="aviso-lucro-extra" style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--raio-md); padding: 14px 18px; display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 1.4rem;" aria-hidden="true">💡</span>
-          <p style="margin: 0; font-size: 0.92rem; color: #065f46; line-height: 1.5;">
-            Nesta simulação, o <strong>Tesouro Selic</strong> apresenta diferença líquida estimada de <strong id="diferenca-lucro-reais">R$ 0,00 a MAIS</strong> em relação à Poupança tradicional, contando com a garantia soberana do Tesouro Nacional.
+        <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--raio-md); padding: 14px 18px; margin-bottom: 24px;">
+          <p style="margin: 0; font-size: 0.95rem; color: #065f46; line-height: 1.5;">
+            💡 O <strong>Tesouro Selic</strong> entrega <strong>R$ 155,70 a mais de rendimento líquido</strong> que a poupança tradicional nesta simulação anual, contando com a máxima segurança jurídica do país.
           </p>
         </div>
-      </div>
 
-      <!-- Chamada Institucional para a Calculadora Dedicada Completa (Hub SEO sem canibalização) -->
-      <div class="card-bloco-noticia" style="margin-bottom: 32px; background: #f8fafc; border: 1px solid #e2e8f0; text-align: center; padding: 28px 20px;">
-        <h3 style="font-size: 1.2rem; color: var(--primaria); font-weight: 800; margin-bottom: 8px;">📊 Deseja a Tabela Completa de IR &amp; Comparativo Histórico?</h3>
-        <p style="font-size: 0.92rem; color: var(--texto-secundario); max-width: 620px; margin: 0 auto 18px; line-height: 1.5;">
-          Consulte nossa página dedicada com a tabela regressiva completa do Imposto de Renda (15% a 22,5%), regras detalhadas de proteção do FGC (até R$ 250 mil) e simulador avançado de aportes mensais.
-        </p>
-        <a href="calculadora-rendimento.html" class="btn-tab ativa" style="display: inline-block; text-decoration: none; padding: 10px 24px; font-weight: 700; font-size: 0.95rem; border-radius: 9999px;">
-          Acessar Calculadora Completa de Renda Fixa ↗
-        </a>
+        <!-- CTA Principal para a Calculadora Completa -->
+        <div style="text-align: center; padding-top: 12px;">
+          <a href="calculadora-rendimento.html" class="btn-tab ativa" style="display: inline-block; text-decoration: none; padding: 14px 32px; font-weight: 800; font-size: 1.05rem; border-radius: 9999px; box-shadow: 0 4px 14px rgba(37,99,235,0.25);">
+            Personalizar Valor, Prazo e Tabela Regressiva de IR na Calculadora Completa ↗
+          </a>
+        </div>
       </div>
-
     </section>
     <!-- ========================================================================= -->
     <!-- ABA 4: COMO USAR & FILOSOFIA DE INVESTIMENTO                              -->
