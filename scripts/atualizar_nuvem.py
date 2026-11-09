@@ -262,7 +262,36 @@ def gerar_conteudo_dinamico(
                 { "texto": "Curva de juros futuros de curto prazo precifica expectativa de manutenção ou ajuste na taxa Selic." }
             ]
         }
-    elif ed_key in ["almoco", "negocios"]:
+    elif ed_key == "negocios":
+        return {
+            "subtitulo": f"Pregão à vista da B3 aberto {loc_dia}; Ibovespa opera aos {ibov_str} e Dólar cotado a {dolar_str} na primeira hora de negociações",
+            "leitura_rapida": [
+                {
+                    "texto": f"Com o pregão regular aberto a partir das 10h00 {loc_dia}, o Ibovespa opera na faixa de {ibov_str}, registrando os primeiros negócios do dia com foco no fluxo institucional.",
+                    "fonte": "TradeMap",
+                    "link": "https://trademap.com.br"
+                },
+                {
+                    "texto": f"Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent cotado a {brent_str}.",
+                    "fonte": "Visno Invest",
+                    "link": "https://visnoinvest.com.br"
+                },
+                {
+                    "texto": f"No câmbio doméstico, o dólar comercial marca {dolar_str} ({dolar_var}) nas primeiras cotações, acompanhando os juros futuros e a curva de Treasuries.",
+                    "fonte": "ADVFN",
+                    "link": "https://br.advfn.com/jornal"
+                },
+                {
+                    "texto": f"Em Nova York, os futuros de Wall Street e S&P 500 operam aos {sp500_str}, enquanto o Bitcoin se mantém cotado em {btc_str}.",
+                    "fonte": "BB InvesTalk"
+                }
+            ],
+            "comparacao_anterior": [
+                { "texto": f"Primeiros negócios do pregão de {dia_semana} mostram liquidez concentrada nos papéis de maior peso do índice." },
+                { "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)." }
+            ]
+        }
+    elif ed_key == "almoco":
         return {
             "subtitulo": f"Ibovespa oscila em torno dos {ibov_str} no início da tarde {loc_dia}; Dólar cotado a {dolar_str} com giro concentrado no setor bancário e Vale",
             "leitura_rapida": [

@@ -383,19 +383,20 @@
 
     const sp = obterAgoraSaoPaulo();
     const semPregao = ehModoSemPregao(dadosFechamentoCache);
+
+    if (!semPregao) {
+      painel.style.display = 'none';
+      return;
+    }
+
+    painel.style.display = 'block';
     const badgeEl = document.getElementById('fds-badge-status');
     const tituloEl = document.getElementById('fds-titulo-principal');
     const subEl = document.getElementById('fds-subtitulo-principal');
 
-    if (semPregao) {
-      if (badgeEl) badgeEl.textContent = '☕ ESPECIAL DE FIM DE SEMANA & PLANEJAMENTO DA SEMANA';
-      if (tituloEl) tituloEl.textContent = 'Mercado B3 Fechado: Central de Estudos & Radar para Segunda-feira';
-      if (subEl) subEl.textContent = 'Aproveite a pausa do pregão para revisar o balanço consolidado da semana, acompanhar as ações monitoradas pelo scanner quantitativo (+5%) e planejar seus aportes com tranquilidade.';
-    } else {
-      if (badgeEl) badgeEl.textContent = '🧭 CENTRAL RÁPIDA DE PLANEJAMENTO & ESTUDOS DO INVESTIDOR';
-      if (tituloEl) tituloEl.textContent = 'Resumo Estratégico: Agenda B3, Radar Técnico e Renda Fixa';
-      if (subEl) subEl.textContent = 'Visão integrada dos 3 motores do CafeRadar: agenda macroeconômica, ações próximas ao gatilho técnico e comparativo atualizado de renda fixa.';
-    }
+    if (badgeEl) badgeEl.textContent = '☕ ESPECIAL DE FIM DE SEMANA & PLANEJAMENTO DA SEMANA';
+    if (tituloEl) tituloEl.textContent = 'Mercado B3 Fechado: Central de Estudos & Radar para Segunda-feira';
+    if (subEl) subEl.textContent = 'Aproveite a pausa do pregão para revisar o balanço consolidado da semana, acompanhar as ações monitoradas pelo scanner quantitativo (+5%) e planejar seus aportes com tranquilidade.';
 
     // Atualizar status do Bitcoin 24/7 na agenda
     const elBtcStatus = document.getElementById('fds-btc-status');
