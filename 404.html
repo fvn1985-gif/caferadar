@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Não Encontrada (404) — CafeRadar</title>
   <meta name="robots" content="noindex, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="style.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
@@ -28,6 +29,34 @@
       margin-bottom: 12px;
     }
   </style>
+    <!-- Google Consent Mode v2 (Conformidade com LGPD & DMA) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+    try {
+      if (localStorage.getItem('caferadar_cookies_ack') === 'true') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+    } catch (e) {}
+    gtag('js', new Date());
+    gtag('config', 'G-50J887FJDV');
+  </script>
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
+  <!-- Google AdSense Oficial -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="cabecalho-portal">
@@ -68,5 +97,64 @@
       </a>
     </div>
   </main>
+      <!-- Banner informativo de Cookies & Privacidade (LGPD) -->
+  <div id="banner-cookies-lgpd" class="banner-cookies-lgpd" role="region" aria-label="Aviso de privacidade e cookies" style="display:none;">
+    <div class="banner-cookies-texto">
+      Utilizamos cookies e tecnologias semelhantes conforme nossa <a href="/privacy.html">Política de Privacidade</a> para melhorar sua experiência e analisar o tráfego.
+    </div>
+    <div class="banner-cookies-acoes">
+      <button type="button" id="btn-recusar-cookies" class="btn-cookies-recusar">Recusar</button>
+      <button type="button" id="btn-aceitar-cookies" class="btn-cookies-aceitar">Entendi</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      try {
+        var ack = localStorage.getItem('caferadar_cookies_ack');
+        var banner = document.getElementById('banner-cookies-lgpd');
+        var btnAceitar = document.getElementById('btn-aceitar-cookies');
+        var btnRecusar = document.getElementById('btn-recusar-cookies');
+        var linkGerenciar = document.getElementById('link-gerenciar-cookies');
+
+        if (linkGerenciar) {
+          linkGerenciar.addEventListener('click', function(e) {
+            e.preventDefault();
+            try { localStorage.removeItem('caferadar_cookies_ack'); } catch(err){}
+            if (banner) { banner.style.display = 'flex'; }
+          });
+        }
+
+        if (ack === null && banner) { banner.style.display = 'flex'; }
+        if (btnAceitar) {
+          btnAceitar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+        if (btnRecusar) {
+          btnRecusar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'false'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>

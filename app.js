@@ -162,19 +162,43 @@
 
   function inicializarBannerCookies() {
     const banner = document.getElementById('banner-cookies-lgpd');
-    const btn = document.getElementById('btn-aceitar-cookies');
+    const btnAceitar = document.getElementById('btn-aceitar-cookies');
+    const btnRecusar = document.getElementById('btn-recusar-cookies');
+    const linkGerenciar = document.getElementById('link-gerenciar-cookies');
+
+    if (linkGerenciar) {
+      linkGerenciar.addEventListener('click', function (e) {
+        e.preventDefault();
+        try { localStorage.removeItem('caferadar_cookies_ack'); } catch (err) {}
+        if (banner) {
+          banner.style.display = 'flex';
+        }
+      });
+    }
+
     try {
-      const jaAceitou = localStorage.getItem('caferadar_cookies_ack') === 'true';
-      if (jaAceitou) {
+      const ack = localStorage.getItem('caferadar_cookies_ack');
+      if (ack === 'true') {
         atualizarConsentimentoGtag(true);
+        if (banner) banner.style.display = 'none';
+        return;
+      } else if (ack === 'false') {
+        atualizarConsentimentoGtag(false);
         if (banner) banner.style.display = 'none';
         return;
       }
       if (banner) banner.style.display = 'flex';
-      if (btn) {
-        btn.addEventListener('click', function () {
+      if (btnAceitar) {
+        btnAceitar.addEventListener('click', function () {
           try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch (e) {}
           atualizarConsentimentoGtag(true);
+          if (banner) banner.style.display = 'none';
+        });
+      }
+      if (btnRecusar) {
+        btnRecusar.addEventListener('click', function () {
+          try { localStorage.setItem('caferadar_cookies_ack', 'false'); } catch (e) {}
+          atualizarConsentimentoGtag(false);
           if (banner) banner.style.display = 'none';
         });
       }

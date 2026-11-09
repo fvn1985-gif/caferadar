@@ -11,5 +11,64 @@
   <p>Esta edição foi movida para o endereço canônico permanente:</p>
   <p><a href="2026-11-06-abertura.html" style="color:#2563eb; font-weight:bold;">Abertura B3 — 2026-11-06</a></p>
   <p style="font-size:0.85rem; color:#64748b;">Redirecionando automaticamente...</p>
+  <!-- Banner informativo de Cookies & Privacidade (LGPD) -->
+  <div id="banner-cookies-lgpd" class="banner-cookies-lgpd" role="region" aria-label="Aviso de privacidade e cookies" style="display:none;">
+    <div class="banner-cookies-texto">
+      Utilizamos cookies e tecnologias semelhantes conforme nossa <a href="/privacy.html">Política de Privacidade</a> para melhorar sua experiência e analisar o tráfego.
+    </div>
+    <div class="banner-cookies-acoes">
+      <button type="button" id="btn-recusar-cookies" class="btn-cookies-recusar">Recusar</button>
+      <button type="button" id="btn-aceitar-cookies" class="btn-cookies-aceitar">Entendi</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      try {
+        var ack = localStorage.getItem('caferadar_cookies_ack');
+        var banner = document.getElementById('banner-cookies-lgpd');
+        var btnAceitar = document.getElementById('btn-aceitar-cookies');
+        var btnRecusar = document.getElementById('btn-recusar-cookies');
+        var linkGerenciar = document.getElementById('link-gerenciar-cookies');
+
+        if (linkGerenciar) {
+          linkGerenciar.addEventListener('click', function(e) {
+            e.preventDefault();
+            try { localStorage.removeItem('caferadar_cookies_ack'); } catch(err){}
+            if (banner) { banner.style.display = 'flex'; }
+          });
+        }
+
+        if (ack === null && banner) { banner.style.display = 'flex'; }
+        if (btnAceitar) {
+          btnAceitar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+        if (btnRecusar) {
+          btnRecusar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'false'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>
