@@ -11,7 +11,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="style.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
   <!-- Favicon & Icons -->
@@ -319,6 +320,11 @@
           Síntese diária do pregão da B3, câmbio, índices globais e ações de maior liquidez.
         </p>
       </div>
+
+      <!-- Imagem Visual da Edição (Google Discover & CTR Social) -->
+      <figure class="hero-imagem-portal" style="margin: 0 0 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--borda); background: #0f172a;">
+        <img id="fechamento-hero-img" src="marketing_output/2026-11-09_fechamento_x.png" alt="Síntese Diária do Mercado B3 — CafeRadar" width="1200" height="675" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; aspect-ratio:16/9; object-fit:cover;">
+      </figure>
 
       <!-- Tickers Rápidos -->
       <div class="grid-tickers-fechamento" id="cards-mercado-fechamento"></div>
@@ -734,47 +740,15 @@
         </div>
       </div>
 
-      <!-- Tabela de Referência Oficial de Taxas e Impostos -->
-      <div class="card-bloco-noticia" style="margin-bottom: 32px;">
-        <h3 style="font-size: 1.15rem; color: var(--primaria); font-weight: 800; margin-bottom: 12px;">📋 Parâmetros de Taxas &amp; Tributação Utilizados na Simulação</h3>
-        <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 16px;">Taxas anuais de referência parametrizadas neste simulador educativo (base: novembro/2026) e regras tributárias vigentes da Receita Federal:</p>
-
-        <div class="tabela-responsiva-wrapper">
-          <table class="tabela-cotacoes" style="width: 100%; font-size: 0.88rem;">
-            <thead>
-              <tr>
-                <th style="text-align: left;">Indicador / Aplicação</th>
-                <th>Taxa no Simulador</th>
-                <th>Tributação (IR)</th>
-                <th>Garantia Legal</th>
-                <th>Fonte Oficial</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Tesouro Selic</strong></td>
-                <td class="cel-num" style="font-weight: 700; color: var(--destaque);">11,30% a.a. (Selic 11,25% + 0,05%)</td>
-                <td style="text-align: center;">15% a 22,5% (Tabela Regressiva)</td>
-                <td style="text-align: center;">Tesouro Nacional (Risco Soberano)</td>
-                <td style="text-align: center;"><a href="https://www.tesourodireto.com.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Tesouro Direto ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>CDB 100% do CDI</strong></td>
-                <td class="cel-num" style="font-weight: 700;">11,15% a.a.</td>
-                <td style="text-align: center;">15% a 22,5% (Tabela Regressiva)</td>
-                <td style="text-align: center;">FGC até R$ 250 mil por CPF</td>
-                <td style="text-align: center;"><a href="https://www.bcb.gov.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Banco Central ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>Poupança Nova</strong></td>
-                <td class="cel-num" style="font-weight: 700;">6,17% a.a. (0,5% a.m. + TR)</td>
-                <td style="text-align: center;"><span style="color: var(--alta); font-weight: 700;">Isento</span> (Pessoa Física)</td>
-                <td style="text-align: center;">FGC até R$ 250 mil por CPF</td>
-                <td style="text-align: center;"><a href="https://www.bcb.gov.br" target="_blank" rel="noopener" style="color: var(--destaque); font-weight: 600;">Banco Central ↗</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- Chamada Institucional para a Calculadora Dedicada Completa (Hub SEO sem canibalização) -->
+      <div class="card-bloco-noticia" style="margin-bottom: 32px; background: #f8fafc; border: 1px solid #e2e8f0; text-align: center; padding: 28px 20px;">
+        <h3 style="font-size: 1.2rem; color: var(--primaria); font-weight: 800; margin-bottom: 8px;">📊 Deseja a Tabela Completa de IR &amp; Comparativo Histórico?</h3>
+        <p style="font-size: 0.92rem; color: var(--texto-secundario); max-width: 620px; margin: 0 auto 18px; line-height: 1.5;">
+          Consulte nossa página dedicada com a tabela regressiva completa do Imposto de Renda (15% a 22,5%), regras detalhadas de proteção do FGC (até R$ 250 mil) e simulador avançado de aportes mensais.
+        </p>
+        <a href="calculadora-rendimento.html" class="btn-tab ativa" style="display: inline-block; text-decoration: none; padding: 10px 24px; font-weight: 700; font-size: 0.95rem; border-radius: 9999px;">
+          Acessar Calculadora Completa de Renda Fixa ↗
+        </a>
       </div>
 
     </section>

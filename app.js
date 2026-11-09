@@ -139,20 +139,37 @@
     }
   }
 
+  function atualizarConsentimentoGtag(concedido) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        'ad_storage': concedido ? 'granted' : 'denied',
+        'analytics_storage': concedido ? 'granted' : 'denied',
+        'ad_user_data': concedido ? 'granted' : 'denied',
+        'ad_personalization': concedido ? 'granted' : 'denied'
+      });
+    }
+  }
+
   function inicializarBannerCookies() {
     const banner = document.getElementById('banner-cookies-lgpd');
     const btn = document.getElementById('btn-aceitar-cookies');
-    if (!banner || !btn) return;
     try {
-      if (!localStorage.getItem('caferadar_cookies_ack')) {
-        banner.style.display = 'flex';
+      const jaAceitou = localStorage.getItem('caferadar_cookies_ack') === 'true';
+      if (jaAceitou) {
+        atualizarConsentimentoGtag(true);
+        if (banner) banner.style.display = 'none';
+        return;
       }
-      btn.addEventListener('click', function () {
-        try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch (e) {}
-        banner.style.display = 'none';
-      });
+      if (banner) banner.style.display = 'flex';
+      if (btn) {
+        btn.addEventListener('click', function () {
+          try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch (e) {}
+          atualizarConsentimentoGtag(true);
+          if (banner) banner.style.display = 'none';
+        });
+      }
     } catch (e) {
-      banner.style.display = 'none';
+      if (banner) banner.style.display = 'none';
     }
   }
 
@@ -727,6 +744,20 @@
 
     const elSubtitulo = document.getElementById('fechamento-subtitulo');
     if (elSubtitulo && dados.subtitulo) elSubtitulo.textContent = dados.subtitulo;
+
+    const elHeroImg = document.getElementById('fechamento-hero-img');
+    if (elHeroImg && dadosFechamentoCache) {
+      const dataRef = dadosFechamentoCache.data_referencia || '2026-11-09';
+      let cardTipo = 'fechamento';
+      const idOuNome = (dados.id || dados.nome || '').toLowerCase();
+      if (idOuNome.includes('matinal') || idOuNome.includes('mapa') || idOuNome === 'abertura') {
+        cardTipo = 'abertura';
+      } else if (idOuNome.includes('negocios') || idOuNome.includes('abertura b3') || idOuNome.includes('almoco')) {
+        cardTipo = 'negocios';
+      }
+      elHeroImg.src = `marketing_output/${dataRef}_${cardTipo}_x.png`;
+      elHeroImg.alt = `${dados.titulo || 'Síntese do Pregão B3'} — CafeRadar`;
+    }
 
     // 1. Tickers Rápidos
     const containerTickers = document.getElementById('cards-mercado-fechamento');

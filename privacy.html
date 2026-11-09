@@ -82,15 +82,22 @@
       margin-bottom: 18px;
     }
   </style>
-    <!-- Google Analytics 4 (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
+      <!-- Google Consent Mode v2 (Conformidade com LGPD & DMA) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
     gtag('js', new Date());
-
     gtag('config', 'G-50J887FJDV');
   </script>
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
 
   <!-- Google AdSense Oficial -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309"
