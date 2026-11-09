@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "negocios",
+  "edicao_padrao": "fechamento",
   "data_referencia": "2026-11-09",
   "data_formatada": "09/11/2026",
   "edicoes": {
@@ -10,88 +10,88 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "titulo": "RADAR DE CAFÉ MATINAL — 09/11/2026",
-      "subtitulo": "Mercados globais operam com cautela nesta segunda-feira; Dólar cotado a R$ 5,51 e investidores calibram posições antes da abertura da B3",
+      "subtitulo": "Mercados globais operam com volatilidade nesta segunda-feira; Dólar cotado a R$ 5,51 e atenção redobrada aos juros e fiscal em Brasília",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
           "valor": "169.490 pts",
-          "pontos": "169.490 pts",
-          "variacao": "+0,69%",
+          "pontos": "172.236 pts",
+          "variacao": "+2,32%",
           "positivo": true
         },
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,51",
-          "variacao": "+0,26%",
+          "variacao": "+0,23%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500 Futuro",
-          "valor": "Indisponível",
-          "variacao": "—",
+          "valor": "7.550 pts",
+          "variacao": "+2,37%",
           "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 74.442",
-          "variacao": "-0,38%",
-          "positivo": false
+          "valor": "US$ 75.204",
+          "variacao": "+0,64%",
+          "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 93,79",
-          "variacao": "-4,63%",
+          "valor": "US$ 92,38",
+          "variacao": "-6,06%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "Futuros em Nova York e bolsas europeias operam em cautela nesta segunda-feira antes da abertura dos mercados globais, enquanto agentes digerem balanços corporativos e calibram posições.",
+          "texto": "Bolsas internacionais operam em compasso de espera nesta segunda-feira, com investidores digerindo dados de atividade econômica global e o rumo da política monetária nos Estados Unidos.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No câmbio doméstico, o dólar comercial opera em alta cotado a R$ 5,51 (+0,26%) na pré-abertura, acompanhando a curva de juros DI e as projeções atualizadas do Boletim Focus pelo Banco Central.",
+          "texto": "No câmbio doméstico, o dólar comercial opera cotado a R$ 5,51 (+0,23%), refletindo ajustes na curva de juros pré-mercado antes da decisão do Copom.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Entre as commodities estratégicas, o petróleo Brent registra US$ 93,79 o barril (-4,63%), ditando cautela para as ações do setor de óleo e gás no leilão de abertura da B3.",
+          "texto": "O petróleo Brent é negociado a US$ 92,38 o barril, influenciando diretamente o ritmo de abertura das ações de óleo e gás na B3 nesta manhã de segunda-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto de negociação ininterrupta 24/7, o Bitcoin opera em US$ 74.442 (-0,38%), funcionando como termômetro antecedente de liquidez internacional.",
+          "texto": "O Bitcoin (BTC) se mantém firme no patamar de US$ 75.204, sustentando fluxo comprador positivo na esteira do apetite global por ativos digitais.",
           "fonte": "Binance / CoinDesk"
         }
       ],
       "comparacao_anterior": [
         {
-          "texto": "Pré-mercado de segunda-feira focado na abertura dos contratos de mini-índice (09h00) e início do pregão à vista da B3 (10h00)."
+          "texto": "Futuros americanos apontam cautela e acomodação de lucros nas primeiras horas nesta segunda-feira."
         },
         {
-          "texto": "Curva de juros futuros de curto prazo reflete as projeções para a taxa Selic e metas inflacionárias oficiais."
+          "texto": "Curva de juros futuros de curto prazo precifica expectativa de manutenção ou ajuste na taxa Selic."
         }
       ],
       "destaques": {
         "altas": [
           {
-            "ticker": "MBRF3",
-            "variacao": "+3,80%"
+            "ticker": "WEGE3",
+            "variacao": "+5,29%"
           },
           {
-            "ticker": "NATU3",
-            "variacao": "+2,40%"
+            "ticker": "BBDC4",
+            "variacao": "+3,75%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PRIO3",
-            "variacao": "-1,90%"
+            "ticker": "BBAS3",
+            "variacao": "-0,64%"
           },
           {
-            "ticker": "BRAV3",
-            "variacao": "-2,10%"
+            "ticker": "PRIO3",
+            "variacao": "-2,25%"
           }
         ]
       }
@@ -103,88 +103,88 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 09/11/2026",
-      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa marca 171.183 pts e Dólar cotado a R$ 5,51 na primeira hora de negociações",
+      "subtitulo": "Ibovespa oscila em torno dos 172.236 pts no início da tarde nesta segunda-feira; Dólar cotado a R$ 5,51 com giro concentrado no setor bancário e Vale",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
           "valor": "171.183 pts",
-          "pontos": "171.183 pts",
-          "variacao": "+1,70%",
+          "pontos": "172.236 pts",
+          "variacao": "+2,32%",
           "positivo": true
         },
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,51",
-          "variacao": "+0,20%",
+          "variacao": "+0,23%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500 Futuro",
-          "valor": "Indisponível",
-          "variacao": "—",
+          "valor": "7.550 pts",
+          "variacao": "+2,37%",
           "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 74.965",
-          "variacao": "+0,32%",
+          "valor": "US$ 75.204",
+          "variacao": "+0,64%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 92,78",
-          "variacao": "-5,65%",
+          "valor": "US$ 92,38",
+          "variacao": "-6,06%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa opera na faixa de 171.183 pts (+1,70%), com os investidores absorvendo os primeiros negócios da manhã.",
+          "texto": "O Ibovespa opera próximo de 172.236 pts no balanço do meio-dia nesta segunda-feira, com o mercado monitorando o apetite por risco em Wall Street e declarações econômicas em Brasília.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Os primeiros negócios na B3 absorvem a dinâmica das commodities globais, reagindo ao petróleo Brent em US$ 92,78 (-5,65%) no mercado internacional.",
+          "texto": "Grandes bancos e Vale puxam o volume financeiro do pregão, enquanto empresas ligadas a commodities reagem ao preço do petróleo Brent a US$ 92,38.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
         {
-          "texto": "No mercado de câmbio comercial, a moeda americana registra R$ 5,51 (+0,20%), enquanto a curva de juros DI calibra prêmios de risco na abertura.",
+          "texto": "O dólar comercial registra cotação de R$ 5,51 (+0,23%), mantendo postura prudente na curva de juros futuros antes da ata do Copom.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No exterior, os índices futuros de Nova York operam em compasso de espera para a abertura do pregão regular à vista de Wall Street (que inicia às 11h30 de Brasília), e o Bitcoin é negociado aos US$ 74.965 (+0,32%).",
+          "texto": "Em Wall Street, o S&P 500 opera aos 7.550 pts, refletindo a temporada de resultados corporativos e indicadores de atividade nos EUA.",
           "fonte": "BB InvesTalk"
         }
       ],
       "comparacao_anterior": [
         {
-          "texto": "Primeiros negócios da manhã de segunda-feira marcam a abertura do pregão regular à vista da B3."
+          "texto": "Volume negociado na primeira metade do pregão de segunda-feira mostra investidores institucionais atuando com seletividade."
         },
         {
-          "texto": "Os alvos técnicos do scanner de curto prazo podem ser acompanhados na aba Swing Trade (+5%)."
+          "texto": "Setor financeiro (Itaú e Bradesco) e B3 sustentam suporte relevante frente às oscilações externas."
         }
       ],
       "destaques": {
         "altas": [
           {
-            "ticker": "MBRF3",
-            "variacao": "+6,50%"
+            "ticker": "WEGE3",
+            "variacao": "+5,29%"
           },
           {
-            "ticker": "VALE3",
-            "variacao": "+2,76%"
+            "ticker": "BBDC4",
+            "variacao": "+3,75%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PRIO3",
-            "variacao": "-2,50%"
+            "ticker": "BBAS3",
+            "variacao": "-0,64%"
           },
           {
-            "ticker": "BRAV3",
-            "variacao": "-2,80%"
+            "ticker": "PRIO3",
+            "variacao": "-2,25%"
           }
         ]
       }
@@ -196,58 +196,58 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "titulo": "RADAR DE FECHAMENTO — 09/11/2026",
-      "subtitulo": "Ibovespa encerra a segunda-feira aos 171.736 pts (+2,02%); Dólar fecha a R$ 5,50 e investidores avaliam balanços trimestrais e fluxo institucional",
+      "subtitulo": "Ibovespa encerra a segunda-feira aos 172.236 pts; Dólar fecha a R$ 5,51 e investidores avaliam balanços trimestrais",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
           "valor": "171.736 pts",
-          "pontos": "171.736 pts",
-          "variacao": "+2,02%",
+          "pontos": "172.236 pts",
+          "variacao": "+2,32%",
           "positivo": true
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,50",
-          "variacao": "+0,16%",
+          "valor": "R$ 5,51",
+          "variacao": "+0,23%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500",
-          "valor": "7.564 pts",
-          "variacao": "+2,56%",
+          "valor": "7.550 pts",
+          "variacao": "+2,37%",
           "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (24H)",
-          "valor": "US$ 74.849",
-          "variacao": "+0,17%",
+          "valor": "US$ 75.204",
+          "variacao": "+0,64%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 91,35",
-          "variacao": "-7,11%",
+          "valor": "US$ 92,38",
+          "variacao": "-6,06%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "A bolsa brasileira encerra as negociações nesta segunda-feira com o Ibovespa marcando 171.736 pts (+2,02%), impulsionada pelo ingresso consistente de capital institucional e reprecificação de múltiplos.",
+          "texto": "A bolsa brasileira encerra as negociações nesta segunda-feira com o Ibovespa marcando 172.236 pts, em pregão marcado por disciplina seletiva dos investidores.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio comercial, a moeda encerrou cotada a R$ 5,50 (+0,16%), refletindo liquidez fluida e equilíbrio entre fluxos de exportadores e demanda financeira.",
+          "texto": "No câmbio, o dólar encerrou cotado a R$ 5,51 (+0,23%), refletindo fluxo de capitais e cautela com o cenário macroeconômico global.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No mercado de commodities, o petróleo Brent finalizou a sessão cotado a US$ 91,35 o barril (-7,11%), enquanto Wall Street fechou com alta expressiva no índice S&P 500 (7.564 pts).",
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 92,38, ditando o rumo das petroleiras no pregão da B3.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "No universo cripto de negociação ininterrupta, o Bitcoin manteve estabilidade técnica em US$ 74.849 (+0,17%), consolidando suporte estrutural de médio prazo.",
+          "texto": "No universo cripto, o Bitcoin fechou o dia no patamar de US$ 75.204, preservando suporte relevante em sua estrutura de médio prazo.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
@@ -262,22 +262,22 @@
       "destaques": {
         "altas": [
           {
-            "ticker": "MBRF3",
-            "variacao": "+13,07%"
+            "ticker": "WEGE3",
+            "variacao": "+5,29%"
           },
           {
-            "ticker": "NATU3",
-            "variacao": "+9,48%"
+            "ticker": "BBDC4",
+            "variacao": "+3,75%"
           }
         ],
         "quedas": [
           {
-            "ticker": "BRAV3",
-            "variacao": "-3,93%"
+            "ticker": "BBAS3",
+            "variacao": "-0,64%"
           },
           {
             "ticker": "PRIO3",
-            "variacao": "-3,29%"
+            "variacao": "-2,25%"
           }
         ]
       }
@@ -289,88 +289,88 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 09/11/2026",
-      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa marca 171.183 pts e Dólar cotado a R$ 5,51 na primeira hora de negociações",
+      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa opera aos 172.236 pts e Dólar cotado a R$ 5,51 na primeira hora de negociações",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
           "valor": "171.183 pts",
-          "pontos": "171.183 pts",
-          "variacao": "+1,70%",
+          "pontos": "172.236 pts",
+          "variacao": "+2,32%",
           "positivo": true
         },
         "dolar": {
           "nome": "Dólar Comercial",
           "valor": "R$ 5,51",
-          "variacao": "+0,20%",
+          "variacao": "+0,23%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500 Futuro",
-          "valor": "Indisponível",
-          "variacao": "—",
+          "valor": "7.550 pts",
+          "variacao": "+2,37%",
           "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 74.965",
-          "variacao": "+0,32%",
+          "valor": "US$ 75.204",
+          "variacao": "+0,64%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 92,78",
-          "variacao": "-5,65%",
+          "valor": "US$ 92,38",
+          "variacao": "-6,06%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa opera na faixa de 171.183 pts (+1,70%), com os investidores absorvendo os primeiros negócios da manhã.",
+          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa opera na faixa de 172.236 pts, registrando os primeiros negócios do dia com foco no fluxo institucional.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "Os primeiros negócios na B3 absorvem a dinâmica das commodities globais, reagindo ao petróleo Brent em US$ 92,78 (-5,65%) no mercado internacional.",
+          "texto": "Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent cotado a US$ 92,38.",
           "fonte": "Visno Invest",
           "link": "https://visnoinvest.com.br"
         },
         {
-          "texto": "No mercado de câmbio comercial, a moeda americana registra R$ 5,51 (+0,20%), enquanto a curva de juros DI calibra prêmios de risco na abertura.",
+          "texto": "No câmbio doméstico, o dólar comercial marca R$ 5,51 (+0,23%) nas primeiras cotações, acompanhando os juros futuros e a curva de Treasuries.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "No exterior, os índices futuros de Nova York operam em compasso de espera para a abertura do pregão regular à vista de Wall Street (que inicia às 11h30 de Brasília), e o Bitcoin é negociado aos US$ 74.965 (+0,32%).",
+          "texto": "Em Nova York, os futuros de Wall Street e S&P 500 operam aos 7.550 pts, enquanto o Bitcoin se mantém cotado em US$ 75.204.",
           "fonte": "BB InvesTalk"
         }
       ],
       "comparacao_anterior": [
         {
-          "texto": "Primeiros negócios da manhã de segunda-feira marcam a abertura do pregão regular à vista da B3."
+          "texto": "Primeiros negócios do pregão de segunda-feira mostram liquidez concentrada nos papéis de maior peso do índice."
         },
         {
-          "texto": "Os alvos técnicos do scanner de curto prazo podem ser acompanhados na aba Swing Trade (+5%)."
+          "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)."
         }
       ],
       "destaques": {
         "altas": [
           {
-            "ticker": "MBRF3",
-            "variacao": "+6,50%"
+            "ticker": "WEGE3",
+            "variacao": "+5,29%"
           },
           {
-            "ticker": "VALE3",
-            "variacao": "+2,76%"
+            "ticker": "BBDC4",
+            "variacao": "+3,75%"
           }
         ],
         "quedas": [
           {
-            "ticker": "PRIO3",
-            "variacao": "-2,50%"
+            "ticker": "BBAS3",
+            "variacao": "-0,64%"
           },
           {
-            "ticker": "BRAV3",
-            "variacao": "-2,80%"
+            "ticker": "PRIO3",
+            "variacao": "-2,25%"
           }
         ]
       }
