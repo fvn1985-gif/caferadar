@@ -428,6 +428,65 @@
     }
   }
 
+  function extrairDataIso(valor) {
+    if (typeof valor !== 'string') return '';
+    const m = valor.trim().match(/^(\d{4}-\d{2}-\d{2})/);
+    return m ? m[1] : '';
+  }
+
+  function formatarDdMmDeIso(iso) {
+    const dt = extrairDataIso(iso);
+    if (!dt) return '';
+    return dt.slice(8, 10) + '/' + dt.slice(5, 7);
+  }
+
+  function edicaoEhDeHoje(ed, dadosRaiz, spHojeIso) {
+    if (!ed || typeof ed !== 'object') return false;
+    if (ed.disponivel === false) return false;
+    if (ed.sem_captura_legitima === true) return false;
+    const dtCap = extrairDataIso(ed.capturado_em);
+    const dtEd = extrairDataIso(ed.data_referencia);
+    const dtGeral = extrairDataIso(dadosRaiz && dadosRaiz.data_referencia);
+    const dtEfetiva = dtCap || dtEd || dtGeral;
+    return Boolean(dtEfetiva && dtEfetiva === spHojeIso);
+  }
+
+  function montarItensMercadoEdicao(ed) {
+    const itens = [];
+    if (!ed || !ed.mercado_geral || typeof ed.mercado_geral !== 'object') return itens;
+    const mg = ed.mercado_geral;
+    const blueChips = Array.isArray(ed.acoes_blue_chips) ? ed.acoes_blue_chips : [];
+
+    if (mg.ibov && (mg.ibov.pontos || mg.ibov.valor)) {
+      itens.push({ ticker: 'IBOV', preco: mg.ibov.pontos || mg.ibov.valor, variacao: mg.ibov.variacao, positivo: mg.ibov.positivo });
+    }
+    if (mg.dolar && mg.dolar.valor) {
+      itens.push({ ticker: 'DÓLAR', preco: mg.dolar.valor, variacao: mg.dolar.variacao, positivo: mg.dolar.positivo });
+    }
+    if (mg.sp500 && (mg.sp500.valor || mg.sp500.pontos)) {
+      itens.push({ ticker: 'S&P 500', preco: mg.sp500.valor || mg.sp500.pontos, variacao: mg.sp500.variacao, positivo: mg.sp500.positivo });
+    }
+    if (blueChips.length > 0) {
+      blueChips.forEach(function (ac) {
+        if (ac && ac.ticker && ac.preco) {
+          itens.push({
+            ticker: ac.ticker,
+            preco: ac.preco,
+            variacao: ac.variacao_dia || ac.variacao,
+            positivo: ac.positivo
+          });
+        }
+      });
+    }
+    if (mg.bitcoin && mg.bitcoin.valor) {
+      itens.push({ ticker: 'BTC', preco: mg.bitcoin.valor, variacao: mg.bitcoin.variacao, positivo: mg.bitcoin.positivo });
+    }
+    if (mg.brent && mg.brent.valor) {
+      itens.push({ ticker: 'BRENT', preco: mg.brent.valor, variacao: mg.brent.variacao, positivo: mg.brent.positivo });
+    }
+    return itens;
+  }
+
   function renderizarPainelFimDeSemana() {
     const painel = document.getElementById('painel-fim-de-semana');
     if (!painel) return;
@@ -449,14 +508,28 @@
     if (tituloEl) tituloEl.textContent = 'Mercado B3 Fechado: Central de Estudos & Radar para Segunda-feira';
     if (subEl) subEl.textContent = 'Aproveite a pausa do pregão para revisar o balanço consolidado da semana, acompanhar as ações monitoradas pelo scanner quantitativo (+5%) e planejar seus aportes com tranquilidade.';
 
-    // Atualizar status do Bitcoin 24/7 na agenda
+    // Atualizar status do Bitcoin 24/7 na agenda (apenas se edição elegível de hoje)
     const elBtcStatus = document.getElementById('fds-btc-status');
-    if (elBtcStatus && dadosFechamentoCache && dadosFechamentoCache.edicoes) {
-      const edRef = dadosFechamentoCache.edicoes.fechamento || dadosFechamentoCache.edicoes.negocios || dadosFechamentoCache.edicoes.abertura;
-      const btc = edRef && edRef.mercado_geral && edRef.mercado_geral.bitcoin;
-      if (btc && btc.valor) {
-        const seta = btc.positivo ? '▲' : '▼';
-        elBtcStatus.textContent = `Bitcoin cotado a ${btc.valor} (${seta} ${btc.variacao || '0,00%'}) em negociação contínua.`;
+    if (elBtcStatus) {
+      let btcExibido = false;
+      if (dadosFechamentoCache && dadosFechamentoCache.edicoes) {
+        const eds = dadosFechamentoCache.edicoes;
+        const candidatos = [eds.fechamento, eds.negocios, eds.almoco, eds.abertura];
+        const edRef = candidatos.find(function (ed) {
+          return edicaoEhDeHoje(ed, dadosFechamentoCache, sp.dataIso) &&
+            ed.mercado_geral && ed.mercado_geral.bitcoin &&
+            ed.mercado_geral.bitcoin.valor && ed.mercado_geral.bitcoin.valor !== 'Indisponível';
+        });
+        const btc = edRef && edRef.mercado_geral && edRef.mercado_geral.bitcoin;
+        if (btc && btc.valor) {
+          const seta = btc.positivo ? '▲' : (btc.positivo === false ? '▼' : '');
+          const varStr = btc.variacao && btc.variacao !== '—' ? ` (${[seta, btc.variacao].filter(Boolean).join(' ')})` : '';
+          elBtcStatus.textContent = `Bitcoin cotado a ${btc.valor}${varStr} em negociação contínua.`;
+          btcExibido = true;
+        }
+      }
+      if (!btcExibido) {
+        elBtcStatus.textContent = 'Bitcoin operando continuamente no fim de semana.';
       }
     }
 
@@ -503,45 +576,46 @@
 
   function renderizarFitaCotacoes(dados) {
     const trilho = document.getElementById('fita-cotacoes-trilho');
+    const elRefFita = document.getElementById('fita-referencia');
     if (!trilho) return;
 
-    let itens = [];
+    const sp = obterAgoraSaoPaulo();
+    const hojeIso = sp.dataIso;
     const edicoes = (dados && dados.edicoes) || {};
-    const refEd = edicoes.negocios || edicoes.fechamento || edicoes.abertura || dados;
-    const mg = refEd.mercado_geral || (dados && dados.mercado_geral) || {};
-    const blueChips = refEd.acoes_blue_chips || (dados && dados.acoes_blue_chips) || [];
+    const temMapaEdicoes = Boolean(dados && dados.edicoes && typeof dados.edicoes === 'object');
 
-    if (mg.ibov) {
-      itens.push({ ticker: 'IBOV', preco: mg.ibov.pontos || mg.ibov.valor, variacao: mg.ibov.variacao, positivo: mg.ibov.positivo });
-    }
-    if (mg.dolar) {
-      itens.push({ ticker: 'DÓLAR', preco: mg.dolar.valor, variacao: mg.dolar.variacao, positivo: mg.dolar.positivo });
-    }
-    if (mg.sp500) {
-      itens.push({ ticker: 'S&P 500', preco: mg.sp500.valor || mg.sp500.pontos, variacao: mg.sp500.variacao, positivo: mg.sp500.positivo });
+    // Ordem de preferência entre edições elegíveis de hoje: fechamento > negocios > almoco > abertura
+    let candidatos = [];
+    if (temMapaEdicoes) {
+      candidatos = [edicoes.fechamento, edicoes.negocios, edicoes.almoco, edicoes.abertura];
+    } else if (dados && typeof dados === 'object') {
+      candidatos = [dados];
     }
 
-    if (Array.isArray(blueChips) && blueChips.length > 0) {
-      blueChips.forEach(function(ac) {
-        itens.push({
-          ticker: ac.ticker,
-          preco: ac.preco,
-          variacao: ac.variacao_dia || ac.variacao,
-          positivo: ac.positivo
-        });
+    let refEd = null;
+    let itens = [];
+    for (let i = 0; i < candidatos.length; i++) {
+      const cand = candidatos[i];
+      if (!edicaoEhDeHoje(cand, dados, hojeIso)) continue;
+      const itensCand = montarItensMercadoEdicao(cand);
+      const temValorReal = itensCand.some(function (it) {
+        return it.preco && it.preco !== 'Indisponível' && it.preco !== 'indisponível';
       });
+      if (itensCand.length > 0 && temValorReal) {
+        refEd = cand;
+        itens = itensCand;
+        break;
+      }
     }
 
-    if (mg.bitcoin) {
-      itens.push({ ticker: 'BTC', preco: mg.bitcoin.valor, variacao: mg.bitcoin.variacao, positivo: mg.bitcoin.positivo });
-    }
-    if (mg.brent) {
-      itens.push({ ticker: 'BRENT', preco: mg.brent.valor, variacao: mg.brent.variacao, positivo: mg.brent.positivo });
+    if (!refEd || itens.length === 0) {
+      if (elRefFita && !String(elRefFita.textContent || '').trim()) {
+        elRefFita.textContent = '(última edição)';
+      }
+      return;
     }
 
-    if (itens.length === 0) return;
-
-    const htmlItens = itens.map(function(item) {
+    const htmlItens = itens.map(function (item) {
       const pos = item.positivo;
       const cls = pos === true ? 'positivo' : (pos === false ? 'negativo' : '');
       const seta = pos === true ? '▲' : (pos === false ? '▼' : '');
@@ -552,7 +626,7 @@
         '</span>';
     }).join('');
 
-    const htmlDuplicado = itens.map(function(item) {
+    const htmlDuplicado = itens.map(function (item) {
       const pos = item.positivo;
       const cls = pos === true ? 'positivo' : (pos === false ? 'negativo' : '');
       const seta = pos === true ? '▲' : (pos === false ? '▼' : '');
@@ -565,12 +639,16 @@
 
     trilho.innerHTML = htmlItens + htmlDuplicado;
 
-    const elRefFita = document.getElementById('fita-referencia');
     if (elRefFita) {
-      const dtTxt = (dados && dados.data_formatada) ? dados.data_formatada.slice(0, 5) : '';
-      const hrTxt = (refEd && refEd.horario) ? refEd.horario : ((dados && dados.atualizado_as) || '');
+      const dtTxt = formatarDdMmDeIso(refEd.capturado_em) ||
+        formatarDdMmDeIso(refEd.data_referencia) ||
+        formatarDdMmDeIso(dados && dados.data_referencia) ||
+        ((dados && dados.data_formatada) ? String(dados.data_formatada).slice(0, 5) : '');
+      const hrTxt = (refEd && (refEd.horario_exibicao || refEd.horario)) || ((dados && dados.atualizado_as) || '');
       if (dtTxt || hrTxt) {
         elRefFita.textContent = '(' + [dtTxt, hrTxt].filter(Boolean).join(' ') + ')';
+      } else {
+        elRefFita.textContent = '(última edição)';
       }
     }
   }
@@ -633,7 +711,8 @@
       if (!semPregao && ed && ed.disponivel === false) {
         btn.classList.add('edicao-pendente');
         if (horaEl) {
-          horaEl.textContent = '⏳ ' + (ed.horario || (info ? info.hora : ''));
+          const semCapBtn = ed.status_publicacao === 'Sem captura no horário' || ed.sem_captura_legitima === true;
+          horaEl.textContent = semCapBtn ? '— Não publicada' : ('⏳ ' + (ed.horario || (info ? info.hora : '')));
         }
       } else {
         btn.classList.remove('edicao-pendente');
@@ -660,12 +739,13 @@
       }
     });
 
+    const edMap = dadosFechamentoCache.edicoes || {};
     let dadosEdicao = null;
-    if (dadosFechamentoCache.edicoes && dadosFechamentoCache.edicoes[idEdicao]) {
-      dadosEdicao = dadosFechamentoCache.edicoes[idEdicao];
-    } else if (idEdicao === 'negocios' && dadosFechamentoCache.edicoes && dadosFechamentoCache.edicoes.almoco) {
-      dadosEdicao = dadosFechamentoCache.edicoes.almoco;
-    } else {
+    if (edMap[idEdicao]) {
+      dadosEdicao = edMap[idEdicao];
+    } else if (idEdicao === 'negocios' && edMap.almoco) {
+      dadosEdicao = edMap.almoco;
+    } else if (!dadosFechamentoCache.edicoes && dadosFechamentoCache.mercado_geral) {
       dadosEdicao = dadosFechamentoCache;
     }
 
@@ -673,55 +753,87 @@
     const boxAguardando = document.getElementById('conteudo-edicao-aguardando');
     const semPregao = ehModoSemPregao(dadosFechamentoCache);
 
-    // Se a edição ainda não está disponível (somente em dias de pregão útil antes do horário)
-    if (!semPregao && dadosEdicao && dadosEdicao.disponivel === false) {
+    const NOME_FALLBACK = { abertura: 'Café Matinal', negocios: 'Abertura B3', almoco: 'Abertura B3', fechamento: 'Fechamento' };
+    const HORARIO_FALLBACK = { abertura: '08h00', negocios: '10h30', almoco: '10h30', fechamento: '18h15' };
+    const JANELA_FIM_MIN = { abertura: 9 * 60 + 45, negocios: 12 * 60, almoco: 12 * 60, fechamento: 23 * 60 + 59 };
+
+    const edicaoAusenteOuIndisp = (!dadosEdicao) || (!semPregao && dadosEdicao.disponivel === false);
+
+    // Se a edição não existe (JSON vazio) ou ainda não está disponível no pregão útil
+    if (edicaoAusenteOuIndisp) {
       if (boxPublicada) boxPublicada.style.display = 'none';
       if (boxAguardando) {
         boxAguardando.style.display = 'block';
 
         const sp = obterAgoraSaoPaulo();
-        const dataRefArquivo = dadosFechamentoCache.data_referencia || '';
-        const dataFmtArquivo = dadosFechamentoCache.data_formatada || formatarData(dataRefArquivo) || '';
+        const dataRefArquivo = (dadosEdicao && extrairDataIso(dadosEdicao.data_referencia)) ||
+          extrairDataIso(dadosFechamentoCache.data_referencia) || '';
+        const dataFmtArquivo = (dadosEdicao && dadosEdicao.data_formatada) ||
+          dadosFechamentoCache.data_formatada || formatarData(dataRefArquivo) || '';
         const ehMesmoDia = (!dataRefArquivo || dataRefArquivo === sp.dataIso);
         const ehDiaPassado = Boolean(dataRefArquivo && dataRefArquivo < sp.dataIso);
 
+        const nomeEdSeguro = (dadosEdicao && dadosEdicao.nome) || NOME_FALLBACK[idEdicao] || 'Pregão B3';
+        const horarioSeguro = (dadosEdicao && dadosEdicao.horario) || HORARIO_FALLBACK[idEdicao] || '18h15';
+
         let tempoPrevistoMin = 0;
-        const mHorario = String(dadosEdicao.horario || '').match(/^(\d{2})h(\d{2})/);
+        const mHorario = String(horarioSeguro).match(/^(\d{2})h(\d{2})/);
         if (mHorario) {
           tempoPrevistoMin = parseInt(mHorario[1], 10) * 60 + parseInt(mHorario[2], 10);
         }
+        const tempoFimJanela = JANELA_FIM_MIN[idEdicao] || 0;
 
         const jaPassouNoMesmoDia = ehMesmoDia && tempoPrevistoMin > 0 && sp.totalMin >= tempoPrevistoMin;
+        const passouJanelaNoDia = ehMesmoDia && tempoFimJanela > 0 && sp.totalMin > tempoFimJanela;
+        const statusSemCaptura = Boolean(dadosEdicao && (
+          dadosEdicao.status_publicacao === 'Sem captura no horário' ||
+          dadosEdicao.sem_captura_legitima === true
+        ));
 
-        // Descobrir última edição disponível no cache para oferecer botão de retorno preciso
-        const edMap = dadosFechamentoCache.edicoes || {};
-        let edVoltarKey = 'abertura';
-        let edVoltarLabel = 'Edição de Abertura (08h00)';
-        if (edMap.negocios && edMap.negocios.disponivel) {
-          edVoltarKey = 'negocios';
-          edVoltarLabel = `Edição de Abertura B3 (${edMap.negocios.horario || '10h30'})`;
-        } else if (edMap.abertura && edMap.abertura.disponivel) {
-          edVoltarKey = 'abertura';
-          edVoltarLabel = `Edição de Café Matinal (${edMap.abertura.horario || '08h00'})`;
+        // Descobrir edição realmente disponível no cache para oferecer botão de retorno preciso
+        let edVoltarKey = null;
+        let edVoltarLabel = '';
+        const ordemRetorno = ['fechamento', 'negocios', 'abertura'];
+        for (let r = 0; r < ordemRetorno.length; r++) {
+          const rk = ordemRetorno[r];
+          if (rk === idEdicao) continue;
+          const cand = edMap[rk];
+          if (cand && cand.disponivel === true) {
+            edVoltarKey = rk;
+            edVoltarLabel = `Edição de ${cand.nome || NOME_FALLBACK[rk]} (${cand.horario || HORARIO_FALLBACK[rk]})`;
+            break;
+          }
         }
 
         let tituloAguardando = '';
         let textoAguardando = '';
         let badgeAguardando = '';
 
-        if (ehDiaPassado) {
-          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} (${escaparHtml(dataFmtArquivo)}) Não Publicada`;
-          textoAguardando = `A consolidação desta edição de ${escaparHtml(dataFmtArquivo)} não foi registrada no ciclo automático. Você pode consultar a última edição disponível de ${escaparHtml(dataFmtArquivo)} abaixo ou o acervo completo.`;
+        if (!dadosEdicao && !dataRefArquivo) {
+          tituloAguardando = `Edição não publicada hoje (${escaparHtml(nomeEdSeguro)})`;
+          textoAguardando = 'Nenhuma edição disponível foi publicada até o momento. Consulte o acervo histórico de fechamentos ou os indicadores de longo prazo.';
+          badgeAguardando = '● Sem edições publicadas no momento';
+        } else if (ehDiaPassado) {
+          tituloAguardando = `Edição de ${escaparHtml(nomeEdSeguro)} (${escaparHtml(dataFmtArquivo)}) Não Publicada`;
+          textoAguardando = `A consolidação desta edição de ${escaparHtml(dataFmtArquivo)} não foi registrada no ciclo automático. Você pode consultar outra edição disponível ou o acervo completo.`;
           badgeAguardando = `● Edição de ${escaparHtml(dataFmtArquivo)} indisponível`;
+        } else if (statusSemCaptura || (jaPassouNoMesmoDia && passouJanelaNoDia)) {
+          tituloAguardando = `Edição não publicada hoje — ${escaparHtml(nomeEdSeguro)}`;
+          textoAguardando = `O horário previsto para esta edição (${escaparHtml(horarioSeguro)}) encerrou-se hoje sem captura publicada. Consulte outra edição disponível ou acesse o acervo.`;
+          badgeAguardando = `● Edição não publicada hoje (${escaparHtml(horarioSeguro)})`;
         } else if (jaPassouNoMesmoDia) {
-          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} em Consolidação`;
-          textoAguardando = `O horário previsto (${escaparHtml(dadosEdicao.horario || '18h15')}) já foi atingido. Caso a consolidação automática ainda não tenha sido publicada, consulte a edição anterior disponível.`;
-          badgeAguardando = `● Horário previsto: ${escaparHtml(dadosEdicao.horario || '')}`;
+          tituloAguardando = `Edição de ${escaparHtml(nomeEdSeguro)} em Consolidação`;
+          textoAguardando = `O horário nominal (${escaparHtml(horarioSeguro)}) foi atingido e a captura encontra-se dentro da janela de consolidação automática.`;
+          badgeAguardando = `● Horário nominal: ${escaparHtml(horarioSeguro)}`;
         } else {
-          tituloAguardando = `Edição de ${escaparHtml(dadosEdicao.nome)} Prevista para as ${escaparHtml(dadosEdicao.horario || '18h15')}`;
-          textoAguardando = `A síntese, cotações consolidadas e destaques do mercado para esta edição têm publicação programada para as <strong>${escaparHtml(dadosEdicao.horario || '')}</strong> (horário de Brasília).`;
-          badgeAguardando = `● Publicação programada: ${escaparHtml(dadosEdicao.horario || '')}`;
+          tituloAguardando = `Edição de ${escaparHtml(nomeEdSeguro)} Prevista para as ${escaparHtml(horarioSeguro)}`;
+          textoAguardando = `A síntese, cotações consolidadas e destaques do mercado para esta edição têm publicação programada para as <strong>${escaparHtml(horarioSeguro)}</strong> (horário de Brasília).`;
+          badgeAguardando = `● Publicação programada: ${escaparHtml(horarioSeguro)}`;
         }
+
+        const btnAcaoHtml = edVoltarKey
+          ? `<button type="button" id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">← Acessar ${escaparHtml(edVoltarLabel)}</button>`
+          : `<a href="edicoes/" class="btn-tab ativa" style="display:inline-block; padding: 10px 22px; border-radius: var(--raio-md); text-decoration:none; border: 1px solid var(--borda);">📚 Acessar Acervo Histórico →</a>`;
 
         boxAguardando.innerHTML = `
           <div class="card-bloco-noticia" style="text-align:center; padding: 56px 24px; margin-top: 16px;">
@@ -736,15 +848,13 @@
               ${badgeAguardando}
             </div>
             <div>
-              <button type="button" id="btn-voltar-abertura" class="btn-tab ativa" style="padding: 10px 22px; border-radius: var(--raio-md); cursor: pointer; border: 1px solid var(--borda);">
-                ← Acessar ${escaparHtml(edVoltarLabel)}
-              </button>
+              ${btnAcaoHtml}
             </div>
           </div>
         `;
         const btnVoltar = document.getElementById('btn-voltar-abertura');
-        if (btnVoltar) {
-          btnVoltar.addEventListener('click', function() {
+        if (btnVoltar && edVoltarKey) {
+          btnVoltar.addEventListener('click', function () {
             exibirEdicao(edVoltarKey);
           });
         }
