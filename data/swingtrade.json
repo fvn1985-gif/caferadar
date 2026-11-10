@@ -1,8 +1,8 @@
 {
-  "atualizado_em": "07/11/2026 às 14h42",
-  "data_referencia": "2026-11-06",
-  "data_execucao_scanner": "07/11/2026 às 14h42",
-  "data_exportacao": "09/11/2026 às 17h16",
+  "atualizado_em": "10/11/2026 às 14h15",
+  "data_referencia": "2026-11-09",
+  "data_execucao_scanner": "10/11/2026 às 14h15",
+  "data_exportacao": "10/11/2026 às 14h15",
   "status_frescor": "ATUALIZADO",
   "dias_uteis_defasagem": 1,
   "estrategia": {
@@ -15,26 +15,26 @@
     "operacoes_em_aberto": 19,
     "operacoes_abertas_vermelho": 18,
     "tempo_medio_posicao": "11 pregões (mediana)",
-    "status_scanner": "Scanner Atualizado (07/11/2026 às 14h42)",
+    "status_scanner": "Scanner Atualizado (10/11/2026 às 14h15)",
     "nota_metodologica": "Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest de 23/10/2025 a 23/10/2026, não é histórico de operações reais."
   },
   "resumo_pregão_hoje": {
     "oportunidades": 0,
-    "ressalvas": 1,
-    "aguardando": 1,
+    "ressalvas": 0,
+    "aguardando": 2,
     "desfavoravel": 57
   },
   "posicoes_destaque": [
     {
       "ticker": "SAUD3",
       "empresa": "Mater Dei ON",
-      "categoria": "OBSERVAR",
-      "setup": "Toque na Média 21 (SMA21)",
+      "categoria": "AGUARDAR",
+      "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
       "alvo_saida": "Alvo +5,0%",
       "variacao_atual": "—",
       "dias_aberto": 0,
-      "status_badge": "Aguardando"
+      "status_badge": "Aguardar Gatilho"
     },
     {
       "ticker": "CXSE3",
@@ -48,8 +48,8 @@
       "status_badge": "Aguardar Gatilho"
     },
     {
-      "ticker": "VIVT3",
-      "empresa": "Telefônica Brasil ON",
+      "ticker": "TAEE11",
+      "empresa": "Taesa Unit",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -59,8 +59,19 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "ITUB4",
-      "empresa": "Itaú Unibanco PN",
+      "ticker": "KEPL3",
+      "empresa": "Kepler Weber ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "BBDC3",
+      "empresa": "Bradesco ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -81,30 +92,8 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "AXIA3",
-      "empresa": "Eletrobras ON",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "ALOS3",
-      "empresa": "Allos ON",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "TIMS3",
-      "empresa": "TIM Brasil ON",
+      "ticker": "ISAE4",
+      "empresa": "ISA Energia PN",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -125,8 +114,19 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "VBBR3",
-      "empresa": "Vibra Energia ON",
+      "ticker": "LEVE3",
+      "empresa": "Mahle Metal Leve ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "PETR4",
+      "empresa": "Petrobras PN",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
