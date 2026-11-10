@@ -1,15 +1,15 @@
 {
   "app_version": "0.3.0",
   "generated_at": "2026-11-09T17:16:25.260057-03:00",
-  "reference_date": "2026-11-09",
-  "status": "● MONITORAMENTO DIÁRIO ATIVO — 09/11/2026",
+  "reference_date": "2026-11-10",
+  "status": "● MONITORAMENTO DIÁRIO ATIVO — 10/11/2026",
   "indicators": {
     "ibov": {
       "fallback_used": false,
       "freshness_limit_calendar_days": 5,
       "last_close": {
-        "date": "2026-11-09",
-        "value": 172236.05
+        "date": "2026-11-10",
+        "value": 172236.0
       },
       "last_close_age_calendar_days": 0,
       "sma200": {
@@ -30,7 +30,7 @@
     "ptax_venda": {
       "filter_active": false,
       "last_sale": {
-        "date": "2026-11-09",
+        "date": "2026-11-10",
         "value": 5.5085
       },
       "sma200": {
@@ -61,8 +61,8 @@
     "bitcoin": {
       "drawdown_from_high_percent": -30.32,
       "last_close": {
-        "date": "2026-11-09",
-        "value": 75204.38
+        "date": "2026-11-10",
+        "value": 74584.99
       },
       "positive_trend_confirmed": true,
       "valid": true
