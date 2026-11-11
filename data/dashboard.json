@@ -1,6 +1,6 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-11T10:30:36.540875-03:00",
+  "generated_at": "2026-11-11T18:20:42.478091-03:00",
   "reference_date": "2026-11-11",
   "status": "● MONITORAMENTO DIÁRIO ATIVO — 11/11/2026",
   "indicators": {
@@ -9,7 +9,7 @@
       "freshness_limit_calendar_days": 5,
       "last_close": {
         "date": "2026-11-11",
-        "value": 172378.41
+        "value": 172268.7
       },
       "last_close_age_calendar_days": 0,
       "sma200": {
@@ -31,7 +31,7 @@
       "filter_active": false,
       "last_sale": {
         "date": "2026-11-11",
-        "value": 5.5594
+        "value": 5.5774
       },
       "sma200": {
         "value": 5.1367,
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -30.32,
       "last_close": {
         "date": "2026-11-11",
-        "value": 73745.38
+        "value": 74583.63
       },
       "positive_trend_confirmed": true,
       "valid": true
