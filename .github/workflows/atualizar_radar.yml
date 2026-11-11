@@ -27,6 +27,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: atualizar-radar-prod
+  cancel-in-progress: false
+
 jobs:
   atualizar-radar:
     runs-on: ubuntu-latest
@@ -41,18 +45,38 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Instalar bibliotecas de mercado
+      - name: Instalar fontes do sistema (Linux)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-dejavu-core
+
+      - name: Instalar bibliotecas de mercado e imagem
         run: |
           python -m pip install --upgrade pip
-          pip install yfinance pandas
+          pip install -r requirements.txt
 
       - name: Executar Robô de Cotações em Tempo Real
+        env:
+          EDICAO_INPUT: ${{ github.event.inputs.edicao || 'auto' }}
         run: |
-          python scripts/atualizar_nuvem.py ${{ github.event.inputs.edicao || 'auto' }}
+          python scripts/atualizar_nuvem.py "$EDICAO_INPUT"
+
+      - name: Gerar Cards PNG do Portal (Sem Telegram)
+        env:
+          EDICAO_INPUT: ${{ github.event.inputs.edicao || 'auto' }}
+        run: |
+          python scripts/executar_marketing_nuvem.py "$EDICAO_INPUT"
+
+      - name: Atualizar Acervo, Sitemap, RSS e Fita HTML Estática
+        run: |
+          python scripts/gerar_acervo.py
+          python scripts/gerar_acervo.py
+          python scripts/gerar_rss_feed.py
+          python scripts/sincronizar_portal_estatico.py
 
       - name: Publicar atualizações no caferadar.com.br
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A
-          git diff --staged --quiet || (git commit -m "Robô Nuvem: Radar e Dados atualizados automaticamente [skip ci]" && git push)
+          git diff --staged --quiet || (git commit -m "Robô Nuvem: Radar, Imagens e Portal atualizados automaticamente [skip ci]" && git push)

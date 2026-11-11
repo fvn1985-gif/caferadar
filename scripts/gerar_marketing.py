@@ -60,7 +60,13 @@ import os
 
 import sys
 
+import re
+
 from datetime import datetime
+
+from zoneinfo import ZoneInfo
+
+TZ_SP = ZoneInfo("America/Sao_Paulo")
 
 from pathlib import Path
 
@@ -135,11 +141,11 @@ def carregar_fontes():
 
     """Tenta carregar fontes do sistema com fallbacks seguros."""
 
-    font_bold_names = ["segoeuib.ttf", "arialbd.ttf", "DejaVuSans-Bold.ttf"]
+    font_bold_names = ["segoeuib.ttf", "arialbd.ttf", "DejaVuSans-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
 
-    font_regular_names = ["segoeui.ttf", "arial.ttf", "DejaVuSans.ttf"]
+    font_regular_names = ["segoeui.ttf", "arial.ttf", "DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]
 
-    font_mono_names = ["consolab.ttf", "consola.ttf", "Courier New.ttf"]
+    font_mono_names = ["consolab.ttf", "consola.ttf", "Courier New.ttf", "DejaVuSansMono-Bold.ttf", "DejaVuSansMono.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
 
     def _obter_fonte(nomes, tamanho):
 
@@ -371,9 +377,11 @@ def gerar_materiais_abertura(dados_fechamento: Dict[str, Any], output_dir: Optio
 
     ed = dados_fechamento.get("edicoes", {}).get("abertura", {})
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
 
     data_base = dados_fechamento.get("data_referencia", data_pub)
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(data_base or "").strip()[:10]):
+        data_pub = str(data_base).strip()[:10]
 
     data_fmt = dados_fechamento.get("data_formatada") or formatar_data_br(data_base)
 
@@ -639,9 +647,11 @@ def gerar_materiais_negocios(dados_fechamento: Dict[str, Any], output_dir: Optio
 
     ed = edicoes.get("negocios") or edicoes.get("abertura") or {}
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
 
     data_base = dados_fechamento.get("data_referencia", data_pub)
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(data_base or "").strip()[:10]):
+        data_pub = str(data_base).strip()[:10]
 
     data_fmt = dados_fechamento.get("data_formatada") or formatar_data_br(data_base)
 
@@ -673,7 +683,7 @@ def gerar_materiais_negocios(dados_fechamento: Dict[str, Any], output_dir: Optio
 
     draw_feed.rounded_rectangle([x_left, y_top, x_left + box_w, y_top + box_h], radius=16, fill=PALETA["card_bg"], outline=PALETA["card_border"], width=1)
 
-    draw_feed.text((x_left + 24, y_top + 20), "IBOVESPA AO VIVO", font=FONTES["body_bold"](16), fill=PALETA["texto_secundario"])
+    draw_feed.text((x_left + 24, y_top + 20), "IBOVESPA ÀS 10H30", font=FONTES["body_bold"](16), fill=PALETA["texto_secundario"])
 
     draw_feed.text((x_left + 24, y_top + 60), str(ibov.get("pontos", "—")), font=FONTES["mono"](34), fill=PALETA["texto_branco"])
 
@@ -751,7 +761,7 @@ def gerar_materiais_negocios(dados_fechamento: Dict[str, Any], output_dir: Optio
 
     draw_x.rounded_rectangle([66, y_xt, 580, y_xt + 120], radius=12, fill=PALETA["card_bg"], outline=PALETA["card_border"])
 
-    draw_x.text((86, y_xt + 18), "IBOVESPA AO VIVO", font=FONTES["body_bold"](16), fill=PALETA["texto_secundario"])
+    draw_x.text((86, y_xt + 18), "IBOVESPA ÀS 10H30", font=FONTES["body_bold"](16), fill=PALETA["texto_secundario"])
 
     draw_x.text((86, y_xt + 54), str(ibov.get("pontos", "—")), font=FONTES["mono"](28), fill=PALETA["texto_branco"])
 
@@ -853,9 +863,11 @@ def gerar_materiais_fechamento(dados_fechamento: Dict[str, Any], output_dir: Opt
 
     ed = dados_fechamento.get("edicoes", {}).get("fechamento", {})
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
 
     data_base = dados_fechamento.get("data_referencia", data_pub)
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(data_base or "").strip()[:10]):
+        data_pub = str(data_base).strip()[:10]
 
     data_fmt = dados_fechamento.get("data_formatada") or formatar_data_br(data_base)
 
@@ -1127,7 +1139,7 @@ def gerar_materiais_swing(dados_swing: Dict[str, Any], output_dir: Optional[Path
 
     out.mkdir(parents=True, exist_ok=True)
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
 
     data_base = dados_swing.get("data_referencia", data_pub)
 
@@ -1399,7 +1411,7 @@ def gerar_materiais_longoprazo(dados_dashboard: Dict[str, Any], output_dir: Opti
 
     out.mkdir(parents=True, exist_ok=True)
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
 
     data_base = dados_dashboard.get("reference_date", data_pub)
 
@@ -1607,8 +1619,8 @@ def gerar_materiais_calculadora(output_dir: Optional[Path] = None) -> Tuple[List
     out = Path(output_dir or DEFAULT_OUTPUT_DIR)
     out.mkdir(parents=True, exist_ok=True)
 
-    data_pub = datetime.now().strftime("%Y-%m-%d")
-    data_fmt = datetime.now().strftime("%d/%m/%Y")
+    data_pub = datetime.now(TZ_SP).strftime("%Y-%m-%d")
+    data_fmt = datetime.now(TZ_SP).strftime("%d/%m/%Y")
 
     arquivos_png = []
 

@@ -2,6 +2,10 @@
 *.tmp
 .DS_Store
 Thumbs.db
-marketing_output/
+.env
+.env.*
+!.env.example
+marketing_output/*
+!marketing_output/*_x.png
 __pycache__/
 *.pyc
