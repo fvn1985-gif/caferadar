@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carteira B3 &amp; Apuração de IRPF (Local-First) — CafeRadar</title>
+  <meta name="description" content="Controle sua carteira da B3, importe planilhas de Negociação e Movimentação (.xlsx), apure DARF mensal (Ações, FIIs e ETFs) e gere o relatório anual de apoio ao IRPF 100% no seu navegador, sem enviar seus dados a servidores.">
+  <link rel="canonical" href="https://caferadar.com.br/carteira-ir.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="style.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%226%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22800%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22 font-family=%22system-ui,sans-serif%22>CR</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- OpenGraph / Social Cards -->
+  <meta property="og:site_name" content="CafeRadar">
+  <meta property="og:title" content="Carteira B3 &amp; Apuração de Imposto de Renda 100% Privada — CafeRadar">
+  <meta property="og:description" content="Importe os arquivos .xlsx da B3 direto no seu navegador, calcule DARF mensal e organize seu IRPF sem entregar seus dados financeiros a ninguém. Beta gratuito.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caferadar.com.br/carteira-ir.html">
+  <meta property="og:image" content="https://caferadar.com.br/og-image.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Carteira B3 &amp; Apuração de IRPF 100% Privada — CafeRadar">
+  <meta name="twitter:description" content="Calcule DARF mensal e organize sua carteira de Ações, FIIs e ETFs 100% offline no navegador, com backup criptografado.">
+  <meta name="twitter:image" content="https://caferadar.com.br/og-image.png">
+
+  <!-- Google Consent Mode v2 (Conformidade com LGPD & DMA) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+    try {
+      if (localStorage.getItem('caferadar_cookies_ack') === 'true') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+    } catch (e) {}
+    gtag('js', new Date());
+    gtag('config', 'G-50J887FJDV');
+  </script>
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
+  <!-- Google AdSense Oficial -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CafeRadar Carteira & IR",
+    "url": "https://app.caferadar.com.br",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    },
+    "description": "Aplicativo PWA local-first gratuito (Beta) para controle de carteira B3, importação de planilhas .xlsx oficiais, apuração mensal de DARF e relatório auxiliar de IRPF com privacidade total no navegador.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CafeRadar",
+      "url": "https://caferadar.com.br"
+    }
+  }
+  </script>
+
+  <style>
+    .vitrine-container {
+      max-width: 960px;
+      margin: 32px auto 64px;
+    }
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f1f5f9;
+      color: var(--texto-secundario);
+      padding: 8px 16px;
+      border-radius: var(--raio-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      transition: all 0.15s ease;
+    }
+    .btn-voltar:hover {
+      background-color: var(--destaque-suave);
+      color: var(--destaque);
+    }
+    .hero-carteira {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      border-radius: var(--raio-lg);
+      padding: 36px 32px;
+      margin-bottom: 24px;
+      border: 1px solid #334155;
+      box-shadow: var(--sombra-card);
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .pill-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .pill-beta {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+    .pill-privacidade {
+      background: rgba(34, 197, 94, 0.18);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+    .hero-carteira h1 {
+      font-size: 1.85rem;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+    .hero-carteira p {
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+    .cta-grupo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-cta-principal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #0284c7;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 14px 26px;
+      border-radius: var(--raio-md);
+      border: 1px solid #38bdf8;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    .btn-cta-principal:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+    .nota-cta {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .grid-passos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card-passo {
+      background: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-md);
+      padding: 22px;
+      box-shadow: var(--sombra-card);
+    }
+    .passo-num {
+      display: inline-block;
+      font-family: var(--fonte-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--destaque);
+      background: var(--destaque-suave);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+    }
+    .card-passo h3 {
+      font-size: 1.05rem;
+      color: var(--primaria);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+    .card-passo p {
+      font-size: 0.9rem;
+      color: var(--texto-secundario);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .card-privacidade {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: var(--raio-md);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card-privacidade h2 {
+      font-size: 1.15rem;
+      color: #065f46;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .card-privacidade p, .card-privacidade li {
+      font-size: 0.92rem;
+      color: #064e3b;
+      line-height: 1.6;
+    }
+    .card-privacidade ul {
+      margin: 10px 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== TOPO DO PORTAL ==================== -->
+  <header class="cabecalho-portal">
+    <div class="container container-header">
+      <div class="marca-portal">
+        <a href="./" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+          <div class="logo-icone">CR</div>
+          <div>
+            <div class="portal-titulo">CAFERADAR</div>
+            <p class="portal-slogan">Carteira B3, Apuração de DARF &amp; Apoio ao IRPF</p>
+          </div>
+        </a>
+      </div>
+      <div class="status-topo">
+        <a href="./" class="btn-tab ativa" style="border: 1px solid var(--borda); border-radius: 9999px; padding: 6px 14px; text-decoration: none;">
+          <span>← Voltar ao Portal</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== ESPAÇO DE ANÚNCIO (ADSENSE LEADERBOARD) ==================== -->
+  <div class="container container-ad">
+    <div class="slot-publicidade leaderboard">
+      <span class="rotulo-ad">PUBLICIDADE</span>
+      <ins class="adsbygoogle"
+           style="display:block; width:100%; min-height:90px;"
+           data-ad-client="ca-pub-6721082194258309"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+  </div>
+
+  <main class="container vitrine-container">
+    <a href="./" class="btn-voltar">← Voltar à página inicial</a>
+
+    <!-- Hero Vitrine -->
+    <section class="hero-carteira" aria-labelledby="titulo-hero-carteira">
+      <div class="hero-badges">
+        <span class="pill-hero pill-beta">VERSÃO BETA GRATUITA</span>
+        <span class="pill-hero pill-privacidade">100% LOCAL-FIRST · ZERO ENVIO PARA SERVIDORES</span>
+      </div>
+      <h1 id="titulo-hero-carteira">
+        Apure seu Imposto de Renda da B3 sem entregar seus dados a ninguém
+      </h1>
+      <p>
+        Importe os arquivos oficiais de Negociação e Movimentação (<code>.xlsx</code>) da Área do Investidor B3 direto no seu navegador. Calcule preço médio, isenção de R$ 20 mil em ações, alíquotas de FIIs/ETFs, compensação de prejuízos e gere seu relatório de apoio ao IRPF — mesmo sem internet.
+      </p>
+      <div class="cta-grupo">
+        <a href="https://app.caferadar.com.br" id="btn-abrir-app-carteira" class="btn-cta-principal" rel="noopener">
+          <span>💼 Abrir Aplicativo Gratuito (Beta) ↗</span>
+        </a>
+        <span class="nota-cta">Sem cadastro · Sem senha · Funciona offline no PC e celular (PWA)</span>
+      </div>
+    </section>
+
+    <!-- Como funciona em 3 passos -->
+    <section aria-label="Como funciona">
+      <div class="grid-passos">
+        <article class="card-passo">
+          <span class="passo-num">PASSO 01</span>
+          <h3>Informe sua Posição ou Importe da B3</h3>
+          <p>
+            Cadastre seus saldos iniciais (quantidade e custo médio) e arraste as planilhas oficiais <code>.xlsx</code> da B3. Um Worker dedicado lê o arquivo no seu próprio dispositivo, sem duplicar operações já importadas.
+          </p>
+        </article>
+
+        <article class="card-passo">
+          <span class="passo-num">PASSO 02</span>
+          <h3>Apuração Mensal &amp; DARF por Classe</h3>
+          <p>
+            Separação automática entre Swing Trade e Day Trade em Ações (com regra da isenção de R$ 20.000/mês), FIIs (20%) e ETFs (15%), além de controle de prejuízo acumulado por classe tributária.
+          </p>
+        </article>
+
+        <article class="card-passo">
+          <span class="passo-num">PASSO 03</span>
+          <h3>Relatório Anual &amp; Backup Cifrado</h3>
+          <p>
+            Consulte a posição consolidada em 31/12, rendimentos/proventos e gere backups portáteis criptografados com senha (<strong>AES-256-GCM</strong>) para levar sua base entre computador e celular.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bloco de Privacidade Isolada -->
+    <section class="card-privacidade" aria-labelledby="titulo-privacidade-isolada">
+      <h2 id="titulo-privacidade-isolada">🛡️ Por que o aplicativo abre em app.caferadar.com.br?</h2>
+      <p>
+        Diferente de portais financeiros tradicionais, o <strong>CafeRadar Carteira &amp; IR</strong> roda em um subdomínio isolado e blindado para proteger o seu patrimônio de qualquer rastreamento:
+      </p>
+      <ul>
+        <li><strong>Zero anúncios e zero Google Analytics dentro do app:</strong> scripts de publicidade e métricas existem apenas aqui no portal informativo (<code>caferadar.com.br</code>), nunca no ambiente onde você manipula sua carteira.</li>
+        <li><strong>Dados ficam só no seu dispositivo (IndexedDB):</strong> suas notas, quantidades e custos não passam por nenhum servidor nosso.</li>
+        <li><strong>Portabilidade garantida:</strong> exporte e restaure seus dados em arquivo cifrado a qualquer momento, sem ficar preso à plataforma.</li>
+      </ul>
+    </section>
+
+    <!-- Escopo Beta e Custos Operacionais -->
+    <div class="card-bloco-noticia" style="padding: 26px; margin-bottom: 24px;">
+      <h2 style="font-size: 1.2rem; color: var(--primaria); font-weight: 800; margin-bottom: 12px;">
+        📋 Escopo Atual da Versão Beta
+      </h2>
+      <p style="font-size: 0.92rem; color: var(--texto-secundario); line-height: 1.6; margin-bottom: 10px;">
+        O motor atual contempla <strong>Ações, FIIs, ETFs, proventos e eventos societários básicos</strong> (desdobramentos e grupamentos). Como o extrato consolidado da B3 normalmente não inclui taxas de corretagem e emolumentos por operação, o aplicativo sinaliza explicitamente quando os custos estão ausentes e permite o ajuste manual para refinar seu preço médio.
+      </p>
+      <p style="font-size: 0.9rem; color: var(--texto-secundario); line-height: 1.6; margin: 0;">
+        Veja mais detalhes técnicos sobre o tratamento de dados na nossa <a href="privacy.html" style="color: var(--destaque); font-weight: 700;">Política de Privacidade (LGPD)</a>.
+      </p>
+    </div>
+
+    <!-- Aviso Legal CVM / Receita Federal -->
+    <div class="aviso-legal-cvm">
+      <span class="icone-balanca">⚖️</span>
+      <p>
+        <strong>Aviso Legal &amp; Caráter Educativo (Versão Beta):</strong> O CafeRadar Carteira &amp; IR é uma ferramenta auxiliar de organização pessoal e cálculo estimativo. Os resultados dependem da integridade dos arquivos e saldos informados pelo usuário e <strong>não substituem a conferência por um contador habilitado</strong> nem a validação nos programas oficiais da Receita Federal do Brasil. Não constitui consultoria financeira, recomendação de investimento ou administração de carteira (Resoluções CVM nº 19/2021 e nº 20/2021).
+      </p>
+    </div>
+  </main>
+
+  <!-- Rodapé Unificado -->
+  <footer class="rodape-portal">
+    <div class="container container-rodape">
+      <div class="coluna-sobre">
+        <div class="marca-rodape">
+          <div class="logo-icone mini">CR</div>
+          <span class="nome-portal">CAFERADAR</span>
+        </div>
+        <p class="desc-rodape">
+          Plataforma independente de inteligência de mercado B3, síntese de pregão diário em 3 edições, scanner tático de Swing Trade e ferramentas quantitativas e tributárias.
+        </p>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="./">Fechamento Diário</a></li>
+          <li><a href="historico-swing.html">Histórico Swing Trade</a></li>
+          <li><a href="calculadora-rendimento.html">Calculadora de Renda</a></li>
+          <li><a href="carteira-ir.html">Carteira &amp; IR (Beta)</a></li>
+          <li><a href="edicoes/">Acervo de Edições</a></li>
+        </ul>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Institucional &amp; Legal</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre &amp; Contato</a></li>
+          <li><a href="privacy.html">Política de Privacidade</a></li>
+          <li><a href="#" id="link-gerenciar-cookies" class="link-gerenciar-cookies">Gerenciar cookies</a></li>
+          <li><a href="rules.html">Regras Oficiais do Motor</a></li>
+        </ul>
+      </div>
+
+      <div class="coluna-links">
+        <h4>Fontes Oficiais</h4>
+        <ul>
+          <li><a href="https://www.gov.br/receitafederal" target="_blank" rel="noopener">Receita Federal</a></li>
+          <li><a href="https://www.b3.com.br" target="_blank" rel="noopener">B3 Oficial</a></li>
+          <li><a href="https://www.bcb.gov.br" target="_blank" rel="noopener">Banco Central (PTAX)</a></li>
+          <li><a href="https://www.tesourodireto.com.br" target="_blank" rel="noopener">Tesouro Nacional</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container copy-rodape">
+      <p>© 2026 CafeRadar. Todos os direitos reservados. Informação independente e ferramentas educativas sem viés comercial.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var btnAbrir = document.getElementById('btn-abrir-app-carteira');
+      if (btnAbrir) {
+        btnAbrir.addEventListener('click', function () {
+          try {
+            if (typeof gtag === 'function') {
+              gtag('event', 'abrir_carteira_ir', { event_category: 'ferramentas' });
+            }
+          } catch (e) {}
+        });
+      }
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
+    });
+  </script>
+
+  <!-- Banner informativo de Cookies & Privacidade (LGPD) -->
+  <div id="banner-cookies-lgpd" class="banner-cookies-lgpd" role="region" aria-label="Aviso de privacidade e cookies" style="display:none;">
+    <div class="banner-cookies-texto">
+      Utilizamos cookies e tecnologias semelhantes conforme nossa <a href="/privacy.html">Política de Privacidade</a> para melhorar sua experiência e analisar o tráfego.
+    </div>
+    <div class="banner-cookies-acoes">
+      <button type="button" id="btn-recusar-cookies" class="btn-cookies-recusar">Recusar</button>
+      <button type="button" id="btn-aceitar-cookies" class="btn-cookies-aceitar">Entendi</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      try {
+        var ack = localStorage.getItem('caferadar_cookies_ack');
+        var banner = document.getElementById('banner-cookies-lgpd');
+        var btnAceitar = document.getElementById('btn-aceitar-cookies');
+        var btnRecusar = document.getElementById('btn-recusar-cookies');
+        var linkGerenciar = document.getElementById('link-gerenciar-cookies');
+
+        if (linkGerenciar) {
+          linkGerenciar.addEventListener('click', function(e) {
+            e.preventDefault();
+            try { localStorage.removeItem('caferadar_cookies_ack'); } catch(err){}
+            if (banner) { banner.style.display = 'flex'; }
+          });
+        }
+
+        if (ack === null && banner) { banner.style.display = 'flex'; }
+        if (btnAceitar) {
+          btnAceitar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'true'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+        if (btnRecusar) {
+          btnRecusar.addEventListener('click', function() {
+            try { localStorage.setItem('caferadar_cookies_ack', 'false'); } catch(e){}
+            if (typeof gtag === 'function') {
+              gtag('consent', 'update', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            }
+            if (banner) banner.style.display = 'none';
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

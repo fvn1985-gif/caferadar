@@ -1,10 +1,10 @@
 {
-  "atualizado_em": "10/11/2026 às 14h15",
-  "data_referencia": "2026-11-09",
-  "data_execucao_scanner": "10/11/2026 às 14h15",
-  "data_exportacao": "10/11/2026 às 14h15",
-  "status_frescor": "ATUALIZADO",
-  "dias_uteis_defasagem": 1,
+  "atualizado_em": "12/11/2026 às 00h44",
+  "data_referencia": "2026-11-10",
+  "data_execucao_scanner": "12/11/2026 às 00h44",
+  "data_exportacao": "12/11/2026 às 00h44",
+  "status_frescor": "DESATUALIZADO",
+  "dias_uteis_defasagem": 2,
   "estrategia": {
     "nome": "Swing Trade — Reversão Quantitativa B3",
     "universo_total": 59,
@@ -15,16 +15,27 @@
     "operacoes_em_aberto": 19,
     "operacoes_abertas_vermelho": 18,
     "tempo_medio_posicao": "11 pregões (mediana)",
-    "status_scanner": "Scanner Atualizado (10/11/2026 às 14h15)",
+    "status_scanner": "Scanner Desatualizado (Ref: 2026-11-10 — 2 pregões atrás)",
     "nota_metodologica": "Sem stop loss, toda operação encerrada fecha no alvo por construção; o risco está nas posições em aberto. Backtest de 23/10/2025 a 23/10/2026, não é histórico de operações reais."
   },
   "resumo_pregão_hoje": {
     "oportunidades": 0,
-    "ressalvas": 0,
-    "aguardando": 2,
+    "ressalvas": 1,
+    "aguardando": 1,
     "desfavoravel": 57
   },
   "posicoes_destaque": [
+    {
+      "ticker": "CXSE3",
+      "empresa": "Caixa Seguridade ON",
+      "categoria": "OBSERVAR",
+      "setup": "Rompimento de Resistência",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Aguardando"
+    },
     {
       "ticker": "SAUD3",
       "empresa": "Mater Dei ON",
@@ -37,74 +48,41 @@
       "status_badge": "Aguardar Gatilho"
     },
     {
-      "ticker": "CXSE3",
-      "empresa": "Caixa Seguridade ON",
-      "categoria": "AGUARDAR",
+      "ticker": "AGRO3",
+      "empresa": "BrasilAgro ON",
+      "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
       "alvo_saida": "Alvo +5,0%",
       "variacao_atual": "—",
       "dias_aberto": 0,
-      "status_badge": "Aguardar Gatilho"
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "CPFE3",
+      "empresa": "CPFL Energia ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "BRAP4",
+      "empresa": "Bradespar PN",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
     },
     {
       "ticker": "TAEE11",
       "empresa": "Taesa Unit",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "KEPL3",
-      "empresa": "Kepler Weber ON",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "BBDC3",
-      "empresa": "Bradesco ON",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "CMIN3",
-      "empresa": "CSN Mineração ON",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "ISAE4",
-      "empresa": "ISA Energia PN",
-      "categoria": "DESFAVORAVEL",
-      "setup": "Monitorando Média",
-      "preco_entrada": "Monitorando",
-      "alvo_saida": "Alvo +5,0%",
-      "variacao_atual": "—",
-      "dias_aberto": 0,
-      "status_badge": "Desfavorável"
-    },
-    {
-      "ticker": "ITUB3",
-      "empresa": "Itaú Unibanco ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",
@@ -125,8 +103,30 @@
       "status_badge": "Desfavorável"
     },
     {
-      "ticker": "PETR4",
-      "empresa": "Petrobras PN",
+      "ticker": "AXIA3",
+      "empresa": "Eletrobras ON",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "POMO4",
+      "empresa": "Marcopolo PN",
+      "categoria": "DESFAVORAVEL",
+      "setup": "Monitorando Média",
+      "preco_entrada": "Monitorando",
+      "alvo_saida": "Alvo +5,0%",
+      "variacao_atual": "—",
+      "dias_aberto": 0,
+      "status_badge": "Desfavorável"
+    },
+    {
+      "ticker": "VIVT3",
+      "empresa": "Telefônica Brasil ON",
       "categoria": "DESFAVORAVEL",
       "setup": "Monitorando Média",
       "preco_entrada": "Monitorando",

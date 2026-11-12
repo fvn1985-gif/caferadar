@@ -152,7 +152,7 @@
     <a href="./" class="btn-voltar">← Voltar à página inicial</a>
 
     <div class="card-documento">
-      <span class="badge-data">Última atualização: Março de 2026</span>
+      <span class="badge-data">Última atualização: Novembro de 2026</span>
       <h1 style="font-size: 1.55rem; font-weight: 800; color: var(--primaria); margin-bottom: 14px;">Política de Privacidade & Cookies (LGPD)</h1>
       
       <p>
@@ -208,6 +208,16 @@
       <p style="font-family: var(--fonte-mono); font-weight: 700; color: var(--primaria); background: #f8fafc; padding: 10px 16px; border-radius: var(--raio-md); border: 1px solid var(--borda); display: inline-block;">
         contato@caferadar.com.br
       </p>
+
+      <h2><span>&#128188;</span> 6. Aplicativo Carteira &amp; IR (app.caferadar.com.br) &mdash; Arquitetura Local-First</h2>
+      <p>
+        O aplicativo <strong>CafeRadar Carteira &amp; IR</strong> opera no subdomínio isolado <code>app.caferadar.com.br</code> sob arquitetura estritamente <strong>Local-First</strong> (processamento 100% no dispositivo do usuário):
+      </p>
+      <ul>
+        <li><strong>Ausência total de servidores de armazenamento financeiro:</strong> planilhas da B3 (<code>.xlsx</code>), operações, saldos iniciais, proventos e relatórios de IRPF jamais são enviados ou gravados em servidores do CafeRadar; todo o armazenamento ocorre exclusivamente no navegador do usuário (<code>IndexedDB</code>).</li>
+        <li><strong>Isolamento de origem e zero rastreadores no app:</strong> diferente do portal informativo <code>caferadar.com.br</code>, o subdomínio <code>app.caferadar.com.br</code> não carrega Google AdSense, Google Analytics, cookies de publicidade nem scripts de terceiros.</li>
+        <li><strong>Backups criptografados sob controle do usuário:</strong> backups manuais exportados pelo aplicativo utilizam criptografia ponta a ponta no próprio dispositivo (<code>AES-256-GCM</code> com derivação <code>PBKDF2-SHA256</code>), protegidos por senha definida exclusivamente pelo titular &mdash; sem possibilidade de recuperação pelo CafeRadar.</li>
+      </ul>
     </div>
 
     <!-- CVM Footer Note -->
