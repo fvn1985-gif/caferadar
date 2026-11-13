@@ -1,8 +1,8 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-12T22:48:28.514639-03:00",
+  "generated_at": "2026-11-13T08:00:41.769983-03:00",
   "reference_date": "2026-11-12",
-  "status": "● MONITORAMENTO DIÁRIO ATIVO — 12/11/2026",
+  "status": "● PRÉ-MERCADO (13/11/2026 às 08h00) — Aguardando Abertura B3",
   "indicators": {
     "ibov": {
       "fallback_used": false,
@@ -61,8 +61,8 @@
     "bitcoin": {
       "drawdown_from_high_percent": -30.32,
       "last_close": {
-        "date": "2026-11-12",
-        "value": 71497.75
+        "date": "2026-11-13",
+        "value": 69245.15
       },
       "positive_trend_confirmed": true,
       "valid": true
