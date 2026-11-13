@@ -1088,7 +1088,7 @@
   function renderizarSwingTrade(dados) {
     if (!dados) return;
 
-    // 0. Frescor dos dados e execução do scanner
+    // 0. Última execução do scanner (sem alerta de dados defasados)
     const elFrescorTexto = document.getElementById('st-frescor-texto');
     const elBadgeFrescor = document.getElementById('st-badge-frescor');
     const containerFrescor = document.getElementById('st-frescor-container');
@@ -1096,12 +1096,6 @@
     if (containerFrescor && elFrescorTexto && elBadgeFrescor) {
       const dataRef = dados.data_referencia;
       const dataExec = dados.data_execucao_scanner || dados.atualizado_em;
-      // 0.1 Cálculo de frescor dinâmico no frontend (Fuso de São Paulo)
-      const dinamico = calcularFrescorDinamico(dataRef);
-      // O frontend não confia exclusivamente no JSON: se a defasagem real superar 1 pregão, força DESATUALIZADO
-      const statusFrescor = (dinamico.defasagem > 1) ? 'DESATUALIZADO' : (dados.status_frescor || dinamico.status);
-      const defasagem = dinamico.defasagem !== null ? dinamico.defasagem : (typeof dados.dias_uteis_defasagem === 'number' ? dados.dias_uteis_defasagem : null);
-      const avisoFrescorExtra = dados.aviso_frescor ? ` (${escaparHtml(dados.aviso_frescor)})` : '';
 
       // Formatar data_referencia (YYYY-MM-DD -> DD/MM)
       let dataRefFmt = '—';
@@ -1123,23 +1117,12 @@
         }
       }
 
-      if (statusFrescor === 'ATUALIZADO') {
-        containerFrescor.classList.remove('alerta-desatualizado');
-        containerFrescor.style.borderLeft = '';
-        elBadgeFrescor.className = 'badge-frescor atualizado';
-        elBadgeFrescor.textContent = 'Scanner Atualizado';
-        elFrescorTexto.innerHTML = `<strong>Dados de ${escaparHtml(dataRefFmt)}</strong> — scanner executado em ${escaparHtml(dataExecFmt)}`;
-      } else {
-        // Exibir faixa vermelha destacada quando defasagem superar um pregão ou estiver desatualizado
-        containerFrescor.classList.add('alerta-desatualizado');
-        containerFrescor.style.borderLeft = '6px solid var(--baixa, #dc2626)';
-        containerFrescor.style.background = 'rgba(239, 68, 68, 0.08)';
-        elBadgeFrescor.className = 'badge-frescor desatualizado';
-        elBadgeFrescor.textContent = (defasagem !== null && defasagem < 999)
-          ? `Desatualizado (${defasagem} pregões)`
-          : 'Dados Desatualizados';
-        elFrescorTexto.innerHTML = `<span style="color:var(--baixa, #dc2626); font-weight:800;">🚨 DADOS DEFASADOS (${defasagem !== null ? defasagem + ' pregões' : ''}):</span> Dados de <strong>${escaparHtml(dataRefFmt)}</strong> — scanner executado em ${escaparHtml(dataExecFmt)}${avisoFrescorExtra}. O mercado mudou desde esta leitura; opere com cautela.`;
-      }
+      containerFrescor.classList.remove('alerta-desatualizado');
+      containerFrescor.style.borderLeft = '';
+      containerFrescor.style.background = '';
+      elBadgeFrescor.className = 'badge-frescor atualizado';
+      elBadgeFrescor.textContent = dataExecFmt !== '—' ? `Último scanner: ${dataExecFmt}` : 'Scanner B3';
+      elFrescorTexto.innerHTML = `<strong>Dados de ${escaparHtml(dataRefFmt)}</strong> — último scanner executado em ${escaparHtml(dataExecFmt)}`;
     }
 
     // 1. Painel de Métricas do Motor
