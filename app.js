@@ -1775,8 +1775,8 @@
       if (valor <= 0) return;
 
       // Taxas de referência do simulador (base nov/2026)
-      const selicAnual = 0.1125; // 11,25% a.a.
-      const cdiAnual = 0.1115;   // 11,15% a.a.
+      const selicAnual = 0.1365; // 13,65% a.a.
+      const cdiAnual = 0.1355;   // 13,55% a.a.
       const poupancaAnual = 0.0617; // 6,17% a.a. (0,5% a.m. + TR)
 
       let dias = mesesSelecionados * 30;
