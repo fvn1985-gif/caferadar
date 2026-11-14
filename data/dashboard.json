@@ -1,6 +1,6 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-13T18:44:46.271086-03:00",
+  "generated_at": "2026-11-13T22:26:03.374785-03:00",
   "reference_date": "2026-11-13",
   "status": "● MONITORAMENTO DIÁRIO ATIVO — 13/11/2026",
   "indicators": {
@@ -31,7 +31,7 @@
       "filter_active": false,
       "last_sale": {
         "date": "2026-11-13",
-        "value": 5.6666
+        "value": 5.6407
       },
       "sma200": {
         "value": 5.1367,
