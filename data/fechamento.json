@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "negocios",
+  "edicao_padrao": "fechamento",
   "data_referencia": "2026-11-16",
   "data_formatada": "16/11/2026",
   "edicoes": {
@@ -236,20 +236,153 @@
       "icone": "🏁",
       "horario": "18h15",
       "titulo": "RADAR DE FECHAMENTO — 16/11/2026",
-      "subtitulo": "Edição de Fechamento prevista para as 18h15 (16/11/2026).",
-      "mercado_geral": {},
-      "acoes_blue_chips": [],
+      "subtitulo": "Ibovespa encerra a segunda-feira aos 169.178 pts; Dólar fecha a R$ 5,79 e S&P 500 marca 7.417 pts",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "169.178 pts",
+          "valor": "169.178 pts",
+          "variacao": "-1,81%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 5,79",
+          "variacao": "+2,15%",
+          "positivo": true
+        },
+        "sp500": {
+          "nome": "S&P 500",
+          "valor": "7.417 pts",
+          "variacao": "-1,91%",
+          "positivo": false
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 64.967",
+          "variacao": "-0,54%",
+          "positivo": false
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 92,14",
+          "variacao": "-3,29%",
+          "positivo": false
+        }
+      },
+      "acoes_blue_chips": [
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 43,95",
+          "variacao_dia": "-2,70%",
+          "variacao_mes": "-26,36%",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 60,84",
+          "variacao_dia": "-3,90%",
+          "variacao_mes": "-8,11%",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú Unibanco PN",
+          "preco": "R$ 41,25",
+          "variacao_dia": "-2,71%",
+          "variacao_mes": "-14,18%",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 50,43",
+          "variacao_dia": "-1,50%",
+          "variacao_mes": "+5,08%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBAS3",
+          "nome": "Banco do Brasil ON",
+          "preco": "R$ 14,95",
+          "variacao_dia": "-0,66%",
+          "variacao_mes": "-36,90%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBDC4",
+          "nome": "Bradesco PN",
+          "preco": "R$ 14,23",
+          "variacao_dia": "-1,59%",
+          "variacao_mes": "-30,01%",
+          "positivo": false
+        },
+        {
+          "ticker": "B3SA3",
+          "nome": "B3 ON",
+          "preco": "R$ 14,79",
+          "variacao_dia": "-0,47%",
+          "variacao_mes": "-33,11%",
+          "positivo": false
+        },
+        {
+          "ticker": "PRIO3",
+          "nome": "PRIO ON",
+          "preco": "R$ 62,39",
+          "variacao_dia": "-0,92%",
+          "variacao_mes": "-11,00%",
+          "positivo": false
+        }
+      ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
         "altas": [],
-        "quedas": []
+        "quedas": [
+          {
+            "ticker": "VALE3",
+            "variacao": "-3,90%"
+          },
+          {
+            "ticker": "ITUB4",
+            "variacao": "-2,71%"
+          }
+        ]
       },
-      "leitura_rapida": [],
-      "comparacao_anterior": [],
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 18h15",
+      "leitura_rapida": [
+        {
+          "texto": "A bolsa brasileira encerra as negociações nesta segunda-feira com o Ibovespa em 169.178 pts, em pregão marcado por disciplina seletiva dos investidores.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "No câmbio, o dólar registra R$ 5,79 (+2,15%), refletindo fluxo de capitais e o cenário macroeconômico global.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Entre as commodities, o barril de petróleo Brent finalizou a sessão a US$ 92,14; em Wall Street, o índice S&P 500 registrou 7.417 pts.",
+          "fonte": "Investing",
+          "link": "https://br.investing.com"
+        },
+        {
+          "texto": "No universo cripto, o Bitcoin opera no patamar de US$ 64.967, preservando acompanhamento contínuo pelo motor de longo prazo.",
+          "fonte": "Binance / CoinMarketCap"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Fechamento nesta segunda-feira consolida as cotações oficiais do dia na B3."
+        },
+        {
+          "texto": "Mercado aguarda a abertura do próximo pregão para novos indicadores."
+        }
+      ],
+      "disponivel": true,
+      "status_publicacao": "Publicado",
       "horario_exibicao": "18h15",
-      "capturado_em": null,
+      "capturado_em": "2026-11-16T18:20:39.062972-03:00",
       "data_referencia": "2026-11-16",
       "data_formatada": "16/11/2026"
     },
