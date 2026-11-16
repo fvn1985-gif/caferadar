@@ -559,7 +559,13 @@ def gerar_materiais_abertura(dados_fechamento: Dict[str, Any], output_dir: Optio
 
     x_start_x = 66
 
-    for idx, (nome, val, var, pos) in enumerate(itens_grid[:4]):
+    itens_grid_x = [it for it in itens_grid if it[1] != "Indisponível"][:4]
+    if len(itens_grid_x) < 4:
+        for it in itens_grid:
+            if it not in itens_grid_x and len(itens_grid_x) < 4:
+                itens_grid_x.append(it)
+
+    for idx, (nome, val, var, pos) in enumerate(itens_grid_x):
 
         cx = x_start_x + idx * (col_w_x + gap_x_x)
 
@@ -1741,7 +1747,7 @@ def main(categorias: Optional[List[str]] = None, output_dir: Optional[Path] = No
 
     sucesso_total = True
 
-    categorias_alvo = [c.lower() for c in (categorias or ["abertura", "fechamento", "swing", "longoprazo"])]
+    categorias_alvo = [c.lower() for c in (categorias or ["abertura", "negocios", "fechamento", "swing", "longoprazo"])]
 
     # 1. Abertura
 

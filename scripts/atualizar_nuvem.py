@@ -354,8 +354,8 @@ def coletar_cotacoes(agora_sp: datetime | None = None, sem_pregao: bool = False)
                         continue
 
                 c_date = candles_datas.get(symb)
-                # Fallback individual se lote 1mo não retornou data válida para ativos B3 / ^GSPC
-                if not c_date and not sem_pregao and (symb == "^BVSP" or symb.endswith(".SA") or symb == "^GSPC"):
+                # Fallback individual se lote 1mo não retornou data de hoje para ativos B3 / ^GSPC
+                if (not c_date or c_date < data_hoje_iso) and not sem_pregao and (symb == "^BVSP" or symb.endswith(".SA") or symb == "^GSPC"):
                     try:
                         h5 = t.history(period="5d")
                         if h5 is not None and not h5.empty and "Close" in h5:
@@ -363,7 +363,20 @@ def coletar_cotacoes(agora_sp: datetime | None = None, sem_pregao: bool = False)
                             if len(s5) >= 1:
                                 c_date = s5.index[-1].to_pydatetime().date().isoformat()
                     except Exception:
-                        c_date = None
+                        pass
+                # Fallback intradiário (5m) para ativos B3 durante o pregão (ex.: abertura às 10h30 com delay na barra diária)
+                if (not c_date or c_date < data_hoje_iso) and not sem_pregao and (symb == "^BVSP" or symb.endswith(".SA")):
+                    try:
+                        h_intra = t.history(period="2d", interval="5m")
+                        if h_intra is not None and not h_intra.empty:
+                            last_ts_b3 = h_intra.index[-1].to_pydatetime()
+                            if last_ts_b3.tzinfo is None:
+                                last_ts_b3 = last_ts_b3.replace(tzinfo=TZ_SP)
+                            else:
+                                last_ts_b3 = last_ts_b3.astimezone(TZ_SP)
+                            c_date = last_ts_b3.date().isoformat()
+                    except Exception:
+                        pass
 
                 # Em dias úteis, validar frescor real (nunca reciclar candle de pregão anterior como sendo de hoje!)
                 if not sem_pregao:

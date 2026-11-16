@@ -5,7 +5,8 @@ garantindo que o usuário consiga colar com 1 clique direto no X sem erro de tam
 from typing import Dict, Any, List
 
 def formatar_tweet_negocios(dados_fechamento: Dict[str, Any], data_fmt: str) -> str:
-    ed = dados_fechamento.get("edicoes", {}).get("fechamento", {})
+    edicoes = dados_fechamento.get("edicoes", {})
+    ed = edicoes.get("negocios") or edicoes.get("almoco") or edicoes.get("abertura") or {}
     mercados = ed.get("mercado_geral", {})
     blue_chips = ed.get("acoes_blue_chips", [])
     

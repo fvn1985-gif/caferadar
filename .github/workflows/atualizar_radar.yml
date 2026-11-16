@@ -3,6 +3,8 @@ name: Atualizar CafeRadar na Nuvem (Portal & Cotações)
 on:
   schedule:
     # Horários em UTC (Brasília = UTC - 3)
+    # 11:00 UTC = 08h00 Brasília (Café Matinal / Pré-Mercado, Seg a Sex)
+    - cron: '0 11 * * 1-5'
     # 13:30 UTC = 10h30 Brasília (Abertura B3 / Primeiros Negócios, Seg a Sex)
     - cron: '30 13 * * 1-5'
     # 16:00 UTC = 13h00 Brasília (Atualização de Almoço, Seg a Sex)
@@ -69,7 +71,6 @@ jobs:
 
       - name: Atualizar Acervo, Sitemap, RSS e Fita HTML Estática
         run: |
-          python scripts/gerar_acervo.py
           python scripts/gerar_acervo.py
           python scripts/gerar_rss_feed.py
           python scripts/sincronizar_portal_estatico.py

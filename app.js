@@ -891,7 +891,7 @@
 
     const elHeroImg = document.getElementById('fechamento-hero-img');
     if (elHeroImg && dadosFechamentoCache) {
-      const dataRef = dadosFechamentoCache.data_referencia || '2026-11-09';
+      const dataRef = dados.data_referencia || dadosFechamentoCache.data_referencia || '2026-11-09';
       let cardTipo = 'fechamento';
       const idOuNome = (dados.id || dados.nome || '').toLowerCase();
       if (idOuNome.includes('matinal') || idOuNome.includes('mapa') || idOuNome === 'abertura') {
@@ -899,6 +899,10 @@
       } else if (idOuNome.includes('negocios') || idOuNome.includes('abertura b3') || idOuNome.includes('almoco')) {
         cardTipo = 'negocios';
       }
+      elHeroImg.onerror = function () {
+        this.onerror = null;
+        this.src = 'og-image.png';
+      };
       elHeroImg.src = `marketing_output/${dataRef}_${cardTipo}_x.png`;
       elHeroImg.alt = `${dados.titulo || 'Síntese do Pregão B3'} — CafeRadar`;
     }
