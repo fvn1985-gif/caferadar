@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "abertura",
+  "edicao_padrao": "negocios",
   "data_referencia": "2026-11-16",
   "data_formatada": "16/11/2026",
   "edicoes": {
@@ -80,19 +80,78 @@
       "nome": "Abertura B3",
       "horario": "10h30",
       "horario_exibicao": "10h30",
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 10h30",
+      "disponivel": true,
+      "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 16/11/2026",
-      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (16/11/2026).",
-      "mercado_geral": {},
-      "leitura_rapida": [],
-      "comparacao_anterior": [],
+      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa em Indisponível e Dólar a R$ 5,73 na primeira hora de negócios",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "Indisponível",
+          "valor": "Indisponível",
+          "variacao": "—",
+          "positivo": null
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 5,73",
+          "variacao": "+1,10%",
+          "positivo": true
+        },
+        "sp500": {
+          "nome": "S&P 500 Futuro",
+          "valor": "7.538 pts",
+          "variacao": "-0,21%",
+          "positivo": false
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 64.277",
+          "variacao": "-1,59%",
+          "positivo": false
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 94,51",
+          "variacao": "-0,80%",
+          "positivo": false
+        }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa marca Indisponível na primeira hora de negócios com foco no fluxo institucional.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent em US$ 94,51.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br"
+        },
+        {
+          "texto": "No câmbio doméstico, o dólar comercial marca R$ 5,73 (+1,10%) nas primeiras cotações, acompanhando os juros futuros.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Nos contratos futuros de Wall Street, o S&P 500 Futuro marca 7.538 pts antes da abertura regular de Nova York, enquanto o Bitcoin é negociado a US$ 64.277.",
+          "fonte": "BB InvesTalk"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Primeira hora de negócios de segunda-feira registra a formação de preços após a abertura da B3."
+        },
+        {
+          "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)."
+        }
+      ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
         "altas": [],
         "quedas": []
       },
-      "capturado_em": null,
+      "capturado_em": "2026-11-16T10:30:47.011668-03:00",
       "acoes_blue_chips": [],
       "data_referencia": "2026-11-16",
       "data_formatada": "16/11/2026"
@@ -124,19 +183,78 @@
       "nome": "Abertura B3",
       "horario": "10h30",
       "horario_exibicao": "10h30",
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 10h30",
+      "disponivel": true,
+      "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 16/11/2026",
-      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (16/11/2026).",
-      "mercado_geral": {},
-      "leitura_rapida": [],
-      "comparacao_anterior": [],
+      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa em Indisponível e Dólar a R$ 5,73 na primeira hora de negócios",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "Indisponível",
+          "valor": "Indisponível",
+          "variacao": "—",
+          "positivo": null
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 5,73",
+          "variacao": "+1,10%",
+          "positivo": true
+        },
+        "sp500": {
+          "nome": "S&P 500 Futuro",
+          "valor": "7.538 pts",
+          "variacao": "-0,21%",
+          "positivo": false
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 64.277",
+          "variacao": "-1,59%",
+          "positivo": false
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 94,51",
+          "variacao": "-0,80%",
+          "positivo": false
+        }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa marca Indisponível na primeira hora de negócios com foco no fluxo institucional.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent em US$ 94,51.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br"
+        },
+        {
+          "texto": "No câmbio doméstico, o dólar comercial marca R$ 5,73 (+1,10%) nas primeiras cotações, acompanhando os juros futuros.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Nos contratos futuros de Wall Street, o S&P 500 Futuro marca 7.538 pts antes da abertura regular de Nova York, enquanto o Bitcoin é negociado a US$ 64.277.",
+          "fonte": "BB InvesTalk"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Primeira hora de negócios de segunda-feira registra a formação de preços após a abertura da B3."
+        },
+        {
+          "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)."
+        }
+      ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
         "altas": [],
         "quedas": []
       },
-      "capturado_em": null,
+      "capturado_em": "2026-11-16T10:30:47.011668-03:00",
       "acoes_blue_chips": [],
       "data_referencia": "2026-11-16",
       "data_formatada": "16/11/2026"
