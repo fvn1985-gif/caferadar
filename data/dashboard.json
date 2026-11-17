@@ -1,8 +1,8 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-17T00:46:59.063346-03:00",
+  "generated_at": "2026-11-17T08:01:03.736790-03:00",
   "reference_date": "2026-11-16",
-  "status": "● PRÉ-MERCADO (17/11/2026 às 00h46) — Aguardando Abertura B3",
+  "status": "● PRÉ-MERCADO (17/11/2026 às 08h01) — Aguardando Abertura B3",
   "indicators": {
     "ibov": {
       "fallback_used": false,
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -30.32,
       "last_close": {
         "date": "2026-11-17",
-        "value": 64995.01
+        "value": 64092.96
       },
       "positive_trend_confirmed": true,
       "valid": true
