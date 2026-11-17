@@ -1642,12 +1642,8 @@
   function renderizarLegendaEstados() {
     const container = document.getElementById('legenda-estados');
     if (!container) return;
-    container.innerHTML = `
-      <span style="font-size:0.8rem;color:var(--texto-mutado);margin-right:8px;">Legenda de Auditoria:</span>
-      <span class="badge-status status-valido" style="margin-right:8px;">Válido</span>
-      <span class="badge-status status-desatualizado" style="margin-right:8px;">Desatualizado / Pendente</span>
-      <span class="badge-status status-invalido">Inválido / Rejeitado</span>
-    `;
+    container.innerHTML = '';
+    container.style.display = 'none';
   }
 
   // =========================================================================
