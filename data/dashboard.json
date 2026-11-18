@@ -1,6 +1,6 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-18T18:32:18.421391-03:00",
+  "generated_at": "2026-11-18T19:47:47.956770-03:00",
   "reference_date": "2026-11-18",
   "status": "● MONITORAMENTO DIÁRIO ATIVO — 18/11/2026",
   "indicators": {
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -34.15,
       "last_close": {
         "date": "2026-11-18",
-        "value": 62341.11
+        "value": 62365.81
       },
       "positive_trend_confirmed": true,
       "valid": true
