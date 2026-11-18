@@ -266,19 +266,6 @@
     </div>
   </header>
 
-  <!-- ==================== ESPAÇO DE ANÚNCIO (ADSENSE LEADERBOARD) ==================== -->
-  <div class="container container-ad">
-    <div class="slot-publicidade leaderboard">
-      <span class="rotulo-ad">PUBLICIDADE</span>
-      <ins class="adsbygoogle"
-           style="display:block; width:100%; min-height:90px;"
-           data-ad-client="ca-pub-6721082194258309"
-           data-ad-slot="1234567890"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
-  </div>
-
   <main class="container vitrine-container">
     <a href="./" class="btn-voltar">← Voltar à página inicial</a>
 
@@ -357,6 +344,34 @@
       </p>
     </div>
 
+    <!-- Guia de Regras Tributárias da B3 -->
+    <article class="card-bloco-noticia" style="padding: 28px; margin-bottom: 24px;">
+      <h2 style="font-size: 1.24rem; color: var(--primaria); font-weight: 800; margin-bottom: 14px;">📖 Guia de Regras Tributárias da B3: Preço Médio, Isenção de R$ 20 Mil, Compensação de Prejuízos e DARF</h2>
+      <p style="font-size: 0.93rem; color: var(--texto-secundario); line-height: 1.68; margin-bottom: 14px;">
+        A apuração mensal do Imposto de Renda sobre operações em bolsa de valores no Brasil segue normas específicas da Receita Federal do Brasil (como a <strong>Instrução Normativa RFB nº 1.585/2015</strong> e atualizações da Lei nº 14.754/2023 para classes específicas). Diferente da Renda Fixa — em que a corretora ou banco retém o tributo na fonte —, na Renda Variável negociada na B3 a responsabilidade pelo cálculo mensal, compensação de perdas e emissão da guia de pagamento recai integralmente sobre o próprio investidor pessoa física.
+      </p>
+
+      <h3 style="font-size: 1.04rem; color: var(--primaria); font-weight: 700; margin: 16px 0 8px;">1. Cálculo do Custo Médio Ponderado e Eventos Societários</h3>
+      <p style="font-size: 0.91rem; color: var(--texto-secundario); line-height: 1.65; margin-bottom: 12px;">
+        O ganho de capital tributável não é calculado pela última compra isolada, mas pelo <strong>custo médio ponderado de aquisição</strong> de todas as unidades mantidas em custódia daquele código de negociação. Custos operacionais efetivamente pagos (corretagem, taxa de liquidação e emolumentos da B3) somam-se ao custo total de compra e deduzem o valor líquido de venda. Eventos corporativos como <strong>desdobramentos (splits)</strong> e <strong>grupamentos (inplits)</strong> alteram a quantidade e o preço médio unitário mantendo o custo financeiro total inalterado, enquanto bonificações em ações com custo atribuído aumentam o estoque segundo o valor informado pela companhia emissora.
+      </p>
+
+      <h3 style="font-size: 1.04rem; color: var(--primaria); font-weight: 700; margin: 16px 0 8px;">2. A Regra da Isenção de R$ 20.000,00 por Mês e Exceções</h3>
+      <p style="font-size: 0.91rem; color: var(--texto-secundario); line-height: 1.65; margin-bottom: 12px;">
+        Pessoas físicas gozam de isenção de Imposto de Renda sobre o lucro líquido em operações comuns (<strong>Swing Trade</strong>) exclusivamente quando o <strong>volume bruto total de vendas de ações no mercado à vista</strong> não ultrapassa <strong>R$ 20.000,00 dentro do mesmo mês-calendário</strong>, considerando o somatório de todas as corretoras no mesmo CPF. Caso as alienações de ações somem R$ 20.000,01 ou mais no mês, todo o lucro auferido no período torna-se tributável a <strong>15%</strong>. Importante destacar que a isenção de R$ 20 mil <strong>não se aplica</strong> a operações de <strong>Day Trade</strong> (alíquota de 20%), nem a alienações com lucro em <strong>Fundos Imobiliários (FIIs, 20%)</strong> ou <strong>ETFs de renda variável (15%)</strong>, independentemente do valor vendido.
+      </p>
+
+      <h3 style="font-size: 1.04rem; color: var(--primaria); font-weight: 700; margin: 16px 0 8px;">3. Compensação de Prejuízos Acumulados por Classe</h3>
+      <p style="font-size: 0.91rem; color: var(--texto-secundario); line-height: 1.65; margin-bottom: 12px;">
+        Prejuízos realizados em meses anteriores podem abater a base de cálculo de lucros futuros tributáveis, desde que respeitada a separação estrita entre naturezas tributárias: perdas em <strong>operações comuns</strong> só compensam lucros futuros de operações comuns (Ações acima do limite de isenção, ETFs, BDRs e opções comuns); perdas em <strong>Day Trade</strong> compensam apenas ganhos de Day Trade; e prejuízos com cotas de <strong>FIIs</strong> abatem apenas ganhos líquidos de FIIs. Os saldos negativos acumulados não prescrevem na virada do ano-calendário, desde que devidamente transportados para a Declaração de Ajuste Anual do IRPF.
+      </p>
+
+      <h3 style="font-size: 1.04rem; color: var(--primaria); font-weight: 700; margin: 16px 0 8px;">4. Recolhimento via DARF (Código 6015) e Regra dos R$ 10,00</h3>
+      <p style="font-size: 0.91rem; color: var(--texto-secundario); line-height: 1.65; margin: 0;">
+        Apurado imposto devido após a dedução de eventual IRRF retido na fonte ("dedo-duro" de 0,005% em operações comuns ou 1% sobre o lucro em Day Trade), o recolhimento deve ocorrer por meio de <strong>DARF sob o código 6015</strong> até o <strong>último dia útil do mês subsequente</strong> ao da realização das vendas. Se o valor calculado do tributo no mês resultar inferior a <strong>R$ 10,00</strong>, a guia não deve ser emitida naquele momento: o saldo devido acumula-se e soma-se aos meses futuros até atingir ou superar R$ 10,00. O aplicativo local-first organiza esses lançamentos para apoiar a conferência, devendo o contribuinte validar os totais finais no SicalcWeb e no programa oficial da Receita Federal.
+      </p>
+    </article>
+
     <!-- Aviso Legal CVM / Receita Federal -->
     <div class="aviso-legal-cvm">
       <span class="icone-balanca">⚖️</span>
@@ -428,9 +443,6 @@
           } catch (e) {}
         });
       }
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {}
     });
   </script>
 

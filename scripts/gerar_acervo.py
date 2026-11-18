@@ -110,6 +110,65 @@ def obter_imagem_edicao(data_ref: str, slug_canonico: str, base_dir: Path) -> st
     
     return "https://caferadar.com.br/og-image.png"
 
+def _construir_bloco_contexto_metodologico(slug_canonico: str) -> str:
+    """Retorna bloco editorial contextualizado por janela horária para enriquecer páginas de edições."""
+    if slug_canonico == "matinal":
+        texto_janela = (
+            "A edição <strong>Café Matinal (08h00)</strong> acompanha o pré-mercado global antes do leilão de abertura da B3 (09h45) e do início do pregão regular às 10h00. "
+            "Nesta janela, o acompanhamento concentra-se nos contratos futuros do S&amp;P 500 (<code>ES=F</code>), na cotação de referência do petróleo Brent, na taxa de câmbio comercial (dólar/real) e no Bitcoin em negociação contínua 24h. "
+            "Como o mercado à vista brasileiro ainda está fechado nesse horário, cotações individuais de ações da B3 e o Ibovespa à vista são omitidos intencionalmente para não repetir preços do pregão anterior sob a data atual."
+        )
+    elif slug_canonico == "abertura":
+        texto_janela = (
+            "A edição <strong>Abertura B3 (10h30)</strong> registra a primeira hora de formação de preços após o início das negociações regulares do mercado à vista brasileiro (10h00). "
+            "Nesse intervalo, o fluxo institucional inicial e o alinhamento com os contratos futuros de Nova York costumam gerar maior dispersão entre os papéis de maior liquidez. "
+            "O painel acompanha a reação simultânea do Ibovespa, do dólar comercial, dos futuros do S&amp;P 500 (<code>ES=F</code>), das commodities energéticas e do grupo de 8 blue chips com forte peso na composição do índice."
+        )
+    else:
+        texto_janela = (
+            "A edição <strong>Fechamento (18h15)</strong> consolida o encerramento oficial do pregão regular e do call de fechamento da B3, registrando os valores finais do Ibovespa, do dólar comercial de referência (PTAX/mercado à vista), do índice S&amp;P 500 à vista em Nova York (<code>^GSPC</code>), do petróleo Brent e do Bitcoin. "
+            "A leitura conjunta do fechamento doméstico com o desempenho das bolsas americanas e das commodities permite contextualizar se o movimento do dia respondeu a fatores locais (juros futuros e dinâmica fiscal) ou ao apetite global por risco."
+        )
+    return f'''
+      <section style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:20px; margin-bottom:24px;">
+        <h2 style="font-size:1.1rem; color:var(--primaria); font-weight:800; margin-bottom:10px;">🧭 Contexto Metodológico &amp; Como Interpretar os Indicadores desta Edição</h2>
+        <p style="font-size:0.92rem; color:#334155; line-height:1.65; margin-bottom:10px;">
+          {texto_janela}
+        </p>
+        <p style="font-size:0.92rem; color:#334155; line-height:1.65; margin-bottom:10px;">
+          <strong>Composição setorial e monitoramento de blue chips:</strong> O acompanhamento recorrente de ativos como <strong>PETR4</strong> e <strong>PRIO3</strong> (óleo e gás), <strong>VALE3</strong> (mineração e commodities metálicas), <strong>ITUB4</strong>, <strong>BBAS3</strong>, <strong>BBDC4</strong> e <strong>B3SA3</strong> (setor financeiro e infraestrutura de mercado) e <strong>WEGE3</strong> (bens de capital e indústria exportadora) reflete setores de alta liquidez e relevância na ponderação do Ibovespa, permitindo observar a amplitude setorial de cada pregão.
+        </p>
+        <p style="font-size:0.9rem; color:#475569; line-height:1.6; margin:0;">
+          <strong>Fontes primárias e governança de dados:</strong> Todos os números publicados passam por verificação automatizada de data de pregão (<em>fail-closed</em>) cruzando séries públicas da B3, Banco Central do Brasil, Tesouro Nacional e bolsas internacionais, sem edição discricionária ou recomendação de compra e venda de ativos.
+        </p>
+      </section>
+        '''
+
+
+def _renderizar_tabela_destaques(itens: list[dict], cor_hex: str, msg_vazia: str) -> str:
+    """Renderiza tabela estruturada de altas/quedas ou mensagem informativa quando vazia."""
+    if not itens:
+        return f'<p style="font-size:0.85rem; color:#64748b; margin:4px 0 8px;">{_esc(msg_vazia)}</p>'
+    linhas = "".join(
+        f"""
+        <tr>
+          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; font-weight:700; color:#0f172a;">{_esc(item.get('ticker'))}</td>
+          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; text-align:right; color:{cor_hex}; font-weight:700; font-family:monospace;">{_esc(item.get('variacao'))}</td>
+        </tr>
+        """
+        for item in itens
+    )
+    return f"""
+    <table style="width:100%; font-size:0.88rem; border-collapse:collapse; margin-bottom:8px;">
+      <thead>
+        <tr style="background:#f1f5f9; text-align:left; font-size:0.8rem; color:#475569;">
+          <th>Ativo</th>
+          <th style="text-align:right;">Variação</th>
+        </tr>
+      </thead>
+      <tbody>{linhas}</tbody></table>"""
+
+
 def gerar_pagina_edicao(
     ed_dados: dict,
     data_ref: str,
@@ -206,43 +265,16 @@ def gerar_pagina_edicao(
 
     # Destaques B3 com tabela estruturada e cabeçalho <th>Ativo</th><th>Variação</th>
     destaques = ed_dados.get("destaques", {})
-    altas_html = """
-    <table style="width:100%; font-size:0.88rem; border-collapse:collapse; margin-bottom:8px;">
-      <thead>
-        <tr style="background:#f1f5f9; text-align:left; font-size:0.8rem; color:#475569;">
-          <th>Ativo</th>
-          <th style="text-align:right;">Variação</th>
-        </tr>
-      </thead>
-      <tbody>
-    """
-    for a in destaques.get("altas", []):
-        altas_html += f"""
-        <tr>
-          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; font-weight:700; color:#0f172a;">{_esc(a.get('ticker'))}</td>
-          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; text-align:right; color:#16a34a; font-weight:700; font-family:monospace;">{_esc(a.get('variacao'))}</td>
-        </tr>
-        """
-    altas_html += "</tbody></table>"
-
-    quedas_html = """
-    <table style="width:100%; font-size:0.88rem; border-collapse:collapse; margin-bottom:8px;">
-      <thead>
-        <tr style="background:#f1f5f9; text-align:left; font-size:0.8rem; color:#475569;">
-          <th>Ativo</th>
-          <th style="text-align:right;">Variação</th>
-        </tr>
-      </thead>
-      <tbody>
-    """
-    for q in destaques.get("quedas", []):
-        quedas_html += f"""
-        <tr>
-          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; font-weight:700; color:#0f172a;">{_esc(q.get('ticker'))}</td>
-          <td style="padding:6px 10px; border-bottom:1px dashed #e2e8f0; text-align:right; color:#dc2626; font-weight:700; font-family:monospace;">{_esc(q.get('variacao'))}</td>
-        </tr>
-        """
-    quedas_html += "</tbody></table>"
+    altas_html = _renderizar_tabela_destaques(
+        destaques.get("altas", []),
+        "#16a34a",
+        "Nenhum ativo monitorado em alta no momento da captura.",
+    )
+    quedas_html = _renderizar_tabela_destaques(
+        destaques.get("quedas", []),
+        "#dc2626",
+        "Nenhum ativo monitorado em queda no momento da captura.",
+    )
 
     # Navegação sequencial
     nav_itens = []
@@ -363,6 +395,8 @@ def gerar_pagina_edicao(
 
     if sem_captura:
         meta_robots = '<meta name="robots" content="noindex, nofollow">'
+        adsense_head_tag = ""
+        bloco_contexto_metodologico = ""
         banner_aviso_sem_captura = '''
       <div style="background:#fffbeb; border:1px solid #fef3c7; border-left:4px solid #f59e0b; border-radius:8px; padding:16px; margin-bottom:24px;">
         <strong style="color:#b45309;">⚠️ Edição sem captura no horário:</strong> <span style="color:#78350f; font-size:0.92rem;">Os dados de pré-mercado das 08h00 não foram capturados nesta data. Conteúdo preservado unicamente para integridade do acervo histórico.</span>
@@ -370,6 +404,8 @@ def gerar_pagina_edicao(
         '''
     else:
         meta_robots = '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">'
+        adsense_head_tag = '\n  <!-- Google AdSense Oficial -->\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>'
+        bloco_contexto_metodologico = _construir_bloco_contexto_metodologico(slug_canonico)
         banner_aviso_sem_captura = "" 
 
     html = f"""<!DOCTYPE html>
@@ -435,8 +471,8 @@ def gerar_pagina_edicao(
   <!-- Google Analytics 4 (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-50J887FJDV"></script>
 
-  <!-- Google AdSense Oficial -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>
+{adsense_head_tag}
+
 
   <!-- Schema.org NewsArticle (Google Discover & Rich Results) -->
   <script type="application/ld+json">
@@ -553,6 +589,7 @@ def gerar_pagina_edicao(
       </ul>
 
       {bloco_mercado_acoes}
+      {bloco_contexto_metodologico}
 
       <div class="aviso-legal-cvm" style="margin-top:24px;">
         <span class="icone-balanca">⚖️</span>
@@ -902,7 +939,7 @@ def gerar_todas_edicoes(include_deploy: bool = False):
             ant = None
             prox = None
             # Lista de navegação exclui edições sem captura legítima
-            acervo_nav = [x for x in arquivos_acervo if x["arquivo"] != "2026-11-09-matinal.html"]
+            acervo_nav = [x for x in arquivos_acervo if x["arquivo"] != "2026-11-09-matinal.html" and "sem captura" not in x["titulo"].lower()]
             for idx, item in enumerate(acervo_nav):
                 if item["arquivo"] == nome_arq:
                     if idx + 1 < len(acervo_nav):
@@ -912,7 +949,7 @@ def gerar_todas_edicoes(include_deploy: bool = False):
                     break
 
             # Matérias relacionadas: 3 mais recentes diferentes da atual
-            relacionados = [x for x in arquivos_acervo if x["arquivo"] != nome_arq][:3]
+            relacionados = [x for x in acervo_nav if x["arquivo"] != nome_arq][:3]
 
             out_file = edicoes_dir / nome_arq
             dt_pub = None
@@ -1003,9 +1040,11 @@ def gerar_todas_edicoes(include_deploy: bool = False):
         for meta in arquivos_acervo:
             arq_path = edicoes_dir / meta["arquivo"]
             conteudo_antigo = meta["raw_html"]
-            # Se já tem o novo header v2 com BreadcrumbList e imagem, pula
-            if 'BreadcrumbList' in conteudo_antigo and '<figure' in conteudo_antigo and 'fetchpriority="high"' in conteudo_antigo:
-                continue
+            eh_sem_captura = (
+                meta["arquivo"] == "2026-11-09-matinal.html"
+                or '<meta name="robots" content="noindex, nofollow">' in conteudo_antigo
+                or "⚠️ Edição sem captura no horário:" in conteudo_antigo
+            )
 
             # Retroaplica template enriquecido
             slug_c = meta["slug_canonico"]
@@ -1092,9 +1131,46 @@ def gerar_todas_edicoes(include_deploy: bool = False):
 """
                 conteudo_antigo = conteudo_antigo.replace('</head>', f'{breadcrumb_tag}\n</head>')
 
-            with open(arq_path, "w", encoding="utf-8") as f_mod:
-                f_mod.write(conteudo_antigo)
-            print(f"[RETROFIT v2] Template atualizado: {meta['arquivo']}")
+            if eh_sem_captura:
+                conteudo_antigo = re.sub(
+                    r'\s*<!-- Google AdSense Oficial -->\s*<script[^>]*pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^>]*></script>',
+                    "",
+                    conteudo_antigo,
+                    flags=re.IGNORECASE,
+                )
+                conteudo_antigo = re.sub(
+                    r'\s*<script[^>]*pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^>]*></script>',
+                    "",
+                    conteudo_antigo,
+                    flags=re.IGNORECASE,
+                )
+            else:
+                if "adsbygoogle.js" not in conteudo_antigo:
+                    tag_ads = '  <!-- Google AdSense Oficial -->\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6721082194258309" crossorigin="anonymous"></script>\n</head>'
+                    conteudo_antigo = conteudo_antigo.replace("</head>", tag_ads, 1)
+                conteudo_antigo = re.sub(
+                    r'\s*<a href="2026-11-09-matinal\.html"[\s\S]*?</a>',
+                    "",
+                    conteudo_antigo,
+                )
+                conteudo_antigo = re.sub(
+                    r'<table[^>]*>\s*<thead>[\s\S]*?</thead>\s*<tbody>\s*</tbody>\s*</table>',
+                    '<p style="font-size:0.85rem; color:#64748b; margin:4px 0 8px;">Nenhum ativo monitorado nesta ponta no momento da captura.</p>',
+                    conteudo_antigo,
+                )
+                if "Contexto Metodológico" not in conteudo_antigo:
+                    bloco_ctx = _construir_bloco_contexto_metodologico(slug_c)
+                    conteudo_antigo = re.sub(
+                        r'(\s*<div class="aviso-legal-cvm")',
+                        lambda m: f"\n{bloco_ctx}{m.group(1)}",
+                        conteudo_antigo,
+                        count=1,
+                    )
+
+            if conteudo_antigo != meta["raw_html"]:
+                with open(arq_path, "w", encoding="utf-8") as f_mod:
+                    f_mod.write(conteudo_antigo)
+                print(f"[RETROFIT v2] Template atualizado: {meta['arquivo']}")
 
         # 5. Re-coletar para gerar o Acervo Geral (/edicoes/index.html)
         arquivos_acervo = []
@@ -1108,6 +1184,8 @@ def gerar_todas_edicoes(include_deploy: bool = False):
 
         itens_acervo_html = ""
         for item in arquivos_acervo:
+            if item["arquivo"] == "2026-11-09-matinal.html" or "sem captura" in item["titulo"].lower():
+                continue
             horario_str = f" às {item['horario']}" if item['horario'] else ""
             itens_acervo_html += f"""
             <a href="{_esc(item['arquivo'])}" style="display:block; text-decoration:none; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:14px; transition:all 0.15s ease;">
@@ -1202,6 +1280,16 @@ def gerar_todas_edicoes(include_deploy: bool = False):
     <p style="font-size:0.95rem; color:var(--texto-secundario); margin-bottom:28px;">
       Consulte o histórico de todas as sínteses do pregão diário publicadas pelo CafeRadar, com cotações preservadas, blue chips e destaques da B3.
     </p>
+
+    <section style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:26px;">
+      <h2 style="font-size:1.05rem; color:var(--primaria); font-weight:800; margin:0 0 8px;">Como funciona o arquivo histórico de pregões</h2>
+      <p style="font-size:0.9rem; color:#334155; line-height:1.6; margin-bottom:10px;">
+        Cada dia útil na bolsa brasileira gera até três registros permanentes e imutáveis por janela horária: <strong>Café Matinal (08h00)</strong> para o pré-mercado global (futuros americanos, dólar, petróleo Brent e Bitcoin), <strong>Abertura B3 (10h30)</strong> para a primeira hora do mercado à vista e <strong>Fechamento (18h15)</strong> para os números consolidados do encerramento oficial.
+      </p>
+      <p style="font-size:0.88rem; color:#475569; line-height:1.55; margin:0;">
+        Os registros utilizam verificação cruzada em fontes públicas primárias (B3, Banco Central do Brasil, Tesouro Nacional e bolsas globais) sob controle estrito de frescor temporal, sem caráter de recomendação de investimento (Resoluções CVM nº 19/2021 e nº 20/2021).
+      </p>
+    </section>
 
     <div class="lista-edicoes-acervo">
       {itens_acervo_html}

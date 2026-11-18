@@ -166,6 +166,137 @@ def _render_item_fita_estatica(item: dict, aria_hidden: bool = False) -> str:
     )
 
 
+def _url_http_segura(url: object) -> str:
+    s = str(url or "").strip()
+    return s if re.match(r"^https?://", s, flags=re.IGNORECASE) else ""
+
+
+def _render_leitura_rapida_estatica(ed: dict) -> str:
+    """Renderiza os itens de leitura rápida da edição ativa para o HTML estático."""
+    itens = ed.get("leitura_rapida") if isinstance(ed, dict) else None
+    if not isinstance(itens, list) or not itens:
+        return ""
+    blocos = []
+    for item in itens:
+        if not isinstance(item, dict):
+            continue
+        txt = escape(str(item.get("texto") or ""))
+        fonte = escape(str(item.get("fonte") or ""))
+        link = _url_http_segura(item.get("link"))
+        if link and fonte:
+            fonte_html = f' <a href="{escape(link)}" target="_blank" rel="noopener" style="color:var(--destaque); font-weight:600;">({fonte} ↗)</a>'
+        elif fonte:
+            fonte_html = f' <span style="color:#64748b; font-size:0.85rem;">({fonte})</span>'
+        else:
+            fonte_html = ""
+        blocos.append(
+            f'          <div class="bullet-noticia-item">\n'
+            f'            <span class="bullet-marcador"></span>\n'
+            f'            <p>{txt}{fonte_html}</p>\n'
+            f'          </div>'
+        )
+    return "\n".join(blocos)
+
+
+def _render_blue_chips_estatica(ed: dict) -> str:
+    """Renderiza as linhas da tabela de blue chips para o HTML estático."""
+    acoes = ed.get("acoes_blue_chips") if isinstance(ed, dict) else None
+    if not isinstance(acoes, list) or not acoes:
+        return ""
+    linhas = []
+    for ac in acoes:
+        if not isinstance(ac, dict):
+            continue
+        pos = ac.get("positivo") is True
+        cor_dia = "var(--alta)" if pos else "var(--baixa)"
+        var_dia = str(ac.get("variacao_dia") or "—").strip()
+        if var_dia != "—" and not var_dia.startswith(("▲", "▼")):
+            var_dia = f"{'▲' if pos else '▼'} {var_dia}"
+        var_mes = str(ac.get("variacao_mes") or "—").strip()
+        cor_mes = "var(--alta)" if var_mes.startswith("+") else ("var(--baixa)" if var_mes.startswith("-") else "#64748b")
+        linhas.append(
+            f'                <tr>\n'
+            f'                  <td><strong>{escape(str(ac.get("ticker") or ""))}</strong> <span style="font-size:0.75rem; color:#64748b;">{escape(str(ac.get("nome") or ""))}</span></td>\n'
+            f'                  <td>{escape(str(ac.get("preco") or "—"))}</td>\n'
+            f'                  <td style="color:{cor_dia}; font-weight:700;">{escape(var_dia)}</td>\n'
+            f'                  <td style="color:{cor_mes};">{escape(var_mes)}</td>\n'
+            f'                </tr>'
+        )
+    return "\n".join(linhas)
+
+
+def _render_coluna_destaque(itens: list, titulo: str, icone: str, classe_col: str, classe_tit: str, cor_var: str, msg_vazia: str) -> str:
+    if isinstance(itens, list) and itens:
+        corpo = "\n".join(
+            f'              <div class="item-destaque-ranking">\n'
+            f'                <span class="ticker-tag">{escape(str(it.get("ticker") or ""))}</span>\n'
+            f'                <span class="cel-num" style="color:{cor_var};font-weight:700;">{escape(str(it.get("variacao") or ""))}</span>\n'
+            f'              </div>'
+            for it in itens
+            if isinstance(it, dict)
+        )
+    else:
+        corpo = f'              <p style="font-size:0.85rem; color:#64748b; margin:6px 0;">{escape(msg_vazia)}</p>'
+    return (
+        f'            <div class="{classe_col}">\n'
+        f'              <div class="titulo-coluna-destaque {classe_tit}"><span>{icone}</span> {titulo}</div>\n'
+        f'{corpo}\n'
+        f'            </div>'
+    )
+
+
+def _render_destaques_estatico(ed: dict) -> str:
+    """Renderiza o bloco de maiores altas e quedas para o HTML estático."""
+    dest = ed.get("destaques") if isinstance(ed, dict) else None
+    if not isinstance(dest, dict):
+        return ""
+    col_altas = _render_coluna_destaque(
+        dest.get("altas") or [],
+        "Maiores Altas",
+        "▲",
+        "coluna-altas",
+        "alta",
+        "var(--alta)",
+        "Sem blue chips em alta no horário desta captura.",
+    )
+    col_quedas = _render_coluna_destaque(
+        dest.get("quedas") or [],
+        "Maiores Quedas",
+        "▼",
+        "coluna-baixas",
+        "baixa",
+        "var(--baixa)",
+        "Sem blue chips em queda no horário desta captura.",
+    )
+    return f"{col_altas}\n{col_quedas}"
+
+
+def _render_comparacao_anterior_estatica(ed: dict) -> str:
+    """Renderiza os bullets de comparação com o pregão anterior para o HTML estático."""
+    comp = ed.get("comparacao_anterior") if isinstance(ed, dict) else None
+    if not isinstance(comp, list) or not comp:
+        return ""
+    itens = []
+    for c in comp:
+        if not isinstance(c, dict):
+            continue
+        txt = escape(str(c.get("texto") or ""))
+        fonte = escape(str(c.get("fonte") or ""))
+        link = _url_http_segura(c.get("link"))
+        link_html = (
+            f' <a href="{escape(link)}" target="_blank" rel="noopener" class="link-fonte">({fonte} ↗)</a>'
+            if link and fonte
+            else ""
+        )
+        itens.append(
+            f'          <div class="bullet-item">\n'
+            f'            <span class="bullet-ponto">•</span>\n'
+            f'            <div>{txt}{link_html}</div>\n'
+            f'          </div>'
+        )
+    return "\n".join(itens)
+
+
 def _resolver_card_tipo_hero(ed_ativa_k: str | None, ed: dict) -> str:
     """Mapeia edição ativa para o sufixo do arquivo *_x.png compatível com app.js."""
     id_ou_nome = f"{ed.get('id') or ''} {ed.get('nome') or ''}".lower()
@@ -288,6 +419,47 @@ def sincronizar_index_html_estatico(dados: dict, base_dir: Path):
                 r'<div class="grid-tickers-fechamento" id="cards-mercado-fechamento">.*?</div>\s*<!-- Leitura Rápida',
                 lambda _: f'<div class="grid-tickers-fechamento" id="cards-mercado-fechamento">\n{bloco_tickers}\n      </div>\n\n      <!-- Leitura Rápida',
                 html,
+                flags=re.DOTALL,
+            )
+
+        # 2.1 Sincronização dos blocos analíticos estáticos (leitura rápida, blue chips, destaques e comparação)
+        leitura_html = _render_leitura_rapida_estatica(ed)
+        if leitura_html and 'id="leitura-rapida-fechamento"' in html:
+            html = re.sub(
+                r'(<div class="lista-bullets-noticia" id="leitura-rapida-fechamento">)(.*?)(</div>\s*</section>\s*<!-- Grid de Ações Blue Chips)',
+                lambda m: f'{m.group(1)}\n{leitura_html}\n        {m.group(3)}',
+                html,
+                count=1,
+                flags=re.DOTALL,
+            )
+
+        blue_html = _render_blue_chips_estatica(ed)
+        if blue_html and 'id="tabela-blue-chips"' in html:
+            html = re.sub(
+                r'(<tbody id="tabela-blue-chips">)(.*?)(</tbody>\s*</table>)',
+                lambda m: f'{m.group(1)}\n{blue_html}\n              {m.group(3)}',
+                html,
+                count=1,
+                flags=re.DOTALL,
+            )
+
+        dest_html = _render_destaques_estatico(ed)
+        if dest_html and 'id="destaques-altas-quedas"' in html:
+            html = re.sub(
+                r'(<div class="grid-altas-baixas" id="destaques-altas-quedas">)(.*?)(</div>\s*</div>\s*</div>\s*<!-- Comparação com o Dia Anterior)',
+                lambda m: f'{m.group(1)}\n{dest_html}\n          {m.group(3)}',
+                html,
+                count=1,
+                flags=re.DOTALL,
+            )
+
+        comp_html = _render_comparacao_anterior_estatica(ed)
+        if comp_html and 'id="comparacao-anterior"' in html:
+            html = re.sub(
+                r'(<div class="lista-bullets-noticia" id="comparacao-anterior">)(.*?)(</div>\s*</section>\s*</div><!-- fim conteudo-edicao-publicada)',
+                lambda m: f'{m.group(1)}\n{comp_html}\n        {m.group(3)}',
+                html,
+                count=1,
                 flags=re.DOTALL,
             )
 
