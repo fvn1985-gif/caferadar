@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://caferadar.com.br/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://caferadar.com.br/edicoes/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -171,16 +171,21 @@
   <url>
     <loc>https://caferadar.com.br/edicoes/2026-11-17-matinal.html</loc>
     <lastmod>2026-11-17</lastmod>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/edicoes/2026-11-17-abertura.html</loc>
     <lastmod>2026-11-17</lastmod>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://caferadar.com.br/edicoes/2026-11-17-fechamento.html</loc>
     <lastmod>2026-11-17</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://caferadar.com.br/edicoes/2026-11-18-matinal.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
