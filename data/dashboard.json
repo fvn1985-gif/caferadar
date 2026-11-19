@@ -1,15 +1,15 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-19T08:00:46.015679-03:00",
-  "reference_date": "2026-11-18",
-  "status": "● PRÉ-MERCADO (19/11/2026 às 08h00) — Aguardando Abertura B3",
+  "generated_at": "2026-11-19T10:31:41.534129-03:00",
+  "reference_date": "2026-11-19",
+  "status": "● MONITORAMENTO DIÁRIO ATIVO — 19/11/2026",
   "indicators": {
     "ibov": {
       "fallback_used": false,
       "freshness_limit_calendar_days": 5,
       "last_close": {
-        "date": "2026-11-18",
-        "value": 167537.95
+        "date": "2026-11-19",
+        "value": 167728.53
       },
       "last_close_age_calendar_days": 0,
       "sma200": {
@@ -30,8 +30,8 @@
     "ptax_venda": {
       "filter_active": false,
       "last_sale": {
-        "date": "2026-11-18",
-        "value": 5.8488
+        "date": "2026-11-19",
+        "value": 5.8744
       },
       "sma200": {
         "value": 5.1484,
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -34.15,
       "last_close": {
         "date": "2026-11-19",
-        "value": 63736.02
+        "value": 63721.1
       },
       "positive_trend_confirmed": true,
       "valid": true
