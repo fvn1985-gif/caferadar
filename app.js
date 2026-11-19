@@ -11,6 +11,49 @@
 (function () {
   'use strict';
 
+  /**
+   * CONFIGURAÇÃO CENTRALIZADA DE MONETIZAÇÃO & AFILIADOS (PILOTO AUTOMÁTICO)
+   * Preencha uma única vez com os links de checkout (Kiwify/Hotmart/Stripe) e IDs de afiliado.
+   * Todos os botões com [data-monetizacao-key] são atualizados automaticamente no carregamento.
+   */
+  const CAFERADAR_MONETIZACAO = {
+    // Links oficiais dos 3 produtos digitais na Hotmart (zero manutencao / entrega automatica):
+    planilhaFluxoUrl: 'https://pay.hotmart.com/F108565115F',
+    kitPythonColabUrl: 'https://pay.hotmart.com/R108565224R',
+    guiaIrpfB3Url: 'https://pay.hotmart.com/Q108565323L',
+    packCompletoUrl: 'carteira-ir.html#kit-ferramentas-pro',
+    // IDs e Links de Afiliados (configuração única):
+    tradingviewAffId: '1175068', // Injeta ?aff_id=1175068 nas 59 ações da tabela Swing
+    tradingviewUrl: 'https://br.tradingview.com/black-friday/?aff_id=1175068',
+    tradingviewBlackFridayUrl: 'https://br.tradingview.com/black-friday/?aff_id=1175068',
+    parceiroDolarGlobalUrl: 'calculadora-rendimento.html#ferramentas-patrimonio',
+    parceiroCriptoUrl: 'calculadora-rendimento.html#ferramentas-patrimonio',
+    livroInvestidorInteligenteUrl: 'https://www.amazon.com.br/s?k=o+investidor+inteligente+benjamin+graham',
+    livroIludidosPeloAcasoUrl: 'https://www.amazon.com.br/s?k=iludidos+pelo+acaso+nassim+taleb',
+    livroPythonFinancasUrl: 'https://www.amazon.com.br/s?k=python+para+financas'
+  };
+
+  function obterUrlTradingView(ticker) {
+    const tk = encodeURIComponent(String(ticker || '').trim().toUpperCase());
+    const base = `https://br.tradingview.com/symbols/BMFBOVESPA-${tk}/`;
+    const aff = String(CAFERADAR_MONETIZACAO.tradingviewAffId || '').trim();
+    return aff ? `${base}?aff_id=${encodeURIComponent(aff)}` : base;
+  }
+
+  function aplicarLinksMonetizacao() {
+    document.querySelectorAll('[data-monetizacao-key]').forEach(function (el) {
+      const chave = el.getAttribute('data-monetizacao-key');
+      const url = chave && CAFERADAR_MONETIZACAO[chave];
+      if (url && typeof url === 'string') {
+        el.setAttribute('href', url);
+        if (/^https?:\/\//i.test(url)) {
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener sponsored');
+        }
+      }
+    });
+  }
+
   // Configuração visual de cores por classe de ativo
   const CORES_ATIVOS = {
     'Tesouro IPCA+ 2040': '#1f77b4',
@@ -215,6 +258,7 @@
     configurarNavegacaoAbas();
     inicializarCalculadoraRendaFixa();
     inicializarBannerCookies();
+    aplicarLinksMonetizacao();
     renderizarLegendaEstados();
 
     // Carregamento paralelo das 3 fontes de dados
@@ -1248,7 +1292,10 @@
 
         tr.innerHTML = `
           <td>
-            <span class="ticker-tag">${escaparHtml(pos.ticker)}</span>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <span class="ticker-tag">${escaparHtml(pos.ticker)}</span>
+              <a href="${obterUrlTradingView(pos.ticker)}" target="_blank" rel="noopener" class="btn-mini-tv" title="Abrir gráfico técnico de ${escaparHtml(pos.ticker)} no TradingView">📈 Gráfico ↗</a>
+            </div>
             <span class="sub-empresa">${escaparHtml(nomeEmpresa)}</span>
           </td>
           <td style="font-size:0.85rem;">${escaparHtml(nomeSetup)}</td>
