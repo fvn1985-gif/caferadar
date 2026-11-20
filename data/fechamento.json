@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "negocios",
+  "edicao_padrao": "fechamento",
   "data_referencia": "2026-11-20",
   "data_formatada": "20/11/2026",
   "edicoes": {
@@ -10,30 +10,30 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "titulo": "ESPECIAL DE FERIADO B3: MAPA DA SEMANA — 20/11/2026",
-      "subtitulo": "Especial de Feriado B3 (nesta sexta-feira): panorama com Dólar em R$ 5,94, Brent a US$ 89,23 e Bitcoin 24h em US$ 61.409",
+      "subtitulo": "Especial de Feriado B3 (nesta sexta-feira): panorama com Dólar em R$ 5,95, Brent a US$ 89,30 e Bitcoin 24h em US$ 58.680",
       "mercado_geral": {
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,94",
-          "variacao": "+0,63%",
+          "valor": "R$ 5,95",
+          "variacao": "+0,74%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500",
-          "valor": "7.176 pts",
-          "variacao": "-2,00%",
+          "valor": "7.051 pts",
+          "variacao": "-1,76%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 61.409",
-          "variacao": "-0,81%",
+          "valor": "US$ 58.680",
+          "variacao": "-5,22%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 89,23",
-          "variacao": "-0,91%",
+          "valor": "US$ 89,30",
+          "variacao": "-0,83%",
           "positivo": false
         },
         "ibov": {
@@ -51,11 +51,11 @@
           "link": "https://www.bcb.gov.br/publicacoes/focus"
         },
         {
-          "texto": "No mercado cripto — único ativo de liquidez global contínua 24/7 — o Bitcoin opera nesta sexta-feira em US$ 61.409.",
+          "texto": "No mercado cripto — único ativo de liquidez global contínua 24/7 — o Bitcoin opera nesta sexta-feira em US$ 58.680.",
           "fonte": "Binance / CoinDesk"
         },
         {
-          "texto": "Referenciais externos no Radar: dólar comercial em R$ 5,94 (+0,63%), S&P 500 em 7.176 pts e barril de petróleo Brent a US$ 89,23.",
+          "texto": "Referenciais externos no Radar: dólar comercial em R$ 5,95 (+0,74%), S&P 500 em 7.051 pts e barril de petróleo Brent a US$ 89,30.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
@@ -96,7 +96,7 @@
           }
         ]
       },
-      "capturado_em": "2026-11-20T10:30:54.121654-03:00",
+      "capturado_em": "2026-11-20T15:56:07.807678-03:00",
       "acoes_blue_chips": [
         {
           "ticker": "PETR4",
@@ -184,26 +184,26 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,94",
-          "variacao": "+0,63%",
+          "valor": "R$ 5,95",
+          "variacao": "+0,74%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500",
-          "valor": "7.176 pts",
-          "variacao": "-2,00%",
+          "valor": "7.051 pts",
+          "variacao": "-1,76%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 61.409",
-          "variacao": "-0,81%",
+          "valor": "US$ 58.680",
+          "variacao": "-5,22%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 89,23",
-          "variacao": "-0,91%",
+          "valor": "US$ 89,30",
+          "variacao": "-0,83%",
           "positivo": false
         }
       },
@@ -213,7 +213,7 @@
           "fonte": "Scanner B3 CafeRadar"
         },
         {
-          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,23 e o câmbio em R$ 5,94.",
+          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,30 e o câmbio em R$ 5,95.",
           "fonte": "B3 / TradeMap",
           "link": "https://trademap.com.br"
         },
@@ -222,7 +222,7 @@
           "fonte": "Calculadora CafeRadar"
         },
         {
-          "texto": "No exterior, S&P 500 (7.176 pts) e Bitcoin (US$ 61.409) integram o painel de monitoramento internacional.",
+          "texto": "No exterior, S&P 500 (7.051 pts) e Bitcoin (US$ 58.680) integram o painel de monitoramento internacional.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         }
@@ -258,7 +258,7 @@
           }
         ]
       },
-      "capturado_em": "2026-11-20T10:30:54.121654-03:00",
+      "capturado_em": "2026-11-20T15:56:07.807678-03:00",
       "acoes_blue_chips": [
         {
           "ticker": "PETR4",
@@ -334,7 +334,7 @@
       "icone": "🏁",
       "horario": "18h15",
       "titulo": "ESPECIAL DE FERIADO B3: BALANÇO DA SEMANA — 20/11/2026",
-      "subtitulo": "Balanço Consolidado B3 (nesta sexta-feira): Ibovespa em 166.376 pts, Dólar a R$ 5,94 e Bitcoin 24h em US$ 61.409",
+      "subtitulo": "Balanço Consolidado B3 (nesta sexta-feira): Ibovespa em 166.376 pts, Dólar a R$ 5,95 e Bitcoin 24h em US$ 58.680",
       "mercado_geral": {
         "ibov": {
           "nome": "Ibovespa",
@@ -345,26 +345,26 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,94",
-          "variacao": "+0,63%",
+          "valor": "R$ 5,95",
+          "variacao": "+0,74%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500",
-          "valor": "7.176 pts",
-          "variacao": "-2,00%",
+          "valor": "7.051 pts",
+          "variacao": "-1,76%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 61.409",
-          "variacao": "-0,81%",
+          "valor": "US$ 58.680",
+          "variacao": "-5,22%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 89,23",
-          "variacao": "-0,91%",
+          "valor": "US$ 89,30",
+          "variacao": "-0,83%",
           "positivo": false
         }
       },
@@ -464,17 +464,17 @@
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio comercial, o referencial mais recente registra R$ 5,94 (+0,63%).",
+          "texto": "No câmbio comercial, o referencial mais recente registra R$ 5,95 (+0,74%).",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         },
         {
-          "texto": "Entre as referências globais, o petróleo Brent marca US$ 89,23 e o índice S&P 500 registra 7.176 pts.",
+          "texto": "Entre as referências globais, o petróleo Brent marca US$ 89,30 e o índice S&P 500 registra 7.051 pts.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "Em negociação contínua 24h, o Bitcoin opera em US$ 61.409.",
+          "texto": "Em negociação contínua 24h, o Bitcoin opera em US$ 58.680.",
           "fonte": "Binance / CoinMarketCap"
         }
       ],
@@ -489,7 +489,7 @@
       "disponivel": true,
       "status_publicacao": "Publicado",
       "horario_exibicao": "Consolidado",
-      "capturado_em": "2026-11-20T10:30:54.121654-03:00",
+      "capturado_em": "2026-11-20T15:56:07.807678-03:00",
       "data_referencia": "2026-11-20",
       "data_formatada": "20/11/2026"
     },
@@ -511,26 +511,26 @@
         },
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,94",
-          "variacao": "+0,63%",
+          "valor": "R$ 5,95",
+          "variacao": "+0,74%",
           "positivo": true
         },
         "sp500": {
           "nome": "S&P 500",
-          "valor": "7.176 pts",
-          "variacao": "-2,00%",
+          "valor": "7.051 pts",
+          "variacao": "-1,76%",
           "positivo": false
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 61.409",
-          "variacao": "-0,81%",
+          "valor": "US$ 58.680",
+          "variacao": "-5,22%",
           "positivo": false
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 89,23",
-          "variacao": "-0,91%",
+          "valor": "US$ 89,30",
+          "variacao": "-0,83%",
           "positivo": false
         }
       },
@@ -540,7 +540,7 @@
           "fonte": "Scanner B3 CafeRadar"
         },
         {
-          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,23 e o câmbio em R$ 5,94.",
+          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,30 e o câmbio em R$ 5,95.",
           "fonte": "B3 / TradeMap",
           "link": "https://trademap.com.br"
         },
@@ -549,7 +549,7 @@
           "fonte": "Calculadora CafeRadar"
         },
         {
-          "texto": "No exterior, S&P 500 (7.176 pts) e Bitcoin (US$ 61.409) integram o painel de monitoramento internacional.",
+          "texto": "No exterior, S&P 500 (7.051 pts) e Bitcoin (US$ 58.680) integram o painel de monitoramento internacional.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
         }
@@ -585,7 +585,7 @@
           }
         ]
       },
-      "capturado_em": "2026-11-20T10:30:54.121654-03:00",
+      "capturado_em": "2026-11-20T15:56:07.807678-03:00",
       "acoes_blue_chips": [
         {
           "ticker": "PETR4",
