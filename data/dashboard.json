@@ -1,8 +1,8 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-20T15:56:07.807678-03:00",
+  "generated_at": "2026-11-20T18:20:34.262328-03:00",
   "reference_date": "2026-11-19",
-  "status": "● MERCADO B3 FECHADO (20/11/2026) — Monitoramento 24h Ativo (15h56)",
+  "status": "● MERCADO B3 FECHADO (20/11/2026) — Monitoramento 24h Ativo (18h20)",
   "indicators": {
     "ibov": {
       "fallback_used": false,
@@ -62,7 +62,7 @@
       "drawdown_from_high_percent": -34.15,
       "last_close": {
         "date": "2026-11-20",
-        "value": 58680.18
+        "value": 58262.42
       },
       "positive_trend_confirmed": true,
       "valid": true
