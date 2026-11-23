@@ -1,664 +1,150 @@
 {
-  "edicao_padrao": "fechamento",
-  "data_referencia": "2026-11-20",
-  "data_formatada": "20/11/2026",
+  "edicao_padrao": "abertura",
+  "data_referencia": "2026-11-23",
+  "data_formatada": "23/11/2026",
   "edicoes": {
     "abertura": {
-      "nome": "Mapa da Semana",
+      "nome": "Café Matinal",
       "horario": "08h00",
-      "horario_exibicao": "Especial",
+      "horario_exibicao": "08h00",
       "disponivel": true,
       "status_publicacao": "Publicado",
-      "titulo": "ESPECIAL DE FERIADO B3: MAPA DA SEMANA — 20/11/2026",
-      "subtitulo": "Especial de Feriado B3 (nesta sexta-feira): panorama com Dólar em R$ 5,93, Brent a US$ 89,87 e Bitcoin 24h em US$ 58.915",
+      "titulo": "RADAR DE CAFÉ MATINAL — 23/11/2026",
+      "subtitulo": "Pré-mercado nesta segunda-feira: Dólar comercial em R$ 5,91, Brent a US$ 88,83 e atenção aos futuros internacionais antes da abertura da B3",
       "mercado_geral": {
         "dolar": {
           "nome": "Dólar Comercial",
-          "valor": "R$ 5,93",
-          "variacao": "+0,48%",
-          "positivo": true
+          "valor": "R$ 5,91",
+          "variacao": "-0,70%",
+          "positivo": false
         },
         "sp500": {
-          "nome": "S&P 500",
-          "valor": "6.910 pts",
-          "variacao": "-3,72%",
-          "positivo": false
+          "nome": "S&P 500 Futuro",
+          "valor": "7.133 pts",
+          "variacao": "+0,66%",
+          "positivo": true
         },
         "bitcoin": {
           "nome": "Bitcoin (BTC)",
-          "valor": "US$ 58.915",
-          "variacao": "+0,03%",
+          "valor": "US$ 61.355",
+          "variacao": "+0,31%",
           "positivo": true
         },
         "brent": {
           "nome": "Petróleo Brent",
-          "valor": "US$ 89,87",
-          "variacao": "-0,20%",
-          "positivo": false
-        },
-        "ibov": {
-          "nome": "Ibovespa",
-          "pontos": "166.376 pts",
-          "valor": "166.376 pts",
-          "variacao": "-0,78%",
+          "valor": "US$ 88,83",
+          "variacao": "-1,30%",
           "positivo": false
         }
       },
       "leitura_rapida": [
         {
-          "texto": "Com a B3 fechada no feriado nacional B3 (nesta sexta-feira), o investidor acompanha a agenda do próximo pregão útil, incluindo a divulgação do Boletim Focus pelo Banco Central às segundas-feiras (08h25).",
-          "fonte": "Banco Central",
-          "link": "https://www.bcb.gov.br/publicacoes/focus"
-        },
-        {
-          "texto": "No mercado cripto — único ativo de liquidez global contínua 24/7 — o Bitcoin opera nesta sexta-feira em US$ 58.915.",
-          "fonte": "Binance / CoinDesk"
-        },
-        {
-          "texto": "Referenciais externos no Radar: dólar comercial em R$ 5,93 (+0,48%), S&P 500 em 6.910 pts e barril de petróleo Brent a US$ 89,87.",
-          "fonte": "Investing",
-          "link": "https://br.investing.com"
-        },
-        {
-          "texto": "Na renda fixa pública, a taxa real do Tesouro IPCA+ 2040 é monitorada continuamente pelo motor quantitativo do Radar de Alocação 2038.",
-          "fonte": "Tesouro Direto",
-          "link": "https://www.tesourodireto.com.br"
-        }
-      ],
-      "comparacao_anterior": [
-        {
-          "texto": "Agenda de pregão útil: abertura do mercado futuro B3 (09h00) e pregão à vista (10h00)."
-        },
-        {
-          "texto": "Use o simulador educacional de Renda Fixa para comparar taxas brutas e prazos de títulos."
-        }
-      ],
-      "destaques": {
-        "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [
-          {
-            "ticker": "B3SA3",
-            "variacao": "+0,78%"
-          },
-          {
-            "ticker": "BBAS3",
-            "variacao": "+0,28%"
-          }
-        ],
-        "quedas": [
-          {
-            "ticker": "PRIO3",
-            "variacao": "-2,81%"
-          },
-          {
-            "ticker": "BBDC4",
-            "variacao": "-2,33%"
-          }
-        ]
-      },
-      "capturado_em": "2026-11-20T23:10:33.405543-03:00",
-      "acoes_blue_chips": [
-        {
-          "ticker": "PETR4",
-          "nome": "Petrobras PN",
-          "preco": "R$ 42,67",
-          "variacao_dia": "-1,02%",
-          "variacao_mes": "-26,43%",
-          "positivo": false
-        },
-        {
-          "ticker": "VALE3",
-          "nome": "Vale ON",
-          "preco": "R$ 58,48",
-          "variacao_dia": "-1,27%",
-          "variacao_mes": "-11,87%",
-          "positivo": false
-        },
-        {
-          "ticker": "ITUB4",
-          "nome": "Itaú Unibanco PN",
-          "preco": "R$ 40,07",
-          "variacao_dia": "-0,40%",
-          "variacao_mes": "-16,31%",
-          "positivo": false
-        },
-        {
-          "ticker": "WEGE3",
-          "nome": "WEG ON",
-          "preco": "R$ 51,13",
-          "variacao_dia": "-0,45%",
-          "variacao_mes": "+7,26%",
-          "positivo": false
-        },
-        {
-          "ticker": "BBAS3",
-          "nome": "Banco do Brasil ON",
-          "preco": "R$ 14,30",
-          "variacao_dia": "+0,28%",
-          "variacao_mes": "-40,29%",
-          "positivo": true
-        },
-        {
-          "ticker": "BBDC4",
-          "nome": "Bradesco PN",
-          "preco": "R$ 13,83",
-          "variacao_dia": "-2,33%",
-          "variacao_mes": "-31,10%",
-          "positivo": false
-        },
-        {
-          "ticker": "B3SA3",
-          "nome": "B3 ON",
-          "preco": "R$ 14,28",
-          "variacao_dia": "+0,78%",
-          "variacao_mes": "-36,53%",
-          "positivo": true
-        },
-        {
-          "ticker": "PRIO3",
-          "nome": "PRIO ON",
-          "preco": "R$ 60,20",
-          "variacao_dia": "-2,81%",
-          "variacao_mes": "-15,21%",
-          "positivo": false
-        }
-      ],
-      "data_referencia": "2026-11-20",
-      "data_formatada": "20/11/2026"
-    },
-    "almoco": {
-      "nome": "Radar de Segunda",
-      "horario": "10h30",
-      "horario_exibicao": "Estudo",
-      "disponivel": true,
-      "status_publicacao": "Publicado",
-      "titulo": "ESPECIAL DE FERIADO B3: RADAR DE SEGUNDA — 20/11/2026",
-      "subtitulo": "Radar Tático do Próximo Pregão (nesta sexta-feira): estudo quantitativo das 59 ações da B3 e indicadores macroeconômicos",
-      "mercado_geral": {
-        "ibov": {
-          "nome": "Ibovespa",
-          "pontos": "166.376 pts",
-          "valor": "166.376 pts",
-          "variacao": "-0,78%",
-          "positivo": false
-        },
-        "dolar": {
-          "nome": "Dólar Comercial",
-          "valor": "R$ 5,93",
-          "variacao": "+0,48%",
-          "positivo": true
-        },
-        "sp500": {
-          "nome": "S&P 500",
-          "valor": "6.910 pts",
-          "variacao": "-3,72%",
-          "positivo": false
-        },
-        "bitcoin": {
-          "nome": "Bitcoin (BTC)",
-          "valor": "US$ 58.915",
-          "variacao": "+0,03%",
-          "positivo": true
-        },
-        "brent": {
-          "nome": "Petróleo Brent",
-          "valor": "US$ 89,87",
-          "variacao": "-0,20%",
-          "positivo": false
-        }
-      },
-      "leitura_rapida": [
-        {
-          "texto": "Durante a sexta-feira sem pregão na B3, o Scanner Quantitativo de Swing Trade mantém o consolidado técnico das 59 ações monitoradas.",
-          "fonte": "Scanner B3 CafeRadar"
-        },
-        {
-          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,87 e o câmbio em R$ 5,93.",
-          "fonte": "B3 / TradeMap",
-          "link": "https://trademap.com.br"
-        },
-        {
-          "texto": "Na calculadora educacional de Renda Fixa, o investidor pode simular cenários com taxas brutas e prazos do Tesouro e CDBs.",
-          "fonte": "Calculadora CafeRadar"
-        },
-        {
-          "texto": "No exterior, S&P 500 (6.910 pts) e Bitcoin (US$ 58.915) integram o painel de monitoramento internacional.",
+          "texto": "Nos EUA, os contratos futuros de S&P 500 (ES=F) operam aos 7.133 pts no pré-mercado, enquanto investidores calibram expectativas de juros.",
           "fonte": "ADVFN",
           "link": "https://br.advfn.com/jornal"
-        }
-      ],
-      "comparacao_anterior": [
-        {
-          "texto": "Período sem negociação na B3 permite revisar critérios quantitativos sem ruído intradiário."
         },
         {
-          "texto": "Confira na aba Swing Trade (+5%) a tabela completa de auditoria das 59 ações."
-        }
-      ],
-      "destaques": {
-        "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [
-          {
-            "ticker": "B3SA3",
-            "variacao": "+0,78%"
-          },
-          {
-            "ticker": "BBAS3",
-            "variacao": "+0,28%"
-          }
-        ],
-        "quedas": [
-          {
-            "ticker": "PRIO3",
-            "variacao": "-2,81%"
-          },
-          {
-            "ticker": "BBDC4",
-            "variacao": "-2,33%"
-          }
-        ]
-      },
-      "capturado_em": "2026-11-20T23:10:33.405543-03:00",
-      "acoes_blue_chips": [
-        {
-          "ticker": "PETR4",
-          "nome": "Petrobras PN",
-          "preco": "R$ 42,67",
-          "variacao_dia": "-1,02%",
-          "variacao_mes": "-26,43%",
-          "positivo": false
-        },
-        {
-          "ticker": "VALE3",
-          "nome": "Vale ON",
-          "preco": "R$ 58,48",
-          "variacao_dia": "-1,27%",
-          "variacao_mes": "-11,87%",
-          "positivo": false
-        },
-        {
-          "ticker": "ITUB4",
-          "nome": "Itaú Unibanco PN",
-          "preco": "R$ 40,07",
-          "variacao_dia": "-0,40%",
-          "variacao_mes": "-16,31%",
-          "positivo": false
-        },
-        {
-          "ticker": "WEGE3",
-          "nome": "WEG ON",
-          "preco": "R$ 51,13",
-          "variacao_dia": "-0,45%",
-          "variacao_mes": "+7,26%",
-          "positivo": false
-        },
-        {
-          "ticker": "BBAS3",
-          "nome": "Banco do Brasil ON",
-          "preco": "R$ 14,30",
-          "variacao_dia": "+0,28%",
-          "variacao_mes": "-40,29%",
-          "positivo": true
-        },
-        {
-          "ticker": "BBDC4",
-          "nome": "Bradesco PN",
-          "preco": "R$ 13,83",
-          "variacao_dia": "-2,33%",
-          "variacao_mes": "-31,10%",
-          "positivo": false
-        },
-        {
-          "ticker": "B3SA3",
-          "nome": "B3 ON",
-          "preco": "R$ 14,28",
-          "variacao_dia": "+0,78%",
-          "variacao_mes": "-36,53%",
-          "positivo": true
-        },
-        {
-          "ticker": "PRIO3",
-          "nome": "PRIO ON",
-          "preco": "R$ 60,20",
-          "variacao_dia": "-2,81%",
-          "variacao_mes": "-15,21%",
-          "positivo": false
-        }
-      ],
-      "data_referencia": "2026-11-20",
-      "data_formatada": "20/11/2026"
-    },
-    "fechamento": {
-      "id": "fechamento",
-      "nome": "Balanço da Semana",
-      "icone": "🏁",
-      "horario": "18h15",
-      "titulo": "ESPECIAL DE FERIADO B3: BALANÇO DA SEMANA — 20/11/2026",
-      "subtitulo": "Balanço Consolidado B3 (nesta sexta-feira): Ibovespa em 166.376 pts, Dólar a R$ 5,93 e Bitcoin 24h em US$ 58.915",
-      "mercado_geral": {
-        "ibov": {
-          "nome": "Ibovespa",
-          "pontos": "166.376 pts",
-          "valor": "166.376 pts",
-          "variacao": "-0,78%",
-          "positivo": false
-        },
-        "dolar": {
-          "nome": "Dólar Comercial",
-          "valor": "R$ 5,93",
-          "variacao": "+0,48%",
-          "positivo": true
-        },
-        "sp500": {
-          "nome": "S&P 500",
-          "valor": "6.910 pts",
-          "variacao": "-3,72%",
-          "positivo": false
-        },
-        "bitcoin": {
-          "nome": "Bitcoin (BTC)",
-          "valor": "US$ 58.915",
-          "variacao": "+0,03%",
-          "positivo": true
-        },
-        "brent": {
-          "nome": "Petróleo Brent",
-          "valor": "US$ 89,87",
-          "variacao": "-0,20%",
-          "positivo": false
-        }
-      },
-      "acoes_blue_chips": [
-        {
-          "ticker": "PETR4",
-          "nome": "Petrobras PN",
-          "preco": "R$ 42,67",
-          "variacao_dia": "-1,02%",
-          "variacao_mes": "-26,43%",
-          "positivo": false
-        },
-        {
-          "ticker": "VALE3",
-          "nome": "Vale ON",
-          "preco": "R$ 58,48",
-          "variacao_dia": "-1,27%",
-          "variacao_mes": "-11,87%",
-          "positivo": false
-        },
-        {
-          "ticker": "ITUB4",
-          "nome": "Itaú Unibanco PN",
-          "preco": "R$ 40,07",
-          "variacao_dia": "-0,40%",
-          "variacao_mes": "-16,31%",
-          "positivo": false
-        },
-        {
-          "ticker": "WEGE3",
-          "nome": "WEG ON",
-          "preco": "R$ 51,13",
-          "variacao_dia": "-0,45%",
-          "variacao_mes": "+7,26%",
-          "positivo": false
-        },
-        {
-          "ticker": "BBAS3",
-          "nome": "Banco do Brasil ON",
-          "preco": "R$ 14,30",
-          "variacao_dia": "+0,28%",
-          "variacao_mes": "-40,29%",
-          "positivo": true
-        },
-        {
-          "ticker": "BBDC4",
-          "nome": "Bradesco PN",
-          "preco": "R$ 13,83",
-          "variacao_dia": "-2,33%",
-          "variacao_mes": "-31,10%",
-          "positivo": false
-        },
-        {
-          "ticker": "B3SA3",
-          "nome": "B3 ON",
-          "preco": "R$ 14,28",
-          "variacao_dia": "+0,78%",
-          "variacao_mes": "-36,53%",
-          "positivo": true
-        },
-        {
-          "ticker": "PRIO3",
-          "nome": "PRIO ON",
-          "preco": "R$ 60,20",
-          "variacao_dia": "-2,81%",
-          "variacao_mes": "-15,21%",
-          "positivo": false
-        }
-      ],
-      "destaques": {
-        "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [
-          {
-            "ticker": "B3SA3",
-            "variacao": "+0,78%"
-          },
-          {
-            "ticker": "BBAS3",
-            "variacao": "+0,28%"
-          }
-        ],
-        "quedas": [
-          {
-            "ticker": "PRIO3",
-            "variacao": "-2,81%"
-          },
-          {
-            "ticker": "BBDC4",
-            "variacao": "-2,33%"
-          }
-        ]
-      },
-      "leitura_rapida": [
-        {
-          "texto": "Com a bolsa brasileira fechada no feriado nacional B3 (nesta sexta-feira), a consolidação do último pregão útil registra o Ibovespa em 166.376 pts.",
+          "texto": "No câmbio doméstico, o dólar comercial registra R$ 5,91 (-0,70%) antes da abertura do mercado à vista, refletindo ajustes na curva de juros.",
           "fonte": "TradeMap",
           "link": "https://trademap.com.br"
         },
         {
-          "texto": "No câmbio comercial, o referencial mais recente registra R$ 5,93 (+0,48%).",
-          "fonte": "ADVFN",
-          "link": "https://br.advfn.com/jornal"
-        },
-        {
-          "texto": "Entre as referências globais, o petróleo Brent marca US$ 89,87 e o índice S&P 500 registra 6.910 pts.",
+          "texto": "O petróleo Brent é negociado a US$ 88,83 o barril, servindo de referência inicial para o setor de energia nesta manhã de segunda-feira.",
           "fonte": "Investing",
           "link": "https://br.investing.com"
         },
         {
-          "texto": "Em negociação contínua 24h, o Bitcoin opera em US$ 58.915.",
-          "fonte": "Binance / CoinMarketCap"
+          "texto": "O Bitcoin (BTC) opera em US$ 61.355 no mercado global 24h.",
+          "fonte": "Binance / CoinDesk"
         }
       ],
       "comparacao_anterior": [
         {
-          "texto": "Painel informativo consolidado disponível para consulta nesta sexta-feira."
+          "texto": "Abertura do pregão regular à vista da B3 programada para as 10h00 nesta segunda-feira (leilão de pré-abertura às 09h45)."
         },
         {
-          "texto": "O pregão regular da B3 reabre no próximo dia útil às 10h00 (pré-abertura às 09h45)."
-        }
-      ],
-      "disponivel": true,
-      "status_publicacao": "Publicado",
-      "horario_exibicao": "Consolidado",
-      "capturado_em": "2026-11-20T23:10:33.405543-03:00",
-      "data_referencia": "2026-11-20",
-      "data_formatada": "20/11/2026"
-    },
-    "negocios": {
-      "nome": "Radar de Segunda",
-      "horario": "10h30",
-      "horario_exibicao": "Estudo",
-      "disponivel": true,
-      "status_publicacao": "Publicado",
-      "titulo": "ESPECIAL DE FERIADO B3: RADAR DE SEGUNDA — 20/11/2026",
-      "subtitulo": "Radar Tático do Próximo Pregão (nesta sexta-feira): estudo quantitativo das 59 ações da B3 e indicadores macroeconômicos",
-      "mercado_geral": {
-        "ibov": {
-          "nome": "Ibovespa",
-          "pontos": "166.376 pts",
-          "valor": "166.376 pts",
-          "variacao": "-0,78%",
-          "positivo": false
-        },
-        "dolar": {
-          "nome": "Dólar Comercial",
-          "valor": "R$ 5,93",
-          "variacao": "+0,48%",
-          "positivo": true
-        },
-        "sp500": {
-          "nome": "S&P 500",
-          "valor": "6.910 pts",
-          "variacao": "-3,72%",
-          "positivo": false
-        },
-        "bitcoin": {
-          "nome": "Bitcoin (BTC)",
-          "valor": "US$ 58.915",
-          "variacao": "+0,03%",
-          "positivo": true
-        },
-        "brent": {
-          "nome": "Petróleo Brent",
-          "valor": "US$ 89,87",
-          "variacao": "-0,20%",
-          "positivo": false
-        }
-      },
-      "leitura_rapida": [
-        {
-          "texto": "Durante a sexta-feira sem pregão na B3, o Scanner Quantitativo de Swing Trade mantém o consolidado técnico das 59 ações monitoradas.",
-          "fonte": "Scanner B3 CafeRadar"
-        },
-        {
-          "texto": "No último fechamento disponível, o Ibovespa marcou 166.376 pts, enquanto o Brent seguiu em US$ 89,87 e o câmbio em R$ 5,93.",
-          "fonte": "B3 / TradeMap",
-          "link": "https://trademap.com.br"
-        },
-        {
-          "texto": "Na calculadora educacional de Renda Fixa, o investidor pode simular cenários com taxas brutas e prazos do Tesouro e CDBs.",
-          "fonte": "Calculadora CafeRadar"
-        },
-        {
-          "texto": "No exterior, S&P 500 (6.910 pts) e Bitcoin (US$ 58.915) integram o painel de monitoramento internacional.",
-          "fonte": "ADVFN",
-          "link": "https://br.advfn.com/jornal"
-        }
-      ],
-      "comparacao_anterior": [
-        {
-          "texto": "Período sem negociação na B3 permite revisar critérios quantitativos sem ruído intradiário."
-        },
-        {
-          "texto": "Confira na aba Swing Trade (+5%) a tabela completa de auditoria das 59 ações."
+          "texto": "Cotações de ações e do Ibovespa consolidam-se somente após a abertura da bolsa brasileira."
         }
       ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [
-          {
-            "ticker": "B3SA3",
-            "variacao": "+0,78%"
-          },
-          {
-            "ticker": "BBAS3",
-            "variacao": "+0,28%"
-          }
-        ],
-        "quedas": [
-          {
-            "ticker": "PRIO3",
-            "variacao": "-2,81%"
-          },
-          {
-            "ticker": "BBDC4",
-            "variacao": "-2,33%"
-          }
-        ]
+        "altas": [],
+        "quedas": []
       },
-      "capturado_em": "2026-11-20T23:10:33.405543-03:00",
-      "acoes_blue_chips": [
-        {
-          "ticker": "PETR4",
-          "nome": "Petrobras PN",
-          "preco": "R$ 42,67",
-          "variacao_dia": "-1,02%",
-          "variacao_mes": "-26,43%",
-          "positivo": false
-        },
-        {
-          "ticker": "VALE3",
-          "nome": "Vale ON",
-          "preco": "R$ 58,48",
-          "variacao_dia": "-1,27%",
-          "variacao_mes": "-11,87%",
-          "positivo": false
-        },
-        {
-          "ticker": "ITUB4",
-          "nome": "Itaú Unibanco PN",
-          "preco": "R$ 40,07",
-          "variacao_dia": "-0,40%",
-          "variacao_mes": "-16,31%",
-          "positivo": false
-        },
-        {
-          "ticker": "WEGE3",
-          "nome": "WEG ON",
-          "preco": "R$ 51,13",
-          "variacao_dia": "-0,45%",
-          "variacao_mes": "+7,26%",
-          "positivo": false
-        },
-        {
-          "ticker": "BBAS3",
-          "nome": "Banco do Brasil ON",
-          "preco": "R$ 14,30",
-          "variacao_dia": "+0,28%",
-          "variacao_mes": "-40,29%",
-          "positivo": true
-        },
-        {
-          "ticker": "BBDC4",
-          "nome": "Bradesco PN",
-          "preco": "R$ 13,83",
-          "variacao_dia": "-2,33%",
-          "variacao_mes": "-31,10%",
-          "positivo": false
-        },
-        {
-          "ticker": "B3SA3",
-          "nome": "B3 ON",
-          "preco": "R$ 14,28",
-          "variacao_dia": "+0,78%",
-          "variacao_mes": "-36,53%",
-          "positivo": true
-        },
-        {
-          "ticker": "PRIO3",
-          "nome": "PRIO ON",
-          "preco": "R$ 60,20",
-          "variacao_dia": "-2,81%",
-          "variacao_mes": "-15,21%",
-          "positivo": false
-        }
-      ],
-      "data_referencia": "2026-11-20",
-      "data_formatada": "20/11/2026"
+      "capturado_em": "2026-11-23T08:01:37.114501-03:00",
+      "acoes_blue_chips": [],
+      "data_referencia": "2026-11-23",
+      "data_formatada": "23/11/2026"
+    },
+    "almoco": {
+      "nome": "Abertura B3",
+      "horario": "10h30",
+      "horario_exibicao": "10h30",
+      "disponivel": false,
+      "status_publicacao": "Prevista para as 10h30",
+      "titulo": "RADAR DE ABERTURA B3 — 23/11/2026",
+      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (23/11/2026).",
+      "mercado_geral": {},
+      "leitura_rapida": [],
+      "comparacao_anterior": [],
+      "destaques": {
+        "titulo": "Destaques entre as blue chips monitoradas",
+        "altas": [],
+        "quedas": []
+      },
+      "capturado_em": null,
+      "acoes_blue_chips": [],
+      "data_referencia": "2026-11-23",
+      "data_formatada": "23/11/2026"
+    },
+    "fechamento": {
+      "id": "fechamento",
+      "nome": "Fechamento",
+      "icone": "🏁",
+      "horario": "18h15",
+      "titulo": "RADAR DE FECHAMENTO — 23/11/2026",
+      "subtitulo": "Edição de Fechamento prevista para as 18h15 (23/11/2026).",
+      "mercado_geral": {},
+      "acoes_blue_chips": [],
+      "destaques": {
+        "titulo": "Destaques entre as blue chips monitoradas",
+        "altas": [],
+        "quedas": []
+      },
+      "leitura_rapida": [],
+      "comparacao_anterior": [],
+      "disponivel": false,
+      "status_publicacao": "Prevista para as 18h15",
+      "horario_exibicao": "18h15",
+      "capturado_em": null,
+      "data_referencia": "2026-11-23",
+      "data_formatada": "23/11/2026"
+    },
+    "negocios": {
+      "nome": "Abertura B3",
+      "horario": "10h30",
+      "horario_exibicao": "10h30",
+      "disponivel": false,
+      "status_publicacao": "Prevista para as 10h30",
+      "titulo": "RADAR DE ABERTURA B3 — 23/11/2026",
+      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (23/11/2026).",
+      "mercado_geral": {},
+      "leitura_rapida": [],
+      "comparacao_anterior": [],
+      "destaques": {
+        "titulo": "Destaques entre as blue chips monitoradas",
+        "altas": [],
+        "quedas": []
+      },
+      "capturado_em": null,
+      "acoes_blue_chips": [],
+      "data_referencia": "2026-11-23",
+      "data_formatada": "23/11/2026"
     }
   },
-  "dia_semana": "sexta-feira",
-  "fim_de_semana": true,
-  "modo_mercado": "feriado",
+  "dia_semana": "segunda-feira",
+  "fim_de_semana": false,
+  "modo_mercado": "pregao_util",
   "data": "09/11/2026",
   "edicao_ativa": "fechamento"
 }
