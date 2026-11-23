@@ -1,5 +1,5 @@
 {
-  "edicao_padrao": "abertura",
+  "edicao_padrao": "negocios",
   "data_referencia": "2026-11-23",
   "data_formatada": "23/11/2026",
   "edicoes": {
@@ -80,20 +80,158 @@
       "nome": "Abertura B3",
       "horario": "10h30",
       "horario_exibicao": "10h30",
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 10h30",
+      "disponivel": true,
+      "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 23/11/2026",
-      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (23/11/2026).",
-      "mercado_geral": {},
-      "leitura_rapida": [],
-      "comparacao_anterior": [],
+      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa em 164.802 pts e Dólar a R$ 6,00 na primeira hora de negócios",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "164.802 pts",
+          "valor": "164.802 pts",
+          "variacao": "-0,75%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 6,00",
+          "variacao": "+0,81%",
+          "positivo": true
+        },
+        "sp500": {
+          "nome": "S&P 500 Futuro",
+          "valor": "7.116 pts",
+          "variacao": "+0,42%",
+          "positivo": true
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 61.163",
+          "variacao": "+0,00%",
+          "positivo": true
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 88,28",
+          "variacao": "-1,91%",
+          "positivo": false
+        }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa marca 164.802 pts na primeira hora de negócios com foco no fluxo institucional.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent em US$ 88,28.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br"
+        },
+        {
+          "texto": "No câmbio doméstico, o dólar comercial marca R$ 6,00 (+0,81%) nas primeiras cotações, acompanhando os juros futuros.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Nos contratos futuros de Wall Street, o S&P 500 Futuro marca 7.116 pts antes da abertura regular de Nova York, enquanto o Bitcoin é negociado a US$ 61.163.",
+          "fonte": "BB InvesTalk"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Primeira hora de negócios de segunda-feira registra a formação de preços após a abertura da B3."
+        },
+        {
+          "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)."
+        }
+      ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [],
-        "quedas": []
+        "altas": [
+          {
+            "ticker": "BBAS3",
+            "variacao": "+1,06%"
+          }
+        ],
+        "quedas": [
+          {
+            "ticker": "WEGE3",
+            "variacao": "-1,24%"
+          },
+          {
+            "ticker": "B3SA3",
+            "variacao": "-1,19%"
+          }
+        ]
       },
-      "capturado_em": null,
-      "acoes_blue_chips": [],
+      "capturado_em": "2026-11-23T10:30:40.057306-03:00",
+      "acoes_blue_chips": [
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 42,23",
+          "variacao_dia": "-0,92%",
+          "variacao_mes": "-28,03%",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 57,95",
+          "variacao_dia": "-1,04%",
+          "variacao_mes": "-6,38%",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú Unibanco PN",
+          "preco": "R$ 39,59",
+          "variacao_dia": "-0,80%",
+          "variacao_mes": "-17,99%",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 49,98",
+          "variacao_dia": "-1,24%",
+          "variacao_mes": "+16,97%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBAS3",
+          "nome": "Banco do Brasil ON",
+          "preco": "R$ 14,26",
+          "variacao_dia": "+1,06%",
+          "variacao_mes": "-42,31%",
+          "positivo": true
+        },
+        {
+          "ticker": "BBDC4",
+          "nome": "Bradesco PN",
+          "preco": "R$ 13,75",
+          "variacao_dia": "-0,43%",
+          "variacao_mes": "-32,40%",
+          "positivo": false
+        },
+        {
+          "ticker": "B3SA3",
+          "nome": "B3 ON",
+          "preco": "R$ 14,07",
+          "variacao_dia": "-1,19%",
+          "variacao_mes": "-40,51%",
+          "positivo": false
+        },
+        {
+          "ticker": "PRIO3",
+          "nome": "PRIO ON",
+          "preco": "R$ 59,64",
+          "variacao_dia": "-0,55%",
+          "variacao_mes": "-19,19%",
+          "positivo": false
+        }
+      ],
       "data_referencia": "2026-11-23",
       "data_formatada": "23/11/2026"
     },
@@ -124,20 +262,158 @@
       "nome": "Abertura B3",
       "horario": "10h30",
       "horario_exibicao": "10h30",
-      "disponivel": false,
-      "status_publicacao": "Prevista para as 10h30",
+      "disponivel": true,
+      "status_publicacao": "Publicado",
       "titulo": "RADAR DE ABERTURA B3 — 23/11/2026",
-      "subtitulo": "Edição de Abertura B3 prevista para as 10h30 (23/11/2026).",
-      "mercado_geral": {},
-      "leitura_rapida": [],
-      "comparacao_anterior": [],
+      "subtitulo": "Pregão à vista da B3 aberto nesta segunda-feira; Ibovespa em 164.802 pts e Dólar a R$ 6,00 na primeira hora de negócios",
+      "mercado_geral": {
+        "ibov": {
+          "nome": "Ibovespa",
+          "pontos": "164.802 pts",
+          "valor": "164.802 pts",
+          "variacao": "-0,75%",
+          "positivo": false
+        },
+        "dolar": {
+          "nome": "Dólar Comercial",
+          "valor": "R$ 6,00",
+          "variacao": "+0,81%",
+          "positivo": true
+        },
+        "sp500": {
+          "nome": "S&P 500 Futuro",
+          "valor": "7.116 pts",
+          "variacao": "+0,42%",
+          "positivo": true
+        },
+        "bitcoin": {
+          "nome": "Bitcoin (BTC)",
+          "valor": "US$ 61.163",
+          "variacao": "+0,00%",
+          "positivo": true
+        },
+        "brent": {
+          "nome": "Petróleo Brent",
+          "valor": "US$ 88,28",
+          "variacao": "-1,91%",
+          "positivo": false
+        }
+      },
+      "leitura_rapida": [
+        {
+          "texto": "Com o pregão regular aberto a partir das 10h00 nesta segunda-feira, o Ibovespa marca 164.802 pts na primeira hora de negócios com foco no fluxo institucional.",
+          "fonte": "TradeMap",
+          "link": "https://trademap.com.br"
+        },
+        {
+          "texto": "Grandes bancos e Vale concentram o giro financeiro da abertura, enquanto petroleiras monitoram o barril de petróleo Brent em US$ 88,28.",
+          "fonte": "Visno Invest",
+          "link": "https://visnoinvest.com.br"
+        },
+        {
+          "texto": "No câmbio doméstico, o dólar comercial marca R$ 6,00 (+0,81%) nas primeiras cotações, acompanhando os juros futuros.",
+          "fonte": "ADVFN",
+          "link": "https://br.advfn.com/jornal"
+        },
+        {
+          "texto": "Nos contratos futuros de Wall Street, o S&P 500 Futuro marca 7.116 pts antes da abertura regular de Nova York, enquanto o Bitcoin é negociado a US$ 61.163.",
+          "fonte": "BB InvesTalk"
+        }
+      ],
+      "comparacao_anterior": [
+        {
+          "texto": "Primeira hora de negócios de segunda-feira registra a formação de preços após a abertura da B3."
+        },
+        {
+          "texto": "Os alvos de curto prazo e posições ativas podem ser acompanhados na aba Swing Trade (+5%)."
+        }
+      ],
       "destaques": {
         "titulo": "Destaques entre as blue chips monitoradas",
-        "altas": [],
-        "quedas": []
+        "altas": [
+          {
+            "ticker": "BBAS3",
+            "variacao": "+1,06%"
+          }
+        ],
+        "quedas": [
+          {
+            "ticker": "WEGE3",
+            "variacao": "-1,24%"
+          },
+          {
+            "ticker": "B3SA3",
+            "variacao": "-1,19%"
+          }
+        ]
       },
-      "capturado_em": null,
-      "acoes_blue_chips": [],
+      "capturado_em": "2026-11-23T10:30:40.057306-03:00",
+      "acoes_blue_chips": [
+        {
+          "ticker": "PETR4",
+          "nome": "Petrobras PN",
+          "preco": "R$ 42,23",
+          "variacao_dia": "-0,92%",
+          "variacao_mes": "-28,03%",
+          "positivo": false
+        },
+        {
+          "ticker": "VALE3",
+          "nome": "Vale ON",
+          "preco": "R$ 57,95",
+          "variacao_dia": "-1,04%",
+          "variacao_mes": "-6,38%",
+          "positivo": false
+        },
+        {
+          "ticker": "ITUB4",
+          "nome": "Itaú Unibanco PN",
+          "preco": "R$ 39,59",
+          "variacao_dia": "-0,80%",
+          "variacao_mes": "-17,99%",
+          "positivo": false
+        },
+        {
+          "ticker": "WEGE3",
+          "nome": "WEG ON",
+          "preco": "R$ 49,98",
+          "variacao_dia": "-1,24%",
+          "variacao_mes": "+16,97%",
+          "positivo": false
+        },
+        {
+          "ticker": "BBAS3",
+          "nome": "Banco do Brasil ON",
+          "preco": "R$ 14,26",
+          "variacao_dia": "+1,06%",
+          "variacao_mes": "-42,31%",
+          "positivo": true
+        },
+        {
+          "ticker": "BBDC4",
+          "nome": "Bradesco PN",
+          "preco": "R$ 13,75",
+          "variacao_dia": "-0,43%",
+          "variacao_mes": "-32,40%",
+          "positivo": false
+        },
+        {
+          "ticker": "B3SA3",
+          "nome": "B3 ON",
+          "preco": "R$ 14,07",
+          "variacao_dia": "-1,19%",
+          "variacao_mes": "-40,51%",
+          "positivo": false
+        },
+        {
+          "ticker": "PRIO3",
+          "nome": "PRIO ON",
+          "preco": "R$ 59,64",
+          "variacao_dia": "-0,55%",
+          "variacao_mes": "-19,19%",
+          "positivo": false
+        }
+      ],
       "data_referencia": "2026-11-23",
       "data_formatada": "23/11/2026"
     }
