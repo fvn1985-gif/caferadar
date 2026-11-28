@@ -1,8 +1,8 @@
 {
   "app_version": "0.3.0",
-  "generated_at": "2026-11-27T20:51:28.609428-03:00",
+  "generated_at": "2026-11-28T00:16:59.199160-03:00",
   "reference_date": "2026-11-27",
-  "status": "● MONITORAMENTO DIÁRIO ATIVO — 27/11/2026",
+  "status": "● MERCADO B3 FECHADO (28/11/2026) — Monitoramento 24h Ativo (00h16)",
   "indicators": {
     "ibov": {
       "fallback_used": false,
@@ -61,8 +61,8 @@
     "bitcoin": {
       "drawdown_from_high_percent": -34.15,
       "last_close": {
-        "date": "2026-11-27",
-        "value": 59832.68
+        "date": "2026-11-28",
+        "value": 59898.82
       },
       "positive_trend_confirmed": true,
       "valid": true
